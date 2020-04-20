@@ -1,0 +1,7 @@
+{
+  "name": "HigieneSeguridad",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
