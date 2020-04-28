@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ComponenteMenu } from '../../Models/ComponenteMenu';
 import { MenuService } from '../../Services/menu.service';
 import { Observable } from 'rxjs/internal/Observable';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-menu',
@@ -13,7 +10,7 @@ import { Platform } from '@ionic/angular';
 })
 export class MenuComponent implements OnInit {
   public selectedIndex = 0;
-  public MenuItems: Observable<ComponenteMenu>;
+  public MenuItems: Observable<ComponenteMenu[]>;
   constructor(private menuService: MenuService) {}
 
   ngOnInit() {

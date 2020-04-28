@@ -13,6 +13,6 @@ export class MenuService {
    * ObtenerItemsMenuPrincipal
    */
   public ObtenerItemsMenuPrincipal() {
-    return this.http.get<ComponenteMenu>('/assets/data/Menu.json');
+    return this.http.get<ComponenteMenu[]>('/assets/data/Menu.json');
   }
 }
