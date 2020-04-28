@@ -1,25 +1,27 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './Login/login.component';
-/*
-const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'folder/Inbox',
-    pathMatch: 'full'
-  },
-  {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
-  }
-];*/
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'folder/:id',
+    loadChildren: () => import('./Pages/folder/folder.module').then( m => m.FolderPageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./Pages/home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./Pages/login/login.module').then( m => m.LoginPageModule)
   }
 ];
+
 
 @NgModule({
   imports: [

@@ -1,0 +1,22 @@
+[
+    {
+        "icon": "briefcase",
+        "name": "Dash Board",
+        "redirectTo": "#"
+    },
+    {
+        "icon": "briefcase",
+        "name": "Planes",
+        "redirectTo": "#"
+    },
+    {
+        "icon": "briefcase",
+        "name": "Auditorias",
+        "redirectTo": "#"
+    },
+    {
+        "icon": "briefcase",
+        "name": "Dash Board",
+        "redirectTo": "#"
+    }
+]
