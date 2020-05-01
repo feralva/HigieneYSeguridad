@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, PopoverController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { LanguageService } from './Core/Services/language-service.service';
 import { AppDataService } from './Core/Services/Data/app-data.service';
-import { TranslateService } from '@ngx-translate/core';
+import { LanguagePopupPage } from './Pages/language-popup/language-popup.page';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +22,8 @@ export class AppComponent implements OnInit {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private languageService: LanguageService,
-    private appDataService: AppDataService
+    private appDataService: AppDataService,
+    private popOverCtrl: PopoverController
   ) {
     this.initializeApp();
   }
@@ -36,5 +37,13 @@ export class AppComponent implements OnInit {
       this.splashScreen.hide();
       this.languageService.setInitialAppLanguage();
     });
+  }
+
+  async openLanguagePopover(ev){
+    const popOver = await this.popOverCtrl.create({
+      component: LanguagePopupPage,
+      event: ev
+    });
+    await popOver.present();
   }
 }
