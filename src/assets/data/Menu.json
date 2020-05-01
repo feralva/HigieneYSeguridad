@@ -18,5 +18,10 @@
         "icon": "briefcase",
         "name": "Dash Board",
         "redirectTo": "#"
+    },
+    {
+        "icon": "flag",
+        "name": "Language",
+        "redirectTo": "#"
     }
 ]
