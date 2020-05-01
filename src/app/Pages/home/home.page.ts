@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -7,13 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
-  public NombrePagina: string;
-  constructor() { }
+  public nombrePagina: string;
+
+  constructor(private appDataService: AppDataService, private translate: TranslateService) { }
 
   ngOnInit() {
-
-    this.NombrePagina = 'Home';
-
-  }
-
+    this.nombrePagina = 'Home.title';
+    this.appDataService.changePageName(this.nombrePagina);
+    }
 }

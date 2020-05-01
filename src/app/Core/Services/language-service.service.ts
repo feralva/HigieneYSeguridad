@@ -28,7 +28,7 @@ export class LanguageService {
     return [
       {text: 'English', value: 'en', img: 'assets/imgs/en.png'},
       {text: 'Deutsch', value: 'de', img: 'assets/imgs/de.png'},
-      {text: 'French', value: 'fr', img: 'assets/imgs/fr.png'}
+      {text: 'Español', value: 'es', img: 'assets/imgs/es.png'}
     ];
   }
 
