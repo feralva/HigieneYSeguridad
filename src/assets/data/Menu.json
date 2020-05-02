@@ -1,6 +1,6 @@
 [
     {
-        "icon": "briefcase",
+        "icon": "bar-chart",
         "name": "Dash Board",
         "redirectTo": "#"
     },
@@ -10,18 +10,31 @@
         "redirectTo": "#"
     },
     {
-        "icon": "briefcase",
+        "icon": "thermometer",
         "name": "Auditorias",
         "redirectTo": "#"
     },
     {
-        "icon": "briefcase",
-        "name": "Dash Board",
+        "icon": "people-circle",
+        "name": "Auditores",
         "redirectTo": "#"
     },
     {
-        "icon": "flag",
-        "name": "Language",
+        "icon": "business",
+        "name": "Clientes",
+        "redirectTo": "#"
+    },
+    {
+        "icon": "card",
+        "name": "Licencia",
         "redirectTo": "#"
     }
+
+
+    
+
+
+
+    
+
 ]

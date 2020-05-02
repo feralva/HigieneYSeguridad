@@ -26,9 +26,9 @@ export class LanguageService {
 
   getLanguages() {
     return [
-      {text: 'English', value: 'en', img: './assets/img/en.png'},
-      {text: 'Deutsch', value: 'de', img: './assets/img/de.png'},
-      {text: 'Español', value: 'es', img: './assets/img/es.png'}
+      {text: 'English', value: 'en', img: 'assets/img/en.png'},
+      {text: 'Deutsch', value: 'de', img: 'assets/img/de.png'},
+      {text: 'Español', value: 'es', img: 'assets/img/es.png'}
     ];
   }
 
