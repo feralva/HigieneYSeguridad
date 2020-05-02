@@ -1,8 +1,15 @@
 <ion-menu contentId="main-content" type="overlay">
   <ion-content>
     <ion-list id="inbox-list">
-      <ion-list-header>Fernando Alvarez</ion-list-header>
-      <ion-note>alvarez_fernando_l@hotmail.com</ion-note>
+
+      <ion-item lines="none">  
+        <ion-avatar slot="start">  
+          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">  
+        </ion-avatar>  
+        <ion-label>Fernando Alvarez</ion-label>  
+        
+      </ion-item>  
+
 
       <ion-menu-toggle auto-hide="false" *ngFor="let p of MenuItems | async ; let i = index">
         <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="p.url" lines="none" detail="false" [class.selected]="selectedIndex == i">
