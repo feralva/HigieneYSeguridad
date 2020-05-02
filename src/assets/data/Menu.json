@@ -2,32 +2,38 @@
     {
         "icon": "bar-chart",
         "name": "Dash Board",
-        "redirectTo": "#"
+        "redirectTo": "#",
+        "role": ["Contenido1"]
     },
     {
         "icon": "briefcase",
         "name": "Planes",
-        "redirectTo": "#"
+        "redirectTo": "#",
+        "role": ["Contenido1"]
     },
     {
         "icon": "thermometer",
         "name": "Auditorias",
-        "redirectTo": "#"
+        "redirectTo": "#",
+        "role": ["Componente1"]
     },
     {
         "icon": "people-circle",
         "name": "Auditores",
-        "redirectTo": "#"
+        "redirectTo": "#",
+        "role": ["Componente2"]
     },
     {
         "icon": "business",
         "name": "Clientes",
-        "redirectTo": "#"
+        "redirectTo": "#",
+        "role": ["Componente3"]
     },
     {
         "icon": "card",
         "name": "Licencia",
-        "redirectTo": "#"
+        "redirectTo": "#",
+        "role": ["Componente4"]
     }
 
 

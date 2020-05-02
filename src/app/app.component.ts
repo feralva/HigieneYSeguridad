@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { LanguageService } from './Core/Services/language-service.service';
 import { AppDataService } from './Core/Services/Data/app-data.service';
 import { LanguagePopupPage } from './Pages/language-popup/language-popup.page';
+import { AuthService } from './Core/Services/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,8 @@ export class AppComponent implements OnInit {
     private statusBar: StatusBar,
     private languageService: LanguageService,
     private appDataService: AppDataService,
-    private popOverCtrl: PopoverController
+    private popOverCtrl: PopoverController,
+    private auth: AuthService
   ) {
     this.initializeApp();
   }
@@ -36,10 +38,11 @@ export class AppComponent implements OnInit {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.languageService.setInitialAppLanguage();
+      this.auth.login('user');
     });
   }
 
-  async openLanguagePopover(ev){
+  async openLanguagePopover(ev) {
     const popOver = await this.popOverCtrl.create({
       component: LanguagePopupPage,
       event: ev

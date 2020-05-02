@@ -17,6 +17,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import {IonicStorageModule} from '@ionic/storage';
 import { LanguagePopupPageModule } from './Pages/language-popup/language-popup.module';
+import { HasRoleDirective } from './Core/Directives/has-role.directive';
+
+import { SharedDirectivesModule } from './Core/Directives/shared-directives.module';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -31,6 +34,7 @@ export function createTranslateLoader(http: HttpClient) {
     RouterModule,
     AppRoutingModule,
     HttpClientModule,
+    SharedDirectivesModule,
     IonicStorageModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
