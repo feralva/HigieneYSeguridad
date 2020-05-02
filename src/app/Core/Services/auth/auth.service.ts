@@ -29,6 +29,10 @@ export class AuthService {
     return this.currentUser.asObservable();
   }
 
+  isLoggedIn() {
+    return !!this.currentUser.value;
+  }
+
   logout() {
     this.currentUser.next(null);
   }
