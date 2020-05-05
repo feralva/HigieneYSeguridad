@@ -9,10 +9,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'folder/:id',
-    loadChildren: () => import('./Pages/folder/folder.module').then( m => m.FolderPageModule)
-  },
-  {
     path: 'home',
     loadChildren: () => import('./Pages/home/home.module').then( m => m.HomePageModule)
   },
@@ -23,6 +19,10 @@ const routes: Routes = [
   {
     path: 'language-popup',
     loadChildren: () => import('./Pages/language-popup/language-popup.module').then( m => m.LanguagePopupPageModule)
+  },
+  {
+    path: 'empresa',
+    loadChildren: () => import('./Pages/Empresa/alta-empresa/alta-empresa.module').then( m => m.AltaEmpresaPageModule)
   }
 ];
 

@@ -1,0 +1,61 @@
+<ion-content >
+
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
+    <ion-item-divider color="secondary">
+      <ion-label>
+       Empresa
+      </ion-label>
+    </ion-item-divider>
+      <ion-item>
+        <ion-label position="stacked">Nombre</ion-label>
+        <ion-input placeholder="Nombre" name="Nombre" [(ngModel)]="empresaModel.nombre" required></ion-input>
+      </ion-item>
+      <ion-item-divider color="tertiary">
+        <ion-label>
+         direccion
+        </ion-label>
+      </ion-item-divider>
+      <ion-item>
+      <ion-label position="stacked">Calle</ion-label>
+      <ion-input placeholder="Calle" name="direccion.Calle" [(ngModel)]="empresaModel.direccion.calle"></ion-input>
+      </ion-item>
+      <ion-item>
+      <ion-label position="stacked">Altura</ion-label>
+      <ion-input type="number" placeholder="Altura" name="direccion.Altura" [(ngModel)]="empresaModel.direccion.altura"></ion-input>
+      </ion-item>
+      <ion-item>
+      <ion-label position="stacked">Partido</ion-label>
+      <ion-input placeholder="Partido" name="direccion.Partido" [(ngModel)]="empresaModel.direccion.partido"></ion-input>
+      </ion-item>
+      <ion-item>
+      <ion-label position="stacked">Provincia</ion-label>
+      <ion-input placeholder="Provincia" name="direccion.Provincia" [(ngModel)]="empresaModel.direccion.provincia"></ion-input>
+      </ion-item>
+
+      <ion-item-divider color="tertiary">
+        <ion-label>
+         responsable
+        </ion-label>
+      </ion-item-divider>
+      <ion-item>
+        <ion-label position="stacked">Nombre</ion-label>
+        <ion-input placeholder="Nombre"name="responsable.Nombre" [(ngModel)]="empresaModel.responsable.nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Apellido</ion-label>
+        <ion-input placeholder="Apellido" name="responsable.Apellido" [(ngModel)]="empresaModel.responsable.apellido"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Correo Electronico</ion-label>
+        <ion-input placeholder="Correo Electronico" name="responsable.CorreoElectronico" [(ngModel)]="empresaModel.responsable.correoElectronico"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Telefono</ion-label>
+        <ion-input placeholder="Telefono" name="responsable.Telefono" [(ngModel)]="empresaModel.responsable.telefono"></ion-input>
+      </ion-item>
+
+      <ion-button type="submit" shape="round" fill="outline" slot="end">Alta Empresa</ion-button>
+
+  </form>
+ 
+  </ion-content>

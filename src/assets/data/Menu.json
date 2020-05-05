@@ -2,39 +2,52 @@
     {
         "icon": "bar-chart",
         "name": "Dash Board",
-        "redirectTo": "#",
+        "url": "#",
         "role": ["Contenido1"]
     },
     {
         "icon": "briefcase",
         "name": "Planes",
-        "redirectTo": "#",
+        "url": "#",
         "role": ["Contenido1"]
     },
     {
         "icon": "thermometer",
         "name": "Auditorias",
-        "redirectTo": "#",
+        "url": "#",
         "role": ["Componente1"]
     },
     {
         "icon": "people-circle",
         "name": "Auditores",
-        "redirectTo": "#",
+        "url": "#",
         "role": ["Componente2"]
     },
     {
         "icon": "business",
         "name": "Clientes",
-        "redirectTo": "#",
+        "url": "#",
         "role": ["Componente3"]
     },
     {
         "icon": "card",
         "name": "Licencia",
-        "redirectTo": "#",
+        "url": "#",
         "role": ["Componente4"]
+    },
+    {
+        "icon": "card",
+        "name": "Empresa.title",
+        "url": "/empresa/alta",
+        "role": ["Contenido1"]
+    },
+    {
+        "icon": "card",
+        "name": "PEPE",
+        "url": "#",
+        "role": ["Contenido1"]
     }
+
 
 
     

@@ -1,4 +1,10 @@
 {   "Home": {
-    "title": "Zuhause"
+    "title": "Zuhause",
+    "Empresa": {
+        "title": "Empresa",
+        "Alta": {
+            "title": "Alta Empresa"
+        }
+    }
 }
 }
