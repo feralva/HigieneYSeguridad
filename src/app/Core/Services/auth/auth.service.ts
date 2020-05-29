@@ -1,26 +1,34 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { User } from 'src/app/Models/User';
+import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { LanguagePopupPageRoutingModule } from 'src/app/Pages/language-popup/language-popup-routing.module';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  
+  
+  encriptarContrasenia(contrasenia: string): string {
+    //TODO implementar encriptacion real
+    return contrasenia;
+  }
 
-  currentUser: BehaviorSubject<User> = new BehaviorSubject(null);
+  currentUser: BehaviorSubject<UserLogueado> = new BehaviorSubject(null);
   constructor() { }
   // Funcion dummy login TODO: generar la funcion real
   login(name) {
     if (name === 'user') {
       this.currentUser.next({
         name: 'Dummy User',
-        roles: ['Contenido1', 'Contenido2' ]
+        roles: ['Contenido1', 'Contenido2' ],
+        empresaId: 1
       });
     } else if (name === 'admin') {
       this.currentUser.next({
         name: 'Admin',
-        roles: ['Contenido1', 'Contenido2', 'Contenido3', 'Contenido4']
+        roles: ['Contenido1', 'Contenido2', 'Contenido3', 'Contenido4'],
+        empresaId: 1
       });
     }
   }

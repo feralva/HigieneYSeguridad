@@ -3,7 +3,8 @@ import { Usuario } from './Usuario';
 export interface Empleado {
     nombre: string;
     apellido: string;
-    usuarioCorreoElectronico: string;
-    empresa: number;
+    contrasenia: string;
+    CorreoElectronico: string;
+    empresaId: number;
     usuario: Usuario;
 }

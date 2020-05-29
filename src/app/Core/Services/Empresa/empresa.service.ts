@@ -20,7 +20,7 @@ export class EmpresaService {
   constructor(private http: HttpClient) { }
 
   addEmpresa(empresa: Empresa): Observable<Empresa> {
-    return this.http.post<Empresa>(this.rutasServicios.Alta, {Empresa: empresa}, this.httpOptions);
+    return this.http.post<Empresa>(this.rutasServicios.Alta, {Model: empresa}, this.httpOptions);
   }
 
 }

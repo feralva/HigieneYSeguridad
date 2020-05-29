@@ -22,6 +22,6 @@ export class EmpleadoService {
 
 
   addEmpleado(empleado: Empleado): Observable<Empleado> {
-    return this.http.post<Empleado>(this.rutasServicios.Alta, {Empleado: empleado}, this.httpOptions);
+    return this.http.post<Empleado>(this.rutasServicios.Alta, {Model: empleado}, this.httpOptions);
   }
 }
