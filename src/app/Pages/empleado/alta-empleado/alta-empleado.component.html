@@ -1,6 +1,4 @@
-<ion-content >
-
-  <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
+ <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
     <ion-item-divider color="secondary">
       <ion-label>
        Empleado
@@ -23,7 +21,8 @@
         <ion-input placeholder="Contraseña" type="password" name="responsable.contrasenia" [(ngModel)]="empleadoModel.contrasenia"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-select name="rolesSeleccionados" multiple="true" [(ngModel)]="rolesSeleccionados" placeholder='Seleccionar Roles'>
+        <ion-label position="stacked">Roles</ion-label>
+        <ion-select style="width: max-content;" name="rolesSeleccionados" multiple="true" [(ngModel)]="rolesSeleccionados" placeholder='Roles'>
           <ion-select-option *ngFor="let rol of rolesDisponibles" value="{{rol.idFamilia}}">{{rol.nombre}}</ion-select-option>
         </ion-select>
       </ion-item>
@@ -31,5 +30,3 @@
       <ion-button type="submit" shape="round" fill="outline" slot="end">Alta Empleado</ion-button>
 
   </form>
- 
-  </ion-content>
