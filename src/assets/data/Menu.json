@@ -15,25 +15,25 @@
         "icon": "thermometer",
         "name": "Auditorias",
         "url": "#",
-        "role": ["Componente1"]
+        "role": ["Contenido1"]
     },
     {
         "icon": "people-circle",
         "name": "Auditores",
         "url": "#",
-        "role": ["Componente2"]
+        "role": ["Contenido1"]
     },
     {
         "icon": "business",
         "name": "Clientes",
         "url": "#",
-        "role": ["Componente3"]
+        "role": ["Contenido1"]
     },
     {
         "icon": "card",
         "name": "Licencia",
         "url": "#",
-        "role": ["Componente4"]
+        "role": ["Contenido1"]
     },
     {
         "icon": "card",

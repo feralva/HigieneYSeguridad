@@ -23,6 +23,10 @@ const routes: Routes = [
   {
     path: 'empresa',
     loadChildren: () => import('./Pages/Empresa/alta-empresa/alta-empresa.module').then( m => m.AltaEmpresaPageModule)
+  },
+  {
+    path: 'empleado',
+    loadChildren: () => import('./Pages/empleado/empleado.module').then( m => m.EmpleadoPageModule)
   }
 ];
 
