@@ -9,6 +9,7 @@ import { NgForm } from '@angular/forms';
 import { EmpleadoService } from 'src/app/Core/Services/Empleado/empleado.service';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
+import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 
 @Component({
   selector: 'app-alta-empleado',
@@ -17,9 +18,11 @@ import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 })
 export class AltaEmpleadoComponent implements OnInit {
 
-  constructor(private rolService: RolService, private translate: TranslateService,
-              private empleadoService: EmpleadoService, private authService: AuthService) { }
+  constructor(private rolService: RolService, private translate: TranslateService, 
+                private appDataService: AppDataService,
+                private empleadoService: EmpleadoService, private authService: AuthService) { }
 
+  public nombrePagina: string;
   rolesDisponibles: Familia[];
   rolesSeleccionados: string[];
   currentUser: UserLogueado = null;
@@ -38,6 +41,9 @@ export class AltaEmpleadoComponent implements OnInit {
   };
 
   ngOnInit() {
+
+    this.nombrePagina = 'Empleado.Alta.title';
+    this.appDataService.changePageName(this.nombrePagina);
 
     this.rolService.obtenerRolesDisponibles().subscribe(
       result => this.rolesDisponibles = result,

@@ -6,5 +6,11 @@
         "Alta": {
             "title": "Alta Empresa"
         }
+    },
+    "Empleado": {
+        "title": "Empleado",
+        "Alta": {
+            "title": "Alta Empleado"
+        }
     }
 }

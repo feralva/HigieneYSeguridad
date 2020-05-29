@@ -19,8 +19,6 @@ export class EmpleadoService {
     Alta : 'https://localhost:44380/api/Empleado'
   };
 
-
-
   addEmpleado(empleado: Empleado): Observable<Empleado> {
     return this.http.post<Empleado>(this.rutasServicios.Alta, {Model: empleado}, this.httpOptions);
   }
