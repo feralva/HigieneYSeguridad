@@ -26,6 +26,9 @@
           <ion-select-option *ngFor="let rol of rolesDisponibles" value="{{rol.idFamilia}}">{{rol.nombre}}</ion-select-option>
         </ion-select>
       </ion-item>
+      <ion-button shape="round" (click)="photoService.addNewToGallery()">
+        <ion-icon name="camera"></ion-icon>
+      </ion-button> <br>
 
       <ion-button type="submit" shape="round" fill="outline" slot="end">Alta Empleado</ion-button>
 

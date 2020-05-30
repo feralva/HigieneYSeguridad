@@ -11,6 +11,7 @@ import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 import { AlertController, ToastController } from '@ionic/angular';
+import { PhotoService } from 'src/app/Core/Services/photo/photo.service';
 
 @Component({
   selector: 'app-alta-empleado',
@@ -20,7 +21,7 @@ import { AlertController, ToastController } from '@ionic/angular';
 export class AltaEmpleadoComponent implements OnInit {
 
   constructor(private rolService: RolService, private translate: TranslateService, 
-                private appDataService: AppDataService,
+                private appDataService: AppDataService, public photoService: PhotoService,
                 private empleadoService: EmpleadoService, private authService: AuthService,
                 public alertController: AlertController,
                 public toastController: ToastController) { }
