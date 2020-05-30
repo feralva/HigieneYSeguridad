@@ -12,9 +12,7 @@ import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 import { AlertController, ToastController } from '@ionic/angular';
 import { PhotoService } from 'src/app/Core/Services/photo/photo.service';
-import { Plugins, CameraResultType, CameraSource, CameraPhoto } from '@capacitor/core';
-import { SafeResourceUrl } from '@angular/platform-browser'
-
+import { CameraPhoto } from '@capacitor/core';
 
 @Component({
   selector: 'app-alta-empleado',
