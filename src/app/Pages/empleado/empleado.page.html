@@ -1,9 +1,12 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Empleado</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-list> 
+  <ion-item *ngFor="let empleado of empleados">
+    <ion-avatar item-start>
+      <img src={{empleado.urlFoto}}>
+    </ion-avatar>
+    <ion-label class="ion-text-wrap">
+      <h1>{{empleado.apellido + ',' + empleado.nombre}}</h1>
+      <p>{{empleado.roles.join(", ")}}</p>
+    </ion-label>
 
-<ion-content>
-
-</ion-content>
+  </ion-item>
+</ion-list>

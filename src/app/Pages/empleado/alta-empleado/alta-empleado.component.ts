@@ -10,6 +10,7 @@ import { EmpleadoService } from 'src/app/Core/Services/Empleado/empleado.service
 import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
+import { AlertController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-alta-empleado',
@@ -20,7 +21,9 @@ export class AltaEmpleadoComponent implements OnInit {
 
   constructor(private rolService: RolService, private translate: TranslateService, 
                 private appDataService: AppDataService,
-                private empleadoService: EmpleadoService, private authService: AuthService) { }
+                private empleadoService: EmpleadoService, private authService: AuthService,
+                public alertController: AlertController,
+                public toastController: ToastController) { }
 
   public nombrePagina: string;
   rolesDisponibles: Familia[];
@@ -33,6 +36,10 @@ export class AltaEmpleadoComponent implements OnInit {
     empresaId: null,
     CorreoElectronico: '',
     contrasenia: '',
+    urlFoto: '',
+    activo: true,
+    usuarioId:'',
+    roles: [],
     usuario: {
       IdUsuario: null,
       UsuarioRoles: null,
@@ -56,6 +63,42 @@ export class AltaEmpleadoComponent implements OnInit {
     );
   }
 
+  async AltaEmpleadoConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Alta Empleado',
+      message: 'Message ¿Esta seguro que desea crear Empleado?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Ok',
+          handler: () => {
+            this.empleadoService.addEmpleado(this.empleadoModel).subscribe(
+              result => this.MostrarMensajeOperacion('Alta Exitosa'),
+              (err: any) => this.MostrarMensajeOperacion('Falla')
+            );
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async MostrarMensajeOperacion(mensaje:string) {
+    const toast = await this.toastController.create({
+      message: mensaje,
+      duration: 2000
+    });
+    toast.present();
+  }
+
   onSubmit(form: NgForm) {
 
     this.empleadoModel.empresaId = this.currentUser.empresaId
@@ -67,10 +110,7 @@ export class AltaEmpleadoComponent implements OnInit {
           ({IdUsuario: this.empleadoModel.CorreoElectronico, IdFamilia: rol});
     }
 
-    this.empleadoService.addEmpleado(this.empleadoModel).subscribe(
-      result => console.log(result),
-      (err: any) => console.log(err)
-    );
+    this.AltaEmpleadoConfirm()
 
     console.log(this.empleadoModel);
     console.log(this.rolesDisponibles);

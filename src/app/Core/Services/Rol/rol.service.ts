@@ -22,4 +22,10 @@ export class RolService {
   obtenerRolesDisponibles(): Observable<Familia[]> {
     return this.http.get<Familia[]>(this.rutasServicios.ObtenerRolesDisponibles, this.httpOptions);
   }
+
+  obtenerRolesUsuario(idUsuario:string): Observable<Familia[]> {
+
+    return this.http.get<Familia[]>(`https://localhost:44380/apiHigSeg/Authenticate/user/${idUsuario}/roles`, this.httpOptions);
+  }
+
 }

@@ -9,6 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class EmpleadoService {
 
 
+
   constructor(private http: HttpClient) { }
 
   httpOptions = {
@@ -22,4 +23,6 @@ export class EmpleadoService {
   addEmpleado(empleado: Empleado): Observable<Empleado> {
     return this.http.post<Empleado>(this.rutasServicios.Alta, {Model: empleado}, this.httpOptions);
   }
+
+
 }

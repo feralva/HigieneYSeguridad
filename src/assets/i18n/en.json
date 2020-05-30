@@ -12,5 +12,9 @@
         "Alta": {
             "title": "Alta Empleado"
         }
+    },
+    "Mensaje": {
+        "Exito": "Operacion Exitosa",
+        "Falla": "Reintentar mas Tarde"
     }
 }

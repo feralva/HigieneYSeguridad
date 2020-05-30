@@ -7,4 +7,8 @@ export interface Empleado {
     CorreoElectronico: string;
     empresaId: number;
     usuario: Usuario;
+    urlFoto: string;
+    usuarioId: string;
+    activo: boolean;
+    roles: string[];
 }
