@@ -12,6 +12,9 @@ import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 import { AlertController, ToastController } from '@ionic/angular';
 import { PhotoService } from 'src/app/Core/Services/photo/photo.service';
+import { Plugins, CameraResultType, CameraSource, CameraPhoto } from '@capacitor/core';
+import { SafeResourceUrl } from '@angular/platform-browser'
+
 
 @Component({
   selector: 'app-alta-empleado',
@@ -30,6 +33,7 @@ export class AltaEmpleadoComponent implements OnInit {
   rolesDisponibles: Familia[];
   rolesSeleccionados: string[];
   currentUser: UserLogueado = null;
+  imagenEmpleado: CameraPhoto = null;
 
   empleadoModel: Empleado = {
     apellido: '',
@@ -98,6 +102,12 @@ export class AltaEmpleadoComponent implements OnInit {
       duration: 2000
     });
     toast.present();
+  }
+
+  tomarFotoEmpleado(){
+
+    this.photoService.takePicture().then(result => this.imagenEmpleado = result)
+
   }
 
   onSubmit(form: NgForm) {

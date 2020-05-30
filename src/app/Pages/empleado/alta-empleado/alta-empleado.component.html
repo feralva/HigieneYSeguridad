@@ -1,4 +1,5 @@
- <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
+<ion-content>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)" >
     <ion-item-divider color="secondary">
       <ion-label>
        Empleado
@@ -26,10 +27,23 @@
           <ion-select-option *ngFor="let rol of rolesDisponibles" value="{{rol.idFamilia}}">{{rol.nombre}}</ion-select-option>
         </ion-select>
       </ion-item>
-      <ion-button shape="round" (click)="photoService.addNewToGallery()">
+      <ion-button shape="round" (click)="tomarFotoEmpleado()">
         <ion-icon name="camera"></ion-icon>
       </ion-button> <br>
 
+      <ion-grid *ngIf="imagenEmpleado != null">
+        <ion-row>
+        <ion-col size="4" offset="2" >
+            <!--<ion-img src="{{ photoService.photo.webviewPath }}"></ion-img>-->
+            <ion-avatar class="item-avatar">
+              <ion-img src="{{ imagenEmpleado.webPath }}"></ion-img>
+            </ion-avatar>
+            
+        </ion-col>
+        </ion-row>
+      </ion-grid>
+      
       <ion-button type="submit" shape="round" fill="outline" slot="end">Alta Empleado</ion-button>
 
   </form>
+</ion-content>
