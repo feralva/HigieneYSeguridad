@@ -28,4 +28,5 @@ export class RolService {
     return this.http.get<Familia[]>(`https://localhost:44380/apiHigSeg/Authenticate/user/${idUsuario}/roles`, this.httpOptions);
   }
 
+
 }

@@ -21,9 +21,17 @@ import { HasRoleDirective } from './Core/Directives/has-role.directive';
 
 import { SharedDirectivesModule } from './Core/Directives/shared-directives.module';
 
+import { environment } from '../environments/environment'
+import { AngularFireModule } from 'angularfire2'
+import { AngularFirestoreModule } from 'angularfire2/firestore'
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+
+import * as firebase from 'firebase';
+
+firebase.initializeApp(environment.firebaseConfig);
 
 @NgModule({
   declarations: [AppComponent, MenuComponent],
@@ -43,7 +51,9 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    LanguagePopupPageModule
+    LanguagePopupPageModule/*,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule*/
   ],
   providers: [
     StatusBar,

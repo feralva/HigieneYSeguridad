@@ -13,7 +13,7 @@ import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 import { AlertController, ToastController } from '@ionic/angular';
 import { PhotoService } from 'src/app/Core/Services/photo/photo.service';
 import { CameraPhoto } from '@capacitor/core';
-
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-alta-empleado',
   templateUrl: './alta-empleado.component.html',
@@ -32,6 +32,7 @@ export class AltaEmpleadoComponent implements OnInit {
   rolesSeleccionados: string[];
   currentUser: UserLogueado = null;
   imagenEmpleado: CameraPhoto = null;
+  imageBase64: string;
 
   empleadoModel: Empleado = {
     apellido: '',
@@ -82,10 +83,13 @@ export class AltaEmpleadoComponent implements OnInit {
         }, {
           text: 'Ok',
           handler: () => {
-            this.empleadoService.addEmpleado(this.empleadoModel).subscribe(
-              result => this.MostrarMensajeOperacion('Alta Exitosa'),
-              (err: any) => this.MostrarMensajeOperacion('Falla')
-            );
+            this.guardarImagenEmpleado(this.imageBase64,
+              this.currentUser.empresaId, this.empleadoModel.usuario.IdUsuario).then(result => {             
+                this.empleadoService.addEmpleado(this.empleadoModel).subscribe(
+                  result => this.MostrarMensajeOperacion('Alta Exitosa'),
+                  (err: any) => this.MostrarMensajeOperacion('Falla')
+                );
+              })
           }
         }
       ]
@@ -104,8 +108,20 @@ export class AltaEmpleadoComponent implements OnInit {
 
   tomarFotoEmpleado(){
 
-    this.photoService.takePicture().then(result => this.imagenEmpleado = result)
+    this.photoService.takePicture().then(result => {
+      this.imagenEmpleado = result
+      this.imageBase64 = result.dataUrl
+    })
+    
+  }
 
+  guardarImagenEmpleado(imagen:string, idEmpresa:number, idUsuario:string){
+
+    let rutaBase: string =  environment.rutaFotosEmpleadosBase;
+
+    let ruta:string = rutaBase + `/${idEmpresa.toString()}/${idUsuario}.jpg`
+
+    return this.photoService.uploadImage(imagen, ruta);
   }
 
   onSubmit(form: NgForm) {
