@@ -29,7 +29,6 @@ export class EquiposMedicionPage implements OnInit {
       error => console.log(error)
     );
 
-    console.log(this.authService.currentUser)
     this.equipoMedicionService.ObtenerEquiposMedicionTotalizadosEmpresa(this.currentUser.empresaId).subscribe(
       data => 
       {

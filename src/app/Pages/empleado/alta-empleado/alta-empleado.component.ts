@@ -137,9 +137,6 @@ export class AltaEmpleadoComponent implements OnInit {
 
     this.AltaEmpleadoConfirm()
 
-    console.log(this.empleadoModel);
-    console.log(this.rolesDisponibles);
-    console.log(this.rolesSeleccionados);
   }
 
 }
