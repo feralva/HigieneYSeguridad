@@ -14,6 +14,7 @@ import { AlertController, ToastController } from '@ionic/angular';
 import { PhotoService } from 'src/app/Core/Services/photo/photo.service';
 import { CameraPhoto } from '@capacitor/core';
 import { environment } from 'src/environments/environment';
+import { PhotoCordovaService } from 'src/app/Core/Services/photo/photo-cordova.service';
 @Component({
   selector: 'app-alta-empleado',
   templateUrl: './alta-empleado.component.html',
@@ -23,6 +24,7 @@ export class AltaEmpleadoComponent implements OnInit {
 
   constructor(private rolService: RolService, private translate: TranslateService, 
                 private appDataService: AppDataService, public photoService: PhotoService,
+                public photoCordovaService: PhotoCordovaService,
                 private empleadoService: EmpleadoService, private authService: AuthService,
                 public alertController: AlertController,
                 public toastController: ToastController) { }

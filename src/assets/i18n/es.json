@@ -22,6 +22,12 @@
         "Alta": {
             "title": "Alta Equipo Medicion"
         }
+    },
+    "Cliente": {
+        "title": "Cliente",
+        "Alta": {
+            "title": "Cliente Empleado"
+        }
     }
     
 }

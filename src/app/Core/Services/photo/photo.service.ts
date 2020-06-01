@@ -31,7 +31,7 @@ export class PhotoService {
     return await Camera.getPhoto({
       resultType: CameraResultType.DataUrl,
       correctOrientation:true,
-      source: CameraSource.Camera,
+      source: CameraSource.Photos,
       quality: 100 
     });
   }

@@ -1,0 +1,9 @@
+<ion-content class="card-background-page">
+
+  <ion-card *ngFor="let cliente of clientes">
+    <img [src]="cliente.urlFoto"/>
+    <div class="card-title">{{cliente.nombre}}</div>
+    <div class="card-subtitle">28 Establecimientos</div>
+  </ion-card>
+
+</ion-content>

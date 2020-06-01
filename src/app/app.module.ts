@@ -28,7 +28,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore'
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
-
+import { Camera } from '@ionic-native/camera/ngx';
 import * as firebase from 'firebase';
 
 firebase.initializeApp(environment.firebaseConfig);
@@ -58,7 +58,8 @@ firebase.initializeApp(environment.firebaseConfig);
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Camera
   ],
   bootstrap: [AppComponent]
 })

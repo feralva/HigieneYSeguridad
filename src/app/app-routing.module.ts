@@ -31,6 +31,10 @@ const routes: Routes = [
   {
     path: 'equiposMedicion',
     loadChildren: () => import('./Pages/EquipoMedicion/equipos-medicion/equipos-medicion.module').then( m => m.EquiposMedicionPageModule)
+  },
+  {
+    path: 'cliente',
+    loadChildren: () => import('./Pages/cliente/cliente.module').then( m => m.ClientePageModule)
   }
 ];
 

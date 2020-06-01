@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "HigieneSeguridad",
+  "appId": "com.hs.higieneSeguridad",
+  "appName": "higieneSeguridad",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
