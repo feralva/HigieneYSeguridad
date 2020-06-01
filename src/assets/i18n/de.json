@@ -15,6 +15,12 @@
     "Mensaje": {
         "Exito": "Operacion Exitosa",
         "Falla": "Reintentar mas Tarde"
+    },
+    "EquipoMedicion": {
+        "title": "Equipos Medicion",
+        "Alta": {
+            "title": "Alta Equipo Medicion"
+        }
     }
 }
 }

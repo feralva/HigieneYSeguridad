@@ -13,6 +13,12 @@
             "title": "Alta Empleado"
         }
     },
+    "EquipoMedicion": {
+        "title": "Equipos Medicion",
+        "Alta": {
+            "title": "Alta Equipo Medicion"
+        }
+    },
     "Mensaje": {
         "Exito": "Operacion Exitosa",
         "Falla": "Reintentar mas Tarde"
