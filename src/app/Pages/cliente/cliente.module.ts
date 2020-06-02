@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { ClientePageRoutingModule } from './cliente-routing.module';
 
 import { ClientePage } from './cliente.page';
+import { ClienteDetalleComponent } from './cliente-detalle/cliente-detalle.component';
+import { AltaClienteComponent } from './alta-cliente/alta-cliente.component';
 
 @NgModule({
   imports: [
@@ -15,6 +17,7 @@ import { ClientePage } from './cliente.page';
     IonicModule,
     ClientePageRoutingModule
   ],
-  declarations: [ClientePage]
+  declarations: [ClientePage,
+  ClienteDetalleComponent, AltaClienteComponent]
 })
 export class ClientePageModule {}
