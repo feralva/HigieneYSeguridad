@@ -1,10 +1,50 @@
 <ion-content>
+  <!--<ion-list lines="none">-->
+  <ion-list >
   <ion-item-divider color="secondary">
     <ion-label>
-      Cliente
+      Responsable
     </ion-label>
   </ion-item-divider>
   <ion-item>
-    <ion-label> <b>Nombre: </b> {{cliente.nombre}}</ion-label>
+    <ion-label> <b>Nombre: </b> {{cliente.cliente.responsable.nombre}}</ion-label><br>
   </ion-item>
+  <ion-item>
+    <ion-label> <b>Apellido: </b> {{cliente.cliente.responsable.apellido}}</ion-label><br>
+  </ion-item>
+  <ion-item>
+    <ion-label> <b>Correo Electronico: </b> {{cliente.cliente.responsable.correoElectronico}}</ion-label><br>
+  </ion-item>
+  <ion-item>
+    <ion-label> <b>Telefono: </b> {{cliente.cliente.responsable.telefono}}</ion-label><br>
+  </ion-item>
+  <ion-item-divider color="secondary">
+    <ion-label>
+      Dirección
+    </ion-label>
+  </ion-item-divider>
+  <ion-item>
+    <ion-label> <b>Direccion: </b> {{cliente.cliente.direccion.calle + " " + cliente.cliente.direccion.altura}}</ion-label><br>
+  </ion-item>
+  <ion-item>
+    <ion-label> <b>Partido: </b> {{cliente.cliente.direccion.partido}}</ion-label><br>
+  </ion-item>
+  <ion-item>
+    <ion-label> <b>Provincia: </b> {{cliente.cliente.direccion.provincia}}</ion-label><br>
+  </ion-item>
+  <ion-item-divider color="secondary">
+    <ion-label>
+      Detalles
+    </ion-label>
+  </ion-item-divider>
+  <ion-item button [routerLink]="['/cliente', cliente.cliente.id,'planes']">
+    <ion-icon name="document-text"></ion-icon>
+      Planes
+  </ion-item>
+  <ion-item button [routerLink]="['/cliente', cliente.cliente.id,'establecimientos']">
+    <ion-icon name="home"></ion-icon>
+      Establecimientos
+  </ion-item>
+</ion-list>
 </ion-content>
+
