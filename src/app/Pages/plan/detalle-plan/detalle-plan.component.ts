@@ -1,44 +1,44 @@
 import { Component, OnInit } from '@angular/core';
+import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { TranslateService } from '@ngx-translate/core';
 import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
-import { ClienteService } from 'src/app/Core/Services/Cliente/cliente.service';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
-import { UserLogueado } from 'src/app/Models/UserLogueado';
+import { PlanService } from 'src/app/Core/Services/Plan/plan.service';
+import { PlanDetalle } from 'src/app/Models/PlanDetalle';
 
 @Component({
-  selector: 'app-cliente-planes',
-  templateUrl: './cliente-planes.component.html',
-  styleUrls: ['./cliente-planes.component.scss'],
+  selector: 'app-detalle-plan',
+  templateUrl: './detalle-plan.component.html',
+  styleUrls: ['./detalle-plan.component.scss'],
 })
-export class ClientePlanesComponent implements OnInit {
+export class DetallePlanComponent implements OnInit {
 
-  planes: any[] = []
+  plan: PlanDetalle;
   nombrePagina: string;
   currentUser: UserLogueado;
   
   constructor(private translate: TranslateService, private route: ActivatedRoute,
     private appDataService: AppDataService,
-    private clienteService: ClienteService, private authService: AuthService) { }
+    private planService: PlanService, private authService: AuthService) { }
 
   ngOnInit() {
 
-    this.planes = this.route.snapshot.data['planes'];
-    this.nombrePagina = 'Cliente.Planes';
+    this.plan = this.route.snapshot.data['plan'];
+    this.nombrePagina = 'Plan.title';
     this.appDataService.changePageName(this.nombrePagina);
   
-    console.log(this.planes)
+    console.log(this.plan)
   }
-
+  
   doRefresh(event) {
     console.log('Begin async operation');
 
     var id = +this.route.snapshot.paramMap.get('id')
 
-    this.clienteService.obtenerPlanesActivosCliente(id).subscribe(
-      data => this.planes = data,
+    this.planService.obtenerDetallePlan(id).subscribe(
+      data => this.plan = data,
       (error) => console.log(error)
     );
   }
-
 }

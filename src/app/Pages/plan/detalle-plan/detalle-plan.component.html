@@ -9,26 +9,26 @@
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-card *ngFor="let plan of planes" [routerLink]="['/plan',plan.id, 'detalle']">
+  <ion-card *ngFor="let visita of plan.visitas" [routerLink]="['/visita',visita.id, 'detalle']">
     <ion-card-header style="font-size: large;">
-      <b>{{plan.plan.tipoPlan}}</b>
+      <b>{{plan.cliente +  ' - ' + visita.nombreEstablecimiento}}</b>
     </ion-card-header>
     <ion-card-content style="font-size: x-small;">
       <ion-grid>
         <ion-row>
-          <ion-col col-12><b>Estado:</b> {{plan.plan.estado}}</ion-col>
+          <ion-col col-12><b>Estado:</b> {{visita.estado}}</ion-col>
         </ion-row>
         <ion-row>
-          <ion-col col-12><b>Visitas Pendientes:</b> {{plan.totalizados.cantidadVisitasPendientes}}</ion-col>
+          <ion-col col-12><b>Tipo:</b> {{visita.tipoVisita}}</ion-col>
         </ion-row>
         <ion-row>
-          <ion-col><b>Establecimientos:</b> {{plan.totalizados.cantidadEstablecimientos}}</ion-col>
+          <ion-col><b>Asignado A:</b> {{visita.empleadoAsignado}}</ion-col>
         </ion-row>
         <ion-row>
-          <ion-col><b>Creado Por: </b> {{plan.plan.empleadoNombre}}</ion-col>
+          <ion-col><b>Fecha Pactada: </b> {{visita.fechaPactada | date: 'shortDate'}}</ion-col>
         </ion-row>
         <ion-row>
-          <ion-col><b>Fecha Creación: </b> {{plan.plan.fechaCreacion | date: 'shortDate'}}</ion-col>
+          <ion-col><b>Fecha Concreta: </b> {{visita.fecha | date: 'shortDate'}}</ion-col>
         </ion-row>
       </ion-grid>
     </ion-card-content>
