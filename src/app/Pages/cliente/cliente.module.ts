@@ -9,6 +9,7 @@ import { ClientePageRoutingModule } from './cliente-routing.module';
 import { ClientePage } from './cliente.page';
 import { ClienteDetalleComponent } from './cliente-detalle/cliente-detalle.component';
 import { AltaClienteComponent } from './alta-cliente/alta-cliente.component';
+import { ClientePlanesComponent } from './cliente-planes/cliente-planes.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,6 @@ import { AltaClienteComponent } from './alta-cliente/alta-cliente.component';
     ClientePageRoutingModule
   ],
   declarations: [ClientePage,
-  ClienteDetalleComponent, AltaClienteComponent]
+  ClienteDetalleComponent, AltaClienteComponent, ClientePlanesComponent]
 })
 export class ClientePageModule {}

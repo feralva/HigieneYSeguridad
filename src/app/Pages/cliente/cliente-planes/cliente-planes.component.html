@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Atras" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card *ngFor="let plan of planes">
+    <ion-card-header style="font-size: large;">
+      <b>{{plan.plan.tipoPlan}}</b>
+    </ion-card-header>
+    <ion-card-content style="font-size: x-small;">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12><b>Estado:</b> {{plan.plan.estado}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12><b>Visitas Pendientes:</b> {{plan.totalizados.cantidadVisitasPendientes}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col><b>Establecimientos:</b> {{plan.totalizados.cantidadEstablecimientos}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col><b>Creado Por: </b> {{plan.plan.empleadoNombre}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col><b>Fecha Creación: </b> {{plan.plan.fechaCreacion | date: 'shortDate'}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

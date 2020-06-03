@@ -17,7 +17,8 @@
         "title": "Cliente",
         "Alta": {
             "title": "Cliente Empleado"
-        }
+        },
+        "Planes": "Planes de Cliente"
     },
     "EquipoMedicion": {
         "title": "Equipos Medicion",

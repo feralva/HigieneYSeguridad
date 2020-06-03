@@ -27,7 +27,8 @@
         "title": "Cliente",
         "Alta": {
             "title": "Cliente Empleado"
-        }
+        },
+        "Planes": "Planes de Cliente"
     }
     
 }

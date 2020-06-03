@@ -19,14 +19,14 @@
     },
     {
         "icon": "people-circle",
-        "name": "Auditores",
-        "url": "#",
+        "name": "Empleados",
+        "url": "/empleado",
         "role": ["Contenido1"]
     },
     {
         "icon": "business",
         "name": "Clientes",
-        "url": "#",
+        "url": "/cliente",
         "role": ["Contenido1"]
     },
     {
@@ -38,7 +38,7 @@
     {
         "icon": "card",
         "name": "Empresa.title",
-        "url": "/empresa/alta",
+        "url": "/empresa",
         "role": ["Contenido1"]
     },
     {
