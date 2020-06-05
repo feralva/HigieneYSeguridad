@@ -9,7 +9,7 @@
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-card *ngFor="let plan of planes" [routerLink]="['/plan',plan.id, 'detalle']">
+  <ion-card *ngFor="let plan of planes" [routerLink]="['/plan',plan.plan.id, 'detalle']">
     <ion-card-header style="font-size: large;">
       <b>{{plan.plan.tipoPlan}}</b>
     </ion-card-header>

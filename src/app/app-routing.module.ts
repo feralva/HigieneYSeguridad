@@ -21,7 +21,7 @@ const routes: Routes = [
     loadChildren: () => import('./Pages/language-popup/language-popup.module').then( m => m.LanguagePopupPageModule)
   },
   {
-    path: 'empresa',
+    path: 'empresa/alta',
     loadChildren: () => import('./Pages/Empresa/alta-empresa/alta-empresa.module').then( m => m.AltaEmpresaPageModule)
   },
   {

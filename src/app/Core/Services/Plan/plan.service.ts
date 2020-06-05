@@ -22,4 +22,8 @@ export class PlanService {
     return this.http.get<PlanDetalle>(environment.UrlBaseApi + `Plan/${idPlan}`, this.httpOptions);
  
   }
+  obtenerPlanesEmpresa(idEmpresa: number): Observable<any[]> {
+    return this.http.get<any[]>(environment.UrlBaseApi + `Empresa/${idEmpresa}/Planes?activo=true`, this.httpOptions);
+ 
+  }
 }

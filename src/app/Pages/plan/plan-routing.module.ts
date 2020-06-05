@@ -4,11 +4,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { PlanPage } from './plan.page';
 import { DetallePlanComponent } from './detalle-plan/detalle-plan.component';
 import { PlanDetalleResolverService } from 'src/app/Core/Services/Plan/plan-detalle-resolver.service';
+import { PlanesEmpresaResolverService } from 'src/app/Core/Services/Plan/planes-Empresa-resolver.service';
 
 const routes: Routes = [
   {
     path: '',
-    component: PlanPage
+    component: PlanPage,
+    resolve: {planes: PlanesEmpresaResolverService}
   },
   {
     path: ':id/detalle',

@@ -36,8 +36,15 @@ export class ClientePlanesComponent implements OnInit {
     var id = +this.route.snapshot.paramMap.get('id')
 
     this.clienteService.obtenerPlanesActivosCliente(id).subscribe(
-      data => this.planes = data,
-      (error) => console.log(error)
+      data => {
+        console.log(data)
+        this.planes = data;
+        event.target.complete();
+      },
+      (error) => {
+        console.log(error)
+        event.target.complete()
+      }
     );
   }
 

@@ -8,7 +8,7 @@
     {
         "icon": "briefcase",
         "name": "Planes",
-        "url": "#",
+        "url": "/plan",
         "role": ["Contenido1"]
     },
     {
@@ -38,13 +38,13 @@
     {
         "icon": "card",
         "name": "Empresa.title",
-        "url": "/empresa",
+        "url": "/empresa/alta",
         "role": ["Contenido1"]
     },
     {
         "icon": "card",
-        "name": "PEPE",
-        "url": "#",
+        "name": "Equipos Medición",
+        "url": "equiposMedicion",
         "role": ["Contenido1"]
     }
 
