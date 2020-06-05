@@ -21,10 +21,6 @@ const routes: Routes = [
     loadChildren: () => import('./Pages/language-popup/language-popup.module').then( m => m.LanguagePopupPageModule)
   },
   {
-    path: 'empresa/alta',
-    loadChildren: () => import('./Pages/Empresa/alta-empresa/alta-empresa.module').then( m => m.AltaEmpresaPageModule)
-  },
-  {
     path: 'empleado',
     loadChildren: () => import('./Pages/empleado/empleado.module').then( m => m.EmpleadoPageModule)
   },
@@ -39,6 +35,10 @@ const routes: Routes = [
   {
     path: 'plan',
     loadChildren: () => import('./Pages/plan/plan.module').then( m => m.PlanPageModule)
+  },
+  {
+    path: 'empresa',
+    loadChildren: () => import('./Pages/empresa/empresa.module').then( m => m.EmpresaPageModule)
   }
 ];
 
