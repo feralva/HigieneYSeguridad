@@ -34,11 +34,14 @@
           <ion-select-option *ngFor="let rol of rolesDisponibles" value="{{rol.idFamilia}}">{{rol.nombre}}</ion-select-option>
         </ion-select>
       </ion-item>
-      <ion-button shape="round" (click)="tomarFotoEmpleado()">
+     <!--  <ion-button shape="round" (click)="tomarFotoEmpleado()">
+        <ion-icon name="camera"></ion-icon>
+      </ion-button> <br> -->
+      <ion-button shape="round" (click)="selectImageSource()">
         <ion-icon name="camera"></ion-icon>
       </ion-button> <br>
 
-      <ion-grid *ngIf="imagenEmpleado != null">
+      <ion-grid *ngIf="imagenEmpleado != null || imageBase64 != null">
         <ion-row>
         <ion-col size="4" offset="2" >
             <!--<ion-img src="{{ photoService.photo.webviewPath }}"></ion-img>-->
@@ -53,4 +56,17 @@
       <ion-button type="submit" shape="round" fill="outline" slot="end">Alta Empleado</ion-button>
 
   </form>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <input
+      type="file"
+      #fileInput
+      (change)="uploadFile($event)"
+      hidden="true"
+      accept="image/*"
+    />
+<!--     <ion-fab-button (click)="selectImageSource()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button> -->
+  </ion-fab>
 </ion-content>

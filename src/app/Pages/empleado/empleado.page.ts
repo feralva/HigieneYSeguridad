@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Empleado } from 'src/app/Models/Empleado';
 import { TranslateService } from '@ngx-translate/core';
 import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 import { EmpleadoService } from 'src/app/Core/Services/Empleado/empleado.service';
-import { AlertController, ToastController } from '@ionic/angular';
+import { AlertController, ToastController, Platform, ActionSheetController } from '@ionic/angular';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { EmpresaService } from 'src/app/Core/Services/Empresa/empresa.service';
@@ -16,15 +16,17 @@ import { RolService } from 'src/app/Core/Services/Rol/rol.service';
 })
 export class EmpleadoPage implements OnInit {
 
+  @ViewChild('fileInput', { static: false }) fileInput: ElementRef;
+  empleados: Empleado[] = [];
+  nombrePagina: string;
+  currentUser: UserLogueado;
+
   constructor(private translate: TranslateService, 
     private appDataService: AppDataService, private empresaService: EmpresaService,
     private empleadoService: EmpleadoService, private authService: AuthService,
     public alertController: AlertController, private rolService: RolService,
     public toastController: ToastController) { }
 
-  empleados: Empleado[] = [];
-  nombrePagina: string;
-  currentUser: UserLogueado;
 
   ngOnInit() {
 
@@ -57,9 +59,5 @@ export class EmpleadoPage implements OnInit {
       },
       error => console.log(error)
     );
-    
-    
-
   }
-
 }

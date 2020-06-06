@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 import { TranslateService } from '@ngx-translate/core';
 import { EmpresaService } from 'src/app/Core/Services/Empresa/empresa.service';
@@ -6,6 +6,7 @@ import { Empresa } from 'src/app/Models/Empresa';
 import { Direccion } from 'src/app/Models/Direccion';
 import { Responsable } from 'src/app/Models/Responsable';
 import { NgForm } from '@angular/forms';
+import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
 
 @Component({
   selector: 'app-alta-empresa',
@@ -13,10 +14,10 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./alta-empresa.page.scss'],
 })
 export class AltaEmpresaPage implements OnInit {
-
-  constructor(private appDataService: AppDataService, private translate: TranslateService, private empresaService: EmpresaService) { }
-
   public nombrePagina: string;
+
+  constructor(private appDataService: AppDataService, private translate: TranslateService, 
+    private empresaService: EmpresaService) { }
 
   empresaModel: Empresa = {
     nombre: '',
@@ -47,5 +48,4 @@ export class AltaEmpresaPage implements OnInit {
       (err: any) => console.log(err)
     );
   }
-
 }

@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Plugins, CameraResultType, Capacitor, FilesystemDirectory, 
   CameraPhoto, CameraSource } from '@capacitor/core';
-//import { AngularFireStorage } from '@angular/fire/storage'
+import { AngularFireStorage } from '@angular/fire/storage'
 import { Observable, of } from 'rxjs';
 
 import * as firebase from 'firebase';
 import 'firebase/storage';
 import { FirebaseStorage } from 'angularfire2';
+import { UploadTaskSnapshot } from '@angular/fire/storage/interfaces';
 
 const { Camera, Filesystem, Storage } = Plugins;
 
@@ -15,7 +16,6 @@ const { Camera, Filesystem, Storage } = Plugins;
 })
 export class PhotoService {
 
-  //constructor(private storage: AngularFireStorage) { }
   constructor() { }
 
   /*public async takePicture() {
@@ -26,12 +26,12 @@ export class PhotoService {
       quality: 100 
     });
   }*/
-  public async takePicture() {
+  public async takePicture(source: CameraSource) {
     // Take a photo
     return await Camera.getPhoto({
       resultType: CameraResultType.DataUrl,
       correctOrientation:true,
-      source: CameraSource.Photos,
+      source: source,
       quality: 100 
     });
   }
@@ -41,7 +41,7 @@ export class PhotoService {
 
     var storageRef = firebase.storage().ref(ruta);
 
-    return new Promise((resolve, reject) => resolve(
+    return new Promise<UploadTaskSnapshot>((resolve, reject) => resolve(
             storageRef.putString(image, 'data_url', {
               contentType: 'image/png'
               })
