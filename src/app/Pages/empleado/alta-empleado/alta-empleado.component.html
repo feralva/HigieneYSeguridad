@@ -37,23 +37,22 @@
      <!--  <ion-button shape="round" (click)="tomarFotoEmpleado()">
         <ion-icon name="camera"></ion-icon>
       </ion-button> <br> -->
-      <ion-button shape="round" (click)="selectImageSource()">
+      <!-- <ion-button shape="round" (click)="selectImageSource()">
         <ion-icon name="camera"></ion-icon>
-      </ion-button> <br>
+      </ion-button> <br> -->
 
-      <ion-grid *ngIf="imagenEmpleado != null || imageBase64 != null">
+      <ion-grid >
         <ion-row>
         <ion-col size="4" offset="2" >
-            <!--<ion-img src="{{ photoService.photo.webviewPath }}"></ion-img>-->
-            <ion-avatar class="item-avatar">
-              <ion-img [src]="imageBase64"></ion-img>
-            </ion-avatar>
-            
+            <ion-avatar class="item-avatar" style="border: black;border-style: solid;" (click)="selectImageSource()">
+              <ion-img [src]="imageBase64" *ngIf="imageBase64 != null"></ion-img>
+              <ion-img src="./../../../assets/img/sorry-image-not-available.png" *ngIf="imageBase64 == null"></ion-img>
+            </ion-avatar>            
         </ion-col>
         </ion-row>
       </ion-grid>
       
-      <ion-button type="submit" shape="round" fill="outline" slot="end">Alta Empleado</ion-button>
+      <ion-button type="submit" shape="round" expand="block" fill="solid" slot="end">Alta Empleado</ion-button>
 
   </form>
 
@@ -65,8 +64,5 @@
       hidden="true"
       accept="image/*"
     />
-<!--     <ion-fab-button (click)="selectImageSource()">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button> -->
   </ion-fab>
 </ion-content>

@@ -122,9 +122,7 @@ export class AltaEmpleadoComponent implements OnInit {
 
   guardarImagenEmpleado(imagen:string, idEmpresa:number, idUsuario:string){
 
-    let rutaBase: string =  environment.rutaFotosEmpleadosBase;
-
-    let ruta:string = rutaBase + `/${idEmpresa.toString()}/${idUsuario}.jpg`
+    let ruta:string = environment.rutaFotosEmpleadosBase + `/${idEmpresa.toString()}/${idUsuario}.jpg`
 
     return this.photoService.uploadImage(imagen, ruta);
   }
