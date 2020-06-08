@@ -33,16 +33,16 @@ const routes: Routes = [
     loadChildren: () => import('./Pages/cliente/cliente.module').then( m => m.ClientePageModule)
   },
   {
+    path: 'visita',
+    loadChildren: () => import('./Pages/visita/visita.module').then( m => m.VisitaPageModule)
+  },
+  {
     path: 'plan',
     loadChildren: () => import('./Pages/plan/plan.module').then( m => m.PlanPageModule)
   },
   {
     path: 'empresa',
     loadChildren: () => import('./Pages/empresa/empresa.module').then( m => m.EmpresaPageModule)
-  },
-  {
-    path: 'visita',
-    loadChildren: () => import('./Pages/visita/visita.module').then( m => m.VisitaPageModule)
   }
 ];
 

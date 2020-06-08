@@ -21,10 +21,16 @@ export class ClienteService {
   obtenerClientesEmpresa(idEmpresa: number): Observable<Cliente[]> {
     return this.http.get<Cliente[]>(environment.UrlBaseApi + `Empresa/${idEmpresa}/Clientes`, this.httpOptions);
   }
+
   obtenerDetalleCliente(idCliente: number): Observable<Cliente> {
     return this.http.get<Cliente>(environment.UrlBaseApi + `Cliente/${idCliente}`, this.httpOptions);
   }
+
   obtenerPlanesActivosCliente(idCliente: number): Observable<any[]> {
     return this.http.get<any[]>(environment.UrlBaseApi + `Cliente/${idCliente}/Planes?activo=true`, this.httpOptions);
+  }
+
+  obtenerEstablecimientosCliente(idCliente: number) : Observable<any[]> {
+    return this.http.get<any[]>(environment.UrlBaseApi + `Cliente/${idCliente}/Establecimientos`, this.httpOptions);
   }
 }

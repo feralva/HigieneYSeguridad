@@ -1,3 +1,44 @@
-<p>
-  alta-plan works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Atras" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
+    <ion-item-divider color="secondary">
+      <ion-label>
+       Plan
+      </ion-label>
+    </ion-item-divider>
+      <ion-item>
+        <ion-label position="stacked">Cliente</ion-label>
+        <ion-select style="width: max-content;" name="clienteSeleccionado" [(ngModel)]="clienteSeleccionado" placeholder='clientes'>
+          <ion-select-option *ngFor="let cliente of clientes" value="{{cliente.id}}">{{cliente.nombre}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Tipos Plan</ion-label>
+        <ion-select style="width: max-content;" name="rolesSeleccionados" [(ngModel)]="tipoPlanSeleccionado" placeholder='tipoPlan'>
+          <ion-select-option *ngFor="let tipoPlan of tiposPlan" value="{{tipoPlan.id}}">{{tipoPlan.nombre}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item-divider color="secondary">
+        <ion-label>
+         Visitas
+        </ion-label>
+      </ion-item-divider>
+      <ion-row style="margin-top: 1em;margin-left:1em">
+        <ion-fab-button (click)="abrirModalVisita()">
+          <ion-icon name="add" ></ion-icon>
+        </ion-fab-button>
+
+      </ion-row>
+
+      <ion-button style="position: fixed; left: 0; bottom: 1em;" type="submit" shape="round" fill="outline" slot="end">Alta Plan</ion-button>
+
+  </form>
+</ion-content>

@@ -13,8 +13,8 @@
     },
     {
         "icon": "thermometer",
-        "name": "Auditorias",
-        "url": "#",
+        "name": "Visitas",
+        "url": "/visita",
         "role": ["Contenido1"]
     },
     {

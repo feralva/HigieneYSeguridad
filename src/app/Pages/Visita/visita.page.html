@@ -2,7 +2,7 @@
 
   <div class="page">
     <div class="timeline" >
-      <div class="timeline__group" *ngFor="let visita of visitas">
+      <div class="timeline__group" *ngFor="let visita of visitas" [routerLink]="['/visita',visita.id, 'detalle']">
         <span class="timeline__year">{{visita.fechaPactada | date:'yyyy'}}</span>
         <div class="timeline__box">
           <div class="timeline__date">

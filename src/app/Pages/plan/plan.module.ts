@@ -8,14 +8,19 @@ import { PlanPageRoutingModule } from './plan-routing.module';
 
 import { PlanPage } from './plan.page';
 import { DetallePlanComponent } from './detalle-plan/detalle-plan.component';
+import { AltaPlanComponent } from './alta-plan/alta-plan.component';
+import { VisitaPageModule } from '../visita/visita.module';
+import { AltaVisitaModalComponent } from '../Visita/alta-visita-modal/alta-visita-modal.component';
 
 @NgModule({
-  imports: [
+  entryComponents: [AltaVisitaModalComponent],
+  imports: [    
     CommonModule,
     FormsModule,
     IonicModule,
-    PlanPageRoutingModule
+    PlanPageRoutingModule,
+    VisitaPageModule
   ],
-  declarations: [PlanPage, DetallePlanComponent]
+  declarations: [PlanPage, DetallePlanComponent, AltaPlanComponent, AltaVisitaModalComponent]
 })
 export class PlanPageModule {}
