@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { VisitaPage } from './visita.page';
+import { VisitaEmpresaResolverService } from 'src/app/Core/Services/Visita/visitasEmpresa-resolver';
 
 const routes: Routes = [
   {
     path: '',
-    component: VisitaPage
+    component: VisitaPage,
+    resolve: {visitas: VisitaEmpresaResolverService}
   }
 ];
 
