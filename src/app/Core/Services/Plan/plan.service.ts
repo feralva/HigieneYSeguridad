@@ -8,6 +8,7 @@ import { environment } from '../../../../environments/environment';
   providedIn: 'root'
 })
 export class PlanService {
+
   
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -24,8 +25,10 @@ export class PlanService {
   }
 
   obtenerTiposPlan(): Observable<any> {
-    return this.http.get<any[]>(environment.UrlBaseApi + `Plan/Tipos`, this.httpOptions);
- 
-    
+    return this.http.get<any[]>(environment.UrlBaseApi + `Plan/Tipos`, this.httpOptions);  
+  }
+
+  alta(plan:any) : Observable<any> {
+    return this.http.post<any>(environment.UrlBaseApi + 'Plan/Alta', {Model: plan}, this.httpOptions); 
   }
 }

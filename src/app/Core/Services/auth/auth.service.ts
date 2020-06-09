@@ -16,18 +16,18 @@ export class AuthService {
 
   currentUser: BehaviorSubject<UserLogueado> = new BehaviorSubject(null);
   constructor() { }
-  // Funcion dummy login TODO: generar la funcion real
+  //TODO Funcion dummy login, generar la funcion real
   login(name) {
     if (name === 'user') {
       this.currentUser.next({
-        idUsuario: null,
+        idUsuario: 'fernando@Ternium.com',
         name: 'Dummy User',
         roles: ['Contenido1', 'Contenido2' ],
         empresaId: 1
       });
     } else if (name === 'admin') {
       this.currentUser.next({
-        idUsuario: null,
+        idUsuario: 'fernando@Ternium.com',
         name: 'Admin',
         roles: ['Contenido1', 'Contenido2', 'Contenido3', 'Contenido4'],
         empresaId: 1

@@ -3,6 +3,7 @@ import { PlanService } from 'src/app/Core/Services/Plan/plan.service';
 import { ModalController } from '@ionic/angular';
 import { Visita } from 'src/app/Models/Visita';
 import { ClienteService } from 'src/app/Core/Services/Cliente/cliente.service';
+import { VisitaService } from 'src/app/Core/Services/Visita/visita.service';
 
 @Component({
   selector: 'app-alta-visita-modal',
@@ -23,11 +24,11 @@ export class AltaVisitaModalComponent implements OnInit {
   model: any;
   
   constructor(private planService: PlanService, private modalctrl: ModalController,
-              private clienteService: ClienteService) { }
+              private clienteService: ClienteService, private visitaService: VisitaService) { }
 
   ngOnInit() {
   
-    this.planService.obtenerTiposPlan().subscribe(
+    this.visitaService.obtenerTiposVisita().subscribe(
       data => {
         this.tiposVisitas = data
         console.log(data)

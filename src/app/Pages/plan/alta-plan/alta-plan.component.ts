@@ -4,10 +4,11 @@ import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute } from '@angular/router';
 import { PlanService } from 'src/app/Core/Services/Plan/plan.service';
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController, ToastController } from '@ionic/angular';
 import { AltaVisitaModalComponent } from '../../Visita/alta-visita-modal/alta-visita-modal.component';
 import { ClienteService } from 'src/app/Core/Services/Cliente/cliente.service';
 import { NgForm } from '@angular/forms';
+import { UserLogueado } from 'src/app/Models/UserLogueado';
 
 @Component({
   selector: 'app-alta-plan',
@@ -23,15 +24,23 @@ export class AltaPlanComponent implements OnInit {
 
   visitas: any[] =[];
 
+  currentUser: UserLogueado = null;
+  
   constructor(private translate: TranslateService, private route: ActivatedRoute,
     private appDataService: AppDataService, private planService: PlanService,
     private authService: AuthService, private modalctrl: ModalController,
-    private clienteService: ClienteService) { }
+    private clienteService: ClienteService,public alertController: AlertController,
+    public toastController: ToastController) { }
 
   ngOnInit() {
 
     this.clientes = this.route.snapshot.data['clientes'];
     this.tiposPlan = this.route.snapshot.data['tiposPlan'];
+
+    this.authService.getUserSubject().subscribe(
+      data => this.currentUser = data,
+      error => console.log(error)
+  );
 
   }
 
@@ -52,9 +61,85 @@ export class AltaPlanComponent implements OnInit {
     this.visitas.push(data); 
   }
 
+  public borrarVisitaLista(index:number){
+
+    this.visitas.splice(index,1)
+  }
+
+  async AltaPlanConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Alta Plan',
+      message: 'Message ¿Esta seguro que desea crear Plan?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Ok',
+          handler: () => {
+            
+                this.planService.alta(this.generarPlan()).subscribe(
+                  result => this.MostrarMensajeOperacion('Alta Exitosa'),
+                  (err: any) => this.MostrarMensajeOperacion('Falla')
+                );              
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  generarPlan(){
+
+    var plan = {
+      TipoPlanId: this.tipoPlanSeleccionado,
+      PlanesEstablecimientos:[],
+      ClienteId: this.clienteSeleccionado,
+      Visitas:[],
+      FechaCreacion: new Date(),
+      EmpleadoId: this.currentUser.idUsuario,
+      EstadoId: 1,
+      Activo:1
+    }
+
+    this.visitas.forEach(visita => {
+
+      plan.PlanesEstablecimientos.push({EstablecimientoId: visita.establecimiento, PlanId: null});
+
+      plan.Visitas.push({
+        EstablecimientoId: visita.establecimiento.id,
+        TipoVisitaId: visita.tipoVisita.id,
+        MesPactado: visita.mesPactado,
+        Activo: visita.anioPactado
+      });
+    });
+
+    console.log(plan);
+    return plan;
+
+  }
+
+  onClienteSelected($event){
+    console.log('Cliente Seleccionado')
+    this.visitas = []
+  }
+
+  async MostrarMensajeOperacion(mensaje:string) {
+    const toast = await this.toastController.create({
+      message: mensaje,
+      duration: 2000
+    });
+    toast.present();
+  }
   onSubmit(form: NgForm) {
 
-
+    this.AltaPlanConfirm()
 
   }
 
