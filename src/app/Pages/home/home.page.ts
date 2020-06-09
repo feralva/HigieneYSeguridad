@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 import { TranslateService } from '@ngx-translate/core';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',

@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Platform, PopoverController } from '@ionic/angular';
+import { Platform, PopoverController, LoadingController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { LanguageService } from './Core/Services/language-service.service';
 import { AppDataService } from './Core/Services/Data/app-data.service';
 import { LanguagePopupPage } from './Pages/language-popup/language-popup.page';
 import { AuthService } from './Core/Services/auth/auth.service';
+import { Router, Event, NavigationCancel, NavigationEnd, NavigationError,
+  NavigationStart } from '@angular/router';
+import { LoaderService } from './Core/Services/loader.service';
 
 @Component({
   selector: 'app-root',
@@ -19,16 +22,37 @@ export class AppComponent implements OnInit {
   pageName: string;
 
   constructor(
-    private platform: Platform,
+    private platform: Platform, private loaderService: LoaderService,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private languageService: LanguageService,
     private appDataService: AppDataService,
     private popOverCtrl: PopoverController,
-    private auth: AuthService
+    private auth: AuthService, private router: Router
   ) {
-    this.initializeApp();
+
+      this.router.events.subscribe((event: Event) => {
+        switch(true){
+          case event instanceof NavigationStart: {
+            this.loaderService.present();
+            break;
+          }
+
+          case event instanceof NavigationEnd:
+          case event instanceof NavigationCancel:
+          case event instanceof NavigationError: {
+            this.loaderService.dismiss();
+            break;
+          }
+          default: {
+            break;
+          }
+        }
+      })
+      this.initializeApp();
   }
+
+
   ngOnInit(): void {
     this.appDataService.currentPageName.subscribe(pageNameCurrent => this.pageName = pageNameCurrent);
   }
