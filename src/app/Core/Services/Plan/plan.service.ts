@@ -29,6 +29,6 @@ export class PlanService {
   }
 
   alta(plan:any) : Observable<any> {
-    return this.http.post<any>(environment.UrlBaseApi + 'Plan/Alta', {Model: plan}, this.httpOptions); 
+    return this.http.post<any>(environment.UrlBaseApi + 'Plan', {Model: plan}, this.httpOptions); 
   }
 }

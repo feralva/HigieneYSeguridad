@@ -103,20 +103,24 @@ export class AltaPlanComponent implements OnInit {
       ClienteId: this.clienteSeleccionado,
       Visitas:[],
       FechaCreacion: new Date(),
-      EmpleadoId: this.currentUser.idUsuario,
+      EmpleadoId: this.currentUser.empleadoId,
       EstadoId: 1,
-      Activo:1
+      EmpresaId: this.currentUser.empresaId,
+      Activo:true
     }
 
     this.visitas.forEach(visita => {
 
-      plan.PlanesEstablecimientos.push({EstablecimientoId: visita.establecimiento, PlanId: null});
+      plan.PlanesEstablecimientos.push({EstablecimientoId: visita.establecimiento.id, PlanId: 0});
 
       plan.Visitas.push({
         EstablecimientoId: visita.establecimiento.id,
         TipoVisitaId: visita.tipoVisita.id,
         MesPactado: visita.mesPactado,
-        Activo: visita.anioPactado
+        AnioPactado: visita.anioPactado,
+        EstadoId: 1,
+        Activo: true,
+        EmpleadoId: null
       });
     });
 
