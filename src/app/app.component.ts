@@ -30,14 +30,28 @@ export class AppComponent implements OnInit {
     private popOverCtrl: PopoverController,
     private auth: AuthService, private router: Router
   ) {
+      this.initializeApp();
+  }
 
+
+  ngOnInit(): void {
+    this.appDataService.currentPageName.subscribe(pageNameCurrent => this.pageName = pageNameCurrent);
+
+    
+  }
+
+  initializeApp() {
+    this.platform.ready().then(() => {
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
       this.router.events.subscribe((event: Event) => {
         switch(true){
           case event instanceof NavigationStart: {
             this.loaderService.present();
+          
             break;
           }
-
+  
           case event instanceof NavigationEnd:
           case event instanceof NavigationCancel:
           case event instanceof NavigationError: {
@@ -49,18 +63,6 @@ export class AppComponent implements OnInit {
           }
         }
       })
-      this.initializeApp();
-  }
-
-
-  ngOnInit(): void {
-    this.appDataService.currentPageName.subscribe(pageNameCurrent => this.pageName = pageNameCurrent);
-  }
-
-  initializeApp() {
-    this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
       this.languageService.setInitialAppLanguage();
       this.auth.login('user');
     });
