@@ -8,6 +8,8 @@ import { ClienteDetalleComponent } from './cliente-detalle/cliente-detalle.compo
 import { AltaClienteComponent } from './alta-cliente/alta-cliente.component';
 import { ClientePlanesComponent } from './cliente-planes/cliente-planes.component';
 import { ClientePlanesResolver } from 'src/app/Core/Services/Cliente/clientePlanes-resolver.service';
+import { ClienteEstablecimientosComponent } from './cliente-establecimientos/cliente-establecimientos.component';
+import { ClienteEstablecimientosResolver } from 'src/app/Core/Services/Cliente/clienteEstablecimiento-resolver.service';
 
 const routes: Routes = [
   {
@@ -24,6 +26,11 @@ const routes: Routes = [
     path: ':id/planes',
     component: ClientePlanesComponent,
     resolve: {planes: ClientePlanesResolver}
+  },
+  {
+    path: ':id/establecimientos',
+    component: ClienteEstablecimientosComponent,
+    resolve: {establecimientos: ClienteEstablecimientosResolver}
   },
   {
     path: 'alta',

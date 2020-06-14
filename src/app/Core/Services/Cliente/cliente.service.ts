@@ -33,4 +33,8 @@ export class ClienteService {
   obtenerEstablecimientosCliente(idCliente: number) : Observable<any[]> {
     return this.http.get<any[]>(environment.UrlBaseApi + `Cliente/${idCliente}/Establecimientos`, this.httpOptions);
   }
+
+  obtenerEstablecimientosActivosCliente(idCliente: number): Observable<any> {
+    return this.http.get<any[]>(environment.UrlBaseApi + `Cliente/${idCliente}/Establecimientos?activo=true`, this.httpOptions);
+  }
 }
