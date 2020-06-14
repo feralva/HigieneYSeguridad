@@ -11,6 +11,7 @@ import { AltaVisitaComponent } from './alta-visita/alta-visita.component';
 import { VisitaDetalleComponent } from './visita-detalle/visita-detalle.component';
 import { VisitaPendienteEmpleadoComponent } from './visita-pendiente-empleado/visita-pendiente-empleado.component';
 import { AltaVisitaModalComponent } from './alta-visita-modal/alta-visita-modal.component';
+import { VisitaEditarComponent } from './visita-editar/visita-editar.component';
 
 @NgModule({
   entryComponents: [AltaVisitaModalComponent],
@@ -21,7 +22,7 @@ import { AltaVisitaModalComponent } from './alta-visita-modal/alta-visita-modal.
     VisitaPageRoutingModule
   ],
   declarations: [VisitaPage, AltaVisitaComponent, VisitaDetalleComponent, 
-    VisitaPendienteEmpleadoComponent, AltaVisitaModalComponent],
+    VisitaPendienteEmpleadoComponent, AltaVisitaModalComponent, VisitaEditarComponent],
   exports: [ AltaVisitaModalComponent ]
 })
 export class VisitaPageModule {}

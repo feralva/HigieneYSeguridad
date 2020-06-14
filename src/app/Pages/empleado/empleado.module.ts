@@ -9,6 +9,7 @@ import { EmpleadoPageRoutingModule } from './empleado-routing.module';
 import { EmpleadoPage } from './empleado.page';
 import { AltaEmpleadoComponent } from './alta-empleado/alta-empleado.component';
 import { EmpleadoEdicionComponent } from './empleado-edicion/empleado-edicion.component';
+import { EmpleadoDetalleComponent } from './empleado-detalle/empleado-detalle.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,7 @@ import { EmpleadoEdicionComponent } from './empleado-edicion/empleado-edicion.co
     EmpleadoPageRoutingModule
   ],
   declarations: [EmpleadoPage,
-    AltaEmpleadoComponent,
+    AltaEmpleadoComponent, EmpleadoDetalleComponent,
     EmpleadoEdicionComponent]
 })
 export class EmpleadoPageModule {}
