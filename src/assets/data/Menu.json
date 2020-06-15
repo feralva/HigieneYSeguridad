@@ -52,6 +52,12 @@
         "name": "Equipos Medición",
         "url": "equiposMedicion",
         "role": ["Contenido1"]
+    },
+    {
+        "icon": "card",
+        "name": "Mis Visitas Pendientes",
+        "url": "visita/Pendientes",
+        "role": ["Contenido1"]
     }
 
 

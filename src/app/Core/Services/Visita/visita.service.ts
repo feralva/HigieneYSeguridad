@@ -18,6 +18,9 @@ export class VisitaService {
   obtenerVisitasEmpresa(idEmpresa: number): Observable<any[]> {
     return this.http.get<any[]>(environment.UrlBaseApi + `Empresa/${idEmpresa}/Visitas?activo=true`, this.httpOptions);
   }
+  obtenerVisitasPendientesEmpleado(idEmpleado: number): Observable<any[]> {
+    return this.http.get<any[]>(environment.UrlBaseApi + `Visita/Empleado/${idEmpleado}?activo=true&estado=1`, this.httpOptions);
+  }
 
   obtenerTiposVisita(): Observable<any[]> {
     return this.http.get<any[]>(environment.UrlBaseApi + `Visita/Tipos`, this.httpOptions);

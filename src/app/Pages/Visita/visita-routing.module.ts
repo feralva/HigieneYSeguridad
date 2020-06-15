@@ -5,6 +5,8 @@ import { VisitaPage } from './visita.page';
 import { VisitaEmpresaResolverService } from 'src/app/Core/Services/Visita/visitasEmpresa-resolver';
 import { VisitaDetalleComponent } from './visita-detalle/visita-detalle.component';
 import { VisitaEditarComponent } from './visita-editar/visita-editar.component';
+import { VisitaPendienteEmpleadoComponent } from './visita-pendiente-empleado/visita-pendiente-empleado.component';
+import { VisitaPendienteResolverService } from 'src/app/Core/Services/Visita/visitaPendiente-resolver.service';
 
 
 const routes: Routes = [
@@ -20,6 +22,11 @@ const routes: Routes = [
   {
     path: ':id/editar',
     component: VisitaEditarComponent
+  },
+  {
+    path: 'Pendientes',
+    component: VisitaPendienteEmpleadoComponent,
+    resolve: {visitas: VisitaPendienteResolverService}
   }
 ];
 
