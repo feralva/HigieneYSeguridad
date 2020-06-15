@@ -10,9 +10,27 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <ion-list>
-    <ion-item *ngFor="let establecimiento of establecimientos" [routerLink]="['/establecimiento',establecimiento.id, 'detalle']">
 
-    </ion-item>
+    <ion-item-sliding *ngFor="let establecimiento of establecimientos; let i = index" >
+      <ion-item>
+        <ion-label class="ion-text-wrap" style="margin-left: 1em; text-align: center;">
+          <h2>{{establecimiento.nombre}}</h2>
+          <h3>{{establecimiento.direccion.calle +' '+ establecimiento.direccion.altura}}</h3>
+          <h3>{{establecimiento.direccion.partido +', '+ establecimiento.direccion.provincia}}</h3>
+          <p>Cantidad Ubicaciones: {{establecimiento.cantidadUbicaciones}}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item-options>
+        <ion-item-option color="success" [routerLink]="['/establecimiento',establecimiento.id, 'detalle']" expandable>
+          Detalle
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+
   </ion-list>
+
+  <ion-button style="position: fixed; right: 0; bottom: 1em;" type="submit" shape="round" fill="solid" slot="end">Alta</ion-button>
+
 
 </ion-content>
