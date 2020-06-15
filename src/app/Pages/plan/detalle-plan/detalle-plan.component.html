@@ -9,7 +9,7 @@
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-card *ngFor="let visita of plan.visitas" [routerLink]="['/visita',visita.id, 'detalle']">
+  <ion-card *ngFor="let visita of plan.visitas" [routerLink]="['/visita',visita.id, 'editar']">
     <ion-card-header style="font-size: large;">
       <b>{{plan.cliente +  ' - ' + visita.nombreEstablecimiento}}</b>
     </ion-card-header>

@@ -42,6 +42,12 @@
         "role": ["Contenido1"]
     },
     {
+        "icon": "business",
+        "name": "Establecimiento.title",
+        "url": "/establecimiento",
+        "role": ["Contenido1"]
+    },
+    {
         "icon": "card",
         "name": "Equipos Medición",
         "url": "equiposMedicion",

@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { VisitaPage } from './visita.page';
 import { VisitaEmpresaResolverService } from 'src/app/Core/Services/Visita/visitasEmpresa-resolver';
 import { VisitaDetalleComponent } from './visita-detalle/visita-detalle.component';
+import { VisitaEditarComponent } from './visita-editar/visita-editar.component';
+
 
 const routes: Routes = [
   {
@@ -12,8 +14,12 @@ const routes: Routes = [
     resolve: {visitas: VisitaEmpresaResolverService}
   },
   {
-    path: ':id/visita',
+    path: ':id/detalle',
     component: VisitaDetalleComponent
+  },
+  {
+    path: ':id/editar',
+    component: VisitaEditarComponent
   }
 ];
 

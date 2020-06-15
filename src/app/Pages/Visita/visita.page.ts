@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 import { VisitaService } from 'src/app/Core/Services/Visita/visita.service';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-visita',
@@ -14,7 +14,7 @@ export class VisitaPage implements OnInit {
   nombrePagina;
   visitas: any[];
   constructor(private translate: TranslateService, private route: ActivatedRoute,
-    private appDataService: AppDataService,
+    private appDataService: AppDataService,private router: Router,
     private visitaService: VisitaService, private authService: AuthService) { }
 
   ngOnInit() {
@@ -24,6 +24,10 @@ export class VisitaPage implements OnInit {
     this.visitas = this.route.snapshot.data['visitas'];
  
     console.log(this.visitas)
+  }
+
+  navigate(){
+    this.router.navigate(['/visita',1017, 'detalle'])
   }
 
 }

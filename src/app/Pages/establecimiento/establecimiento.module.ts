@@ -8,6 +8,7 @@ import { EstablecimientoPageRoutingModule } from './establecimiento-routing.modu
 
 import { EstablecimientoPage } from './establecimiento.page';
 import { EstablecimientoEditarComponent } from './establecimiento-editar/establecimiento-editar.component';
+import { EstablecimientoDetalleComponent } from './establecimiento-detalle/establecimiento-detalle.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { EstablecimientoEditarComponent } from './establecimiento-editar/estable
     IonicModule,
     EstablecimientoPageRoutingModule
   ],
-  declarations: [EstablecimientoPage, EstablecimientoEditarComponent]
+  declarations: [EstablecimientoPage, EstablecimientoEditarComponent, EstablecimientoDetalleComponent]
 })
 export class EstablecimientoPageModule {}

@@ -24,6 +24,12 @@
         <ion-item-option color="success" [routerLink]="['/establecimiento',establecimiento.id, 'detalle']" expandable>
           Detalle
         </ion-item-option>
+        <ion-item-option color="tertiary" [routerLink]="['/establecimiento',establecimiento.id, 'editar']" expandable>
+          Editar
+        </ion-item-option>
+        <ion-item-option color="danger" expandable>
+          Borrar
+        </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
 
