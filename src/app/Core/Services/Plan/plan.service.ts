@@ -17,7 +17,7 @@ export class PlanService {
   constructor(private http: HttpClient) { }
 
   obtenerDetallePlan(idPlan: number): Observable<PlanDetalle> {
-    return this.http.get<PlanDetalle>(environment.UrlBaseApi + `Plan/${idPlan}`, this.httpOptions);
+    return this.http.get<PlanDetalle>(environment.UrlBaseApi + `Plan/${idPlan}?activo=true`, this.httpOptions);
   }
 
   obtenerPlanesEmpresa(idEmpresa: number): Observable<any[]> {
