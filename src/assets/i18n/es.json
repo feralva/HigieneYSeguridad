@@ -5,7 +5,8 @@
         "title": "Empresa",
         "Alta": {
             "title": "Alta Empresa"
-        }
+        },
+        "Planes":"Planes de Empresa"
     },
     "Empleado": {
         "title": "Empleado",
@@ -29,6 +30,16 @@
             "title": "Cliente Empleado"
         },
         "Planes": "Planes de Cliente"
+    },
+    "Plan":{
+        "title": "Detalle Plan",
+        "Alta":{
+            "title":"Alta Plan"
+        }
+    },
+    "Visita":{       
+        "title": "Visitas"
+
     }
     
 }

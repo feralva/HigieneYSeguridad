@@ -24,10 +24,12 @@ export class PlanPage implements OnInit {
   ngOnInit() {
 
     this.planes = this.route.snapshot.data['planes'];
+    console.log(this.planes)
+  }
+
+  ionViewWillEnter(){
     this.nombrePagina = 'Empresa.Planes';
     this.appDataService.changePageName(this.nombrePagina);
-  
-    console.log(this.planes)
   }
 
   doRefresh(event) {

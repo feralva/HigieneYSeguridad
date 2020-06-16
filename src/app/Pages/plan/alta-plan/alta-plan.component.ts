@@ -17,6 +17,8 @@ import { UserLogueado } from 'src/app/Models/UserLogueado';
 })
 export class AltaPlanComponent implements OnInit {
 
+  public nombrePagina: string;
+
   clientes: any[];
   tiposPlan: any[];
   clienteSeleccionado: any;
@@ -41,7 +43,11 @@ export class AltaPlanComponent implements OnInit {
       data => this.currentUser = data,
       error => console.log(error)
   );
+  }
 
+  ionViewWillEnter(){
+    this.nombrePagina = 'Plan.Alta.title';
+    this.appDataService.changePageName(this.nombrePagina)
   }
 
   async abrirModalVisita(){

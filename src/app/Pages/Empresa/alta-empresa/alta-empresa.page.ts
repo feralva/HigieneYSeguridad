@@ -35,7 +35,9 @@ export class AltaEmpresaPage implements OnInit {
     }
   };
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ionViewWillEnter(){
     this.nombrePagina = 'Empresa.title';
     this.appDataService.changePageName(this.nombrePagina);
   }

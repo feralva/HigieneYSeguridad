@@ -61,9 +61,6 @@ export class AltaEmpleadoComponent implements OnInit {
 
   ngOnInit() {
 
-    this.nombrePagina = 'Empleado.Alta.title';
-    this.appDataService.changePageName(this.nombrePagina);
-
     this.rolService.obtenerRolesDisponibles().subscribe(
       result => this.rolesDisponibles = result,
       (err: any) => console.log(err)
@@ -75,6 +72,11 @@ export class AltaEmpleadoComponent implements OnInit {
     );
   }
 
+  ionViewWillEnter(){
+    this.nombrePagina = 'Empleado.Alta.title';
+    this.appDataService.changePageName(this.nombrePagina);
+
+  }
   async AltaEmpleadoConfirm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',

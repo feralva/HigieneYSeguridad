@@ -14,8 +14,12 @@ export class HomePage implements OnInit {
 
   constructor(private appDataService: AppDataService, private translate: TranslateService) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+    
+    ionViewWillEnter(){
+      
     this.nombrePagina = 'Home.title';
     this.appDataService.changePageName(this.nombrePagina);
-    }
+    
+   }
 }

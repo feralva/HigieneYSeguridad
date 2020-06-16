@@ -30,9 +30,6 @@ export class EmpleadoPage implements OnInit {
 
   ngOnInit() {
 
-    this.nombrePagina = 'Empleado.title';
-    this.appDataService.changePageName(this.nombrePagina);
-
     this.authService.getUserSubject().subscribe(
       data => this.currentUser = data,
       error => console.log(error)
@@ -59,5 +56,10 @@ export class EmpleadoPage implements OnInit {
       },
       error => console.log(error)
     );
+  }
+  
+  ionViewWillEnter(){
+    this.nombrePagina = 'Empleado.title';
+    this.appDataService.changePageName(this.nombrePagina);
   }
 }

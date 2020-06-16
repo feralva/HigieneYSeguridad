@@ -1,9 +1,28 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>empresa</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="Atras" defaultHref="home"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
+  <ion-list> 
+    <ion-item *ngFor="let empresa of empresas">
+      <ion-avatar item-start style="width: 4em; height: 4em;">
+        <img src={{empresa.urlFoto}}>
+      </ion-avatar>
+      <ion-label class="ion-text-wrap" style="margin-left: 1em;">
+        <h1>{{empresa.nombre}}</h1>
+        <h3>{{empresa.responsableNombre}}</h3>
+        <p>{{empresa.direccion}}</p>
+      </ion-label>
 
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="['alta']" >
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

@@ -24,11 +24,13 @@ export class ClientePage implements OnInit {
     private clienteService: ClienteService, private authService: AuthService) {}
 
   ngOnInit() {
-    this.nombrePagina = 'Cliente.title';
-    this.appDataService.changePageName(this.nombrePagina);
-
     this.clientes = this.route.snapshot.data['clientes'];
     console.log(this.clientes)
+  }
+
+  ionViewWillEnter(){
+    this.nombrePagina = 'Cliente.title';
+    this.appDataService.changePageName(this.nombrePagina);
   }
 
 }

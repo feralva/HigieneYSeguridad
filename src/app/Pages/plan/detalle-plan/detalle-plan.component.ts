@@ -25,10 +25,13 @@ export class DetallePlanComponent implements OnInit {
   ngOnInit() {
 
     this.plan = this.route.snapshot.data['plan'];
-    this.nombrePagina = 'Plan.title';
-    this.appDataService.changePageName(this.nombrePagina);
   
     console.log(this.plan)
+  }
+
+  ionViewWillEnter(){
+    this.nombrePagina = 'Plan.title';
+    this.appDataService.changePageName(this.nombrePagina);
   }
   
   doRefresh(event) {
