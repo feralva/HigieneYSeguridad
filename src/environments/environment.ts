@@ -14,6 +14,7 @@ export const environment = {
     appId: "1:350110028273:web:6a08cf1d3ee835d8ea7450"
   },
   rutaFotosEmpleadosBase: 'FotosEmpleados',
+  rutaFotosEmpresaBase: 'FotosEmpresas',
   UrlBaseApi: 'https://localhost:44380/api/'
 };
 

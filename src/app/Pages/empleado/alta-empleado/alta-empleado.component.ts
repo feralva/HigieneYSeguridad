@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Empleado } from 'src/app/Models/Empleado';
 import { Familia } from 'src/app/Models/Familia';
-import { Usuario } from 'src/app/Models/Usuario';
-import { UsuarioRol } from 'src/app/Models/UsuarioRol';
 import { TranslateService } from '@ngx-translate/core';
 import { RolService } from 'src/app/Core/Services/Rol/rol.service';
 import { NgForm } from '@angular/forms';

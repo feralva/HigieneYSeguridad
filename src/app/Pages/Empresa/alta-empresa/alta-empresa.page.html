@@ -59,11 +59,28 @@
         <ion-label position="stacked">Telefono</ion-label>
         <ion-input placeholder="Telefono" name="responsable.Telefono" [(ngModel)]="empresaModel.responsable.telefono"></ion-input>
       </ion-item>
-      <ion-item>
-        <ion-button onclick=""> Agregar Foto Galeria</ion-button>
-      </ion-item>
+      <ion-grid >
+        <ion-row>
+
+          <ion-avatar class="item-avatar center"  style="border: black;border-style: solid;" (click)="selectImageSource()">
+            <ion-img [src]="imageBase64" *ngIf="imageBase64 != null"></ion-img>
+            <ion-img src="./../../../assets/img/sorry-image-not-available.png" *ngIf="imageBase64 == null"></ion-img>
+          </ion-avatar>            
+
+        </ion-row>
+      </ion-grid>
 
       <ion-button type="submit" shape="round" fill="outline" slot="end">Alta Empresa</ion-button>
 
   </form>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <input
+      type="file"
+      #fileInput
+      (change)="uploadFile($event)"
+      hidden="true"
+      accept="image/*"
+    />
+  </ion-fab>
 </ion-content>

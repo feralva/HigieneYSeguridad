@@ -21,7 +21,7 @@ export class EmpresaService {
 
   constructor(private http: HttpClient) { }
 
-  addEmpresa(empresa: Empresa): Observable<Empresa> {
+  addEmpresa(empresa: Empresa): Observable<any> {
     return this.http.post<Empresa>(this.rutasServicios.Alta, {Model: empresa}, this.httpOptions);
   }
   
@@ -33,6 +33,11 @@ export class EmpresaService {
   ObtenerEmpresas(): Observable<any[]> {
 
     return this.http.get<any[]>(environment.UrlBaseApi + `Empresa`, this.httpOptions);
+  }
+
+  ActualizarEmpresa(empresa: Empresa): Observable<any[]> {
+
+    return this.http.put<any[]>(environment.UrlBaseApi + `Empresa`, {Model: empresa}, this.httpOptions);
   }
 
 }
