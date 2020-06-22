@@ -1,10 +1,11 @@
 import { Usuario } from './Usuario';
 
 export interface Empleado {
+    id: number;
     nombre: string;
     apellido: string;
     contrasenia: string;
-    CorreoElectronico: string;
+    correoElectronico: string;
     empresaId: number;
     usuario: Usuario;
     urlFoto: string;

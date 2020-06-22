@@ -12,8 +12,7 @@ import { AlertController, ToastController } from '@ionic/angular';
 import { PhotoService } from 'src/app/Core/Services/photo/photo.service';
 import { CameraPhoto } from '@capacitor/core';
 import { environment } from 'src/environments/environment';
-import { PhotoCordovaService } from 'src/app/Core/Services/photo/photo-cordova.service';
-import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
+import { Plugins, CameraSource } from '@capacitor/core';
 import { Platform, ActionSheetController } from '@ionic/angular';
 const { Camera } = Plugins;
 @Component({
@@ -34,17 +33,17 @@ export class AltaEmpleadoComponent implements OnInit {
 
   constructor(private rolService: RolService, private translate: TranslateService, 
                 private appDataService: AppDataService, public photoService: PhotoService,
-                public photoCordovaService: PhotoCordovaService,
                 private empleadoService: EmpleadoService, private authService: AuthService,
                 public alertController: AlertController,
                 public toastController: ToastController,
                 private plt: Platform, private actionSheetCtrl: ActionSheetController) { }
 
   empleadoModel: Empleado = {
+    id: 0,
     apellido: '',
     nombre: '',
     empresaId: null,
-    CorreoElectronico: '',
+    correoElectronico: '',
     contrasenia: '',
     urlFoto: '',
     activo: true,
@@ -130,12 +129,12 @@ export class AltaEmpleadoComponent implements OnInit {
   onSubmit(form: NgForm) {
 
     this.empleadoModel.empresaId = this.currentUser.empresaId
-    this.empleadoModel.usuario = { IdUsuario: this.empleadoModel.CorreoElectronico
+    this.empleadoModel.usuario = { IdUsuario: this.empleadoModel.correoElectronico
       , contraseña: this.authService.encriptarContrasenia(this.empleadoModel.contrasenia), UsuarioRoles: []};
 
     for (let rol of this.rolesSeleccionados) {
         this.empleadoModel.usuario.UsuarioRoles.push
-          ({IdUsuario: this.empleadoModel.CorreoElectronico, IdFamilia: rol});
+          ({IdUsuario: this.empleadoModel.correoElectronico, IdFamilia: rol});
     }
 
     this.AltaEmpleadoConfirm()

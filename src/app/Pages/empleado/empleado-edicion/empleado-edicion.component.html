@@ -5,6 +5,55 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<p>
-  empleado-edicion works!
-</p>
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
+    <ion-item-divider color="secondary">
+      <ion-label>
+       Empleado
+      </ion-label>
+    </ion-item-divider>
+      <ion-item>
+        <ion-label position="stacked">Nombre</ion-label>
+        <ion-input placeholder="Nombre" name="Nombre" [(ngModel)]="empleadoModel.nombre" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Apellido</ion-label>
+        <ion-input placeholder="Apellido" name="responsable.Apellido" [(ngModel)]="empleadoModel.apellido"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Correo Electronico</ion-label>
+        <ion-input placeholder="Correo Electronico" name="responsable.CorreoElectronico" [(ngModel)]="empleadoModel.correoElectronico"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Roles</ion-label>
+        <ion-select style="width: max-content;" name="rolesSeleccionados" multiple="true" [(ngModel)]="rolesSeleccionados" placeholder='Roles'>
+          <ion-select-option *ngFor="let rol of rolesDisponibles" [value]="rol">{{rol.nombre}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-grid >
+        <ion-row>
+        <ion-col size="4" offset="2" >
+            <ion-avatar class="item-avatar" style="border: black;border-style: solid;" (click)="selectImageSource()">
+              <ion-img [src]="imageBase64" *ngIf="imageBase64 != null"></ion-img>
+              <ion-img [src]="empleadoModel.urlFoto" *ngIf="imageBase64 == null"></ion-img>
+            </ion-avatar>            
+        </ion-col>
+        </ion-row>
+      </ion-grid>
+      
+      <ion-button type="submit" shape="round" expand="block" fill="solid" slot="end">Modificar Empleado</ion-button>
+
+  </form>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <input
+      type="file"
+      #fileInput
+      (change)="uploadFile($event)"
+      hidden="true"
+      accept="image/*"
+    />
+  </ion-fab>
+
+</ion-content>
+
