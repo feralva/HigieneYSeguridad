@@ -11,6 +11,7 @@ import { ClienteDetalleComponent } from './cliente-detalle/cliente-detalle.compo
 import { AltaClienteComponent } from './alta-cliente/alta-cliente.component';
 import { ClientePlanesComponent } from './cliente-planes/cliente-planes.component';
 import { ClienteEstablecimientosComponent } from './cliente-establecimientos/cliente-establecimientos.component';
+import { EstablecimientoAltaComponent } from './establecimiento-alta/establecimiento-alta.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import { ClienteEstablecimientosComponent } from './cliente-establecimientos/cli
     IonicModule,
     ClientePageRoutingModule
   ],
-  declarations: [ClientePage, ClienteEstablecimientosComponent,
+  declarations: [ClientePage, ClienteEstablecimientosComponent, EstablecimientoAltaComponent,
   ClienteDetalleComponent, AltaClienteComponent, ClientePlanesComponent]
 })
 export class ClientePageModule {}

@@ -25,7 +25,7 @@ export class EmpleadoPage implements OnInit {
     private appDataService: AppDataService, private empresaService: EmpresaService,
     private empleadoService: EmpleadoService, private authService: AuthService,
     public alertController: AlertController, private rolService: RolService,
-    public toastController: ToastController) { }
+    public toastController: ToastController) {}
 
 
   ngOnInit() {

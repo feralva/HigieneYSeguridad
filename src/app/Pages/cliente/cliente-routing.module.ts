@@ -10,6 +10,7 @@ import { ClientePlanesComponent } from './cliente-planes/cliente-planes.componen
 import { ClientePlanesResolver } from 'src/app/Core/Services/Cliente/clientePlanes-resolver.service';
 import { ClienteEstablecimientosComponent } from './cliente-establecimientos/cliente-establecimientos.component';
 import { ClienteEstablecimientosResolver } from 'src/app/Core/Services/Cliente/clienteEstablecimiento-resolver.service';
+import { EstablecimientoAltaComponent } from './establecimiento-alta/establecimiento-alta.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,11 @@ const routes: Routes = [
     path: ':id/detalle',
     component: ClienteDetalleComponent,
     resolve: {cliente: ClienteDetalleResolver}
+  },
+  {
+    path: ':id/establecimiento/alta',
+    component: EstablecimientoAltaComponent/* ,
+    resolve: {cliente: ClienteDetalleResolver} */
   },
   {
     path: ':id/planes',

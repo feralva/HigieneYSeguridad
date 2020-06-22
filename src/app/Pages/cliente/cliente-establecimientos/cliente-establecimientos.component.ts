@@ -16,6 +16,7 @@ export class ClienteEstablecimientosComponent implements OnInit {
   establecimientos: any[] = []
   nombrePagina: string;
   currentUser: UserLogueado;
+  idCliente: number;
   
   constructor(private translate: TranslateService, private route: ActivatedRoute,
     private appDataService: AppDataService,
@@ -25,7 +26,8 @@ export class ClienteEstablecimientosComponent implements OnInit {
     this.establecimientos = this.route.snapshot.data['establecimientos'];
     this.nombrePagina = 'Cliente.Establecimientos';
     this.appDataService.changePageName(this.nombrePagina);
-  
+    this.idCliente = +this.route.snapshot.paramMap.get('id');
+
     console.log(this.establecimientos)
   }
 
