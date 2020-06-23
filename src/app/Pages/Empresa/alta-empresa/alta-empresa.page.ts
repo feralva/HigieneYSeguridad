@@ -12,6 +12,8 @@ import { Platform, ActionSheetController, AlertController, ToastController } fro
 import { PhotoService } from 'src/app/Core/Services/photo/photo.service';
 const { Camera } = Plugins;
 import { environment } from 'src/environments/environment';
+import { LoaderService } from 'src/app/Core/Services/loader.service';
+import { DireccionService } from 'src/app/Core/Services/Direccion/direccion.service';
 @Component({
   selector: 'app-alta-empresa',
   templateUrl: './alta-empresa.page.html',
@@ -23,13 +25,11 @@ export class AltaEmpresaPage implements OnInit {
   imagenEmpleado: CameraPhoto = null;
   imageBase64: string;
 
+  partidos: any[];
+  partidoSeleccionado: any;
+  provincias: any[];
+  provinciaSeleccionada: any;
   public nombrePagina: string;
-
-  constructor(private appDataService: AppDataService, private translate: TranslateService, 
-    private empresaService: EmpresaService, private photoService: PhotoService,
-    public alertController: AlertController,
-    public toastController: ToastController,
-    private plt: Platform, private actionSheetCtrl: ActionSheetController) { }
 
   empresaModel: Empresa = {
     id: 0,
@@ -37,8 +37,7 @@ export class AltaEmpresaPage implements OnInit {
     direccion: {
       calle: '',
       altura: null,
-      partido: '',
-      provincia: ''
+      partidoId: 0
     },
     responsable: {
       apellido: '',
@@ -49,14 +48,42 @@ export class AltaEmpresaPage implements OnInit {
     urlFoto: ''
   };
 
-  ngOnInit() {}
+  constructor(private appDataService: AppDataService, private translate: TranslateService, 
+    private empresaService: EmpresaService, private photoService: PhotoService,
+    public alertController: AlertController, private loaderService: LoaderService,
+    public toastController: ToastController, private direccionService: DireccionService,
+    private plt: Platform, private actionSheetCtrl: ActionSheetController) { }
+
+
+  ngOnInit() {
+
+    this.direccionService.obtenerProvincias().subscribe(
+      data => this.provincias = data,
+      (error) => console.log(error)
+    )
+  }
 
   ionViewWillEnter(){
     this.nombrePagina = 'Empresa.title';
     this.appDataService.changePageName(this.nombrePagina);
   }
 
+  actualizarPartidos(event){
+    console.log('Actualizo Partidos')
+    this.partidos = [];
+    this.partidoSeleccionado = null;
+    this.loaderService.present(); 
+    console.log(event)
+    this.direccionService.obtenerPartidosProvincia(event.id).subscribe(
+      data => {
+        this.partidos = data;
+        this.loaderService.dismiss();
+      },
+      (error) => console.log(error)
+    )
+  }
   onSubmit(form: NgForm) {
+    this.empresaModel.direccion.partidoId = this.partidoSeleccionado.id;
     this.AltaEmpresaConfirm()
   }
 
@@ -64,7 +91,7 @@ export class AltaEmpresaPage implements OnInit {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Alta Empresa',
-      message: 'Message ¿Esta seguro que desea crear Empresa?',
+      message: '¿Esta seguro que desea crear Empresa?',
       buttons: [
         {
           text: 'Cancelar',
@@ -78,6 +105,7 @@ export class AltaEmpresaPage implements OnInit {
           text: 'Ok',
           handler: () => {
 
+            this.loaderService.present();
             this.empresaService.addEmpresa(this.empresaModel).subscribe(
               //(id: number) => console.log(id),
               data => {
@@ -90,7 +118,10 @@ export class AltaEmpresaPage implements OnInit {
                       this.empresaModel.urlFoto = result;                      
                       this.empresaModel.id = data.id;                      
                       this.empresaService.ActualizarEmpresa(this.empresaModel).subscribe(
-                        data => this.MostrarMensajeOperacion('Alta Exitosa'),
+                        data => {
+                          this.loaderService.dismiss();
+                          this.MostrarMensajeOperacion('Alta Exitosa')
+                        },
                         (err: any) => this.MostrarMensajeOperacion('Falla')
                       )},
                     (err: any) => console.log(err)

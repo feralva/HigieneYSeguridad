@@ -26,7 +26,7 @@ const routes: Routes = [
   {
     path: ':id/establecimiento/alta',
     component: EstablecimientoAltaComponent/* ,
-    resolve: {cliente: ClienteDetalleResolver} */
+    resolve: {provincias: ClienteDetalleResolver} */
   },
   {
     path: ':id/planes',

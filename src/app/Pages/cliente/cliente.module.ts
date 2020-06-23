@@ -13,14 +13,15 @@ import { ClientePlanesComponent } from './cliente-planes/cliente-planes.componen
 import { ClienteEstablecimientosComponent } from './cliente-establecimientos/cliente-establecimientos.component';
 import { EstablecimientoAltaComponent } from './establecimiento-alta/establecimiento-alta.component';
 import { UbicacionAltaComponent } from '../ubicacion/ubicacion-alta/ubicacion-alta.component';
-
+import { IonicSelectableModule } from 'ionic-selectable';
 @NgModule({
   entryComponents: [UbicacionAltaComponent],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ClientePageRoutingModule
+    ClientePageRoutingModule,
+    IonicSelectableModule
   ],
   declarations: [ClientePage, ClienteEstablecimientosComponent, EstablecimientoAltaComponent,
   ClienteDetalleComponent, AltaClienteComponent, ClientePlanesComponent,UbicacionAltaComponent]

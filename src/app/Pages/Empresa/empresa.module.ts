@@ -8,13 +8,14 @@ import { EmpresaPageRoutingModule } from './empresa-routing.module';
 
 import { EmpresaPage } from './empresa.page';
 import { AltaEmpresaPage } from './alta-empresa/alta-empresa.page';
-
+import { IonicSelectableModule } from 'ionic-selectable';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    EmpresaPageRoutingModule
+    EmpresaPageRoutingModule,
+    IonicSelectableModule
   ],
   declarations: [EmpresaPage, AltaEmpresaPage]
 })

@@ -23,7 +23,7 @@ export class AuthService {
         idUsuario: 'fernando@Ternium.com',
         name: 'Dummy User',
         roles: ['Contenido1', 'Contenido2' ],
-        empresaId: 1,
+        empresaId: 3006,
         empleadoId: 1
       });
     } else if (name === 'admin') {
@@ -31,7 +31,7 @@ export class AuthService {
         idUsuario: 'fernando@Ternium.com',
         name: 'Admin',
         roles: ['Contenido1', 'Contenido2', 'Contenido3', 'Contenido4'],
-        empresaId: 1,
+        empresaId: 3006,
         empleadoId: 1
       });
     }
