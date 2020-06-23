@@ -12,8 +12,10 @@ import { AltaClienteComponent } from './alta-cliente/alta-cliente.component';
 import { ClientePlanesComponent } from './cliente-planes/cliente-planes.component';
 import { ClienteEstablecimientosComponent } from './cliente-establecimientos/cliente-establecimientos.component';
 import { EstablecimientoAltaComponent } from './establecimiento-alta/establecimiento-alta.component';
+import { UbicacionAltaComponent } from '../ubicacion/ubicacion-alta/ubicacion-alta.component';
 
 @NgModule({
+  entryComponents: [UbicacionAltaComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -21,6 +23,6 @@ import { EstablecimientoAltaComponent } from './establecimiento-alta/establecimi
     ClientePageRoutingModule
   ],
   declarations: [ClientePage, ClienteEstablecimientosComponent, EstablecimientoAltaComponent,
-  ClienteDetalleComponent, AltaClienteComponent, ClientePlanesComponent]
+  ClienteDetalleComponent, AltaClienteComponent, ClientePlanesComponent,UbicacionAltaComponent]
 })
 export class ClientePageModule {}

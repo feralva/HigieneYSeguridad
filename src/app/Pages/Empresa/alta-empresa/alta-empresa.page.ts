@@ -28,8 +28,8 @@ export class AltaEmpresaPage implements OnInit {
   constructor(private appDataService: AppDataService, private translate: TranslateService, 
     private empresaService: EmpresaService, private photoService: PhotoService,
     public alertController: AlertController,
-                public toastController: ToastController,
-                private plt: Platform, private actionSheetCtrl: ActionSheetController) { }
+    public toastController: ToastController,
+    private plt: Platform, private actionSheetCtrl: ActionSheetController) { }
 
   empresaModel: Empresa = {
     id: 0,
