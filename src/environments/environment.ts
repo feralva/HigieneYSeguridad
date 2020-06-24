@@ -15,6 +15,7 @@ export const environment = {
   },
   rutaFotosEmpleadosBase: 'FotosEmpleados',
   rutaFotosEmpresaBase: 'FotosEmpresas',
+  rutaFotosClienteBase: 'FotosEmpresas',
   UrlBaseApi: 'https://localhost:44380/api/'
 };
 

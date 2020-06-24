@@ -12,11 +12,13 @@ export class ClienteService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  rutasServicios = {
-    Alta : ''
-  };
+
 
   constructor(private http: HttpClient) { }
+
+  addCliente(cliente: Cliente): Observable<any> {
+    return this.http.post<Cliente>(environment.UrlBaseApi + `Cliente`, {Model: cliente}, this.httpOptions);
+  }
 
   obtenerClientesEmpresa(idEmpresa: number): Observable<Cliente[]> {
     return this.http.get<Cliente[]>(environment.UrlBaseApi + `Empresa/${idEmpresa}/Clientes`, this.httpOptions);
@@ -36,5 +38,10 @@ export class ClienteService {
 
   obtenerEstablecimientosActivosCliente(idCliente: number): Observable<any> {
     return this.http.get<any[]>(environment.UrlBaseApi + `Cliente/${idCliente}/Establecimientos?activo=true`, this.httpOptions);
+  }
+
+  ActualizarCliente(cliente: Cliente): Observable<any[]> {
+
+    return this.http.put<any[]>(environment.UrlBaseApi + `Cliente`, {Model: cliente}, this.httpOptions);
   }
 }
