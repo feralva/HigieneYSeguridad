@@ -22,13 +22,15 @@
           <ion-col col-12><b>Tipo:</b> {{visita.tipoVisita}}</ion-col>
         </ion-row>
         <ion-row>
-          <ion-col><b>Asignado A:</b> {{visita.empleadoAsignado}}</ion-col>
+          <ion-col *ngIf="visita.empleadoAsignado"><b>Asignado A:</b> {{visita.empleadoAsignado}}</ion-col>
+          <ion-col *ngIf="!visita.empleadoAsignado"><b>Asignado A:</b> NA</ion-col>
         </ion-row>
         <ion-row>
           <ion-col><b>Fecha Pactada: </b> {{visita.fechaPactada | date: 'shortDate'}}</ion-col>
         </ion-row>
         <ion-row>
-          <ion-col><b>Fecha Concreta: </b> {{visita.fecha | date: 'shortDate'}}</ion-col>
+          <ion-col *ngIf="visita.fecha"><b>Fecha Concreta: </b> {{visita.fecha | date: 'shortDate'}}</ion-col>
+          <ion-col *ngIf="!visita.fecha"><b>Fecha Concreta: </b> NA</ion-col>
         </ion-row>
       </ion-grid>
     </ion-card-content>

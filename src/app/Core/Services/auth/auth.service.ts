@@ -24,7 +24,7 @@ export class AuthService {
         name: 'Dummy User',
         roles: ['Contenido1', 'Contenido2' ],
         empresaId: 3006,
-        empleadoId: 1
+        empleadoId: 1027
       });
     } else if (name === 'admin') {
       this.currentUser.next({
@@ -32,7 +32,7 @@ export class AuthService {
         name: 'Admin',
         roles: ['Contenido1', 'Contenido2', 'Contenido3', 'Contenido4'],
         empresaId: 3006,
-        empleadoId: 1
+        empleadoId: 1027
       });
     }
   }

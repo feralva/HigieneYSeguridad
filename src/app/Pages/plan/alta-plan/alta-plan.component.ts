@@ -63,7 +63,7 @@ export class AltaPlanComponent implements OnInit {
     const modal = await this.modalctrl.create({
       component: AltaVisitaModalComponent,
       componentProps: {
-        idCliente: this.clienteSeleccionado
+        idCliente: this.clienteSeleccionado? this.clienteSeleccionado : this.cliente.id
       }
     })
 
