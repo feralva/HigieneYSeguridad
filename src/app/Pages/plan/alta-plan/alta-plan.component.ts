@@ -23,6 +23,7 @@ export class AltaPlanComponent implements OnInit {
   tiposPlan: any[];
   clienteSeleccionado: any;
   tipoPlanSeleccionado: any;
+  cliente: any;
 
   visitas: any[] =[];
 
@@ -36,18 +37,25 @@ export class AltaPlanComponent implements OnInit {
 
   ngOnInit() {
 
-    this.clientes = this.route.snapshot.data['clientes'];
-    this.tiposPlan = this.route.snapshot.data['tiposPlan'];
 
-    this.authService.getUserSubject().subscribe(
-      data => this.currentUser = data,
-      error => console.log(error)
-  );
   }
 
   ionViewWillEnter(){
+    //clientes cuando se accede a alta planes directamente
+    this.clientes = this.route.snapshot.data['clientes'];
+    this.tiposPlan = this.route.snapshot.data['tiposPlan'];
+
+    //Cuando se accede alta plan desde cliente
+    this.cliente = this.route.snapshot.data['cliente'];
+
     this.nombrePagina = 'Plan.Alta.title';
     this.appDataService.changePageName(this.nombrePagina)
+
+    console.log(this.cliente)
+    this.authService.getUserSubject().subscribe(
+      data => this.currentUser = data,
+      error => console.log(error)
+    );
   }
 
   async abrirModalVisita(){

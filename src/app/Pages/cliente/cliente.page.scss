@@ -4,7 +4,10 @@
       position: relative;
       text-align: center;
     }
-  
+
+    ion-card img{
+        max-height: 20em;
+    }
     .card-title {
       position: absolute;
       top: 36%;

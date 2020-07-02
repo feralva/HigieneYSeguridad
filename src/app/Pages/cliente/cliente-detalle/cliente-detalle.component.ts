@@ -14,10 +14,12 @@ import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 })
 export class ClienteDetalleComponent implements OnInit {
 
-  cliente: any = {
+  /* cliente: any = {
     responsable: {},
     direccion: {}
-  };
+  }; */
+  cliente: any;
+  
   nombrePagina: string;
   currentUser: UserLogueado;
   
@@ -27,10 +29,9 @@ export class ClienteDetalleComponent implements OnInit {
 
   ngOnInit() {
     this.cliente = this.route.snapshot.data['cliente'];
-    this.nombrePagina = this.cliente.cliente.nombre;
+    this.nombrePagina = this.cliente.nombre;
     this.appDataService.changePageName(this.nombrePagina);
 
-  
     console.log(this.cliente)
   }
 

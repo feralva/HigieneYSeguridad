@@ -8,19 +8,15 @@ import { AuthService } from '../auth/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ClienteResolver implements Resolve<any[]>{
+export class ClienteEspecificoResolver implements Resolve<any[]>{
 
     constructor(private clienteService: ClienteService, private authService: AuthService){}
 
-    idEmpresa: number;
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any[]>{
-        //const idEmpresa = +route.paramMap.get('id');
+        const idCliente = +route.paramMap.get('id');
 
-        this.authService.getUserSubject().subscribe(
-          data => this.idEmpresa = data.empresaId,
-          error => console.log(error)
-        );
-        return this.clienteService.obtenerClientesEmpresa(this.idEmpresa);
+        return this.clienteService.obtenerCliente(idCliente);
     }
+
 
 }

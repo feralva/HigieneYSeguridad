@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { Cliente } from 'src/app/Models/Cliente';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ClienteService } from './cliente.service';
 import { AuthService } from '../auth/auth.service';
+import { EmpresaService } from './empresa.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClienteResolver implements Resolve<any[]>{
+export class EmpresaClienteResumenResolver implements Resolve<any[]>{
 
-    constructor(private clienteService: ClienteService, private authService: AuthService){}
+    constructor(private empresaService: EmpresaService, private authService: AuthService){}
 
     idEmpresa: number;
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any[]>{
@@ -20,7 +20,7 @@ export class ClienteResolver implements Resolve<any[]>{
           data => this.idEmpresa = data.empresaId,
           error => console.log(error)
         );
-        return this.clienteService.obtenerClientesEmpresa(this.idEmpresa);
+        return this.empresaService.obtenerClientesEmpresaResumen(this.idEmpresa);
     }
 
 }

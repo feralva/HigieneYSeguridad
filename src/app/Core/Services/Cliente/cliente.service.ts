@@ -24,6 +24,10 @@ export class ClienteService {
     return this.http.get<Cliente[]>(environment.UrlBaseApi + `Empresa/${idEmpresa}/Clientes`, this.httpOptions);
   }
 
+  obtenerClientesResumenEmpresa(idEmpresa: number): Observable<Cliente[]> {
+    return this.http.get<Cliente[]>(environment.UrlBaseApi + `Empresa/${idEmpresa}/ClientesResumen`, this.httpOptions);
+  }
+
   obtenerDetalleCliente(idCliente: number): Observable<Cliente> {
     return this.http.get<Cliente>(environment.UrlBaseApi + `Cliente/${idCliente}`, this.httpOptions);
   }
@@ -44,4 +48,8 @@ export class ClienteService {
 
     return this.http.put<any[]>(environment.UrlBaseApi + `Cliente`, {Model: cliente}, this.httpOptions);
   }
+
+  obtenerCliente(idCliente: number): Observable<any[]> {
+    return this.http.get<any[]>(environment.UrlBaseApi + `Cliente/${idCliente}`, this.httpOptions);
+}
 }

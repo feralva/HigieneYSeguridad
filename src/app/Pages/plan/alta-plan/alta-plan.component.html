@@ -12,13 +12,12 @@
        Plan
       </ion-label>
     </ion-item-divider>
-      <ion-item>
+      <ion-item *ngIf="clientes">
         <ion-label position="stacked">Cliente</ion-label>
-        <ion-select style="width: max-content;" name="clienteSeleccionado" (ionChange)="onClienteSelected($event)" [(ngModel)]="clienteSeleccionado" placeholder='Clientes'>
+        <ion-select  style="width: max-content;" name="clienteSeleccionado" (ionChange)="onClienteSelected($event)" [(ngModel)]="clienteSeleccionado" placeholder='Clientes'>
           <ion-select-option *ngFor="let cliente of clientes" [value]="cliente.id">{{cliente.nombre}}</ion-select-option>
         </ion-select>
       </ion-item>
-
       <ion-item>
         <ion-label position="stacked">Tipos Plan</ion-label>
         <ion-select style="width: max-content;" name="rolesSeleccionados" [(ngModel)]="tipoPlanSeleccionado" placeholder='Tipo Plan'>

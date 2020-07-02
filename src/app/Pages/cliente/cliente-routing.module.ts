@@ -11,12 +11,16 @@ import { ClientePlanesResolver } from 'src/app/Core/Services/Cliente/clientePlan
 import { ClienteEstablecimientosComponent } from './cliente-establecimientos/cliente-establecimientos.component';
 import { ClienteEstablecimientosResolver } from 'src/app/Core/Services/Cliente/clienteEstablecimiento-resolver.service';
 import { EstablecimientoAltaComponent } from './establecimiento-alta/establecimiento-alta.component';
+import { AltaPlanComponent } from '../plan/alta-plan/alta-plan.component';
+import { PlanAltaTiposPlanResolverService } from 'src/app/Core/Services/Plan/planAltaTiposPlan-resolver.service';
+import { ClienteEspecificoResolver } from 'src/app/Core/Services/Cliente/clienteEspecifico-resolver.service';
+import { EmpresaClienteResumenResolver } from 'src/app/Core/Services/Empresa/empresaClientesResumen-resolver.service';
 
 const routes: Routes = [
   {
     path: '',
     component: ClientePage,
-    resolve: {clientes: ClienteResolver}
+    resolve: {clientes: EmpresaClienteResumenResolver}
   },
   {
     path: ':id/detalle',
@@ -32,6 +36,14 @@ const routes: Routes = [
     path: ':id/planes',
     component: ClientePlanesComponent,
     resolve: {planes: ClientePlanesResolver}
+  },
+  {
+    path: ':id/planes/alta',
+    component: AltaPlanComponent,
+    resolve: {
+      cliente: ClienteEspecificoResolver,
+      tiposPlan: PlanAltaTiposPlanResolverService,
+    }
   },
   {
     path: ':id/establecimientos',
