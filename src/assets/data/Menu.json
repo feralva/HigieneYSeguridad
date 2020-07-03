@@ -18,6 +18,12 @@
         "role": ["Contenido1"]
     },
     {
+        "icon": "thermometer",
+        "name": "Mis Visitas",
+        "url": "/visita/Pendientes",
+        "role": ["Contenido1"]
+    },
+    {
         "icon": "people-circle",
         "name": "Empleados",
         "url": "/empleado",
@@ -58,6 +64,12 @@
         "name": "Mis Visitas Pendientes",
         "url": "visita/Pendientes",
         "role": ["Contenido1"]
+    },
+    {
+        "icon": "log-out",
+        "name": "Log Out",
+        "url": "#",
+        "role": []
     }
 
 
