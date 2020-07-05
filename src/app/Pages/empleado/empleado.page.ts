@@ -28,38 +28,47 @@ export class EmpleadoPage implements OnInit {
     public toastController: ToastController) {}
 
 
-  ngOnInit() {
+  ngOnInit() {}
+  
+  doRefresh(event) {
+    
+    this.obtenerEmpleadosEmpresa();
+    event.target.complete();
+  }
+
+  private obtenerEmpleadosEmpresa() {
+    this.empresaService.ObtenerEmpleadosEmpresa(this.currentUser.empresaId).subscribe(
+      data => {
+
+        this.empleados = data;
+        console.log(data);
+        this.empleados.forEach(empleado => {
+          let roles: string[] = [];
+          this.rolService.obtenerRolesUsuario(empleado.usuarioId).subscribe(
+            data => {
+              data.forEach(familia => {
+                roles.push(familia.idFamilia);
+              });
+            },
+            error => console.log(error)
+          );
+          empleado.roles = roles;
+        });
+
+      },
+      error => console.log(error)
+    );
+  }
+
+  ionViewWillEnter(){
+    this.nombrePagina = 'Empleado.title';
+    this.appDataService.changePageName(this.nombrePagina);
 
     this.authService.getUserSubject().subscribe(
       data => this.currentUser = data,
       error => console.log(error)
     );
 
-    this.empresaService.ObtenerEmpleadosEmpresa(this.currentUser.empresaId).subscribe(
-      data => {
-        
-        this.empleados = data
-        console.log(data)
-        this.empleados.forEach(empleado => {
-          let roles: string[] = []
-           this.rolService.obtenerRolesUsuario(empleado.usuarioId).subscribe(
-            data => {
-              data.forEach(familia =>{
-                roles.push(familia.idFamilia)
-              })
-            },
-            error => console.log(error)
-          )
-          empleado.roles = roles;
-        });
-      
-      },
-      error => console.log(error)
-    );
-  }
-  
-  ionViewWillEnter(){
-    this.nombrePagina = 'Empleado.title';
-    this.appDataService.changePageName(this.nombrePagina);
+    this.obtenerEmpleadosEmpresa();
   }
 }
