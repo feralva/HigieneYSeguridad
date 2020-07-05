@@ -8,6 +8,9 @@ import { PlanesEmpresaResolverService } from 'src/app/Core/Services/Plan/planes-
 import { AltaPlanComponent } from './alta-plan/alta-plan.component';
 import { PlanAltaClienteResolverService } from 'src/app/Core/Services/Plan/planAltaCliente-resolver.service';
 import { PlanAltaTiposPlanResolverService } from 'src/app/Core/Services/Plan/planAltaTiposPlan-resolver.service';
+import { AltaVisitaPlanComponent } from './alta-visita-plan/alta-visita-plan.component';
+import { ClienteEstablecimientosResolver } from 'src/app/Core/Services/Cliente/clienteEstablecimiento-resolver.service';
+import { VisitaTiposVisitaResolverService } from 'src/app/Core/Services/Visita/visitaTiposVisita-resolver.service';
 
 const routes: Routes = [
   {
@@ -19,6 +22,11 @@ const routes: Routes = [
     path: ':id/detalle',
     component: DetallePlanComponent,
     resolve: {plan: PlanDetalleResolverService}
+  },
+  {
+    path: ':id/visita/alta',
+    component: AltaVisitaPlanComponent,
+    resolve: {tiposVisita: VisitaTiposVisitaResolverService}
   },
   {
     path: 'alta',

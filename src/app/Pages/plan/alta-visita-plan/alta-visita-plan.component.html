@@ -1,0 +1,28 @@
+<ion-content>
+  <ion-item-divider color="secondary">
+    <ion-label>
+    Visita
+    </ion-label>
+  </ion-item-divider>
+  <ion-item>
+    <ion-label position="stacked">Establecimientos</ion-label>
+    <ion-select style="width: max-content;" name="establecimientoSeleccionado" [(ngModel)]="establecimientoSeleccionado" placeholder='Establecimiento'>
+      <ion-select-option *ngFor="let establecimiento of establecimientos" [value]="establecimiento.id">{{establecimiento.nombre}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Tipo Visita</ion-label>
+    <ion-select style="width: max-content;" name="tipoVisitaSeleccionada" [(ngModel)]="tipoVisitaSeleccionada" placeholder='Tipo Visita'>
+      <ion-select-option *ngFor="let tipoVisita of tiposVisitas" [value]="tipoVisita.id">{{tipoVisita.descripcion}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Mes Pactado</ion-label>
+    <ion-datetime [(ngModel)]="mesPactado" displayFormat="MM"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>Año Pactado</ion-label>
+    <ion-datetime [(ngModel)]="anioPactado" displayFormat="YYYY" [min]="anioInicial" [max]="anioInicial + 1"></ion-datetime>
+  </ion-item>
+  <ion-button shape="round" fill="outline" (click)="altaVisita()" >Agregar Visita</ion-button>
+</ion-content>

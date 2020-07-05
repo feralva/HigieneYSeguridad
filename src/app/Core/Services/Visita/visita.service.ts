@@ -25,4 +25,8 @@ export class VisitaService {
   obtenerTiposVisita(): Observable<any[]> {
     return this.http.get<any[]>(environment.UrlBaseApi + `Visita/Tipos`, this.httpOptions);
   }
+
+  alta(visita:any) : Observable<any> {
+    return this.http.post<any>(environment.UrlBaseApi + 'Visita', {Model: visita}, this.httpOptions); 
+  }
 }

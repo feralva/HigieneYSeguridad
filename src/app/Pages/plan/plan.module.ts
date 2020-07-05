@@ -11,6 +11,7 @@ import { DetallePlanComponent } from './detalle-plan/detalle-plan.component';
 import { AltaPlanComponent } from './alta-plan/alta-plan.component';
 import { VisitaPageModule } from '../visita/visita.module';
 import { AltaVisitaModalComponent } from '../Visita/alta-visita-modal/alta-visita-modal.component';
+import { AltaVisitaPlanComponent } from './alta-visita-plan/alta-visita-plan.component';
 
 @NgModule({
   entryComponents: [AltaVisitaModalComponent],
@@ -21,6 +22,6 @@ import { AltaVisitaModalComponent } from '../Visita/alta-visita-modal/alta-visit
     PlanPageRoutingModule,
     VisitaPageModule
   ],
-  declarations: [PlanPage, DetallePlanComponent, AltaPlanComponent, AltaVisitaModalComponent]
+  declarations: [PlanPage, DetallePlanComponent, AltaPlanComponent, AltaVisitaModalComponent, AltaVisitaPlanComponent]
 })
 export class PlanPageModule {}
