@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { UserAuthenticatedGuard } from './Core/Guards/user-authenticated.guard';
 
 const routes: Routes = [
   {
@@ -10,6 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
+    canActivate: [UserAuthenticatedGuard],
     loadChildren: () => import('./Pages/home/home.module').then( m => m.HomePageModule)
   },
   {
@@ -51,6 +53,10 @@ const routes: Routes = [
   {
     path: 'ubicacion',
     loadChildren: () => import('./Pages/ubicacion/ubicacion.module').then( m => m.UbicacionPageModule)
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./Pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
   }
 ];
 

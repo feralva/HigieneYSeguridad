@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { LanguagePopupPageRoutingModule } from 'src/app/Pages/language-popup/language-popup-routing.module';
 
@@ -17,24 +17,45 @@ export class AuthService {
   currentUser: BehaviorSubject<UserLogueado> = new BehaviorSubject(null);
   constructor() { }
   //TODO Funcion dummy login, generar la funcion real
-  login(name) {
-    if (name === 'user') {
-      this.currentUser.next({
+  login(usuarioFromForm): Observable<any> {
+    var usuario;
+    if (usuarioFromForm.email === 'user') {
+      usuario = {
         idUsuario: 'fernando@Ternium.com',
-        name: 'Dummy User',
+        name: 'Fernando Alvarez',
         roles: ['Contenido1', 'Contenido2' ],
         empresaId: 3006,
-        empleadoId: 1027
-      });
-    } else if (name === 'admin') {
-      this.currentUser.next({
+        empleadoId: 1027,
+        empresaNombre: 'Disney',
+        urlFotoEmpleado: 'https://firebasestorage.googleapis.com/v0/b/higiene-y-seguridad-feaf5.appspot.com/o/FotosEmpleados%2F3006%2FFernando1%40enterprise.com.jpg?alt=media&token=cb9ec6d5-5982-4b5c-8224-fa250416631a',
+        urlFotoEmpresa: 'https://firebasestorage.googleapis.com/v0/b/higiene-y-seguridad-feaf5.appspot.com/o/FotosEmpresas%2F3006.jpg?alt=media&token=3dcca304-e941-4dfc-b055-f8affe931681'
+      } 
+    } else if (usuarioFromForm.email === 'admin') {
+      usuario = {
         idUsuario: 'fernando@Ternium.com',
-        name: 'Admin',
+        name: 'Fernando Alvarez',
         roles: ['Contenido1', 'Contenido2', 'Contenido3', 'Contenido4'],
         empresaId: 3006,
-        empleadoId: 1027
-      });
+        empleadoId: 1027,
+        empresaNombre: 'Disney',
+        urlFotoEmpleado: 'https://firebasestorage.googleapis.com/v0/b/higiene-y-seguridad-feaf5.appspot.com/o/FotosEmpleados%2F3006%2FFernando1%40enterprise.com.jpg?alt=media&token=cb9ec6d5-5982-4b5c-8224-fa250416631a',
+        urlFotoEmpresa: 'https://firebasestorage.googleapis.com/v0/b/higiene-y-seguridad-feaf5.appspot.com/o/FotosEmpresas%2F3006.jpg?alt=media&token=3dcca304-e941-4dfc-b055-f8affe931681'
+      }
+    } else {
+      usuario = {
+        idUsuario: 'Anonimo',
+        name: 'Anonimo',
+        roles: [],
+        empresaId: 3006,
+        empleadoId: 1027,
+        empresaNombre: 'Disney',
+        urlFotoEmpleado: 'https://firebasestorage.googleapis.com/v0/b/higiene-y-seguridad-feaf5.appspot.com/o/FotosEmpleados%2F3006%2FFernando1%40enterprise.com.jpg?alt=media&token=cb9ec6d5-5982-4b5c-8224-fa250416631a',
+        urlFotoEmpresa: 'https://firebasestorage.googleapis.com/v0/b/higiene-y-seguridad-feaf5.appspot.com/o/FotosEmpresas%2F3006.jpg?alt=media&token=3dcca304-e941-4dfc-b055-f8affe931681'
+      }
     }
+
+    this.currentUser.next(usuario);
+    return this.currentUser.asObservable();
   }
 
   getUserSubject() {
@@ -55,7 +76,6 @@ export class AuthService {
         return false;
       }
     }
-
     return true;
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ComponenteMenu } from '../../Models/ComponenteMenu';
 import { MenuService } from '../../Services/menu.service';
 import { Observable } from 'rxjs/internal/Observable';
+import { AuthService } from '../../Services/auth/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -11,10 +12,24 @@ import { Observable } from 'rxjs/internal/Observable';
 export class MenuComponent implements OnInit {
   public selectedIndex = 0;
   public MenuItems: Observable<ComponenteMenu[]>;
-  constructor(private menuService: MenuService) {}
+  currentUser: any;
+
+  constructor(private menuService: MenuService, private authService: AuthService) {}
 
   ngOnInit() {
-    this.MenuItems = this.menuService.ObtenerItemsMenuPrincipal();
+    //this.MenuItems = this.menuService.ObtenerItemsMenuPrincipal();
+
+    this.authService.getUserSubject().subscribe(
+      data => {
+        console.log('cambio User Logueado')
+        this.currentUser = data
+        this.MenuItems = null;
+        this.MenuItems = this.menuService.ObtenerItemsMenuPrincipal();
+        console.log(this.currentUser)
+      },
+      error => console.log(error)
+    );
+
+  }
   }
 
-}

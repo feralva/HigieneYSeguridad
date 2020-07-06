@@ -20,7 +20,8 @@ export class AppComponent implements OnInit {
 
   public selectedIndex = 0;
   pageName: string;
-
+  currentUser: any;
+  
   constructor(
     private platform: Platform, private loaderService: LoaderService,
     private splashScreen: SplashScreen,
@@ -37,6 +38,12 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.appDataService.currentPageName.subscribe(pageNameCurrent => this.pageName = pageNameCurrent);
 
+    this.auth.getUserSubject().subscribe(
+      (res)=>{
+      this.currentUser = res;
+      },
+      (error) => console.log(error)
+    );
     
   }
 
@@ -64,7 +71,18 @@ export class AppComponent implements OnInit {
         }
       })
       this.languageService.setInitialAppLanguage();
-      this.auth.login('user');
+
+/*       this.auth.currentUser.subscribe(
+        data=> {
+          if(data){
+            this.router.navigate(['home'])
+          } else{
+            this.router.navigate(['login'])
+          }
+        }
+      ) */
+
+      //this.auth.login('user');
     });
   }
 

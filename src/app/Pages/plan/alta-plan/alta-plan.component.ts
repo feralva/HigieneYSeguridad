@@ -114,7 +114,7 @@ export class AltaPlanComponent implements OnInit {
     var plan = {
       TipoPlanId: this.tipoPlanSeleccionado,
       PlanesEstablecimientos:[],
-      ClienteId: this.clienteSeleccionado,
+      ClienteId: this.clienteSeleccionado? this.clienteSeleccionado: this.cliente.id,
       Visitas:[],
       FechaCreacion: new Date(),
       EmpleadoId: this.currentUser.empleadoId,
