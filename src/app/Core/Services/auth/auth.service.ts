@@ -2,22 +2,34 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { LanguagePopupPageRoutingModule } from 'src/app/Pages/language-popup/language-popup-routing.module';
+import * as moment from "moment";
+import { HashingService } from '../hashing.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   
-  
+  constructor(private hashingService: HashingService) { }
+
   encriptarContrasenia(contrasenia: string): string {
-    //TODO implementar encriptacion real
-    return contrasenia;
+    
+    return this.hashingService.hashearString(contrasenia);
   }
 
+  private setSession(authResult) {
+    const expiresAt = moment().add(authResult.expiresIn,'second');
+
+    localStorage.setItem('id_token', authResult.idToken);
+    localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
+}  
+
   currentUser: BehaviorSubject<UserLogueado> = new BehaviorSubject(null);
-  constructor() { }
+
   //TODO Funcion dummy login, generar la funcion real
   login(usuarioFromForm): Observable<any> {
+
+    this.encriptarContrasenia(usuarioFromForm.password)
     var usuario;
     if (usuarioFromForm.email === 'user') {
       usuario = {
