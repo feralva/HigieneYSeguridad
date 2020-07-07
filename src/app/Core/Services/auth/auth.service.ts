@@ -4,13 +4,16 @@ import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { LanguagePopupPageRoutingModule } from 'src/app/Pages/language-popup/language-popup-routing.module';
 import * as moment from "moment";
 import { HashingService } from '../hashing.service';
+import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   
-  constructor(private hashingService: HashingService) { }
+  constructor(private hashingService: HashingService, private router: Router, private http: HttpClient) { }
 
   encriptarContrasenia(contrasenia: string): string {
     
@@ -18,10 +21,10 @@ export class AuthService {
   }
 
   private setSession(authResult) {
-    const expiresAt = moment().add(authResult.expiresIn,'second');
+    //const expiresAt = moment().add(authResult.expiresIn,'second');
 
-    localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
+    localStorage.setItem('id_token', authResult.token);
+    localStorage.setItem("expires_at", authResult.expiration);
 }  
 
   currentUser: BehaviorSubject<UserLogueado> = new BehaviorSubject(null);
@@ -31,11 +34,28 @@ export class AuthService {
 
     this.encriptarContrasenia(usuarioFromForm.password)
     var usuario;
+
+    var dataToken;
+    this.http.post<any>(environment.UrlBaseApi +'Authenticate/Login', { username: usuarioFromForm.email, password: usuarioFromForm.password }, 
+      {headers: new HttpHeaders({ 'Content-Type': 'application/json' })})
+      .subscribe(
+        data => {
+          console.log(data)
+          dataToken = data
+          this.setSession(data)
+          //TODO Obtener informacion Usuario
+        },
+        (error) => {
+          // TODO Tomar el error code y mostrar mensaje de error
+          console.log(error)
+        }
+    )
+
     if (usuarioFromForm.email === 'user') {
       usuario = {
         idUsuario: 'fernando@Ternium.com',
         name: 'Fernando Alvarez',
-        roles: ['Contenido1', 'Contenido2' ],
+        roles: ['Auditor','Coordinador'],
         empresaId: 3006,
         empleadoId: 1027,
         empresaNombre: 'Disney',
@@ -46,7 +66,7 @@ export class AuthService {
       usuario = {
         idUsuario: 'fernando@Ternium.com',
         name: 'Fernando Alvarez',
-        roles: ['Contenido1', 'Contenido2', 'Contenido3', 'Contenido4'],
+        roles:  ['Auditor','Coordinador'],
         empresaId: 3006,
         empleadoId: 1027,
         empresaNombre: 'Disney',
@@ -79,7 +99,10 @@ export class AuthService {
   }
 
   logout() {
+    localStorage.remove('id_token')
+    localStorage.remove('expires_at')
     this.currentUser.next(null);
+    this.router.navigateByUrl('/login')
   }
 
   hasRoles(roles: string[]): boolean {
@@ -90,5 +113,6 @@ export class AuthService {
     }
     return true;
   }
+
 
 }

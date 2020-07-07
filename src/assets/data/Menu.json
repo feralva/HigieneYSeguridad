@@ -3,81 +3,72 @@
         "icon": "bar-chart",
         "name": "Dash Board",
         "url": "#",
-        "role": ["Contenido1"]
+        "role": ["Coordinador"]
     },
     {
         "icon": "briefcase",
         "name": "Planes",
         "url": "/plan",
-        "role": ["Contenido1"]
+        "role": ["Coordinador"]
     },
     {
         "icon": "thermometer",
         "name": "Visitas",
         "url": "/visita",
-        "role": ["Contenido1"]
+        "role": ["Coordinador"]
     },
     {
         "icon": "thermometer",
         "name": "Mis Visitas",
         "url": "/visita/Pendientes",
-        "role": ["Contenido1"]
+        "role": ["Auditor"]
     },
     {
         "icon": "people-circle",
         "name": "Empleados",
         "url": "/empleado",
-        "role": ["Contenido1"]
+        "role": ["Coordinador"]
     },
     {
         "icon": "business",
         "name": "Clientes",
         "url": "/cliente",
-        "role": ["Contenido1"]
+        "role": ["Auditor","Coordinador"]
     },
     {
         "icon": "card",
         "name": "Licencia",
         "url": "#",
-        "role": ["Contenido1"]
+        "role": ["Coordinador"]
     },
     {
         "icon": "card",
         "name": "Empresa.title",
         "url": "/empresa",
-        "role": ["Contenido1"]
+        "role": ["Coordinador"]
     },
     {
         "icon": "business",
         "name": "Establecimiento.title",
         "url": "/establecimiento",
-        "role": ["Contenido1"]
+        "role": ["Coordinador"]
     },
     {
         "icon": "card",
         "name": "Equipos Medición",
         "url": "equiposMedicion",
-        "role": ["Contenido1"]
+        "role": ["Coordinador"]
     },
     {
         "icon": "card",
         "name": "Mis Visitas Pendientes",
         "url": "visita/Pendientes",
-        "role": ["Contenido1"]
+        "role": ["Auditor","Coordinador"]
     },
     {
         "icon": "log-out",
         "name": "Log Out",
         "url": "#",
-        "role": []
+        "role": ["Auditor","Coordinador"]
     }
-
-
-
-    
-
-
-
-    
-
 ]
