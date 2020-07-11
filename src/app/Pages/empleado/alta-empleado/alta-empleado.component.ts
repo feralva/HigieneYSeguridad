@@ -64,7 +64,10 @@ export class AltaEmpleadoComponent implements OnInit {
     );
 
     this.authService.getUserSubject().subscribe(
-        data => this.currentUser = data,
+        data => {
+          console.log(data)
+          this.currentUser = data
+        },
         error => console.log(error)
     );
   }
@@ -128,6 +131,7 @@ export class AltaEmpleadoComponent implements OnInit {
 
   onSubmit(form: NgForm) {
 
+    //console.log(this.currentUser)
     this.empleadoModel.empresaId = this.currentUser.empresaId
     this.empleadoModel.usuario = { IdUsuario: this.empleadoModel.correoElectronico
       , contraseña: this.authService.encriptarContrasenia(this.empleadoModel.contrasenia), UsuarioRoles: []};
