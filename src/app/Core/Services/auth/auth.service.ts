@@ -30,20 +30,28 @@ export class AuthService {
   currentUser: BehaviorSubject<UserLogueado> = new BehaviorSubject(null);
 
   //TODO Funcion dummy login, generar la funcion real
-  login(usuarioFromForm): Observable<any> {
+  login(usuarioFromForm) {
 
-    this.encriptarContrasenia(usuarioFromForm.password)
     var usuario;
-
     var dataToken;
-    this.http.post<any>(environment.UrlBaseApi +'Authenticate/Login', { username: usuarioFromForm.email, password: usuarioFromForm.password }, 
+
+    this.http.post<any>(environment.UrlBaseApi +'Authenticate/Login', { username: usuarioFromForm.email, password: this.encriptarContrasenia(usuarioFromForm.password) }, 
       {headers: new HttpHeaders({ 'Content-Type': 'application/json' })})
       .subscribe(
         data => {
           console.log(data)
           dataToken = data
           this.setSession(data)
-          //TODO Obtener informacion Usuario
+          this.obtenerDetalleUsuario(usuarioFromForm.email).subscribe(
+            data=>{
+              //console.log(data)
+              usuario = data;
+              //console.log(usuario)
+              this.currentUser.next(usuario);
+              //this.currentUser.asObservable();
+            }, 
+            (error) => console.log(error)
+          )
         },
         (error) => {
           // TODO Tomar el error code y mostrar mensaje de error
@@ -51,7 +59,9 @@ export class AuthService {
         }
     )
 
-    if (usuarioFromForm.email === 'user') {
+    return this.currentUser.asObservable();
+
+    /* if (usuarioFromForm.email === 'user') {
       usuario = {
         idUsuario: 'fernando@Ternium.com',
         name: 'Fernando Alvarez',
@@ -62,7 +72,7 @@ export class AuthService {
         urlFotoEmpleado: 'https://firebasestorage.googleapis.com/v0/b/higiene-y-seguridad-feaf5.appspot.com/o/FotosEmpleados%2F3006%2FFernando1%40enterprise.com.jpg?alt=media&token=cb9ec6d5-5982-4b5c-8224-fa250416631a',
         urlFotoEmpresa: 'https://firebasestorage.googleapis.com/v0/b/higiene-y-seguridad-feaf5.appspot.com/o/FotosEmpresas%2F3006.jpg?alt=media&token=3dcca304-e941-4dfc-b055-f8affe931681'
       } 
-    } else if (usuarioFromForm.email === 'admin') {
+    } else if (usuarioFromForm.email === 'admin' || usuarioFromForm.email === 'Fernando1@enterprise.com') {
       usuario = {
         idUsuario: 'fernando@Ternium.com',
         name: 'Fernando Alvarez',
@@ -84,10 +94,9 @@ export class AuthService {
         urlFotoEmpleado: 'https://firebasestorage.googleapis.com/v0/b/higiene-y-seguridad-feaf5.appspot.com/o/FotosEmpleados%2F3006%2FFernando1%40enterprise.com.jpg?alt=media&token=cb9ec6d5-5982-4b5c-8224-fa250416631a',
         urlFotoEmpresa: 'https://firebasestorage.googleapis.com/v0/b/higiene-y-seguridad-feaf5.appspot.com/o/FotosEmpresas%2F3006.jpg?alt=media&token=3dcca304-e941-4dfc-b055-f8affe931681'
       }
-    }
+    } */
 
-    this.currentUser.next(usuario);
-    return this.currentUser.asObservable();
+    
   }
 
   getUserSubject() {
@@ -96,6 +105,12 @@ export class AuthService {
 
   isLoggedIn() {
     return !!this.currentUser.value;
+  }
+
+  obtenerDetalleUsuario(usuario: string): Observable<any>{
+
+    return this.http.get<any>(environment.UrlBaseApi + `Authenticate/user/${usuario}`);
+ 
   }
 
   logout() {

@@ -21,11 +21,11 @@ export class MenuComponent implements OnInit {
 
     this.authService.getUserSubject().subscribe(
       data => {
-        console.log('cambio User Logueado')
+        //console.log('cambio User Logueado')
         this.currentUser = data
         this.MenuItems = null;
         this.MenuItems = this.menuService.ObtenerItemsMenuPrincipal();
-        console.log(this.currentUser)
+        //console.log(this.currentUser)
       },
       error => console.log(error)
     );
