@@ -1,15 +1,27 @@
 <ion-menu contentId="main-content" type="overlay">
-  <ion-content>
+  <ion-content >
     <ion-list id="inbox-list">
 
-      <ion-item lines="none">  
-        <ion-avatar slot="start">  
-          <img [src]="currentUser.urlFotoEmpresa">
-        </ion-avatar>  
-         <ion-label>{{currentUser.name}}</ion-label> 
-      </ion-item>  
+      <ion-row >
+        <ion-col offset="3" >
+          <ion-item lines="none" style="text-align: center;">  
+            <ion-avatar slot="start" class="ion-align-items-center" style="width: 8em;height: 8em; ">  
+              <img [src]="currentUser.urlFotoEmpresa">
+            </ion-avatar>  
+          </ion-item> 
+        </ion-col>
+      </ion-row>
 
+      <ion-row >
+        <ion-col offset="3" >
+          <ion-item lines="none" >  
+            <ion-label style="font-weight: bold;">{{currentUser.name}}</ion-label> 
+          </ion-item>  
+        </ion-col>
+      </ion-row>
 
+      <hr style="border:black;">
+      
       <ion-menu-toggle auto-hide="false" *ngFor="let p of MenuItems | async ; let i = index">
         <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="p.url" lines="none" 
         detail="false" [class.selected]="selectedIndex == i" *appHasRole="p.role">
