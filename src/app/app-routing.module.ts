@@ -24,38 +24,47 @@ const routes: Routes = [
   },
   {
     path: 'empleado',
+    canActivate: [UserAuthenticatedGuard],
     loadChildren: () => import('./Pages/empleado/empleado.module').then( m => m.EmpleadoPageModule)
   },
   {
     path: 'equiposMedicion',
+    canActivate: [UserAuthenticatedGuard],
     loadChildren: () => import('./Pages/EquipoMedicion/equipos-medicion/equipos-medicion.module').then( m => m.EquiposMedicionPageModule)
   },
   {
     path: 'cliente',
+    canActivate: [UserAuthenticatedGuard],
     loadChildren: () => import('./Pages/cliente/cliente.module').then( m => m.ClientePageModule)
   },
   {
     path: 'visita',
+    canActivate: [UserAuthenticatedGuard],
     loadChildren: () => import('./Pages/visita/visita.module').then( m => m.VisitaPageModule)
   },
   {
     path: 'plan',
+    canActivate: [UserAuthenticatedGuard],
     loadChildren: () => import('./Pages/plan/plan.module').then( m => m.PlanPageModule)
   },
   {
     path: 'empresa',
+    canActivate: [UserAuthenticatedGuard],
     loadChildren: () => import('./Pages/empresa/empresa.module').then( m => m.EmpresaPageModule)
   },
   {
     path: 'establecimiento',
+    canActivate: [UserAuthenticatedGuard],
     loadChildren: () => import('./Pages/establecimiento/establecimiento.module').then( m => m.EstablecimientoPageModule)
   },
   {
     path: 'ubicacion',
+    canActivate: [UserAuthenticatedGuard],
     loadChildren: () => import('./Pages/ubicacion/ubicacion.module').then( m => m.UbicacionPageModule)
   },
   {
     path: 'dashboard',
+    canActivate: [UserAuthenticatedGuard],
     loadChildren: () => import('./Pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
   }
 ];
