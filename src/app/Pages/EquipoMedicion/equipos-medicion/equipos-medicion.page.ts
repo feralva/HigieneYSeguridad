@@ -39,5 +39,13 @@ export class EquiposMedicionPage implements OnInit {
     )
   }
 
+  doRefresh(event) {
+    
+    this.equipoMedicionService.ObtenerEquiposMedicionTotalizadosEmpresa(this.currentUser.empresaId).subscribe(
+      data => this.equiposTotalizados = data,
+      (error) => console.log(error)
+    );
+    event.target.complete();
+  }
 
 }

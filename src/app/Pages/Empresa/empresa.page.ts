@@ -28,4 +28,13 @@ export class EmpresaPage implements OnInit {
     this.appDataService.changePageName(this.nombrePagina);
   }
 
+  doRefresh(event) {
+    
+    this.empresaService.ObtenerEmpresas().subscribe(
+      data => this.empresas = data,
+      (error) => console.log(error)
+    );
+    event.target.complete();
+  }
+
 }

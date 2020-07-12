@@ -33,7 +33,6 @@ export class PlanPage implements OnInit {
   }
 
   doRefresh(event) {
-    console.log('Begin async operation');
 
     var id = +this.route.snapshot.paramMap.get('id')
 
@@ -41,6 +40,8 @@ export class PlanPage implements OnInit {
       data => this.planes = data,
       (error) => console.log(error)
     );
+
+    event.target.complete();
   }
 
 }

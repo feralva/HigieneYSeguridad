@@ -5,6 +5,7 @@ import { VisitaService } from 'src/app/Core/Services/Visita/visita.service';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { UserLogueado } from 'src/app/Models/UserLogueado';
 
 @Component({
   selector: 'app-visita',
@@ -14,6 +15,8 @@ import { NavController } from '@ionic/angular';
 export class VisitaPage implements OnInit {
   nombrePagina;
   visitas: any[];
+  currentUser: UserLogueado;
+  
   constructor(private translate: TranslateService, private route: ActivatedRoute,
     private appDataService: AppDataService,private router: Router, public navCtrl: NavController,
     private visitaService: VisitaService, private authService: AuthService) { }
@@ -24,6 +27,10 @@ export class VisitaPage implements OnInit {
 
     this.visitas = this.route.snapshot.data['visitas'];
  
+    this.authService.getUserSubject().subscribe(
+      data => this.currentUser = data,
+      error => console.log(error)
+    );
     console.log(this.visitas)
   }
 
@@ -32,5 +39,12 @@ export class VisitaPage implements OnInit {
     //this.navCtrl.navigateForward(['/visita',id, 'detalle']);
     this.router.navigate(['/home'])
   }
-
+  doRefresh(event) {
+    
+    this.visitaService.obtenerVisitasEmpresa(this.currentUser.empresaId).subscribe(
+      data => this.visitas = data,
+      (error) => console.log(error)
+    );
+    event.target.complete();
+  }
 }

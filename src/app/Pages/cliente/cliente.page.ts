@@ -24,6 +24,11 @@ export class ClientePage implements OnInit {
 
   ngOnInit() {
     this.clientes = this.route.snapshot.data['clientes'];
+
+    this.authService.getUserSubject().subscribe(
+      data => this.currentUser = data,
+      error => console.log(error)
+    );
     console.log(this.clientes)
   }
 
@@ -32,4 +37,12 @@ export class ClientePage implements OnInit {
     this.appDataService.changePageName(this.nombrePagina);
   }
 
+  doRefresh(event) {
+    
+    this.clienteService.obtenerClientesEmpresa(this.currentUser.empresaId).subscribe(
+      data => this.clientes = data,
+      (error) => console.log(error)
+    );
+    event.target.complete();
+  }
 }

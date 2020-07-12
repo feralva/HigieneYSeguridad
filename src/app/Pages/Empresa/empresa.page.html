@@ -6,9 +6,9 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-<!--   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
-  </ion-refresher> -->
+  </ion-refresher>
   <ion-list *ngIf="empresas.length > 0"> 
     <ion-item-sliding *ngFor="let empresa of empresas">
       <ion-item>

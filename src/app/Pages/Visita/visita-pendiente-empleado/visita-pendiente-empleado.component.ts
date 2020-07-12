@@ -24,8 +24,20 @@ export class VisitaPendienteEmpleadoComponent implements OnInit {
     this.visitas = this.route.snapshot.data['visitas'];
     this.nombrePagina = 'Visitas.Pendientes.title';
     this.appDataService.changePageName(this.nombrePagina);
-  
+    this.authService.getUserSubject().subscribe(
+      data => this.currentUser = data,
+      error => console.log(error)
+    );
     console.log(this.visitas)
+  }
+
+  doRefresh(event) {
+    
+    this.visitaService.obtenerVisitasPendientesEmpleado(this.currentUser.empleadoId).subscribe(
+      data => this.visitas = data,
+      (error) => console.log(error)
+    );
+    event.target.complete();
   }
 
 }

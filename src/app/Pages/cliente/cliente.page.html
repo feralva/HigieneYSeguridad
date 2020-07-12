@@ -6,7 +6,9 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="card-background-page">
-
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-card *ngFor="let cliente of clientes" [routerLink]="[cliente.id, 'detalle']" >
     <img [src]="cliente.urlFoto"/>
     <div class="card-title"><b>{{cliente.nombre}}</b></div>

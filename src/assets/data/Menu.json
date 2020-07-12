@@ -52,11 +52,5 @@
         "name": "Equipos Medición",
         "url": "equiposMedicion",
         "role": ["Coordinador"]
-    },
-    {
-        "icon": "card",
-        "name": "Mis Visitas Pendientes",
-        "url": "visita/Pendientes",
-        "role": ["Auditor","Coordinador"]
     }
 ]
