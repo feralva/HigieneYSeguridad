@@ -9,6 +9,7 @@ import { EmpresaPageRoutingModule } from './empresa-routing.module';
 import { EmpresaPage } from './empresa.page';
 import { AltaEmpresaPage } from './alta-empresa/alta-empresa.page';
 import { IonicSelectableModule } from 'ionic-selectable';
+import { EditarEmpresaComponent } from './editar-empresa/editar-empresa.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -17,6 +18,6 @@ import { IonicSelectableModule } from 'ionic-selectable';
     EmpresaPageRoutingModule,
     IonicSelectableModule
   ],
-  declarations: [EmpresaPage, AltaEmpresaPage]
+  declarations: [EmpresaPage, AltaEmpresaPage, EditarEmpresaComponent]
 })
 export class EmpresaPageModule {}

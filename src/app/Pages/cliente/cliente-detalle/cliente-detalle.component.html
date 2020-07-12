@@ -43,11 +43,11 @@
       <b>Detalles</b>
     </ion-label>
   </ion-item-divider>
-  <ion-item button [routerLink]="['/cliente', cliente.id,'planes']">
+  <ion-item button [routerLink]="['/cliente', cliente.id,'planes']" detail="true">
     <ion-icon name="document-text"></ion-icon>
       Planes
   </ion-item>
-  <ion-item button [routerLink]="['/cliente', cliente.id,'establecimientos']">
+  <ion-item button [routerLink]="['/cliente', cliente.id,'establecimientos']" detail="true">
     <ion-icon name="home"></ion-icon>
       Establecimientos
   </ion-item>
