@@ -48,12 +48,6 @@
         "role": ["Coordinador"]
     },
     {
-        "icon": "business",
-        "name": "Establecimiento.title",
-        "url": "/establecimiento",
-        "role": ["Coordinador"]
-    },
-    {
         "icon": "card",
         "name": "Equipos Medición",
         "url": "equiposMedicion",
