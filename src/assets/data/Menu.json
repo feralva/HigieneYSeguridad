@@ -64,11 +64,5 @@
         "name": "Mis Visitas Pendientes",
         "url": "visita/Pendientes",
         "role": ["Auditor","Coordinador"]
-    },
-    {
-        "icon": "log-out",
-        "name": "Log Out",
-        "url": "#",
-        "role": []
     }
 ]

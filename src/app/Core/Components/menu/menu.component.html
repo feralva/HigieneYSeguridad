@@ -28,8 +28,13 @@
           <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
           <ion-label>{{ p.name | translate }}</ion-label>
         </ion-item>
+
       </ion-menu-toggle>
 
+      <ion-item lines="none"  routerDirection="root" (click)="logOut()" button>
+        <ion-icon slot="start" ios="log-out-outline" md="log-out-sharp"></ion-icon>
+        <ion-label>{{ 'Log Out'| translate }}</ion-label>
+      </ion-item>
     </ion-list>
 
 

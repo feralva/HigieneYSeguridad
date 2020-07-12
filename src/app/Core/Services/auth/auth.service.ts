@@ -115,10 +115,11 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.remove('id_token')
-    localStorage.remove('expires_at')
+    localStorage.removeItem('id_token')
+    localStorage.removeItem('expires_at')
     this.currentUser.next(null);
-    this.router.navigateByUrl('/login')
+    this.router.navigate(['/login'])
+    //this.router.navigateByUrl('login');
   }
 
   hasRoles(roles: string[]): boolean {
