@@ -35,7 +35,8 @@ export class AuthService {
     var usuario;
     var dataToken;
 
-    this.http.post<any>(environment.UrlBaseApi +'Authenticate/Login', { username: usuarioFromForm.email, password: this.encriptarContrasenia(usuarioFromForm.password) }, 
+    this.http.post<any>(environment.UrlBaseApi +'Authenticate/Login', { username: usuarioFromForm.email, 
+      password: this.encriptarContrasenia(usuarioFromForm.password) }, 
       {headers: new HttpHeaders({ 'Content-Type': 'application/json' })})
       .subscribe(
         data => {

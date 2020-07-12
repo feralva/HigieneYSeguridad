@@ -69,6 +69,6 @@
         "icon": "log-out",
         "name": "Log Out",
         "url": "#",
-        "role": ["Auditor","Coordinador"]
+        "role": []
     }
 ]
