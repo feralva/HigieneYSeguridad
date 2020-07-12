@@ -29,8 +29,8 @@ export class VisitaPage implements OnInit {
 
   navegarADetalle(id){
     console.log("navegando")
-    this.navCtrl.navigateForward(['/visita',id, 'detalle']);
-    //this.router.navigate(['/visita',id, 'detalle'])
+    //this.navCtrl.navigateForward(['/visita',id, 'detalle']);
+    this.router.navigate(['/home'])
   }
 
 }
