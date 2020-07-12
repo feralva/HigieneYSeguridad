@@ -42,7 +42,11 @@ export class EmpresaService {
 
   obtenerClientesEmpresaResumen(idEmpresa: number): Observable<any[]> {
     return this.http.get<any[]>(environment.UrlBaseApi + `Empresa/${idEmpresa}/ClientesResumen`, this.httpOptions);
+  }
 
+  obtenerEmpresa(idEmpresa: number): Observable<any> {
+    return this.http.get<any[]>(environment.UrlBaseApi + `Empresa/${idEmpresa}`, this.httpOptions);
+ 
 }
 
 }
