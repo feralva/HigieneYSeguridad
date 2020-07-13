@@ -17,4 +17,12 @@ export class EstablecimientoService {
   alta(establecimiento:any) : Observable<any> {
     return this.http.post<any>(environment.UrlBaseApi + 'Establecimiento', {Model: establecimiento}, this.httpOptions); 
   }
+
+  obtenerEstablecimiento(idEstablecimiento: number): Observable<any[]> {
+    return this.http.get<any[]>(environment.UrlBaseApi + `Establecimiento/${idEstablecimiento}`, this.httpOptions);
+  }
+
+  ActualizarEstablecimiento(establecimiento: any) {
+    return this.http.put<any[]>(environment.UrlBaseApi + `Establecimiento`, {Model: establecimiento}, this.httpOptions);
+  }
 }

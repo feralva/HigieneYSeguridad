@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { EstablecimientoPage } from './establecimiento.page';
 import { EstablecimientoEditarComponent } from './establecimiento-editar/establecimiento-editar.component';
 import { EstablecimientoDetalleComponent } from './establecimiento-detalle/establecimiento-detalle.component';
+import { EstablecimientoDetalleResolverService } from 'src/app/Core/Services/Establecimiento/establecimientoDetalle-resolver.service';
 
 const routes: Routes = [
   {
@@ -11,8 +12,12 @@ const routes: Routes = [
     component: EstablecimientoPage
   },
   {
-    path: ':id/edit',
-    component: EstablecimientoEditarComponent
+    path: ':id/editar',
+    component: EstablecimientoEditarComponent,
+    resolve: 
+    {
+      establecimiento: EstablecimientoDetalleResolverService
+    }  
   },
   {
     path: ':id/detalle',

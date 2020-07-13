@@ -9,13 +9,19 @@ import { EstablecimientoPageRoutingModule } from './establecimiento-routing.modu
 import { EstablecimientoPage } from './establecimiento.page';
 import { EstablecimientoEditarComponent } from './establecimiento-editar/establecimiento-editar.component';
 import { EstablecimientoDetalleComponent } from './establecimiento-detalle/establecimiento-detalle.component';
+import { IonicSelectableModule } from 'ionic-selectable';
+import { UbicacionAltaComponent } from '../ubicacion/ubicacion-alta/ubicacion-alta.component';
+import { ClientePageModule } from '../cliente/cliente.module';
 
 @NgModule({
+  entryComponents: [UbicacionAltaComponent],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    EstablecimientoPageRoutingModule
+    EstablecimientoPageRoutingModule,
+    IonicSelectableModule,
+    ClientePageModule
   ],
   declarations: [EstablecimientoPage, EstablecimientoEditarComponent, EstablecimientoDetalleComponent]
 })

@@ -34,7 +34,14 @@ export class EditarEmpresaComponent implements OnInit {
     direccion: {
       calle: '',
       altura: null,
-      partidoId: 0
+      partidoId: 0,
+      partido: {
+        nombre: "",
+        provinciaId: null,
+        provincia: {
+          nombre: ""
+        }
+      }
     },
     responsable: {
       apellido: '',

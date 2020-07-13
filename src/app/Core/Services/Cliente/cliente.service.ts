@@ -51,5 +51,7 @@ export class ClienteService {
 
   obtenerCliente(idCliente: number): Observable<any[]> {
     return this.http.get<any[]>(environment.UrlBaseApi + `Cliente/${idCliente}`, this.httpOptions);
-}
+  } 
+
+
 }

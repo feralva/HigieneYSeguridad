@@ -35,6 +35,13 @@ export class EstablecimientoAltaComponent implements OnInit {
       calle: "",
       altura: null,
       partidoId: 0,
+      partido: {
+        nombre: "",
+        provinciaId: null,
+        provincia: {
+          nombre: ""
+        }
+      }
     },
     clienteId: 0,
     ubicaciones: [],
