@@ -7,6 +7,7 @@ import { NavController } from '@ionic/angular';
 import { ControlService } from 'src/app/Core/Services/Control/control.service';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { VisitaService } from 'src/app/Core/Services/Visita/visita.service';
+import { UbicacionService } from 'src/app/Core/Services/Ubicacion/ubicacion.service';
 
 @Component({
   selector: 'app-visita-detalle',
@@ -23,7 +24,7 @@ export class VisitaDetalleComponent implements OnInit {
   constructor(private translate: TranslateService, private route: ActivatedRoute,
     private appDataService: AppDataService,private router: Router, public navCtrl: NavController,
     private controlService: ControlService, private authService: AuthService,
-    private visitaService: VisitaService) { }
+    private visitaService: VisitaService, private ubicacionService: UbicacionService) { }
 
   ngOnInit() {
 
@@ -33,18 +34,35 @@ export class VisitaDetalleComponent implements OnInit {
     this.visita = this.route.snapshot.data['visita'];
 
     this.idVisita = +this.route.snapshot.paramMap.get('id');
+
     this.authService.getUserSubject().subscribe(
       data => this.currentUser = data,
       error => console.log(error)
     );
+ 
+    for(let control of this.controles){
 
+      this.ubicacionService.obtenerUbicacion(control.ubicacionId).subscribe(
+        data => {
+          control.ubicacion = data.nombre
+          console.log(control)
+        },
+        (error) => console.log(error)
+      )
+    }  
+
+/*     this.ubicacionService.obtenerUbicacion(2).subscribe(
+      data => console.log(data),
+      (error) => console.log(error)
+    ) */
+    
     console.log(this.controles )
     console.log(this.visita)
   }
 
   doRefresh(event) {
     
-    this.controlService.obtenerControlesVisita(this.currentUser.empresaId).subscribe(
+    this.controlService.obtenerControlesVisita(this.idVisita).subscribe(
       data => this.controles = data,
       (error) => console.log(error)
     );

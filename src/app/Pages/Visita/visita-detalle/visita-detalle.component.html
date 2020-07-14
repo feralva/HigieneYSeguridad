@@ -1,21 +1,32 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button text="Atras" defaultHref="home"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+</ion-header>
 <ion-content>
-<!--     <div *ngIf="controles.length > 0">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+     <div *ngIf="controles.length > 0">
         <ion-list *ngFor="let control of controles" >
+            <ion-item-divider color="secondary">
+                <ion-label style="font-weight: bolder;">
+                  {{control.ubicacion}}
+                </ion-label>
+            </ion-item-divider>
             <ion-item>
-                <ion-label position="stacked">Cliente</ion-label>
-                <ion-label>{{control.nombreUbicacion}}</ion-label>
+                <ion-label>Tipo Control: </ion-label>
+                <ion-label>{{visita.tipoVisita.descripcion}}</ion-label>
             </ion-item>
             <ion-item>
-                <ion-label position="stacked">Tipo Visita</ion-label>
-                <ion-label>{{control.tipoControl}}</ion-label>
-            </ion-item>
-            <ion-item>
-                <ion-label position="stacked">Tipo Visita</ion-label>
-                <ion-label>{{control.fecha}}</ion-label>
+                <ion-label>Fecha</ion-label>
+                <ion-label>{{control.fecha.toDate()}}</ion-label>
             </ion-item>
             <ion-item button (click)="redireccionarDetalleControl()" detail="true">
                 <ion-icon name="clipboard"></ion-icon>
-                  Establecimientos
+                  Mediciones
             </ion-item>
     
         </ion-list>
@@ -26,6 +37,6 @@
         <ion-fab-button [routerLink]="['/control','alta']" >
           <ion-icon name="add"></ion-icon>
         </ion-fab-button>
-      </ion-fab> -->
+      </ion-fab>
 
 </ion-content>
