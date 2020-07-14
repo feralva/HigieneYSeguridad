@@ -9,6 +9,9 @@ import { VisitaPendienteEmpleadoComponent } from './visita-pendiente-empleado/vi
 import { VisitaPendienteResolverService } from 'src/app/Core/Services/Visita/visitaPendiente-resolver.service';
 import { ControlesVisitaResolverService } from 'src/app/Core/Services/Control/controlesVisita-Resolver.service';
 import { VisitaDetalleResolverService } from 'src/app/Core/Services/Visita/visitaDetalle-resolver.service';
+import { MedicionesComponent } from './mediciones/mediciones.component';
+import { MedicionesAltaModalComponent } from './mediciones-alta-modal/mediciones-alta-modal.component';
+import { MedicionesControlResolverService } from 'src/app/Core/Services/Mediciones/medicionesControl-resolver.service';
 
 
 const routes: Routes = [
@@ -33,6 +36,17 @@ const routes: Routes = [
     path: ':id/editar',
     component: VisitaEditarComponent
   },
+  {
+    path: ':id/control/:idControl/mediciones',
+    component: MedicionesComponent,
+    resolve: {
+      mediciones: MedicionesControlResolverService
+    }
+  },
+  /* {
+    path: ':id/controles/alta',
+    component: MedicionesAltaModalComponent
+  }, */
   {
     path: 'Pendientes',
     component: VisitaPendienteEmpleadoComponent,

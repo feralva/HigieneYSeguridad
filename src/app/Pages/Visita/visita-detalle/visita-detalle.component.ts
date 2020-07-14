@@ -51,11 +51,6 @@ export class VisitaDetalleComponent implements OnInit {
       )
     }  
 
-/*     this.ubicacionService.obtenerUbicacion(2).subscribe(
-      data => console.log(data),
-      (error) => console.log(error)
-    ) */
-    
     console.log(this.controles )
     console.log(this.visita)
   }

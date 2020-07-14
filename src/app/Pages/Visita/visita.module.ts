@@ -12,6 +12,9 @@ import { VisitaDetalleComponent } from './visita-detalle/visita-detalle.componen
 import { VisitaPendienteEmpleadoComponent } from './visita-pendiente-empleado/visita-pendiente-empleado.component';
 import { AltaVisitaModalComponent } from './alta-visita-modal/alta-visita-modal.component';
 import { VisitaEditarComponent } from './visita-editar/visita-editar.component';
+import { MedicionesAltaModalComponent } from './mediciones-alta-modal/mediciones-alta-modal.component';
+import { MedicionesComponent } from './mediciones/mediciones.component';
+import { AltaControlComponent } from './alta-control/alta-control.component';
 
 @NgModule({
   entryComponents: [AltaVisitaModalComponent],
@@ -22,7 +25,8 @@ import { VisitaEditarComponent } from './visita-editar/visita-editar.component';
     VisitaPageRoutingModule
   ],
   declarations: [VisitaPage, AltaVisitaComponent, VisitaDetalleComponent, 
-    VisitaPendienteEmpleadoComponent, AltaVisitaModalComponent, VisitaEditarComponent],
+    VisitaPendienteEmpleadoComponent, AltaVisitaModalComponent, VisitaEditarComponent, 
+    MedicionesAltaModalComponent, MedicionesComponent, AltaControlComponent],
   exports: [ AltaVisitaModalComponent ]
 })
 export class VisitaPageModule {}

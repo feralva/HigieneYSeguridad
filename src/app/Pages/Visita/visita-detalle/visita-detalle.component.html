@@ -24,7 +24,7 @@
                 <ion-label>Fecha</ion-label>
                 <ion-label>{{control.fecha.toDate()}}</ion-label>
             </ion-item>
-            <ion-item button (click)="redireccionarDetalleControl()" detail="true">
+            <ion-item button [routerLink]="['../control', control.id ,'mediciones']" detail="true">
                 <ion-icon name="clipboard"></ion-icon>
                   Mediciones
             </ion-item>
@@ -34,7 +34,7 @@
     <ion-label  *ngIf="controles.length == 0"> No hay Controles Realizados Aun</ion-label>
 
     <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="visita.empleadoId != null && visita.empleadoId == currentUser.empleadoId">
-        <ion-fab-button [routerLink]="['/control','alta']" >
+        <ion-fab-button [routerLink]="['../controles','alta']" >
           <ion-icon name="add"></ion-icon>
         </ion-fab-button>
       </ion-fab>
