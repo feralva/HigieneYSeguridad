@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { UserLogueado } from 'src/app/Models/UserLogueado';
+import { TranslateService } from '@ngx-translate/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
+import { NavController } from '@ionic/angular';
+import { ControlService } from 'src/app/Core/Services/Control/control.service';
+import { AuthService } from 'src/app/Core/Services/auth/auth.service';
+import { VisitaService } from 'src/app/Core/Services/Visita/visita.service';
 
 @Component({
   selector: 'app-visita-detalle',
@@ -7,8 +15,49 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VisitaDetalleComponent implements OnInit {
 
-  constructor() { }
+  controles: any[] = [];
+  currentUser: UserLogueado;
+  idVisita: number;
+  visita: any;
 
-  ngOnInit() {}
+  constructor(private translate: TranslateService, private route: ActivatedRoute,
+    private appDataService: AppDataService,private router: Router, public navCtrl: NavController,
+    private controlService: ControlService, private authService: AuthService,
+    private visitaService: VisitaService) { }
+
+  ngOnInit() {
+
+    this.appDataService.changePageName('Visita.Detalle.title');
+
+    this.controles = this.route.snapshot.data['controles'];
+    this.visita = this.route.snapshot.data['visita'];
+
+    this.idVisita = +this.route.snapshot.paramMap.get('id');
+    this.authService.getUserSubject().subscribe(
+      data => this.currentUser = data,
+      error => console.log(error)
+    );
+
+    console.log(this.controles )
+    console.log(this.visita)
+  }
+
+  doRefresh(event) {
+    
+    this.controlService.obtenerControlesVisita(this.currentUser.empresaId).subscribe(
+      data => this.controles = data,
+      (error) => console.log(error)
+    );
+    event.target.complete();
+  }
+
+  redireccionarDetalleControl(){
+
+    //TODO redireccionar a detalle dependiendo tipo de control
+    /* console.log("navegando")
+    //this.navCtrl.navigateForward(['/visita',id, 'detalle']);
+    this.router.navigate(['/home']) */
+
+  }
 
 }

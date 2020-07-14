@@ -51,9 +51,9 @@ firebase.initializeApp(environment.firebaseConfig);
         deps: [HttpClient]
       }
     }),
-    LanguagePopupPageModule/*,
+    LanguagePopupPageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule*/
+    AngularFirestoreModule
   ],
   providers: [
     StatusBar,
