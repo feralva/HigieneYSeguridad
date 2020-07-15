@@ -15,6 +15,7 @@ import { VisitaEditarComponent } from './visita-editar/visita-editar.component';
 import { MedicionesAltaModalComponent } from './mediciones-alta-modal/mediciones-alta-modal.component';
 import { MedicionesComponent } from './mediciones/mediciones.component';
 import { AltaControlComponent } from './alta-control/alta-control.component';
+import { SharedDirectivesModule } from 'src/app/Core/Directives/shared-directives.module';
 
 @NgModule({
   entryComponents: [AltaVisitaModalComponent],
@@ -22,7 +23,8 @@ import { AltaControlComponent } from './alta-control/alta-control.component';
     CommonModule,
     FormsModule,
     IonicModule,
-    VisitaPageRoutingModule
+    VisitaPageRoutingModule,
+    SharedDirectivesModule
   ],
   declarations: [VisitaPage, AltaVisitaComponent, VisitaDetalleComponent, 
     VisitaPendienteEmpleadoComponent, AltaVisitaModalComponent, VisitaEditarComponent, 
