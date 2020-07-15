@@ -61,6 +61,17 @@ export class VisitaDetalleComponent implements OnInit {
       data => this.controles = data,
       (error) => console.log(error)
     );
+
+    for(let control of this.controles){
+
+      this.ubicacionService.obtenerUbicacion(control.ubicacionId).subscribe(
+        data => {
+          control.ubicacion = data.nombre
+          console.log(control)
+        },
+        (error) => console.log(error)
+      )
+    }  
     event.target.complete();
   }
 
