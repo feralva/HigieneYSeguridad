@@ -16,9 +16,11 @@ import { MedicionesAltaModalComponent } from './mediciones-alta-modal/mediciones
 import { MedicionesComponent } from './mediciones/mediciones.component';
 import { AltaControlComponent } from './alta-control/alta-control.component';
 import { SharedDirectivesModule } from 'src/app/Core/Directives/shared-directives.module';
+import { CambiarAuditorModalComponent } from './cambiar-auditor-modal/cambiar-auditor-modal.component';
+import { CambiarFechaModalComponent } from './cambiar-fecha-modal/cambiar-fecha-modal.component';
 
 @NgModule({
-  entryComponents: [AltaVisitaModalComponent],
+  entryComponents: [AltaVisitaModalComponent, CambiarAuditorModalComponent, CambiarFechaModalComponent ],
   imports: [
     CommonModule,
     FormsModule,
@@ -28,7 +30,8 @@ import { SharedDirectivesModule } from 'src/app/Core/Directives/shared-directive
   ],
   declarations: [VisitaPage, AltaVisitaComponent, VisitaDetalleComponent, 
     VisitaPendienteEmpleadoComponent, AltaVisitaModalComponent, VisitaEditarComponent, 
-    MedicionesAltaModalComponent, MedicionesComponent, AltaControlComponent],
+    MedicionesAltaModalComponent, MedicionesComponent, AltaControlComponent,
+    CambiarAuditorModalComponent, CambiarFechaModalComponent],
   exports: [ AltaVisitaModalComponent ]
 })
 export class VisitaPageModule {}

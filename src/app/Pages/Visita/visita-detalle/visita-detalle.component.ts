@@ -3,11 +3,12 @@ import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
-import { NavController } from '@ionic/angular';
+import { NavController, ModalController } from '@ionic/angular';
 import { ControlService } from 'src/app/Core/Services/Control/control.service';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { VisitaService } from 'src/app/Core/Services/Visita/visita.service';
 import { UbicacionService } from 'src/app/Core/Services/Ubicacion/ubicacion.service';
+import { CambiarAuditorModalComponent } from '../cambiar-auditor-modal/cambiar-auditor-modal.component';
 
 @Component({
   selector: 'app-visita-detalle',
@@ -24,7 +25,8 @@ export class VisitaDetalleComponent implements OnInit {
   constructor(private translate: TranslateService, private route: ActivatedRoute,
     private appDataService: AppDataService,private router: Router, public navCtrl: NavController,
     private controlService: ControlService, private authService: AuthService,
-    private visitaService: VisitaService, private ubicacionService: UbicacionService) { }
+    private visitaService: VisitaService, private ubicacionService: UbicacionService,
+    private modalController: ModalController) { }
 
   ngOnInit() {
 
@@ -56,6 +58,11 @@ export class VisitaDetalleComponent implements OnInit {
   }
 
   doRefresh(event) {
+
+    this.visitaService.obtenerVisitaDetalle(+this.route.snapshot.paramMap.get('id')).subscribe(
+      data => this.visita = data,
+      (error) => console.log(error)
+    )
     
     this.controlService.obtenerControlesVisita(this.idVisita).subscribe(
       data => this.controles = data,
@@ -82,6 +89,33 @@ export class VisitaDetalleComponent implements OnInit {
     //this.navCtrl.navigateForward(['/visita',id, 'detalle']);
     this.router.navigate(['/home']) */
 
+  }
+
+  private onEditarFechaClick(){
+    
+  }
+
+  private async onEditarAuditorClick(event){
+
+      const modal = await this.modalController.create({
+        component: CambiarAuditorModalComponent,
+        componentProps: {
+          auditorActual: this.visita.empleado,
+          idVisita: this.visita.id
+        }
+      });
+
+      modal.onWillDismiss().then(dataReturned => {
+        // trigger when about to close the modal
+        //ver el param que paso
+        this.doRefresh(modal);
+      });  
+      
+      return await modal.present().then(_ => {
+        // triggered when opening the modal
+        console.log(this.visita)
+        console.log('Sending: ',  this.visita.empleado);
+      });
   }
 
 }

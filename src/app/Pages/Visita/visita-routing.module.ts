@@ -34,7 +34,10 @@ const routes: Routes = [
   }, */
   {
     path: ':id/editar',
-    component: VisitaEditarComponent
+    component: VisitaEditarComponent,
+    resolve: {
+      visita: VisitaDetalleResolverService
+    }
   },
   {
     path: ':id/control/:idControl/mediciones',

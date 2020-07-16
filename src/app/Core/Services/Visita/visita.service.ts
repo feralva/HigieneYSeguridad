@@ -8,7 +8,6 @@ import { environment } from '../../../../environments/environment';
 })
 export class VisitaService {
 
-
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -33,5 +32,9 @@ export class VisitaService {
 
   obtenerVisitaDetalle(idVisita: number): Observable<any> {
     return this.http.get<any[]>(environment.UrlBaseApi + `Visita/${idVisita}`, this.httpOptions);
+  }
+
+  actualizarAuditorVisita(idVisita: number, idAuditor: number):Observable<any> {
+    return this.http.put<any>(environment.UrlBaseApi + `Visita/reasignar`, {Model: {Id: idVisita, EmpleadoId: idAuditor}}, this.httpOptions);
   }
 }
