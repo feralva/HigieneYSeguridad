@@ -66,6 +66,10 @@ const routes: Routes = [
     path: 'dashboard',
     canActivate: [UserAuthenticatedGuard],
     loadChildren: () => import('./Pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
+  {
+    path: 'calendario',
+    loadChildren: () => import('./Pages/calendario/calendario.module').then( m => m.CalendarioPageModule)
   }
 ];
 

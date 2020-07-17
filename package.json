@@ -38,6 +38,7 @@
     "crypto-js": "^4.0.0",
     "firebase": "^7.14.6",
     "ionic-selectable": "^4.7.1",
+    "ionic2-calendar": "^0.6.6",
     "moment": "^2.27.0",
     "pbkdf2": "^3.1.1",
     "rxjs": "~6.5.1",

@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { VisitaService } from 'src/app/Core/Services/Visita/visita.service';
 import { UbicacionService } from 'src/app/Core/Services/Ubicacion/ubicacion.service';
 import { CambiarAuditorModalComponent } from '../cambiar-auditor-modal/cambiar-auditor-modal.component';
+import { CambiarFechaModalComponent } from '../cambiar-fecha-modal/cambiar-fecha-modal.component';
 
 @Component({
   selector: 'app-visita-detalle',
@@ -91,11 +92,26 @@ export class VisitaDetalleComponent implements OnInit {
 
   }
 
-  private onEditarFechaClick(){
+  async onEditarFechaClick(event){
+    const modal = await this.modalController.create({
+      component: CambiarFechaModalComponent,
+      componentProps: {
+        idEmpleado: this.currentUser.empleadoId
+      }
+    });
+
+    modal.onWillDismiss().then(dataReturned => {
+      // trigger when about to close the modal
+      //ver el param que paso
+      this.doRefresh(modal);
+    });  
     
+    return await modal.present().then(_ => {
+      console.log('Sending: ',  this.currentUser.empleadoId);
+    });
   }
 
-  private async onEditarAuditorClick(event){
+  async onEditarAuditorClick(event){
 
       const modal = await this.modalController.create({
         component: CambiarAuditorModalComponent,

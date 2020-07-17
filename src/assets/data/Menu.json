@@ -24,6 +24,18 @@
         "role": ["Auditor"]
     },
     {
+        "icon": "calendar",
+        "name": "Mi Calendario",
+        "url": "/Calendario",
+        "role": ["Auditor"]
+    },
+    {
+        "icon": "calendar",
+        "name": "Carga Auditores",
+        "url": "/Calendario",
+        "role": ["Coordinador","Gerente"]
+    },
+    {
         "icon": "people-circle",
         "name": "Empleados",
         "url": "/empleado",

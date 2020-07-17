@@ -1,3 +1,72 @@
-<p>
-  cambiar-fecha-modal works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Establecer Fecha Visita</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+<ion-list>
+  <ion-item-divider>
+    <ion-label>Nueva Fecha</ion-label>
+  </ion-item-divider>
+  <ion-item>
+    <ion-label>Fecha:</ion-label>
+    <ion-datetime name="fechaNuevaSeleccionada" [(ngModel)]="fechaNuevaSeleccionada" displayFormat="DD/MM/YYYY" ></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>Horario Inicio</ion-label>
+    <ion-datetime displayFormat="h:mm A" minuteValues="0,15,30,45"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>Horario Finalizacion Estimado</ion-label>
+    <ion-datetime displayFormat="h:mm A" minuteValues="0,15,30,45"></ion-datetime>
+  </ion-item>
+</ion-list>
+
+
+  <ion-segment>
+    <ion-title>{{ viewTitle }}</ion-title>
+  </ion-segment>
+    <ion-segment [(ngModel)]="calendar.mode">
+      <ion-segment-button value="month">
+        <ion-label>Month</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="week">
+        <ion-label>Week</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="day">
+        <ion-label>Day</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <ng-template #template let-showEventDetail="showEventDetail"     let-selectedDate="selectedDate" let-noEventsLabel="noEventsLabel">
+      <ion-list>
+        <ion-item *ngFor="let event of selectedDate.events">
+         {{event.startTime.getHours().toString() + ':' + event.startTime.getMinutes()
+         + ' - ' + 
+         event.endTime.getHours().toString() + ':' + event.endTime.getMinutes()
+         + ' | ' + event.title}}
+        </ion-item>
+      </ion-list>
+    </ng-template>
+    
+    <calendar [eventSource]="eventSource"
+              [calendarMode]="calendar.mode"
+              [currentDate]="calendar.currentDate"
+              (onCurrentDateChanged)="onCurrentDateChanged($event)"
+              (onEventSelected)="onEventSelected($event)"
+              (onTitleChanged)="onViewTitleChanged($event)"
+              (onTimeSelected)="onTimeSelected($event)"
+              step="30"
+              [locale]="calendar.locale"
+              [monthviewEventDetailTemplate]="template">
+    </calendar>
+    <ion-item >
+      <ion-label>Awesome Label</ion-label>
+    </ion-item>
+</ion-content>
