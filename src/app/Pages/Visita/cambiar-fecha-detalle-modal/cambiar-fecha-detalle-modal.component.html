@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Establecer Fecha Visita</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item-divider>
+      <ion-label>Nueva Fecha</ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-label>Fecha:</ion-label>
+      <ion-datetime name="fechaNuevaSeleccionada" [(ngModel)]="fechaNuevaSeleccionada" displayFormat="DD/MM/YYYY" ></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Horario Inicio</ion-label>
+      <ion-datetime displayFormat="h:mm A" minuteValues="0,15,30,45"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Horario Finalizacion Estimado</ion-label>
+      <ion-datetime displayFormat="h:mm A" minuteValues="0,15,30,45"></ion-datetime>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -130,7 +130,7 @@ export class CambiarFechaModalComponent implements OnInit {
 
     this.visitaService.obtenerVisitasPendientesEmpleado(this.idEmpleado).pipe(
       map(visitas => visitas.map(visita =>({
-        title: visita.nombreCliente + ' - ' + visita.nombreEstablecimiento +' - ' + visita.tipoVisita,
+        title: visita.nombreCliente + ' - ' + visita.nombreEstablecimiento + ' - ' + visita.tipoVisita,
         allday: false,
         startTime: new Date(visita.fecha),
         endTime: new Date(new Date(visita.fecha).getTime() + (visita.duracion * 60)*60000)
