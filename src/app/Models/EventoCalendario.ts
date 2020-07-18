@@ -1,5 +1,5 @@
 export interface EventoCalendario{
-    title: string
+    title: string;
     allday: boolean;
     startTime: Date;
     endTime: Date;

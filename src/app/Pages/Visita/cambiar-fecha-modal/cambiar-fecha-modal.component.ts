@@ -12,6 +12,7 @@ import { map, tap } from 'rxjs/operators';
 import { EventoCalendario } from 'src/app/Models/EventoCalendario';
 import { Visita } from 'src/app/Models/Visita';
 import { formatDate } from '@angular/common';
+import { CambiarFechaDetalleModalComponent } from '../cambiar-fecha-detalle-modal/cambiar-fecha-detalle-modal.component';
 
 @Component({
   selector: 'app-cambiar-fecha-modal',
@@ -20,12 +21,13 @@ import { formatDate } from '@angular/common';
 })
 export class CambiarFechaModalComponent implements OnInit {
 
-  fechaNuevaSeleccionada: Date;
+  fechaNuevaSeleccionada: Date = new Date();
   horarioNuevoSeleccionado;
 
   fechaInicial = (new Date());
   fechaLimite = (new Date().setFullYear(this.fechaInicial.getFullYear() +1));
   @Input() public idEmpleado: number;
+  @Input() public idVisita: number;
   eventSource;
   viewTitle;
 
@@ -75,6 +77,7 @@ export class CambiarFechaModalComponent implements OnInit {
 
     console.log('llega')
     console.log(this.idEmpleado)
+    console.log(this.fechaNuevaSeleccionada)
 
     this.authService.getUserSubject().subscribe(
       data => {
@@ -83,6 +86,34 @@ export class CambiarFechaModalComponent implements OnInit {
       },
       error => console.log(error)
     )//.add(() => this.loader.dismiss());
+
+  }
+
+  async abrirModalDeterminarHorario(){
+
+    console.log('abrir modal')
+    const modal = await this.modalController.create({
+      component: CambiarFechaDetalleModalComponent,
+      componentProps: {
+        idVisita: this.idVisita,
+        fecha: this.fechaNuevaSeleccionada.toISOString()
+      }
+    });
+
+    modal.onWillDismiss().then(dataReturned => {
+      this.authService.getUserSubject().subscribe(
+        data => {
+          this.currentUser = data
+          this.obtenerVisitasEmpleado()
+        },
+        error => console.log(error)
+      )//.add(() => this.loader.dismiss());
+    });  
+    
+    return await modal.present().then(_ => {
+      console.log('Sending: ',  this.idVisita);
+      console.log('Sending: ',  this.fechaNuevaSeleccionada.toISOString()); 
+    });
 
   }
 
@@ -96,6 +127,8 @@ export class CambiarFechaModalComponent implements OnInit {
   }
 
   async onEventSelected(event) {
+
+      //this.fechaNuevaSeleccionada = event
         const alert = await this.alertCtrl.create({
           header: event.title,
           subHeader: event.desc,
@@ -115,7 +148,10 @@ export class CambiarFechaModalComponent implements OnInit {
   }
 
   onTimeSelected(ev) {
-      console.log('Selected time: ' + ev.selectedTime + ', hasEvents: ' +
+
+    this.fechaNuevaSeleccionada = new Date(ev.selectedTime.toISOString().slice(0, -5))
+    console.log(this.fechaNuevaSeleccionada)
+      console.log('Selected time: ' + new Date(ev.selectedTime.toISOString().slice(0, -5)) + ', hasEvents: ' +
           (ev.events !== undefined && ev.events.length !== 0) + ', disabled: ' + ev.disabled);
   }
 
@@ -133,7 +169,7 @@ export class CambiarFechaModalComponent implements OnInit {
         title: visita.nombreCliente + ' - ' + visita.nombreEstablecimiento + ' - ' + visita.tipoVisita,
         allday: false,
         startTime: new Date(visita.fecha),
-        endTime: new Date(new Date(visita.fecha).getTime() + (visita.duracion * 60)*60000)
+        endTime: new Date(new Date(visita.fecha).getTime() + (visita.duracion)*60000)
         })) 
       )
     ).subscribe(

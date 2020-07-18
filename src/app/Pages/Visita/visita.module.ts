@@ -19,13 +19,14 @@ import { SharedDirectivesModule } from 'src/app/Core/Directives/shared-directive
 import { CambiarAuditorModalComponent } from './cambiar-auditor-modal/cambiar-auditor-modal.component';
 import { CambiarFechaModalComponent } from './cambiar-fecha-modal/cambiar-fecha-modal.component';
 import { NgCalendarModule  } from 'ionic2-calendar';
+import { CambiarFechaDetalleModalComponent } from './cambiar-fecha-detalle-modal/cambiar-fecha-detalle-modal.component';
 
 /* import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 registerLocaleData(localeDe); */
 
 @NgModule({
-  entryComponents: [AltaVisitaModalComponent, CambiarAuditorModalComponent, CambiarFechaModalComponent ],
+  entryComponents: [AltaVisitaModalComponent, CambiarAuditorModalComponent, CambiarFechaModalComponent, CambiarFechaDetalleModalComponent ],
   imports: [
     CommonModule,
     FormsModule,
@@ -37,7 +38,7 @@ registerLocaleData(localeDe); */
   declarations: [VisitaPage, AltaVisitaComponent, VisitaDetalleComponent, 
     VisitaPendienteEmpleadoComponent, AltaVisitaModalComponent, VisitaEditarComponent, 
     MedicionesAltaModalComponent, MedicionesComponent, AltaControlComponent,
-    CambiarAuditorModalComponent, CambiarFechaModalComponent]/* ,
+    CambiarAuditorModalComponent, CambiarFechaModalComponent, CambiarFechaDetalleModalComponent]/* ,
     providers: [
       { provide: LOCALE_ID, useValue: 'de-DE' }
     ]*/, 

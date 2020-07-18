@@ -96,7 +96,8 @@ export class VisitaDetalleComponent implements OnInit {
     const modal = await this.modalController.create({
       component: CambiarFechaModalComponent,
       componentProps: {
-        idEmpleado: this.currentUser.empleadoId
+        idEmpleado: this.currentUser.empleadoId,
+        idVisita: this.idVisita
       }
     });
 
