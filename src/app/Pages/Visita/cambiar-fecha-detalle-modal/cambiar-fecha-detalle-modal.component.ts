@@ -35,7 +35,7 @@ export class CambiarFechaDetalleModalComponent implements OnInit {
     await this.modalController.dismiss();
   }
 
-  private guardarFechaVisita(){
+  guardarFechaVisita(){
 
     console.log(this.horaInicio)
     console.log(this.dateService.ObtenerFechaDeString(this.horaInicio))
