@@ -7,13 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { CalendarioPageRoutingModule } from './calendario-routing.module';
 
 import { CalendarioPage } from './calendario.page';
+import { NgCalendarModule } from 'ionic2-calendar';
+import { SharedDirectivesModule } from 'src/app/Core/Directives/shared-directives.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CalendarioPageRoutingModule
+    CalendarioPageRoutingModule,
+    SharedDirectivesModule,
+    NgCalendarModule
   ],
   declarations: [CalendarioPage]
 })

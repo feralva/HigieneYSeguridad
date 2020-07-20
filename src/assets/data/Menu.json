@@ -26,13 +26,13 @@
     {
         "icon": "calendar",
         "name": "Mi Calendario",
-        "url": "/Calendario",
+        "url": "/calendario",
         "role": ["Auditor"]
     },
     {
         "icon": "calendar",
         "name": "Carga Auditores",
-        "url": "/Calendario",
+        "url": "/calendario",
         "role": ["Coordinador","Gerente"]
     },
     {
