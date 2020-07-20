@@ -46,10 +46,10 @@ const routes: Routes = [
       mediciones: MedicionesControlResolverService
     }
   },
-  /* {
+   {
     path: ':id/controles/alta',
     component: MedicionesAltaModalComponent
-  }, */
+  }, 
   {
     path: 'Pendientes',
     component: VisitaPendienteEmpleadoComponent,

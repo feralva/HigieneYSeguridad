@@ -20,6 +20,12 @@ import { CambiarAuditorModalComponent } from './cambiar-auditor-modal/cambiar-au
 import { CambiarFechaModalComponent } from './cambiar-fecha-modal/cambiar-fecha-modal.component';
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { CambiarFechaDetalleModalComponent } from './cambiar-fecha-detalle-modal/cambiar-fecha-detalle-modal.component';
+import { ControlCapacitacionComponent } from './Medir/control-capacitacion/control-capacitacion.component';
+import { ControlPrevencionIncendioComponent } from './Medir/control-prevencion-incendio/control-prevencion-incendio.component';
+import { MedicionElectricaComponent } from './Medir/medicion-electrica/medicion-electrica.component';
+import { MedicionEmisionGasesComponent } from './Medir/medicion-emision-gases/medicion-emision-gases.component';
+import { MedicionLuminicaComponent } from './Medir/medicion-luminica/medicion-luminica.component';
+import { MedicionSonoraComponent } from './Medir/medicion-sonora/medicion-sonora.component';
 
 /* import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
@@ -38,7 +44,9 @@ registerLocaleData(localeDe); */
   declarations: [VisitaPage, AltaVisitaComponent, VisitaDetalleComponent, 
     VisitaPendienteEmpleadoComponent, AltaVisitaModalComponent, VisitaEditarComponent, 
     MedicionesAltaModalComponent, MedicionesComponent, AltaControlComponent,
-    CambiarAuditorModalComponent, CambiarFechaModalComponent, CambiarFechaDetalleModalComponent]/* ,
+    CambiarAuditorModalComponent, CambiarFechaModalComponent, CambiarFechaDetalleModalComponent,
+    ControlCapacitacionComponent, ControlPrevencionIncendioComponent, MedicionElectricaComponent,
+    MedicionEmisionGasesComponent, MedicionLuminicaComponent, MedicionSonoraComponent]/* ,
     providers: [
       { provide: LOCALE_ID, useValue: 'de-DE' }
     ]*/, 

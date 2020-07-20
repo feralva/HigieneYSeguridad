@@ -70,6 +70,10 @@ const routes: Routes = [
   {
     path: 'calendario',
     loadChildren: () => import('./Pages/calendario/calendario.module').then( m => m.CalendarioPageModule)
+  },
+  {
+    path: 'irregularidad',
+    loadChildren: () => import('./Pages/irregularidad/irregularidad.module').then( m => m.IrregularidadPageModule)
   }
 ];
 
