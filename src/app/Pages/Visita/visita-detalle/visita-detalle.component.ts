@@ -112,6 +112,10 @@ export class VisitaDetalleComponent implements OnInit {
     });
   }
 
+  completarVisita(){
+
+    //TODO agregar logica de completar... o agregar redireccion a pantalla detalle controles visita
+  }
   async onEditarAuditorClick(event){
 
       const modal = await this.modalController.create({

@@ -12,13 +12,13 @@
         "role": ["Coordinador"]
     },
     {
-        "icon": "thermometer",
+        "icon": "clipboard",
         "name": "Visitas",
         "url": "/visita",
         "role": ["Coordinador"]
     },
     {
-        "icon": "thermometer",
+        "icon": "clipboard",
         "name": "Mis Visitas",
         "url": "/visita/Pendientes",
         "role": ["Auditor"]
@@ -48,7 +48,7 @@
         "role": ["Auditor","Coordinador"]
     },
     {
-        "icon": "card",
+        "icon": "wallet",
         "name": "Licencia",
         "url": "#",
         "role": ["Coordinador"]
@@ -60,7 +60,7 @@
         "role": ["Coordinador"]
     },
     {
-        "icon": "card",
+        "icon": "thermometer",
         "name": "Equipos Medición",
         "url": "equiposMedicion",
         "role": ["Coordinador"]
