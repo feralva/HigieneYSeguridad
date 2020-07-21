@@ -1,3 +1,20 @@
-<p>
-  medicion-sonora works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Atras" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<seleccionar-ubicacion-control #seleccionUbicacionComponent [idEstablecimiento]="idEstablecimiento" [idVisita]="idVisita" 
+  [ubicaciones]="ubicaciones"></seleccionar-ubicacion-control>
+
+
+
+  <!-- {{seleccionUbicacionComponent.ubicacionSeleccionada}} -->
+
+  <ion-button expand="block" fill="clear" shape="round">
+    Agregar Mediciones a Control
+  </ion-button>
+
+</ion-content>

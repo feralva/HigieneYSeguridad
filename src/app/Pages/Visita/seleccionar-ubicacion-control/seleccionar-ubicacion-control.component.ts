@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
@@ -9,15 +9,15 @@ import jsQR from 'jsqr';
 import { ToastController, LoadingController, Platform } from '@ionic/angular';
 
 @Component({
-  selector: 'app-alta-control',
-  templateUrl: './alta-control.component.html',
-  styleUrls: ['./alta-control.component.scss'],
+  selector: 'seleccionar-ubicacion-control',
+  templateUrl: './seleccionar-ubicacion-control.component.html',
+  styleUrls: ['./seleccionar-ubicacion-control.component.scss'],
 })
-export class AltaControlComponent implements OnInit {
+export class SeleccionarUbicacionControlComponent implements OnInit {
 
-  idEstablecimiento: number;
-  idVisita: number;
-  ubicaciones: any[] = [];
+  @Input() idEstablecimiento: number;
+  @Input() idVisita: number;
+  @Input() ubicaciones: any[];
   ubicacionSeleccionada: any;
 
   @ViewChild('video', { static: false }) video: ElementRef;
@@ -78,12 +78,8 @@ export class AltaControlComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.idVisita = +this.route.snapshot.paramMap.get('idVisita')
-    this.idEstablecimiento = +this.route.snapshot.paramMap.get('idEstablecimiento')
-    this.ubicaciones = this.route.snapshot.data['ubicaciones'];
-    
-    console.log(this.ubicaciones)
 
+    console.log('Padre')
   }
 
   obtenerUbicacionPorQr(dataDeQR: any){

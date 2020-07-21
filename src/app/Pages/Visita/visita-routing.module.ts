@@ -13,7 +13,8 @@ import { MedicionesComponent } from './mediciones/mediciones.component';
 import { MedicionesAltaModalComponent } from './mediciones-alta-modal/mediciones-alta-modal.component';
 import { MedicionesControlResolverService } from 'src/app/Core/Services/Mediciones/medicionesControl-resolver.service';
 import { UbicacionesEstablecimientoResolverService } from 'src/app/Core/Services/Ubicacion/ubicacionesEstablecimiento-resolver.service';
-import { AltaControlComponent } from './alta-control/alta-control.component';
+import { SeleccionarUbicacionControlComponent } from './seleccionar-ubicacion-control/seleccionar-ubicacion-control.component';
+import { MedicionSonoraComponent } from './Medir/medicion-sonora/medicion-sonora.component';
 
 
 const routes: Routes = [
@@ -49,8 +50,8 @@ const routes: Routes = [
     }
   },
   {
-    path: ':id/controles/:idEstablecimiento/alta',
-    component: AltaControlComponent,
+    path: ':id/controles/:idEstablecimiento/medicionSonora/alta',
+    component: MedicionSonoraComponent,
     resolve: {
       ubicaciones: UbicacionesEstablecimientoResolverService
     }

@@ -112,6 +112,12 @@ export class VisitaDetalleComponent implements OnInit {
     });
   }
 
+  onAgregarControl(){
+
+    this.router.navigate(['/visita',this.idVisita, 'controles', this.visita.establecimiento.id, 'medicionSonora', 'alta'])
+
+  }
+
   completarVisita(){
 
     //TODO agregar logica de completar... o agregar redireccion a pantalla detalle controles visita

@@ -14,7 +14,6 @@ import { AltaVisitaModalComponent } from './alta-visita-modal/alta-visita-modal.
 import { VisitaEditarComponent } from './visita-editar/visita-editar.component';
 import { MedicionesAltaModalComponent } from './mediciones-alta-modal/mediciones-alta-modal.component';
 import { MedicionesComponent } from './mediciones/mediciones.component';
-import { AltaControlComponent } from './alta-control/alta-control.component';
 import { SharedDirectivesModule } from 'src/app/Core/Directives/shared-directives.module';
 import { CambiarAuditorModalComponent } from './cambiar-auditor-modal/cambiar-auditor-modal.component';
 import { CambiarFechaModalComponent } from './cambiar-fecha-modal/cambiar-fecha-modal.component';
@@ -27,6 +26,7 @@ import { MedicionEmisionGasesComponent } from './Medir/medicion-emision-gases/me
 import { MedicionLuminicaComponent } from './Medir/medicion-luminica/medicion-luminica.component';
 import { MedicionSonoraComponent } from './Medir/medicion-sonora/medicion-sonora.component';
 import { IonicSelectableModule } from 'ionic-selectable';
+import { SeleccionarUbicacionControlComponent } from './seleccionar-ubicacion-control/seleccionar-ubicacion-control.component';
 
 /* import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
@@ -45,7 +45,7 @@ registerLocaleData(localeDe); */
   ],
   declarations: [VisitaPage, AltaVisitaComponent, VisitaDetalleComponent, 
     VisitaPendienteEmpleadoComponent, AltaVisitaModalComponent, VisitaEditarComponent, 
-    MedicionesAltaModalComponent, MedicionesComponent, AltaControlComponent,
+    MedicionesAltaModalComponent, MedicionesComponent, SeleccionarUbicacionControlComponent,
     CambiarAuditorModalComponent, CambiarFechaModalComponent, CambiarFechaDetalleModalComponent,
     ControlCapacitacionComponent, ControlPrevencionIncendioComponent, MedicionElectricaComponent,
     MedicionEmisionGasesComponent, MedicionLuminicaComponent, MedicionSonoraComponent]/* ,
