@@ -18,8 +18,8 @@ export class PlanPage implements OnInit {
   currentUser: UserLogueado;
   
   constructor(private translate: TranslateService, private route: ActivatedRoute,
-    private appDataService: AppDataService, private planService: PlanService
-    , private authService: AuthService) { }
+    private appDataService: AppDataService, private planService: PlanService, 
+    private authService: AuthService) { }
 
   ngOnInit() {
 

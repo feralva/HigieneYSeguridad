@@ -12,6 +12,8 @@ import { VisitaDetalleResolverService } from 'src/app/Core/Services/Visita/visit
 import { MedicionesComponent } from './mediciones/mediciones.component';
 import { MedicionesAltaModalComponent } from './mediciones-alta-modal/mediciones-alta-modal.component';
 import { MedicionesControlResolverService } from 'src/app/Core/Services/Mediciones/medicionesControl-resolver.service';
+import { UbicacionesEstablecimientoResolverService } from 'src/app/Core/Services/Ubicacion/ubicacionesEstablecimiento-resolver.service';
+import { AltaControlComponent } from './alta-control/alta-control.component';
 
 
 const routes: Routes = [
@@ -46,9 +48,12 @@ const routes: Routes = [
       mediciones: MedicionesControlResolverService
     }
   },
-   {
-    path: ':id/controles/alta',
-    component: MedicionesAltaModalComponent
+  {
+    path: ':id/controles/:idEstablecimiento/alta',
+    component: AltaControlComponent,
+    resolve: {
+      ubicaciones: UbicacionesEstablecimientoResolverService
+    }
   }, 
   {
     path: 'Pendientes',

@@ -17,4 +17,8 @@ export class UbicacionService {
   obtenerUbicacion(idUbicacion: number): Observable<any> {
     return this.http.get<any[]>(environment.UrlBaseApi + `Ubicacion/${idUbicacion}`, this.httpOptions);
   }
+  
+  obtenerUbicacionesEstablecimiento(idEstablecimiento: number): Observable<any> {
+    return this.http.get<any[]>(environment.UrlBaseApi + `Establecimiento/${idEstablecimiento}/Ubicaciones`, this.httpOptions);
+  }
 }

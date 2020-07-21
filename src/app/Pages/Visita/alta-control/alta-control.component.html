@@ -1,3 +1,42 @@
-<p>
-  alta-control works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Atras" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item>
+    <ionic-selectable
+      item-content
+      [(ngModel)]="ubicacionSeleccionada"
+      itemValueField="id"
+      itemTextField="nombre"
+      [items]="ubicaciones"
+      [canClear]="true"
+      [isMultiple]="false"
+      name="ubicacionSeleccionada"
+      [canSearch]="true"
+      placeholder="Ubicacion">
+    </ionic-selectable>
+  </ion-item>
+  <ion-item>
+    <ion-label>Obtener Ubicación por QR</ion-label>
+    <ion-button (click)="startScan()" slot="end">
+      <ion-icon name="qr-code-outline"></ion-icon>
+    </ion-button>
+  </ion-item>
+
+  <!-- Shows our camera stream -->
+  <video #video [hidden]="!scanActive" width="100%"></video>
+ 
+  <!-- Used to render the camera stream images -->
+  <canvas #canvas hidden></canvas>
+ 
+  <!-- Stop our scanner preview if active -->
+  <ion-button expand="full" (click)="stopScan()" color="danger" *ngIf="scanActive">
+    <ion-icon slot="start" name="close"></ion-icon>
+    Stop scan
+  </ion-button>
+    
+</ion-content>
