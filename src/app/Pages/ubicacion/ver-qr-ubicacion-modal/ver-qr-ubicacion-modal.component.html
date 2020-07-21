@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Codigo QR de Ubicacion</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <div style="text-align: center; margin-top: 2em;">
+
+    <qrcode [qrdata]="ubicacionStringficada" [width]="256" [errorCorrectionLevel]="'M'" ></qrcode>
+
+  </div>
+
+</ion-content>

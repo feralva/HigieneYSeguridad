@@ -15,6 +15,8 @@ import { UbicacionAltaComponent } from "../../ubicacion/ubicacion-alta/ubicacion
 import { ActivatedRoute } from "@angular/router";
 import { DireccionService } from 'src/app/Core/Services/Direccion/direccion.service';
 import { LoaderService } from 'src/app/Core/Services/loader.service';
+import { Ubicacion } from 'src/app/Models/Ubicacion';
+import { VerQrUbicacionModalComponent } from '../../ubicacion/ver-qr-ubicacion-modal/ver-qr-ubicacion-modal.component';
 
 @Component({
   selector: "app-establecimiento-alta",
@@ -152,4 +154,7 @@ export class EstablecimientoAltaComponent implements OnInit {
     });
     toast.present();
   }
+
+
+
 }

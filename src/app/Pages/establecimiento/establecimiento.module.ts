@@ -12,17 +12,21 @@ import { EstablecimientoDetalleComponent } from './establecimiento-detalle/estab
 import { IonicSelectableModule } from 'ionic-selectable';
 import { UbicacionAltaComponent } from '../ubicacion/ubicacion-alta/ubicacion-alta.component';
 import { ClientePageModule } from '../cliente/cliente.module';
+import { VerQrUbicacionModalComponent } from '../ubicacion/ver-qr-ubicacion-modal/ver-qr-ubicacion-modal.component';
+import { UbicacionPageModule } from '../ubicacion/ubicacion.module';
 
 @NgModule({
-  entryComponents: [UbicacionAltaComponent],
+  entryComponents: [UbicacionAltaComponent, VerQrUbicacionModalComponent],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     EstablecimientoPageRoutingModule,
     IonicSelectableModule,
-    ClientePageModule
+    ClientePageModule,
+    UbicacionPageModule
   ],
-  declarations: [EstablecimientoPage, EstablecimientoEditarComponent, EstablecimientoDetalleComponent]
+  declarations: [EstablecimientoPage, EstablecimientoEditarComponent, EstablecimientoDetalleComponent ],
+
 })
 export class EstablecimientoPageModule {}

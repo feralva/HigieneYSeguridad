@@ -27,4 +27,8 @@ export class UbicacionAltaComponent implements OnInit {
     );
   }
 
+  async closeModal() {
+    await this.modalctrl.dismiss();
+  }
+
 }

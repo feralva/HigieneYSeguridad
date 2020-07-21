@@ -8,16 +8,19 @@ import { UbicacionPageRoutingModule } from './ubicacion-routing.module';
 
 import { UbicacionPage } from './ubicacion.page';
 import { UbicacionAltaComponent } from './ubicacion-alta/ubicacion-alta.component';
+import { VerQrUbicacionModalComponent } from './ver-qr-ubicacion-modal/ver-qr-ubicacion-modal.component';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
-  entryComponents: [UbicacionAltaComponent],
+  entryComponents: [UbicacionAltaComponent, VerQrUbicacionModalComponent],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    UbicacionPageRoutingModule
+    UbicacionPageRoutingModule,
+    QRCodeModule
   ],
-  declarations: [UbicacionPage],
-  exports: [ UbicacionAltaComponent ]
+  declarations: [UbicacionPage, VerQrUbicacionModalComponent],
+  exports: [  VerQrUbicacionModalComponent]//UbicacionAltaComponent,
 })
 export class UbicacionPageModule {}

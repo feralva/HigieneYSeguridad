@@ -21,7 +21,11 @@ const routes: Routes = [
   },
   {
     path: ':id/detalle',
-    component: EstablecimientoDetalleComponent
+    component: EstablecimientoDetalleComponent,
+    resolve: 
+    {
+      establecimiento: EstablecimientoDetalleResolverService
+    } 
   }
 ];
 
