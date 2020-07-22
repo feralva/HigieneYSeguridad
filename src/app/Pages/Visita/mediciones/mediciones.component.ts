@@ -42,9 +42,7 @@ export class MedicionesComponent implements OnInit {
       error => console.log(error)
     );
 
-    this.procesarMediciones();
-    console.log(this.mediciones )
-
+    //this.procesarMediciones();
   }
 
   private procesarMediciones(){

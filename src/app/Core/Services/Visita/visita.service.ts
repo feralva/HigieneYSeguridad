@@ -39,8 +39,6 @@ export class VisitaService {
   }
   
   actualizarFechaVisita(idVisita: number, fecha: Date, duracion: number):Observable<any> {
-    console.log(fecha)
-    console.log(duracion)
     return this.http.put<any>(environment.UrlBaseApi + `Visita/cambiarFecha`, {Model: {Id: idVisita, Fecha: fecha, Duracion: duracion}}, this.httpOptions);
   }
 }

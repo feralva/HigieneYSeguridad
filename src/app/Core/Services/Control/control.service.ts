@@ -3,6 +3,8 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { take, mergeMap, map, tap } from 'rxjs/operators';
+import { Control } from 'src/app/Models/Control';
+import { Medicion } from 'src/app/Models/Medicion';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +25,40 @@ export class ControlService {
     .pipe(
       take(1)
     )    
+  }
+
+  async altaControlVisita(control: Control, mediciones: any[]){
+
+    var idControl;
+    await this.db.collection('controles').add(control)
+      .then(function(docRef) {
+
+        idControl = docRef.id
+    });
+
+    mediciones.forEach(async medicion => {
+
+      medicion.idControl = idControl;
+      console.log(medicion)
+      await this.db.collection('mediciones').add(medicion).then(function(docRef) {
+
+        idControl = docRef.id
+      });
+
+    });
+/*     Object.keys(mediciones).forEach(async propiedad => {
+
+      var medicion = {
+        ["idControl"]: idControl,
+        [propiedad]: mediciones[propiedad]
+      }
+
+      await this.db.collection('mediciones').add(medicion).then(function(docRef) {
+
+        idControl = docRef.id
+      });
+
+    }) */
   }
 
 }

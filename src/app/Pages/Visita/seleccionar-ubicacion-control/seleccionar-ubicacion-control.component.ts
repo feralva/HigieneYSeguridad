@@ -77,10 +77,7 @@ export class SeleccionarUbicacionControlComponent implements OnInit {
     this.scanActive = false;
   }
 
-  ngOnInit() {
-
-    console.log('Padre')
-  }
+  ngOnInit() { }
 
   obtenerUbicacionPorQr(dataDeQR: any){
 
