@@ -15,6 +15,10 @@ import { MedicionesControlResolverService } from 'src/app/Core/Services/Medicion
 import { UbicacionesEstablecimientoResolverService } from 'src/app/Core/Services/Ubicacion/ubicacionesEstablecimiento-resolver.service';
 import { SeleccionarUbicacionControlComponent } from './seleccionar-ubicacion-control/seleccionar-ubicacion-control.component';
 import { MedicionSonoraComponent } from './Medir/medicion-sonora/medicion-sonora.component';
+import { MedicionLuminicaComponent } from './Medir/medicion-luminica/medicion-luminica.component';
+import { ControlPrevencionIncendioComponent } from './Medir/control-prevencion-incendio/control-prevencion-incendio.component';
+import { MedicionEmisionGasesComponent } from './Medir/medicion-emision-gases/medicion-emision-gases.component';
+import { MedicionElectricaComponent } from './Medir/medicion-electrica/medicion-electrica.component';
 
 
 const routes: Routes = [
@@ -52,6 +56,34 @@ const routes: Routes = [
   {
     path: ':id/controles/:idEstablecimiento/medicionSonora/alta',
     component: MedicionSonoraComponent,
+    resolve: {
+      ubicaciones: UbicacionesEstablecimientoResolverService
+    }
+  }, 
+  {
+    path: ':id/controles/:idEstablecimiento/medicionLuz/alta',
+    component: MedicionLuminicaComponent,
+    resolve: {
+      ubicaciones: UbicacionesEstablecimientoResolverService
+    }
+  }, 
+  {
+    path: ':id/controles/:idEstablecimiento/medicionIncendio/alta',
+    component: ControlPrevencionIncendioComponent,
+    resolve: {
+      ubicaciones: UbicacionesEstablecimientoResolverService
+    }
+  }, 
+  {
+    path: ':id/controles/:idEstablecimiento/medicionEmisionGases/alta',
+    component: MedicionEmisionGasesComponent,
+    resolve: {
+      ubicaciones: UbicacionesEstablecimientoResolverService
+    }
+  }, 
+  {
+    path: ':id/controles/:idEstablecimiento/medicionElectrica/alta',
+    component: MedicionElectricaComponent,
     resolve: {
       ubicaciones: UbicacionesEstablecimientoResolverService
     }

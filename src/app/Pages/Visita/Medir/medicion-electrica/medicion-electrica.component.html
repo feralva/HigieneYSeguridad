@@ -1,3 +1,50 @@
-<p>
-  medicion-electrica works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Atras" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<seleccionar-ubicacion-control #seleccionUbicacionComponent [idEstablecimiento]="idEstablecimiento" [idVisita]="idVisita" 
+  [ubicaciones]="ubicaciones"></seleccionar-ubicacion-control>
+
+<form #form="ngForm" (ngSubmit)="onSubmit(form)" >
+  <ion-item-divider color="primary">
+    <ion-label>Mediciones</ion-label>
+  </ion-item-divider>
+  <ion-item>
+    <ion-label position="stacked">Puesta a Tierra:</ion-label>
+    <ion-select name="puestaATierra" [(ngModel)]="model.puestaATierra" placeholder="Puesta a Tierra">
+      <ion-select-option [value]=true>Si</ion-select-option>
+      <ion-select-option [value]=false>No</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Tableros Electricos con Tapa:</ion-label>
+    <ion-select name="tablerosElectricosTapados" [(ngModel)]="model.tablerosElectricosTapados" placeholder="Tableros Electricos Tapados">
+      <ion-select-option [value]=true>Si</ion-select-option>
+      <ion-select-option [value]=false>No</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Utilizacion de Protecciones Electricas:</ion-label>
+    <ion-select name="proteccionesElectricas" [(ngModel)]="model.proteccionesElectricas" placeholder="Protecciones Electricas">
+      <ion-select-option [value]=true>Si</ion-select-option>
+      <ion-select-option [value]=false>No</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Aislante Electrico:</ion-label>
+    <ion-select name="aislanteElectrico" [(ngModel)]="model.aislanteElectrico" placeholder="Aislante Electrico">
+      <ion-select-option [value]=true>Si</ion-select-option>
+      <ion-select-option [value]=false>No</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button expand="block" type="submit" expand="block" fill="solid" shape="round" [disabled]="form.invalid">
+    Agregar Control a Visita
+  </ion-button>
+</form>
+
+</ion-content>

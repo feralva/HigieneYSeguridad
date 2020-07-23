@@ -1,3 +1,62 @@
-<p>
-  control-prevencion-incendio works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Atras" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<seleccionar-ubicacion-control #seleccionUbicacionComponent [idEstablecimiento]="idEstablecimiento" [idVisita]="idVisita" 
+  [ubicaciones]="ubicaciones"></seleccionar-ubicacion-control>
+
+<form #form="ngForm" (ngSubmit)="onSubmit(form)" >
+  <ion-item-divider color="primary">
+    <ion-label>Mediciones</ion-label>
+  </ion-item-divider>
+  <ion-item>
+    <ion-label position="floating">Cantidad de Matafuegos:</ion-label>
+    <ion-input type="number"  name="cantidadMatafuegos" [(ngModel)]="model.cantidadMatafuegos" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Cantidad Salidas Emergencia:</ion-label>
+    <ion-input type="number" name="cantidadSalidasEmergencia" [(ngModel)]="model.cantidadSalidasEmergencia" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Candidad Baldes Arena:</ion-label>
+    <ion-input type="number" name="cantidadBaldesArena" [(ngModel)]="model.cantidadBaldesArena" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Matafuegos Vencidos:</ion-label>
+    <ion-select name="matafuegosVencidos" [(ngModel)]="model.matafuegosVencidos" placeholder="Matafuegos Vencidos">
+      <ion-select-option [value]=true>Si</ion-select-option>
+      <ion-select-option [value]=false>No</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Espacio Ventilado:</ion-label>
+    <ion-select name="espacioVentilado" [(ngModel)]="model.espacioVentilado" placeholder="Espacio Ventilado">
+      <ion-select-option [value]=true>Si</ion-select-option>
+      <ion-select-option [value]=false>No</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Protecciones Ignifugas instaladas:</ion-label>
+    <ion-select name="proteccionesIgnifugas" [(ngModel)]="model.proteccionesIgnifugas" placeholder="Protecciones Ignifugas">
+      <ion-select-option [value]=true>Si</ion-select-option>
+      <ion-select-option [value]=false>No</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Detectores de Humo:</ion-label>
+    <ion-select name="detectoresDeHumo" [(ngModel)]="model.detectoresDeHumo" placeholder="Detectores De Humo">
+      <ion-select-option [value]=true>Si</ion-select-option>
+      <ion-select-option [value]=false>No</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button expand="block" type="submit" expand="block" fill="solid" shape="round" [disabled]="form.invalid">
+    Agregar Control a Visita
+  </ion-button>
+</form>
+
+</ion-content>

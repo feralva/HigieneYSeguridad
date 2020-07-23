@@ -1,3 +1,34 @@
-<p>
-  medicion-luminica works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Atras" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<seleccionar-ubicacion-control #seleccionUbicacionComponent [idEstablecimiento]="idEstablecimiento" [idVisita]="idVisita" 
+  [ubicaciones]="ubicaciones"></seleccionar-ubicacion-control>
+
+<form #form="ngForm" (ngSubmit)="onSubmit(form)" >
+  <ion-item-divider color="primary">
+    <ion-label>Mediciones</ion-label>
+  </ion-item-divider>
+  <ion-item>
+    <ion-label position="floating">Flujo Luminoso:</ion-label>
+    <ion-input type="number" placeholder="Valor en lm" name="flujoLuminoso" [(ngModel)]="model.flujoLuminoso" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Iluminancia:</ion-label>
+    <ion-input type="number" placeholder="Valor en lx" name="iluminancia" [(ngModel)]="model.iluminancia" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Intensidad luminosa:</ion-label>
+    <ion-input type="number" placeholder="Valor en cd" name="intensidadLuminosa" [(ngModel)]="model.intensidadLuminosa" required></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" type="submit" expand="block" fill="solid" shape="round" [disabled]="form.invalid">
+    Agregar Control a Visita
+  </ion-button>
+</form>
+
+</ion-content>

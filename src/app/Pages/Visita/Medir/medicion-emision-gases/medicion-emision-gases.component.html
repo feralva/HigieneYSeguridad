@@ -1,3 +1,51 @@
-<p>
-  medicion-emision-gases works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Atras" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<seleccionar-ubicacion-control #seleccionUbicacionComponent [idEstablecimiento]="idEstablecimiento" [idVisita]="idVisita" 
+  [ubicaciones]="ubicaciones"></seleccionar-ubicacion-control>
+
+<form #form="ngForm" (ngSubmit)="onSubmit(form)" >
+  <ion-item-divider color="primary">
+    <ion-label>Mediciones</ion-label>
+  </ion-item-divider>
+
+  <ion-item>
+    <ion-label position="stacked">Se Presenta Azufre en Aire:</ion-label>
+    <ion-select name="azufreEnAire" [(ngModel)]="model.azufreEnAire" placeholder="Azufre en Aire">
+      <ion-select-option [value]=true>Si</ion-select-option>
+      <ion-select-option [value]=false>No</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Se Presenta Nitrógeno en Aire:</ion-label>
+    <ion-select name="nitrogenoEnAire" [(ngModel)]="model.nitrogenoEnAire" placeholder="Nitrógeno en Aire">
+      <ion-select-option [value]=true>Si</ion-select-option>
+      <ion-select-option [value]=false>No</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Se Presenta Carbono en Aire:</ion-label>
+    <ion-select name="carbonoEnAire" [(ngModel)]="model.carbonoEnAire" placeholder="Carbono en Aire">
+      <ion-select-option [value]=true>Si</ion-select-option>
+      <ion-select-option [value]=false>No</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Se Presenta Halógenos en Aire:</ion-label>
+    <ion-select name="halogenoEnAire" [(ngModel)]="model.halogenoEnAire" placeholder="Halógenos en Aire">
+      <ion-select-option [value]=true>Si</ion-select-option>
+      <ion-select-option [value]=false>No</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button expand="block" type="submit" expand="block" fill="solid" shape="round" [disabled]="form.invalid">
+    Agregar Control a Visita
+  </ion-button>
+</form>
+
+</ion-content>

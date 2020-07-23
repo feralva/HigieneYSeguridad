@@ -114,7 +114,24 @@ export class VisitaDetalleComponent implements OnInit {
 
   onAgregarControl(){
 
-    this.router.navigate(['/visita',this.idVisita, 'controles', this.visita.establecimiento.id, 'medicionSonora', 'alta'])
+    switch (this.visita.tipoVisita.descripcion) {
+      case 'Sonido':
+          this.router.navigate(['/visita',this.idVisita, 'controles', this.visita.establecimiento.id, 'medicionSonora', 'alta'])
+          break;
+      case 'Luz':
+          this.router.navigate(['/visita',this.idVisita, 'controles', this.visita.establecimiento.id, 'medicionLuz', 'alta'])
+          break;
+      case 'Incendio':
+          this.router.navigate(['/visita',this.idVisita, 'controles', this.visita.establecimiento.id, 'medicionIncendio', 'alta'])
+          break;
+      case 'Emision Gases':
+          this.router.navigate(['/visita',this.idVisita, 'controles', this.visita.establecimiento.id, 'medicionEmisionGases', 'alta'])
+          break;
+      case 'Electrica':
+          this.router.navigate(['/visita',this.idVisita, 'controles', this.visita.establecimiento.id, 'medicionElectrica', 'alta'])
+          break;
+    }
+    
 
   }
 
