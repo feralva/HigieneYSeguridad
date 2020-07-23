@@ -3,7 +3,7 @@ import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
-import { NavController, ModalController } from '@ionic/angular';
+import { NavController, ModalController, AlertController, ToastController } from '@ionic/angular';
 import { ControlService } from 'src/app/Core/Services/Control/control.service';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { VisitaService } from 'src/app/Core/Services/Visita/visita.service';
@@ -27,7 +27,8 @@ export class VisitaDetalleComponent implements OnInit {
     private appDataService: AppDataService,private router: Router, public navCtrl: NavController,
     private controlService: ControlService, private authService: AuthService,
     private visitaService: VisitaService, private ubicacionService: UbicacionService,
-    private modalController: ModalController) { }
+    private modalController: ModalController, public alertController: AlertController,
+    public toastController: ToastController) { }
 
   ngOnInit() {
 
@@ -76,6 +77,7 @@ export class VisitaDetalleComponent implements OnInit {
         data => {
           control.ubicacion = data.nombre
           console.log(control)
+          event.target.complete();
         },
         (error) => console.log(error)
       )
@@ -137,6 +139,16 @@ export class VisitaDetalleComponent implements OnInit {
 
   completarVisita(){
 
+    if(this.visita.empleado == null || this.visita.fecha == null ){
+
+      this.alertaFaltaInformacion();
+
+    }else{
+
+      this.completarVisitaConfirm();
+
+    }
+
     //TODO agregar logica de completar... o agregar redireccion a pantalla detalle controles visita
   }
   async onEditarAuditorClick(event){
@@ -160,6 +172,61 @@ export class VisitaDetalleComponent implements OnInit {
         console.log(this.visita)
         console.log('Sending: ',  this.visita.empleado);
       });
+  }
+
+  async completarVisitaConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Completar Visita',
+      message: 'Message ¿Esta seguro que desea completar Visita?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Ok',
+          handler: () => {
+            this.visitaService.completarVisita(this.idVisita).subscribe(
+                result => this.MostrarMensajeOperacion('Alta Exitosa'),
+                (err: any) => this.MostrarMensajeOperacion('Falla')
+            );
+          }     
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async MostrarMensajeOperacion(mensaje:string) {
+    const toast = await this.toastController.create({
+      message: mensaje,
+      duration: 2000
+    });
+    toast.present();
+  }
+
+  async alertaFaltaInformacion() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Datos Faltantes',
+      message: 'La visita no se puede completar con la fecha o auditor sin Asignar',
+      buttons: [
+        {
+          text: 'Ok',
+          role: 'OK',
+          cssClass: 'primary',
+          handler: () => {
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
 }
