@@ -11,12 +11,16 @@ import { PlanAltaTiposPlanResolverService } from 'src/app/Core/Services/Plan/pla
 import { AltaVisitaPlanComponent } from './alta-visita-plan/alta-visita-plan.component';
 import { ClienteEstablecimientosResolver } from 'src/app/Core/Services/Cliente/clienteEstablecimiento-resolver.service';
 import { VisitaTiposVisitaResolverService } from 'src/app/Core/Services/Visita/visitaTiposVisita-resolver.service';
+import { PlanEstadosPosiblesResolver } from 'src/app/Core/Services/Plan/planEstadosPosibles-resolver.service';
 
 const routes: Routes = [
   {
     path: '',
     component: PlanPage,
-    resolve: {planes: PlanesEmpresaResolverService}
+    resolve: {
+      planes: PlanesEmpresaResolverService,
+      estadosPlanesPosibles: PlanEstadosPosiblesResolver
+    }
   },
   {
     path: ':id/detalle',

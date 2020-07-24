@@ -75,7 +75,7 @@ export class AltaClienteComponent implements OnInit {
         this.model.empresaId = data.empresaId
       },
       error => console.log(error)
-  );
+    );
   }
 
   ionViewWillEnter(){

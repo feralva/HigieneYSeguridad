@@ -20,12 +20,17 @@ export class PlanService {
     return this.http.get<PlanDetalle>(environment.UrlBaseApi + `Plan/${idPlan}?activo=true`, this.httpOptions);
   }
 
-  obtenerPlanesEmpresa(idEmpresa: number): Observable<any[]> {
-    return this.http.get<any[]>(environment.UrlBaseApi + `Empresa/${idEmpresa}/Planes?activo=true`, this.httpOptions);
+  obtenerPlanesEmpresa(idEmpresa: number, idEstado: number = 1): Observable<any[]> {
+    console.log(idEstado)
+    return this.http.get<any[]>(environment.UrlBaseApi + `Empresa/${idEmpresa}/Planes?activo=true&estadoPlan=${idEstado}`, this.httpOptions);
   }
 
   obtenerTiposPlan(): Observable<any> {
     return this.http.get<any[]>(environment.UrlBaseApi + `Plan/Tipos`, this.httpOptions);  
+  }
+
+  obtenerEstadosPosiblesPlan(): Observable<any> {
+    return this.http.get<any[]>(environment.UrlBaseApi + `Plan/Estados`, this.httpOptions);  
   }
 
   alta(plan:any) : Observable<any> {
