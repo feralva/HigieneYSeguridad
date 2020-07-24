@@ -1,4 +1,21 @@
+:root {
+  --placeholder-color: black !important
+}
+div .ionic-selectable-value{
+  
+  color: black !important;
+}
 
+.ionic-selectable-value-item{
+  
+  color: black !important;
+}
+.ionic-selectable-has-placeholder .ionic-selectable-value-item{
+  color: black !important;
+}
+.colorTexto{
+  color: black !important;  
+}
 .timeline{
     --uiTimelineMainColor: var(--timelineMainColor, #222);
     --uiTimelineSecondaryColor: var(--timelineSecondaryColor, #fff);

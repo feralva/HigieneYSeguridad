@@ -19,13 +19,19 @@ import { MedicionLuminicaComponent } from './Medir/medicion-luminica/medicion-lu
 import { ControlPrevencionIncendioComponent } from './Medir/control-prevencion-incendio/control-prevencion-incendio.component';
 import { MedicionEmisionGasesComponent } from './Medir/medicion-emision-gases/medicion-emision-gases.component';
 import { MedicionElectricaComponent } from './Medir/medicion-electrica/medicion-electrica.component';
+import { ClienteResolver } from 'src/app/Core/Services/Cliente/cliente-resolver.service';
+import { VisitaEstadoResolverService } from 'src/app/Core/Services/Visita/visitaEstados-resolver.service';
 
 
 const routes: Routes = [
   {
     path: '',
     component: VisitaPage,
-    resolve: {visitas: VisitaEmpresaResolverService}
+    resolve: {
+      visitas: VisitaEmpresaResolverService,
+      clientes: ClienteResolver,
+      estados: VisitaEstadoResolverService
+    }
   },
   {
     path: ':id/detalle',

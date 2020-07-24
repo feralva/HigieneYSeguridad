@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
+import { LoaderService } from 'src/app/Core/Services/loader.service';
 
 @Component({
   selector: 'app-visita',
@@ -16,16 +17,37 @@ export class VisitaPage implements OnInit {
   nombrePagina;
   visitas: any[];
   currentUser: UserLogueado;
+  estadoVisitaAFiltrarId: number = 0;
+  estadosVisitasPosibles: any[] = [];
+  private _clienteAFiltrar: any = null;
+  clientes: any[] = []
   
   constructor(private translate: TranslateService, private route: ActivatedRoute,
     private appDataService: AppDataService,private router: Router, public navCtrl: NavController,
-    private visitaService: VisitaService, private authService: AuthService) { }
+    private visitaService: VisitaService, private authService: AuthService,
+    private loaderService: LoaderService) { }
+
+  get clienteAFiltrar(): any {
+    return this._clienteAFiltrar;
+  }
+
+  set clienteAFiltrar(clienteSeleccionado) {
+    
+    console.log('cliente seleccionado')
+    console.log(clienteSeleccionado)
+    this._clienteAFiltrar = clienteSeleccionado;
+
+    this.actualizarVisitasPorFiltros({})
+
+  }
 
   ngOnInit() {
     this.nombrePagina = 'Visita.title';
     this.appDataService.changePageName(this.nombrePagina);
 
     this.visitas = this.route.snapshot.data['visitas'];
+    this.clientes = this.route.snapshot.data['clientes'];
+    this.estadosVisitasPosibles = this.route.snapshot.data['estados'];
  
     this.authService.getUserSubject().subscribe(
       data => this.currentUser = data,
@@ -46,5 +68,23 @@ export class VisitaPage implements OnInit {
       (error) => console.log(error)
     );
     event.target.complete();
+  }
+
+  actualizarVisitasPorFiltros(event){
+    console.log('Actualizo visitas')
+    this.visitas = [];
+
+    this.loaderService.present(); 
+
+    var idCliente = (this.clienteAFiltrar != null)?this.clienteAFiltrar.id: 0;
+    
+    this.visitaService.obtenerVisitasEmpresa(this.currentUser.empresaId , idCliente, this.estadoVisitaAFiltrarId).subscribe(
+      data => {
+        console.log(data)
+        this.visitas = data;
+        this.loaderService.dismiss();
+      },
+      (error) => console.log(error)
+    )
   }
 }

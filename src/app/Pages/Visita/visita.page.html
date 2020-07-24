@@ -9,7 +9,30 @@
 <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
 </ion-refresher>
-  <div class="page">
+<ion-item>
+  <ion-label>Estado Visita: </ion-label>
+  <ion-select name="estadoPlanAFiltrarId" [(ngModel)]="estadoVisitaAFiltrarId" multiple="false" placeholder="Estado Plan" (ngModelChange)="actualizarVisitasPorFiltros($event)">
+    <ion-select-option  [value]=0> Todos </ion-select-option>
+    <ion-select-option *ngFor="let estado of estadosVisitasPosibles" [value]="estado.id">{{estado.descripcion}}</ion-select-option>
+  </ion-select>
+</ion-item>
+<ion-item>
+  <ionic-selectable
+      item-content
+      [(ngModel)]="clienteAFiltrar"
+      itemValueField="id"
+      itemTextField="nombre"
+      [items]="clientes"
+      [canClear]="true"
+      [isMultiple]="false"
+      name="clientesPosibles"
+      [canSearch]="true"
+      placeholder="Clientes"
+      class="colorTexto">
+  </ionic-selectable>
+</ion-item>
+
+  <div class="page" *ngIf="clientes.length > 0">
     <div class="timeline" >
       <div class="timeline__group" *ngFor="let visita of visitas" >
         <span class="timeline__year">{{visita.fechaPactada | date:'yyyy'}}</span>
