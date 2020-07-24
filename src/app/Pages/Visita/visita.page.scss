@@ -2,12 +2,11 @@
   --placeholder-color: black !important
 }
 div .ionic-selectable-value{
-  
   color: black !important;
 }
 
-.ionic-selectable-value-item{
-  
+.ionic-selectable-value-item{  
+  --placeholder-color: black !important;
   color: black !important;
 }
 .ionic-selectable-has-placeholder .ionic-selectable-value-item{

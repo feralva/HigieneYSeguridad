@@ -43,7 +43,7 @@ registerLocaleData(localeDe); */
     NgCalendarModule,
     IonicSelectableModule
   ],
-  declarations: [VisitaPage, AltaVisitaComponent, VisitaDetalleComponent, 
+  declarations: [ VisitaPage, AltaVisitaComponent, VisitaDetalleComponent, 
     VisitaPendienteEmpleadoComponent, AltaVisitaModalComponent, VisitaEditarComponent, 
     MedicionesAltaModalComponent, MedicionesComponent, SeleccionarUbicacionControlComponent,
     CambiarAuditorModalComponent, CambiarFechaModalComponent, CambiarFechaDetalleModalComponent,

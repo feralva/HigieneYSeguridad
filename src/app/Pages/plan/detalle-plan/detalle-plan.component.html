@@ -13,6 +13,7 @@
   <ion-item-divider color="secondary">
     <ion-label>Visitas</ion-label>
   </ion-item-divider>
+
   <ion-card *ngFor="let visita of plan.visitas" [routerLink]="['/visita',visita.id, 'detalle']">
     <ion-card-header style="font-size: large;">
       <b>{{plan.cliente +  ' - ' + visita.nombreEstablecimiento}}</b>

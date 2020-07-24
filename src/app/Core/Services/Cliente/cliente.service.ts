@@ -32,8 +32,8 @@ export class ClienteService {
     return this.http.get<Cliente>(environment.UrlBaseApi + `Cliente/${idCliente}`, this.httpOptions);
   }
 
-  obtenerPlanesActivosCliente(idCliente: number): Observable<any[]> {
-    return this.http.get<any[]>(environment.UrlBaseApi + `Cliente/${idCliente}/Planes?activo=true`, this.httpOptions);
+  obtenerPlanesActivosCliente(idCliente: number, idEstado: number = 0): Observable<any[]> {
+    return this.http.get<any[]>(environment.UrlBaseApi + `Cliente/${idCliente}/Planes?activo=true&idEstado=${idEstado}`, this.httpOptions);
   }
 
   obtenerEstablecimientosCliente(idCliente: number) : Observable<any[]> {

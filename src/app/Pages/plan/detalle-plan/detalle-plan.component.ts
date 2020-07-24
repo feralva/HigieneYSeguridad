@@ -17,7 +17,7 @@ export class DetallePlanComponent implements OnInit {
   plan: PlanDetalle;
   nombrePagina: string;
   currentUser: UserLogueado;
-  
+
   constructor(private translate: TranslateService, private route: ActivatedRoute,
     private appDataService: AppDataService,
     private planService: PlanService, private authService: AuthService) { }

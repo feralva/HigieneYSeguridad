@@ -15,6 +15,7 @@ import { AltaPlanComponent } from '../plan/alta-plan/alta-plan.component';
 import { PlanAltaTiposPlanResolverService } from 'src/app/Core/Services/Plan/planAltaTiposPlan-resolver.service';
 import { ClienteEspecificoResolver } from 'src/app/Core/Services/Cliente/clienteEspecifico-resolver.service';
 import { EmpresaClienteResumenResolver } from 'src/app/Core/Services/Empresa/empresaClientesResumen-resolver.service';
+import { PlanEstadosPosiblesResolver } from 'src/app/Core/Services/Plan/planEstadosPosibles-resolver.service';
 
 const routes: Routes = [
   {
@@ -35,7 +36,10 @@ const routes: Routes = [
   {
     path: ':id/planes',
     component: ClientePlanesComponent,
-    resolve: {planes: ClientePlanesResolver}
+    resolve: {
+      planes: ClientePlanesResolver,
+      estadosPlanesPosibles: PlanEstadosPosiblesResolver
+    }
   },
   {
     path: ':id/planes/alta',

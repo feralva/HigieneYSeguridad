@@ -12,6 +12,7 @@ import { AltaPlanComponent } from './alta-plan/alta-plan.component';
 import { VisitaPageModule } from '../visita/visita.module';
 import { AltaVisitaModalComponent } from '../Visita/alta-visita-modal/alta-visita-modal.component';
 import { AltaVisitaPlanComponent } from './alta-visita-plan/alta-visita-plan.component';
+import { IonicSelectableModule } from 'ionic-selectable';
 
 @NgModule({
   entryComponents: [AltaVisitaModalComponent],
@@ -20,7 +21,8 @@ import { AltaVisitaPlanComponent } from './alta-visita-plan/alta-visita-plan.com
     FormsModule,
     IonicModule,
     PlanPageRoutingModule,
-    VisitaPageModule
+    VisitaPageModule,
+    IonicSelectableModule
   ],
   declarations: [PlanPage, DetallePlanComponent, AltaPlanComponent, AltaVisitaModalComponent, AltaVisitaPlanComponent]
 })
