@@ -1,28 +1,38 @@
 <ion-content>
   <form #form="ngForm" (ngSubmit)="login(form)">
-    <div class="login-box">
-      <ion-item>
-        <ion-label position="stacked">Correo Electronico</ion-label>
-        <ion-input name="email" type="email" placeholder="Ingresar Correo Electronico" ngModel required></ion-input>
-      </ion-item>
     
-      <ion-item>
-        <ion-label position="stacked">Password</ion-label>
-        <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
-      </ion-item>
-    
-      <ion-button class="full-login-button" expand="block" shape="round" type="submit" [disabled]="form.invalid" style="margin-top: 6vh; margin-bottom: 4vh;"margin-top>
-        Login
-      </ion-button>
-    
-      <ion-button expand="block" fill="clear" color="dark" margin-top>
-        Forgot password?
-      </ion-button>
-    
-      <ion-button class="outline-login-button" expand="block" shape="round" fill="outline"  margin-top>
-        Sign Up with Email
-      </ion-button>
-      
-    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col size-lg="4" size-md="4" size-sm="10" offset-lg="4">
+          <div class="login-box">
+            <ion-item>
+              <ion-label position="stacked">Correo Electronico</ion-label>
+              <ion-input name="email" type="email" placeholder="Ingresar Correo Electronico" ngModel required></ion-input>
+            </ion-item>
+          
+            <ion-item>
+              <ion-label position="stacked">Password</ion-label>
+              <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+            </ion-item>
+          
+            <ion-button class="full-login-button" expand="block" shape="round" type="submit" [disabled]="form.invalid" style="margin-top: 6vh; margin-bottom: 4vh;"margin-top>
+              Login
+            </ion-button>
+          
+            <ion-button expand="block" fill="clear" color="dark" margin-top>
+              Forgot password?
+            </ion-button>
+          
+            <ion-button class="outline-login-button" expand="block" shape="round" fill="outline"  margin-top>
+              Sign Up with Email
+            </ion-button>
+            
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </form>
+
+
+
   </ion-content>
