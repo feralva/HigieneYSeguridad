@@ -3,7 +3,42 @@
     <ion-title>Irregularidad</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card *ngFor="let irregularidad of irregularidades" [routerLink]="['/irregularidad',irregularidad.id, 'detalle']">
+    <ion-card-header style="font-size: large;">
+      <b>{{irregularidad.cliente + ' - ' + irregularidad.establecimiento + ' - ' + irregularidad.ubicacion.nombre}}</b>
+    </ion-card-header>
+    <ion-card-content style="font-size: x-small;">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12><b>Estado:</b> {{irregularidad.estado}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12><b>Severidad:</b> {{irregularidad.tipo}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col><b>Descripción:</b> {{irregularidad.descripcion}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col><b>Reportado Por: </b> {{irregularidad.empleado}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col><b>Fecha Detectado: </b> {{irregularidad.fechaDeteccion | date: 'shortDate'}}</ion-col>
+        </ion-row>
+        <ion-row *ngIf="irregularidad.fechaFinalizado">
+          <ion-col><b>Fecha Finalizado: </b> {{irregularidad.fechaFinalizado | date: 'shortDate'}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="['alta']" >
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>

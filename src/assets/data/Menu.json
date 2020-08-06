@@ -60,6 +60,12 @@
         "role": ["Coordinador"]
     },
     {
+        "icon": "card",
+        "name": "Irregularidad.title",
+        "url": "/irregularidad",
+        "role": ["Coordinador"]
+    },
+    {
         "icon": "thermometer",
         "name": "Equipos Medición",
         "url": "equiposMedicion",
