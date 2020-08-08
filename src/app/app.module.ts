@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MenuComponent } from './Core/Components/menu/menu.component';
 
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -30,6 +30,7 @@ export function createTranslateLoader(http: HttpClient) {
 }
 import { Camera } from '@ionic-native/camera/ngx';
 import * as firebase from 'firebase';
+import { LoaderInterceptorService } from './Core/HttpInterceptors/loader-interceptor.service';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -59,7 +60,8 @@ firebase.initializeApp(environment.firebaseConfig);
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    Camera
+    Camera,
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]
 })

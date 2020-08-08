@@ -51,7 +51,7 @@ export class AppComponent implements OnInit {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.router.events.subscribe((event: Event) => {
+      /* this.router.events.subscribe((event: Event) => {
         switch(true){
           case event instanceof NavigationStart: {
             this.loaderService.present();
@@ -69,7 +69,7 @@ export class AppComponent implements OnInit {
             break;
           }
         }
-      })
+      }) */
       this.languageService.setInitialAppLanguage();
 
 /*       this.auth.currentUser.subscribe(

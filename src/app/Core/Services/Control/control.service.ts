@@ -5,6 +5,8 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { take, mergeMap, map, tap } from 'rxjs/operators';
 import { Control } from 'src/app/Models/Control';
 import { Medicion } from 'src/app/Models/Medicion';
+import { LoaderService } from '../loader.service';
+import { LoadingController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +20,12 @@ export class ControlService {
 
   constructor(private http: HttpClient, private db: AngularFirestore) { }
 
-
   obtenerControlesVisita(idVisita: number): Observable<any[]> {
-    
+
     return this.db.collection<any>('controles',ref => ref.where('visitaId', '==', idVisita)).valueChanges({ idField: 'id' })
     .pipe(
-      take(1)
+      take(1)/* ,
+      tap(() => ref.loadingCtrl.dismiss()) */
     )    
   }
 
