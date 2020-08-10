@@ -60,8 +60,8 @@ firebase.initializeApp(environment.firebaseConfig);
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    Camera,
-    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true }
+    Camera/* ,
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true } */
   ],
   bootstrap: [AppComponent]
 })
