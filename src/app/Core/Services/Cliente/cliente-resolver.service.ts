@@ -14,7 +14,6 @@ export class ClienteResolver implements Resolve<any[]>{
 
     idEmpresa: number;
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any[]>{
-        //const idEmpresa = +route.paramMap.get('id');
 
         this.authService.getUserSubject().subscribe(
           data => this.idEmpresa = data.empresaId,

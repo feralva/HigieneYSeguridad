@@ -26,12 +26,15 @@ export class IrregularidadService {
     if(idEmpresa) params = params.set('idEmpresa', idEmpresa.toString())
     if(estado) params = params.set('estado', estado.toString())
     
-    console.log(params.toString())
     var httpOptions = 
       { ...this.httpOptions,
         params: params
       }
-
+      
     return this.http.get<any[]>(environment.UrlBaseApi + `Irregularidad`, httpOptions);
+  }
+
+  obtenerTiposIrregularidades() : Observable<any> {
+    return this.http.get<any>(environment.UrlBaseApi + 'Irregularidad/tipos', this.httpOptions); 
   }
 }
