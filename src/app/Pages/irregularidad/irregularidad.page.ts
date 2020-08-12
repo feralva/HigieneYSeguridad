@@ -5,6 +5,7 @@ import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { LoaderService } from 'src/app/Core/Services/loader.service';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
+import { IrregularidadService } from 'src/app/Core/Services/Irregularidad/irregularidad.service';
 
 @Component({
   selector: 'app-irregularidad',
@@ -17,7 +18,7 @@ export class IrregularidadPage implements OnInit {
   currentUser: UserLogueado;
 
   constructor(private translate: TranslateService, private route: ActivatedRoute,
-    private appDataService: AppDataService, 
+    private appDataService: AppDataService, private irregularidadService: IrregularidadService,
     private authService: AuthService, public loaderService: LoaderService) { }
 
     ngOnInit() {
@@ -45,6 +46,11 @@ export class IrregularidadPage implements OnInit {
       data => this.planes = data,
       (error) => console.log(error)
     ); */
+
+    this.irregularidadService.ObtenerIrregularidades(this.currentUser.empresaId).subscribe(
+      data => this.irregularidades = data,
+      (error) => console.log(error)
+    )
 
     event.target.complete();
   }

@@ -6,6 +6,8 @@ import { IrregularidadesEmpresaResolver } from 'src/app/Core/Services/Irregulari
 import { AltaIrregularidadComponent } from './alta-irregularidad/alta-irregularidad.component';
 import { ClienteResolver } from 'src/app/Core/Services/Cliente/cliente-resolver.service';
 import { IrregularidadesTiposResolver } from 'src/app/Core/Services/Irregularidad/irregularidadTipos-resolver.service';
+import { IrregularidadDetalleResolver } from 'src/app/Core/Services/Irregularidad/irregularidadDetalle-resolver.service';
+import { CerrarIrregularidadComponent } from './cerrar-irregularidad/cerrar-irregularidad.component';
 
 const routes: Routes = [
   {
@@ -32,6 +34,14 @@ const routes: Routes = [
     {
       clientes: ClienteResolver,
       tiposIrregularidades: IrregularidadesTiposResolver
+    }  
+  },
+  {
+    path: ':idEstablecimiento/cerrar',
+    component: CerrarIrregularidadComponent,
+    resolve: 
+    {
+      irregularidad: IrregularidadDetalleResolver
     }  
   }
 ];

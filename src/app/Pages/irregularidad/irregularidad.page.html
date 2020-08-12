@@ -9,7 +9,7 @@
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-card *ngFor="let irregularidad of irregularidades" [routerLink]="['/irregularidad',irregularidad.id, 'detalle']">
+  <ion-card *ngFor="let irregularidad of irregularidades" [routerLink]="[irregularidad.id, 'cerrar']">
     <ion-card-header style="font-size: large;">
       <b>{{irregularidad.cliente + ' - ' + irregularidad.establecimiento + ' - ' + irregularidad.ubicacion.nombre}}</b>
     </ion-card-header>

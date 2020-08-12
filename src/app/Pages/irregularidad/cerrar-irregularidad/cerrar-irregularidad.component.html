@@ -1,3 +1,90 @@
-<p>
-  cerrar-irregularidad works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Atras" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
+    <ion-item-divider color="secondary">
+      <ion-label>
+       Irregularidad
+      </ion-label>
+    </ion-item-divider>
+      <ion-item>
+        <ion-label>Cliente</ion-label>
+        <ion-label><b>{{model.cliente}}</b></ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Establecimiento</ion-label>
+        <ion-label><b>{{model.establecimiento}}</b></ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Ubicación</ion-label>
+        <ion-label><b>{{model.ubicacion.nombre}}</b></ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label >Estado</ion-label>
+        <ion-label><b>{{model.estado}}</b></ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Severidad</ion-label>
+        <ion-label><b>{{model.tipo}}</b></ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Descripcion</ion-label>
+        <ion-label><b>{{model.descripcion}}</b></ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Detectado Por</ion-label>
+        <ion-label><b>{{model.empleado}}</b></ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Fecha Detección</ion-label>
+        <ion-label><b>{{model.fechaDeteccion}}</b></ion-label>
+      </ion-item>
+
+      <ion-label>Evidencia:</ion-label>
+      <ion-grid >
+        <ion-row>
+        <ion-col size="4" offset="2" >
+
+          <ion-img [src]="model.url"></ion-img>         
+        </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-item>
+        <ion-label position="floating">Descripción Resolución</ion-label>
+        <ion-textarea placeholder="Descripcion Resolución" name="descripcionResolucion"  [(ngModel)]="model.descripcionResolucion"></ion-textarea>
+      </ion-item>
+
+      <ion-button (click)="selectImageSource()">
+        <ion-icon name="camera">Evidencia Resolución</ion-icon>
+      </ion-button>
+
+      <ion-grid>
+        <ion-row>
+        <ion-col size="4" offset="2" >
+          <ion-img [src]="imageBase64" *ngIf="imageBase64 != null"></ion-img>     
+        </ion-col>
+        </ion-row>
+      </ion-grid> 
+
+
+      
+      <ion-button type="submit" shape="round" expand="block" fill="solid" slot="end">Completar Irregularidad</ion-button>
+
+  </form>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <input
+      type="file"
+      #fileInput
+      (change)="uploadFile($event)"
+      hidden="true"
+      accept="image/*"
+    />
+  </ion-fab>
+</ion-content>

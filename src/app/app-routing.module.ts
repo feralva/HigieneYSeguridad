@@ -69,10 +69,12 @@ const routes: Routes = [
   },
   {
     path: 'calendario',
+    canActivate: [UserAuthenticatedGuard],
     loadChildren: () => import('./Pages/calendario/calendario.module').then( m => m.CalendarioPageModule)
   },
   {
     path: 'irregularidad',
+    canActivate: [UserAuthenticatedGuard],
     loadChildren: () => import('./Pages/irregularidad/irregularidad.module').then( m => m.IrregularidadPageModule)
   }
 ];
