@@ -24,6 +24,15 @@ const routes: Routes = [
       clientes: ClienteResolver,
       tiposIrregularidades: IrregularidadesTiposResolver
     }  
+  },
+  {
+    path: 'establecimiento/:idEstablecimiento/alta',
+    component: AltaIrregularidadComponent,
+    resolve: 
+    {
+      clientes: ClienteResolver,
+      tiposIrregularidades: IrregularidadesTiposResolver
+    }  
   }
 ];
 

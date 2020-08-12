@@ -44,7 +44,9 @@ export class AltaIrregularidadComponent implements OnInit {
     private clienteService: ClienteService, public photoService: PhotoService,
     private actionSheetCtrl: ActionSheetController) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ionViewWillEnter() {
 
     this.authService.getUserSubject().subscribe(
       (res)=>{
@@ -57,6 +59,32 @@ export class AltaIrregularidadComponent implements OnInit {
     this.tiposIrregularidad = this.route.snapshot.data['tiposIrregularidades'];
     
     this.appDataService.changePageName('Irregularidad.Alta.Title');
+    
+    if(+this.route.snapshot.paramMap.get("idEstablecimiento")){
+
+      var establecimiento;
+      
+      this.establecimientoService.obtenerEstablecimiento(+this.route.snapshot.paramMap.get("idEstablecimiento")).subscribe(
+        data => {
+          establecimiento = data
+
+          this.clienteSeleccionado = this.clientes.find(cli => cli.id == establecimiento.clienteId)
+
+          this.clienteService.obtenerEstablecimientosActivosCliente(this.clienteSeleccionado.id).subscribe(
+            data => {
+              this.establecimientos = data
+              this.establecimientoSeleccionado = this.establecimientos.find(establecimiento => establecimiento.id == establecimiento.id);
+
+              this.ubicacionService.obtenerUbicacionesEstablecimiento(this.establecimientoSeleccionado.id).subscribe(
+                data => this.ubicaciones = data,
+                (error) => console.log(error)
+              )},
+            (error) => console.log(error)
+          ) 
+        },
+        (error) => console.log(error)
+      )
+    }
   }
 
   async AltaIrregularidadConfirm() {
