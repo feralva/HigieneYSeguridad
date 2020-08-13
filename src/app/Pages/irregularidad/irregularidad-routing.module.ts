@@ -15,7 +15,8 @@ const routes: Routes = [
     component: IrregularidadPage,
     resolve: 
     {
-      irregularidades: IrregularidadesEmpresaResolver
+      irregularidades: IrregularidadesEmpresaResolver,
+      clientes: ClienteResolver
     }  
   },
   {

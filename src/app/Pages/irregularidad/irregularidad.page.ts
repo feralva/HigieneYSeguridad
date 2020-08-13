@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { LoaderService } from 'src/app/Core/Services/loader.service';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { IrregularidadService } from 'src/app/Core/Services/Irregularidad/irregularidad.service';
+import { ClienteService } from 'src/app/Core/Services/Cliente/cliente.service';
 
 @Component({
   selector: 'app-irregularidad',
@@ -16,36 +17,39 @@ export class IrregularidadPage implements OnInit {
 
   irregularidades:any[] = []
   currentUser: UserLogueado;
+  clientes: any[];
+  clienteSeleccionado: any;
+  establecimientos: any[];
+  establecimientoSeleccionado: any;
+
+  filteredIrregularidades: any[]
 
   constructor(private translate: TranslateService, private route: ActivatedRoute,
     private appDataService: AppDataService, private irregularidadService: IrregularidadService,
-    private authService: AuthService, public loaderService: LoaderService) { }
+    private authService: AuthService, public loaderService: LoaderService, private clienteService: ClienteService) { }
 
-    ngOnInit() {
+  ngOnInit() {}
 
-      this.irregularidades = this.route.snapshot.data['irregularidades'];
-      //this.estadosPlanesPosibles = this.route.snapshot.data['estadosPlanesPosibles'];
-  
-      this.authService.getUserSubject().subscribe(
-        data => {
-          this.currentUser = data
-        },
-        error => console.log(error)
-      );
-  
-      console.log(this.irregularidades)
-    }
+  ionViewWillEnter() {
+
+    this.appDataService.changePageName('Irregularidad.Title');
+
+    this.irregularidades = this.route.snapshot.data['irregularidades'];
+    this.clientes = this.route.snapshot.data['clientes'];  
+
+    this.filteredIrregularidades = [...this.irregularidades];
+
+    this.authService.getUserSubject().subscribe(
+      (res)=>{
+      this.currentUser = res;
+      },
+      (error) => console.log(error)
+    );
+  }
 
   doRefresh(event) {
 
     this.irregularidades = []
-
-    //var id = +this.route.snapshot.paramMap.get('id')
-
-/*     this.planService.obtenerPlanesEmpresa(id).subscribe(
-      data => this.planes = data,
-      (error) => console.log(error)
-    ); */
 
     this.irregularidadService.ObtenerIrregularidades(this.currentUser.empresaId).subscribe(
       data => this.irregularidades = data,
@@ -53,6 +57,38 @@ export class IrregularidadPage implements OnInit {
     )
 
     event.target.complete();
+  }
+
+  onClienteSeleccionado(){
+
+    if(this.clienteSeleccionado){
+      this.establecimientoSeleccionado = null
+      //this.seleccionUbicacionComponent.ubicacionSeleccionada = null
+
+      this.clienteService.obtenerEstablecimientosActivosCliente(this.clienteSeleccionado.id).subscribe(
+        data => this.establecimientos = data,
+        (error) => console.log(error)
+      )
+
+      this.filteredIrregularidades = [...this.irregularidades].filter(irregularidad => 
+        irregularidad.clienteId == this.clienteSeleccionado.id)
+
+    }else{
+      this.filteredIrregularidades = [...this.irregularidades]
+    }
+  }
+
+  onEstablecimientoSeleccionado(){
+
+    if(this.establecimientoSeleccionado){
+
+      this.filteredIrregularidades = [...this.irregularidades]
+        .filter(i => i.ubicacion.establecimientoId == this.establecimientoSeleccionado.id)
+
+    }else{
+
+      this.filteredIrregularidades = [...this.irregularidades].filter(i => i.clienteId == this.clienteSeleccionado.id) 
+    }
   }
 
 }

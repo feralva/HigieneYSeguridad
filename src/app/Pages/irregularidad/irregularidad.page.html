@@ -9,7 +9,41 @@
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-card *ngFor="let irregularidad of irregularidades" [routerLink]="[irregularidad.id, 'cerrar']">
+
+  <ion-item>
+    <ionic-selectable
+      item-content
+      [(ngModel)]="clienteSeleccionado"
+      itemValueField="id"
+      itemTextField="nombre"
+      [items]="clientes"
+      [canClear]="true"
+      [isMultiple]="false"
+      name="clienteSeleccionado"
+      [canSearch]="true"
+      placeholder="Cliente"
+      (onChange)="onClienteSeleccionado()">
+    </ionic-selectable>
+  </ion-item>
+
+  <ion-item *ngIf="clienteSeleccionado">
+    <ionic-selectable
+      item-content
+      [(ngModel)]="establecimientoSeleccionado"
+      itemValueField="id"
+      itemTextField="nombre"
+      [items]="establecimientos"
+      [canClear]="true"
+      [isMultiple]="false"
+      name="establecimientoSeleccionado"
+      [canSearch]="true"
+      placeholder="Establecimiento"
+      (onChange)="onEstablecimientoSeleccionado()">
+    </ionic-selectable>
+  </ion-item>
+
+
+  <ion-card *ngFor="let irregularidad of filteredIrregularidades" [routerLink]="[irregularidad.id, 'cerrar']">
     <ion-card-header style="font-size: large;">
       <b>{{irregularidad.cliente + ' - ' + irregularidad.establecimiento + ' - ' + irregularidad.ubicacion.nombre}}</b>
     </ion-card-header>
