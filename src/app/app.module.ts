@@ -31,6 +31,7 @@ export function createTranslateLoader(http: HttpClient) {
 import { Camera } from '@ionic-native/camera/ngx';
 import * as firebase from 'firebase';
 import { LoaderInterceptorService } from './Core/HttpInterceptors/loader-interceptor.service';
+import { AuthInterceptor } from './Core/HttpInterceptors/AuthInterceptor.service';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -60,7 +61,10 @@ firebase.initializeApp(environment.firebaseConfig);
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    Camera/* ,
+    Camera,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } 
+    
+    /* ,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true } */
   ],
   bootstrap: [AppComponent]

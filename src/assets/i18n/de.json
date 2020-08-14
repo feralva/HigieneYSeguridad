@@ -39,6 +39,9 @@
     "Visita":{       
         "title": "Visitas"
 
+    },
+    "Irregularidad":{
+        "Title": "Irregularidad"
     }
 }
 }

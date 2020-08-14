@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, throwError, of } from 'rxjs';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { LanguagePopupPageRoutingModule } from 'src/app/Pages/language-popup/language-popup-routing.module';
 import * as moment from "moment";
@@ -23,8 +23,8 @@ export class AuthService {
   private setSession(authResult) {
     //const expiresAt = moment().add(authResult.expiresIn,'second');
 
-    localStorage.setItem('id_token', authResult.token);
-    localStorage.setItem("expires_at", authResult.expiration);
+    localStorage.setItem('auth_token', authResult.token);
+    localStorage.setItem('auth_Refresh_token', authResult.refreshToken);
 }  
 
   currentUser: BehaviorSubject<UserLogueado> = new BehaviorSubject(null);
@@ -61,43 +61,6 @@ export class AuthService {
     )
 
     return this.currentUser.asObservable();
-
-    /* if (usuarioFromForm.email === 'user') {
-      usuario = {
-        idUsuario: 'fernando@Ternium.com',
-        name: 'Fernando Alvarez',
-        roles: ['Auditor','Coordinador'],
-        empresaId: 3006,
-        empleadoId: 1027,
-        empresaNombre: 'Disney',
-        urlFotoEmpleado: 'https://firebasestorage.googleapis.com/v0/b/higiene-y-seguridad-feaf5.appspot.com/o/FotosEmpleados%2F3006%2FFernando1%40enterprise.com.jpg?alt=media&token=cb9ec6d5-5982-4b5c-8224-fa250416631a',
-        urlFotoEmpresa: 'https://firebasestorage.googleapis.com/v0/b/higiene-y-seguridad-feaf5.appspot.com/o/FotosEmpresas%2F3006.jpg?alt=media&token=3dcca304-e941-4dfc-b055-f8affe931681'
-      } 
-    } else if (usuarioFromForm.email === 'admin' || usuarioFromForm.email === 'Fernando1@enterprise.com') {
-      usuario = {
-        idUsuario: 'fernando@Ternium.com',
-        name: 'Fernando Alvarez',
-        roles:  ['Auditor','Coordinador'],
-        empresaId: 3006,
-        empleadoId: 1027,
-        empresaNombre: 'Disney',
-        urlFotoEmpleado: 'https://firebasestorage.googleapis.com/v0/b/higiene-y-seguridad-feaf5.appspot.com/o/FotosEmpleados%2F3006%2FFernando1%40enterprise.com.jpg?alt=media&token=cb9ec6d5-5982-4b5c-8224-fa250416631a',
-        urlFotoEmpresa: 'https://firebasestorage.googleapis.com/v0/b/higiene-y-seguridad-feaf5.appspot.com/o/FotosEmpresas%2F3006.jpg?alt=media&token=3dcca304-e941-4dfc-b055-f8affe931681'
-      }
-    } else {
-      usuario = {
-        idUsuario: 'Anonimo',
-        name: 'Anonimo',
-        roles: [],
-        empresaId: 3006,
-        empleadoId: 1027,
-        empresaNombre: 'Disney',
-        urlFotoEmpleado: 'https://firebasestorage.googleapis.com/v0/b/higiene-y-seguridad-feaf5.appspot.com/o/FotosEmpleados%2F3006%2FFernando1%40enterprise.com.jpg?alt=media&token=cb9ec6d5-5982-4b5c-8224-fa250416631a',
-        urlFotoEmpresa: 'https://firebasestorage.googleapis.com/v0/b/higiene-y-seguridad-feaf5.appspot.com/o/FotosEmpresas%2F3006.jpg?alt=media&token=3dcca304-e941-4dfc-b055-f8affe931681'
-      }
-    } */
-
-    
   }
 
   getUserSubject() {
@@ -115,11 +78,10 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('id_token')
-    localStorage.removeItem('expires_at')
+    localStorage.removeItem('auth_token')
+    localStorage.removeItem('auth_Refresh_token')
     this.currentUser.next(null);
     this.router.navigate(['/login'])
-    //this.router.navigateByUrl('login');
   }
 
   hasRoles(roles: string[]): boolean {
@@ -131,5 +93,15 @@ export class AuthService {
     return true;
   }
 
+  refrescarToken(token: string, refreshToken: string): Observable<any> {
+    // Try refreshing tokens using refresh token
 
+    const credentials = JSON.stringify({ accessToken: token, refreshToken: refreshToken });
+  
+    return this.http.post(environment.UrlBaseApi + "Authenticate/refreshToken", credentials, {
+        headers: new HttpHeaders({
+          "Content-Type": "application/json"
+        })})
+
+  }
 }
