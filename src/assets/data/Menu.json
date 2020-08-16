@@ -50,7 +50,13 @@
     {
         "icon": "wallet",
         "name": "Licencia",
-        "url": "#",
+        "url": "/licencia",
+        "role": ["Coordinador"]
+    },
+    {
+        "icon": "wallet",
+        "name": "Adquirir Licencia",
+        "url": "/licencia/adquisicion",
         "role": ["Coordinador"]
     },
     {

@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Atras" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<ion-grid fixed>
+  <ion-row>
+    <ion-col >
+    <!--   <ion-list> -->
+        <ion-radio-group (ionChange)="onTipoLicenciaSeleccionada($event)">
+          <ion-list-header>
+            <h2>Tipo Licencia</h2>
+          </ion-list-header>
+          <ion-item *ngFor="let tipoLicencia of tiposLicencias">
+            <ion-label>
+              <h2><b>{{tipoLicencia.nombre}}</b></h2>
+              <p style="white-space: normal">{{tipoLicencia.descripcion}}</p>
+            </ion-label>
+            <ion-radio slot="end" color="danger" [value]="tipoLicencia" onselect="onTipoLicenciaSeleccionada($event)"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      <!-- </ion-list> -->
+    </ion-col>
+    <ion-col size="12" size-lg="6" *ngIf="tipoLicenciaSeleccionada">
+      <pago-componente [tipoLicencia]="tipoLicenciaSeleccionada" [cantidadMeses]="cantidadMeses">
+      </pago-componente>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+  
+  
+
+
+
+</ion-content>

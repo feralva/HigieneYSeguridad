@@ -1,0 +1,40 @@
+<ion-grid text-center>
+</ion-grid>
+<ion-card class="welcome-card">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="8" offset-xs="2">
+        <ion-img src="../../../../assets/img/logo.png" style="max-height: 15em;max-width: 15em;"></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  <ion-card-header>
+    <ion-card-title>Licencia {{tipoLicencia.nombre}}</ion-card-title>
+    
+    <ion-row>
+      <ion-col>
+        <ion-label>Cantidad Meses</ion-label>
+        <ion-select [(ngModel)]="cantidadMeses" multiple="false" placeholder="Cantidad Meses">
+          <ion-select-option [value]=1>1 mes</ion-select-option>
+          <ion-select-option [value]=3>3 meses</ion-select-option>
+          <ion-select-option [value]=6>6 meses</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Total Payment</ion-col>
+      <ion-col> {{cantidadMeses * tipoLicencia.precioActual}} </ion-col>
+    </ion-row>
+  </ion-card-header>
+  <ion-card-content>
+    <form action="/" method="post" id="payment-form">
+      <div class="form-row">
+        <div id="card-element"> <!-- a Stripe Element will be inserted here. --> </div>
+        <!-- Used to display Element errors -->
+        <div id="card-errors" role="alert"></div>
+      </div>
+      <ion-button type="submit" color="success" expand="full">Make Payment</ion-button>
+    </form>
+  </ion-card-content>
+</ion-card>

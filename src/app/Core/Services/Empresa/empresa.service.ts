@@ -22,7 +22,7 @@ export class EmpresaService {
   constructor(private http: HttpClient) { }
 
   addEmpresa(empresa: Empresa): Observable<any> {
-    return this.http.post<Empresa>(this.rutasServicios.Alta, {Model: empresa}, this.httpOptions);
+    return this.http.post<Empresa>(environment.UrlBaseApi + 'Empresa', {Model: empresa}, this.httpOptions);
   }
   
   ObtenerEmpleadosEmpresa(idEmpresa: number): Observable<Empleado[]> {
@@ -46,7 +46,10 @@ export class EmpresaService {
 
   obtenerEmpresa(idEmpresa: number): Observable<any> {
     return this.http.get<any[]>(environment.UrlBaseApi + `Empresa/${idEmpresa}`, this.httpOptions);
- 
-}
+  }
+
+  obtenerLicenciaEmpresa(idEmpresa: number): Observable<any> {
+    return this.http.get<any[]>(environment.UrlBaseApi + `Empresa/${idEmpresa}/Licencia`, this.httpOptions);
+  }
 
 }

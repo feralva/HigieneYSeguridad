@@ -76,6 +76,11 @@ const routes: Routes = [
     path: 'irregularidad',
     canActivate: [UserAuthenticatedGuard],
     loadChildren: () => import('./Pages/irregularidad/irregularidad.module').then( m => m.IrregularidadPageModule)
+  },
+  {
+    path: 'licencia',
+    canActivate: [UserAuthenticatedGuard],
+    loadChildren: () => import('./Pages/licencia/licencia.module').then( m => m.LicenciaPageModule)
   }
 ];
 
