@@ -22,4 +22,8 @@ export class LicenciaService {
 
     return this.http.get<any[]>(environment.UrlBaseApi + 'Licencia', this.httpOptions); 
   }
+
+  actualizarLicenciaEmpresa(licencia: any): Observable<any> {
+    return this.http.post<any[]>(environment.UrlBaseApi + `Licencia`, { model: licencia }, this.httpOptions);
+  }
 }

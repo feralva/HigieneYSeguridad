@@ -37,6 +37,7 @@ export class AuthInterceptor implements HttpInterceptor {
                     }
                 }),
                 retryWhen(err => {
+                    console.log(err)
                     let retries = 1;
                     return err.pipe(
                         delay(1000),
@@ -45,6 +46,7 @@ export class AuthInterceptor implements HttpInterceptor {
                         }),
                         map(error => {
                             if(retries++ === 3){
+                                console.log(error)
                                 throw error;
                             }
                             return error;

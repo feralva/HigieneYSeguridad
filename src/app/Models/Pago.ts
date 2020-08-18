@@ -3,5 +3,8 @@ export interface Pago {
     empresaId: number;
     medioPagoId: number;
     monto: number;
-    tokenPago: number;
+    tokenPago: string;
+    tipoLicenciaId: number;
+    precioLicencia: number;
+    cantidadMeses: number
 }
