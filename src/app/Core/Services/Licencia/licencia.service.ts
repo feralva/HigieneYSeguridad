@@ -18,7 +18,7 @@ export class LicenciaService {
     return this.http.get<any[]>(environment.UrlBaseApi + 'Licencia/tipos', this.httpOptions); 
   }
 
-  obtenerLicencias(estadoID: number): Observable<any[]> {
+  obtenerLicencias(): Observable<any[]> {
 
     return this.http.get<any[]>(environment.UrlBaseApi + 'Licencia', this.httpOptions); 
   }

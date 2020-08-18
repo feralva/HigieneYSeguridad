@@ -33,6 +33,7 @@
     "@ionic/storage": "^2.2.0",
     "@ngx-translate/core": "^12.1.2",
     "@ngx-translate/http-loader": "^4.0.0",
+    "@swimlane/ngx-datatable": "^17.1.0",
     "@techiediaries/ngx-qrcode": "^9.0.0",
     "angularfire2": "^5.4.2",
     "angularx-qrcode": "^10.0.6",

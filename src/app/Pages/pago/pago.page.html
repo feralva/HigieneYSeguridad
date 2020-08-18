@@ -7,6 +7,7 @@
 </ion-header>
 
 <ion-content>
+
   <ion-row class="table-header-row">
     <ion-col size="2">
       Cliente
@@ -15,32 +16,39 @@
       Tipo Licencia
     </ion-col>
     <ion-col size="2">
-      Fecha Expiración
+      Cantidad Meses
     </ion-col>
     <ion-col size="2">
-      Estado
+      Precio Licencia
+    </ion-col>
+    <ion-col size="2">
+      Monto Total
+    </ion-col>
+    <ion-col size="2">
+      Fecha
     </ion-col>
     <ion-col size="2">
       Pagos
     </ion-col>
   </ion-row>
-  <ion-row *ngFor="let licencia of licenciasEmpresas" class="data-row">
+  <ion-row *ngFor="let pago of pagosEmpresas" class="data-row">
     <ion-col size="2">
-      {{licencia.empresa.nombre}}
+      {{pago.empresa.nombre}}
     </ion-col>
     <ion-col size="2">
-      {{licencia.tipoLicencia.nombre}}
+      {{pago.tipoLicencia.nombre}}
     </ion-col>
     <ion-col size="2">
-      {{licencia.fechaFin | date: 'short'}}
+      {{pago.cantidadMeses}}
     </ion-col>
     <ion-col size="2">
-      {{licencia.estado.descripcion}}
+      {{pago.precioLicencia}}
     </ion-col>
-    <ion-col tappable size="2">
-      <ion-button (click)="direccionarAPagos(licencia.id)" expand="block" fill="clear" shape="round">
-        Pagos
-      </ion-button>
+    <ion-col size="2">
+      {{pago.monto}}
+    </ion-col>
+    <ion-col size="2">
+      {{pago.fecha | date: 'short'}}
     </ion-col>
   </ion-row>
 

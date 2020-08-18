@@ -81,6 +81,11 @@ const routes: Routes = [
     path: 'licencia',
     canActivate: [UserAuthenticatedGuard],
     loadChildren: () => import('./Pages/licencia/licencia.module').then( m => m.LicenciaPageModule)
+  },
+  {
+    path: 'pago',
+    canActivate: [UserAuthenticatedGuard],
+    loadChildren: () => import('./Pages/pago/pago.module').then( m => m.PagoPageModule)
   }
 ];
 
