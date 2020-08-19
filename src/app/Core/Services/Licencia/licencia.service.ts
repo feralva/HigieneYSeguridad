@@ -38,4 +38,8 @@ export class LicenciaService {
       map(licencias => licencias[0])
     )
   }
+
+  actualizarPrecioLicencia(licencia: any): Observable<any> {
+    return this.http.post<any[]>(environment.UrlBaseApi + `TipoLicencia/Precio`, { model: licencia }, this.httpOptions);
+  }
 }

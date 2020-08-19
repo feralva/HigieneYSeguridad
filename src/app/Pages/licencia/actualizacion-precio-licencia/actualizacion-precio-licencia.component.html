@@ -1,3 +1,53 @@
-<p>
-  actualizacion-precio-licencia works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Atras" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item>
+    <ionic-selectable
+      item-content
+      [(ngModel)]="tipoLicenciaSeleccionado"
+      itemValueField="id"
+      itemTextField="nombre"
+      [items]="tiposLicencias"
+      [canClear]="true"
+      [isMultiple]="false"
+      name="tipoLicenciaSeleccionado"
+      [canSearch]="true"
+      placeholder="Tipo Licencia">
+    </ionic-selectable>
+  </ion-item>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)" *ngIf="tipoLicenciaSeleccionado">
+    <ion-item-divider color="secondary">
+      <ion-label>
+       Actualizar Precio Tipo Licencia
+      </ion-label>
+    </ion-item-divider>
+    <ion-row>
+      <ion-col size="12" size-lg="6">
+        <ion-item>
+          <ion-label>Precio </ion-label>
+          <ion-label slot="end">{{tipoLicenciaSeleccionado.precioActual}}</ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" size-lg="6">
+        <ion-item>
+          <ion-label>Precio Nuevo</ion-label>
+          <ion-input placeholder="Precio Nuevo" type="number" name="precionuevo" [(ngModel)]="precionuevo" slot="end" required></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" size-lg="8" offset-lg="2" class="ion-text-center" style="margin-top: 3em;">
+        <ion-button type="submit" shape="round" expand="block" fill="solid" [disabled]="form.invalid">Actualizar</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </form>
+</ion-content>
+
+

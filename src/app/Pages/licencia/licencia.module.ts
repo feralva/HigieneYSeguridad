@@ -11,14 +11,17 @@ import { DetalleLicenciaComponent } from './detalle-licencia/detalle-licencia.co
 import { AdquirirLicenciaComponent } from './adquirir-licencia/adquirir-licencia.component';
 import { StripeComponent } from './stripe/stripe.component';
 import { AltaTipoLicenciaComponent } from './alta-tipo-licencia/alta-tipo-licencia.component';
+import { ActualizacionPrecioLicenciaComponent } from './actualizacion-precio-licencia/actualizacion-precio-licencia.component';
+import { IonicSelectableModule } from 'ionic-selectable';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LicenciaPageRoutingModule
+    LicenciaPageRoutingModule,
+    IonicSelectableModule
   ],
-  declarations: [LicenciaPage, DetalleLicenciaComponent, AdquirirLicenciaComponent, StripeComponent, AltaTipoLicenciaComponent ]
+  declarations: [LicenciaPage, DetalleLicenciaComponent, AdquirirLicenciaComponent, StripeComponent, AltaTipoLicenciaComponent, ActualizacionPrecioLicenciaComponent ]
 })
 export class LicenciaPageModule {}

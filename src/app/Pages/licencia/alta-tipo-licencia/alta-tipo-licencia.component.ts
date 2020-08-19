@@ -35,7 +35,7 @@ export class AltaTipoLicenciaComponent implements OnInit {
 
   ionViewWillEnter(){
 
-    this.appDataService.changePageName('Empleado.Alta.title');
+    this.appDataService.changePageName('TipoLicencia.Alta.title');
 
     this.authService.getUserSubject().subscribe(
       data => {
@@ -43,9 +43,10 @@ export class AltaTipoLicenciaComponent implements OnInit {
         this.currentUser = data
       },
       error => console.log(error)
-  );
+    );
 
   }
+
   async AltaTipoLicenciaConfirm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',

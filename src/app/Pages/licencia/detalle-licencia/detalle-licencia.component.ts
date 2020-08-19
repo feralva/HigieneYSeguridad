@@ -36,7 +36,8 @@ export class DetalleLicenciaComponent implements OnInit {
       Cantidad_Maxima_Usuarios: 0,
       id: 0,
       nombre: '',
-      precioActual: 0
+      precioActual: 0,
+      descripcion:''
     }
   }
   currentUser: UserLogueado;
