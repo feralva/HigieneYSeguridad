@@ -27,6 +27,10 @@ export class LicenciaService {
   actualizarLicenciaEmpresa(licencia: any): Observable<any> {
     return this.http.post<any[]>(environment.UrlBaseApi + `Licencia`, { model: licencia }, this.httpOptions);
   }
+  
+  AltaTipoLicencia(licencia: any): Observable<any> {
+    return this.http.post<any[]>(environment.UrlBaseApi + `TipoLicencia`, { model: licencia }, this.httpOptions);
+  }
 
   obtenerLicenciaEmpresa(idEmpresa: number): Observable<any> {
 

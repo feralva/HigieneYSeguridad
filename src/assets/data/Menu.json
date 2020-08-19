@@ -82,5 +82,11 @@
         "name": "Mi Licencia",
         "url": "/licencia/detalle",
         "role": ["Coordinador"]
+    },
+    {
+        "icon": "thermometer",
+        "name": "Alta Licencia",
+        "url": "/licencia/tipo/alta",
+        "role": ["Coordinador"]
     }
 ]
