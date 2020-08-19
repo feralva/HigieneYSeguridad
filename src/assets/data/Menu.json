@@ -76,5 +76,11 @@
         "name": "Equipos Medición",
         "url": "equiposMedicion",
         "role": ["Coordinador"]
+    },
+    {
+        "icon": "thermometer",
+        "name": "Mi Licencia",
+        "url": "/licencia/detalle",
+        "role": ["Coordinador"]
     }
 ]

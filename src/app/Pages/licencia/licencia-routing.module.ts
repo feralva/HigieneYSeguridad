@@ -6,6 +6,7 @@ import { DetalleLicenciaComponent } from './detalle-licencia/detalle-licencia.co
 import { AdquirirLicenciaComponent } from './adquirir-licencia/adquirir-licencia.component';
 import { TiposLicenciaResolver } from 'src/app/Core/Services/Licencia/tiposLicencia-resolver.service';
 import { LicenciasResolver } from 'src/app/Core/Services/Licencia/licencias-resolve.service';
+import { LicenciaEmpresaResolver } from 'src/app/Core/Services/Licencia/licenciaEmpresa-resolver.service';
 
 const routes: Routes = [
   {
@@ -17,7 +18,10 @@ const routes: Routes = [
   },
   {
     path: 'detalle',
-    component: DetalleLicenciaComponent
+    component: DetalleLicenciaComponent,
+    resolve: {
+      licencia: LicenciaEmpresaResolver
+    }
   },
   {
     path: 'adquisicion',

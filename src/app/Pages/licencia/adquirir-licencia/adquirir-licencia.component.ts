@@ -26,7 +26,6 @@ export class AdquirirLicenciaComponent implements OnInit {
     private translate: TranslateService,
     public alertController: AlertController,
     private route: ActivatedRoute, private loaderService: LoaderService,
-    private licencia: LicenciaService,
     private actionSheetCtrl: ActionSheetController, private pagoService: PagoService,
     private authService: AuthService, private licenciaService: LicenciaService,
     private toastController: ToastController) { }
