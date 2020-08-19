@@ -22,14 +22,48 @@
 
       <hr style="border:black;">
       
-      <ion-menu-toggle auto-hide="false" *ngFor="let p of MenuItems | async ; let i = index">
+      <div *ngFor="let p of MenuItems ">
+
+        <ion-menu-toggle auto-hide="false" *ngIf="p.url">
+          <ion-item routerLinkActive="active" routerDirection="root" [routerLink]="p.url" lines="none" 
+          detail="false" *appHasRole="p.role">
+            <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+            <ion-label>{{ p.name | translate }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-item button *ngIf="p.children?.length > 0" (click)="p.open = !p.open"
+          [class.active-parent]="p.open" detail="false" lines="none" >
+          
+          <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+          <ion-icon slot="end" name="chevron-forward" *ngIf="!p.open"></ion-icon>
+          <ion-icon slot="end" name="chevron-down" *ngIf="p.open"></ion-icon>
+          <ion-label>{{p.name | translate }}</ion-label>
+        </ion-item>
+
+        <ion-list *ngIf="p.open">
+          <ion-menu-toggle>
+            <div *ngFor="let sub of p.children">
+              <ion-item class="sub-item"  [routerLink]="sub.url"
+                routerDirection="root" routerLinkActive="active" lines="none" *appHasRole="sub.role">
+                <ion-icon slot="start" [name]="sub.icon"></ion-icon>
+                <ion-label>{{sub.name}}</ion-label>
+              </ion-item>
+            </div>
+            
+          </ion-menu-toggle>
+        </ion-list>
+
+      </div>
+<!--       <ion-menu-toggle auto-hide="false" *ngFor="let p of MenuItems | async ; let i = index">
         <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="p.url" lines="none" 
         detail="false" [class.selected]="selectedIndex == i" *appHasRole="p.role">
           <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
           <ion-label>{{ p.name | translate }}</ion-label>
         </ion-item>
 
-      </ion-menu-toggle>
+      </ion-menu-toggle> -->
+
+
 
       <ion-item lines="none"  routerDirection="root" (click)="logOut()" button>
         <ion-icon slot="start" ios="log-out-outline" md="log-out-sharp"></ion-icon>

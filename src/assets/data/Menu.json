@@ -84,15 +84,21 @@
         "role": ["Coordinador"]
     },
     {
+        "name": "Licencia",
         "icon": "thermometer",
-        "name": "Alta Licencia",
-        "url": "/licencia/tipo/alta",
-        "role": ["Coordinador"]
-    },
-    {
-        "icon": "thermometer",
-        "name": "Actualizar Precio Licencia",
-        "url": "/licencia/tipo/actualizarPrecio",
-        "role": ["Coordinador"]
+        "children": [
+            {
+                "icon": "thermometer",
+                "name": "Alta Licencia",
+                "url": "/licencia/tipo/alta",
+                "role": ["Coordinador"]
+            },
+            {
+                "icon": "thermometer",
+                "name": "Actualizar Precio",
+                "url": "/licencia/tipo/actualizarPrecio",
+                "role": ["Coordinador"]
+            }
+        ]
     }
 ]

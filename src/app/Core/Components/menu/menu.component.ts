@@ -11,7 +11,7 @@ import { AuthService } from '../../Services/auth/auth.service';
 })
 export class MenuComponent implements OnInit {
   public selectedIndex = 0;
-  public MenuItems: Observable<ComponenteMenu[]>;
+  public MenuItems: ComponenteMenu[];
   currentUser: any;
 
   constructor(private menuService: MenuService, private authService: AuthService) {}
@@ -24,8 +24,11 @@ export class MenuComponent implements OnInit {
         //console.log('cambio User Logueado')
         this.currentUser = data
         this.MenuItems = null;
-        this.MenuItems = this.menuService.ObtenerItemsMenuPrincipal();
-        //console.log(this.currentUser)
+        this.menuService.ObtenerItemsMenuPrincipal().subscribe(
+          data => this.MenuItems = data,
+          (error) => console.log(error)
+        );
+        console.log(this.MenuItems)
       },
       error => console.log(error)
     );

@@ -3,4 +3,6 @@ export interface ComponenteMenu {
     icon: string;
     url: string;
     role: string;
+    children: any[];
+    open: boolean;
 }
