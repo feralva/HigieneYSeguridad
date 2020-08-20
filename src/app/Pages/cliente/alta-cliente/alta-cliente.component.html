@@ -76,32 +76,28 @@
       <ion-input
         placeholder="Nombre"
         name="responsable.Nombre"
-        [(ngModel)]="model.responsable.nombre"
-      ></ion-input>
+        [(ngModel)]="model.responsable.nombre" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Apellido</ion-label>
       <ion-input
         placeholder="Apellido"
         name="responsable.Apellido"
-        [(ngModel)]="model.responsable.apellido"
-      ></ion-input>
+        [(ngModel)]="model.responsable.apellido" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Correo Electronico</ion-label>
       <ion-input
         placeholder="Correo Electronico"
         name="responsable.CorreoElectronico"
-        [(ngModel)]="model.responsable.correoElectronico"
-      ></ion-input>
+        [(ngModel)]="model.responsable.correoElectronico" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Telefono</ion-label>
       <ion-input
         placeholder="Telefono"
         name="responsable.Telefono"
-        [(ngModel)]="model.responsable.telefono"
-      ></ion-input>
+        [(ngModel)]="model.responsable.telefono" required></ion-input>
     </ion-item>
     <ion-grid>
       <ion-row>
@@ -119,7 +115,7 @@
       </ion-row>
     </ion-grid>
 
-    <ion-button type="submit" shape="round" fill="outline" slot="end">Alta Cliente</ion-button>
+    <ion-button type="submit" shape="round" fill="outline" slot="end" [disabled]="form.invalid">Alta Cliente</ion-button>
   
   </form>
 

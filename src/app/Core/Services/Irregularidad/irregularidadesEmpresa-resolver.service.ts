@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { ClienteService } from '../Cliente/cliente.service';
 import { IrregularidadService } from './irregularidad.service';
+import { first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class IrregularidadesEmpresaResolver implements Resolve<any[]>{
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any[]>{
 
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => {
         this.idEmpresa = data.empresaId
       },

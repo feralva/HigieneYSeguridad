@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { VisitaService } from '../Visita/visita.service';
 import { map } from 'rxjs/internal/operators/map';
+import { first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class CalendarioEventosEmpleado implements Resolve<any[]>{
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any[]>{
 
         
-        this.authService.getUserSubject().subscribe(
+        this.authService.getUserSubject().pipe(first()).subscribe(
           data => this.idEmpleado = data.empleadoId,
           error => console.log(error)
         );

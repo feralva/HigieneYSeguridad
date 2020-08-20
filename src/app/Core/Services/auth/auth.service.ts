@@ -78,10 +78,15 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('auth_token')
-    localStorage.removeItem('auth_Refresh_token')
-    this.currentUser.next(null);
-    this.router.navigate(['/login'])
+
+      localStorage.removeItem('auth_token')
+      localStorage.removeItem('auth_Refresh_token')
+      
+      this.currentUser.next(null);
+      this.currentUser.complete();
+
+      this.router.navigate(['/login'])
+
   }
 
   hasRoles(roles: string[]): boolean {

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy, RouterModule } from '@angular/router';
 
@@ -32,6 +32,7 @@ import { Camera } from '@ionic-native/camera/ngx';
 import * as firebase from 'firebase';
 import { LoaderInterceptorService } from './Core/HttpInterceptors/loader-interceptor.service';
 import { AuthInterceptor } from './Core/HttpInterceptors/AuthInterceptor.service';
+import { GlobalErrorHandlerService } from './Core/Services/global-error-handler.service';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -62,7 +63,8 @@ firebase.initializeApp(environment.firebaseConfig);
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Camera,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } 
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    {provide: ErrorHandler, useClass: GlobalErrorHandlerService}
     
     /* ,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true } */

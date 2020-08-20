@@ -38,11 +38,12 @@ export class ClientePage implements OnInit {
   }
 
   doRefresh(event) {
-    
-    this.clienteService.obtenerClientesEmpresa(this.currentUser.empresaId).subscribe(
-      data => this.clientes = data,
-      (error) => console.log(error)
-    );
+
+      this.clienteService.obtenerClientesEmpresa(this.currentUser.empresaId).subscribe(
+        data => this.clientes = data,
+        (error) => console.log(error)
+      );
+
     event.target.complete();
   }
 }

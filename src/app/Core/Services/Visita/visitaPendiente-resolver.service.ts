@@ -3,6 +3,7 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { VisitaService } from './visita.service';
+import { first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class VisitaPendienteResolverService implements Resolve<any[]>{
     idEmpleado: number;
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any>{
   
-      this.authService.getUserSubject().subscribe(
+      this.authService.getUserSubject().pipe(first()).subscribe(
         data => this.idEmpleado = data.empleadoId,
         error => console.log(error)
       );

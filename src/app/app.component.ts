@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     private languageService: LanguageService,
     private appDataService: AppDataService,
     private popOverCtrl: PopoverController,
-    private auth: AuthService, private router: Router
+    public auth: AuthService, private router: Router
   ) {
       this.initializeApp();
   }
@@ -40,7 +40,8 @@ export class AppComponent implements OnInit {
 
     this.auth.getUserSubject().subscribe(
       (res)=>{
-      this.currentUser = res;
+        console.log(res)
+        this.currentUser = res;
       },
       (error) => console.log(error)
     );

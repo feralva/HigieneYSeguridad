@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { LicenciaService } from './licencia.service';
 import { AuthService } from '../auth/auth.service';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
+import { first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class LicenciaEmpresaResolver implements Resolve<any[]>{
   
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any[]>{
 
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
         data => {
           this.currentUser = data
         },

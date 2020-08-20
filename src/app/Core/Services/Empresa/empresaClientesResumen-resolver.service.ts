@@ -4,6 +4,7 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { EmpresaService } from './empresa.service';
+import { first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,8 @@ export class EmpresaClienteResumenResolver implements Resolve<any[]>{
 
     idEmpresa: number;
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any[]>{
-        //const idEmpresa = +route.paramMap.get('id');
 
-        this.authService.getUserSubject().subscribe(
+        this.authService.getUserSubject().pipe(first()).subscribe(
           data => this.idEmpresa = data.empresaId,
           error => console.log(error)
         );

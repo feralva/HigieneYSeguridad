@@ -12,6 +12,7 @@ import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
 import { Cliente } from 'src/app/Models/Cliente';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { NgForm } from '@angular/forms';
+import { GenericAlertMessageService } from 'src/app/Core/Services/generic-alert-message.service';
 const { Camera } = Plugins;
 @Component({
   selector: 'app-alta-cliente',
@@ -59,9 +60,7 @@ export class AltaClienteComponent implements OnInit {
     public alertController: AlertController, private loaderService: LoaderService,
     public toastController: ToastController, private direccionService: DireccionService,
     private plt: Platform, private actionSheetCtrl: ActionSheetController,
-    private authService: AuthService) { }
-
-
+    private authService: AuthService, private msgService: GenericAlertMessageService) { }
 
   ngOnInit() {
 
@@ -99,7 +98,16 @@ export class AltaClienteComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.model.direccion.partidoId = this.partidoSeleccionado.id;
     console.log(this.model)
+
+    this.validarModelo();
     this.AltaClienteConfirm()
+  }
+  
+  private validarModelo() {
+    
+    if(!this.imageBase64){
+      throw new Error('Debe Cargar Imagen Cliente')
+    }
   }
 
   async AltaClienteConfirm() {

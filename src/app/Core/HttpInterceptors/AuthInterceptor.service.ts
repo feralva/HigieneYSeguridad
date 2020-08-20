@@ -52,13 +52,13 @@ export class AuthInterceptor implements HttpInterceptor {
                             return error;
                         })
                     )
-                }),
+                }) ,
                 catchError(err => {
                     //console.log('error: ', err);
                     console.log('redirijo a login');
                     this.authService.logout()
                     return EMPTY;
-                })
+                }) 
             )
         }else return next.handle(req)
         
