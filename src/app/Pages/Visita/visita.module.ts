@@ -25,6 +25,7 @@ import { MedicionLuminicaComponent } from './Medir/medicion-luminica/medicion-lu
 import { MedicionSonoraComponent } from './Medir/medicion-sonora/medicion-sonora.component';
 import { IonicSelectableModule } from 'ionic-selectable';
 import { SeleccionarUbicacionControlComponent } from './seleccionar-ubicacion-control/seleccionar-ubicacion-control.component';
+import { PipesModule } from 'src/app/Core/pipes/pipes.module';
 
 /* import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
@@ -39,7 +40,8 @@ registerLocaleData(localeDe); */
     VisitaPageRoutingModule,
     SharedDirectivesModule,
     NgCalendarModule,
-    IonicSelectableModule
+    IonicSelectableModule,
+    PipesModule
   ],
   declarations: [ VisitaPage, VisitaDetalleComponent, 
     VisitaPendienteEmpleadoComponent, AltaVisitaModalComponent, VisitaEditarComponent, 

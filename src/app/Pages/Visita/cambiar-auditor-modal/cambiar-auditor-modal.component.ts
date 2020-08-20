@@ -50,7 +50,7 @@ export class CambiarAuditorModalComponent implements OnInit {
     //this.auditorActual = this.route.snapshot.data['auditorActual'];
   }
   
-  actualizarAuditor(form: NgForm){
+  actualizarAuditor(){
 
     this.visitaService.actualizarAuditorVisita(this.idVisita, this.auditorSeleccionado.id).subscribe(
       data => {

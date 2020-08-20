@@ -15,6 +15,8 @@ export class VisitaPendienteEmpleadoComponent implements OnInit {
   visitas: any[];
   nombrePagina: string;
   currentUser: UserLogueado;
+  
+  textoBuscar: string = '';
 
   constructor(private translate: TranslateService, private route: ActivatedRoute,
     private appDataService: AppDataService,
@@ -38,6 +40,11 @@ export class VisitaPendienteEmpleadoComponent implements OnInit {
       (error) => console.log(error)
     );
     event.target.complete();
+  }
+
+  onBuscarClienteChange(event){
+
+    this.textoBuscar = event.detail.value
   }
 
 }

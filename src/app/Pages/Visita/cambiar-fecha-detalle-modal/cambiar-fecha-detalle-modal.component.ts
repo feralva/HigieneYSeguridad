@@ -36,7 +36,7 @@ export class CambiarFechaDetalleModalComponent implements OnInit {
     await this.modalController.dismiss();
   }
 
-  guardarFechaVisita(form: NgForm){
+  guardarFechaVisita(){
 
     this.visitaService.actualizarFechaVisita(this.idVisita, 
       this.dateService.combinarFechaHora(this.dateService.ObtenerFechaDeString(this.fecha),this.dateService.ObtenerFechaDeString(this.horaInicio)), 

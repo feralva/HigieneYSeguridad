@@ -17,6 +17,7 @@ import { IonicSelectableModule } from 'ionic-selectable';
 import { PlanPageModule } from '../plan/plan.module';
 import { UbicacionPageModule } from '../ubicacion/ubicacion.module';
 import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
+import { PipesModule } from 'src/app/Core/pipes/pipes.module';
 @NgModule({
   entryComponents: [UbicacionAltaComponent],
   imports: [
@@ -26,7 +27,8 @@ import { EditarClienteComponent } from './editar-cliente/editar-cliente.componen
     ClientePageRoutingModule,
     IonicSelectableModule,
     PlanPageModule,
-    UbicacionPageModule
+    UbicacionPageModule,
+    PipesModule
   ],
   exports:[],
   declarations: [ClientePage, ClienteEstablecimientosComponent, EstablecimientoAltaComponent,

@@ -9,8 +9,12 @@
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher> 
+
+  <ion-searchbar placeholder="Empleado" (ionChange)="onBuscarEmpleadoChange($event)"
+   showCancelButton="always" animated></ion-searchbar>
+
   <ion-list *ngIf="empleados.length > 0"> 
-    <ion-item-sliding *ngFor="let empleado of empleados">
+    <ion-item-sliding *ngFor="let empleado of empleados | filtro: textoBuscar: 'apellido'">
       <ion-item>
         <ion-avatar item-start style="width: 4em; height: 4em;">
           <img src={{empleado.urlFoto}}>

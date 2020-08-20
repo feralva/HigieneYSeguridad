@@ -17,6 +17,8 @@ export class DetallePlanComponent implements OnInit {
   plan: PlanDetalle;
   nombrePagina: string;
   currentUser: UserLogueado;
+  
+  textoBuscar: string = '';
 
   constructor(private translate: TranslateService, private route: ActivatedRoute,
     private appDataService: AppDataService,
@@ -43,5 +45,10 @@ export class DetallePlanComponent implements OnInit {
       data => this.plan = data,
       (error) => console.log(error)
     );
+  }
+
+  onBuscarPlanChange(event){
+
+    this.textoBuscar = event.detail.value
   }
 }

@@ -9,24 +9,22 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <form #form="ngForm" (ngSubmit)="actualizarAuditor(form)" >
-    <ion-list>
-      <ion-item>
-        <ion-label>Auditor Actual:</ion-label>
-        <ion-label *ngIf="auditorActual != null">{{auditorActual.apellido + ', ' + auditorActual.nombre}}</ion-label>
-        <ion-label *ngIf="auditorActual == null">NA</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>Auditor Nuevo</ion-label>
-        <ion-select style="width: max-content;" name="auditorSeleccionado" [(ngModel)]="auditorSeleccionado" placeholder='Auditor' required>
-          <ion-select-option *ngFor="let auditor of auditoresPosibles; let i = index" [value]="auditor" selected="i === 0">
-            {{auditor.apellido + ', ' + auditor.nombre}}
-          </ion-select-option>
-        </ion-select>
-      </ion-item>
-    </ion-list>
-    <ion-button type="submit" expand="block" fill="clear" shape="round" [disabled]="form.invalid">
-      Actualizar Auditor
-    </ion-button>
-  </form>
+  <ion-list>
+    <ion-item>
+      <ion-label>Auditor Actual:</ion-label>
+      <ion-label *ngIf="auditorActual != null">{{auditorActual.apellido + ', ' + auditorActual.nombre}}</ion-label>
+      <ion-label *ngIf="auditorActual == null">NA</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Auditor Nuevo</ion-label>
+      <ion-select style="width: max-content;" name="auditorSeleccionado" [(ngModel)]="auditorSeleccionado" placeholder='Auditor' required>
+        <ion-select-option *ngFor="let auditor of auditoresPosibles; let i = index" [value]="auditor" selected="i === 0">
+          {{auditor.apellido + ', ' + auditor.nombre}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="actualizarAuditor()" expand="block" fill="clear" shape="round">
+    Actualizar Auditor
+  </ion-button>
 </ion-content>

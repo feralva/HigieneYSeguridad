@@ -17,6 +17,7 @@ export class ClientePage implements OnInit {
   clientes: any[] = [];
   nombrePagina: string;
   currentUser: UserLogueado;
+  textoBuscar: string = ''
 
   constructor(private translate: TranslateService, private route: ActivatedRoute,
     private appDataService: AppDataService, private empresaService: EmpresaService,
@@ -45,5 +46,10 @@ export class ClientePage implements OnInit {
       );
 
     event.target.complete();
+  }
+
+  onBuscarClienteChange(event){
+
+    this.textoBuscar = event.detail.value
   }
 }

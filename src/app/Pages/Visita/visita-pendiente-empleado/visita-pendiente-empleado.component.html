@@ -9,9 +9,13 @@
 <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
 </ion-refresher>
+
+<ion-searchbar placeholder="Cliente" (ionChange)="onBuscarClienteChange($event)"
+  showCancelButton="always" animated></ion-searchbar>
+
   <div class="page" *ngIf="visitas.length > 0">
     <div class="timeline" >
-      <div class="timeline__group" *ngFor="let visita of visitas" >
+      <div class="timeline__group" *ngFor="let visita of visitas | filtro: textoBuscar: 'nombreCliente'" >
         <span class="timeline__year">{{visita.fechaPactada | date:'yyyy'}}</span>
         <div class="timeline__box">
           <div class="timeline__date">

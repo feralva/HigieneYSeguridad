@@ -9,7 +9,10 @@
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-card *ngFor="let cliente of clientes" [routerLink]="[cliente.id, 'detalle']" >
+
+  <ion-searchbar (ionChange)="onBuscarClienteChange($event)"></ion-searchbar>
+
+  <ion-card *ngFor="let cliente of clientes | filtro: textoBuscar: 'nombre'" [routerLink]="[cliente.id, 'detalle']" >
     <img [src]="cliente.urlFoto"/>
     <div class="card-title"><b>{{cliente.nombre}}</b></div>
     <div class="card-subtitle"><b>Cantidad Establecimientos: </b>{{cliente.cantidadEstablecimientos}}</div>

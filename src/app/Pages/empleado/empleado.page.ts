@@ -20,6 +20,7 @@ export class EmpleadoPage implements OnInit {
   empleados: Empleado[] = [];
   nombrePagina: string;
   currentUser: UserLogueado;
+  textoBuscar: string = '';
 
   constructor(private translate: TranslateService, 
     private appDataService: AppDataService, private empresaService: EmpresaService,
@@ -41,7 +42,6 @@ export class EmpleadoPage implements OnInit {
       data => {
 
         this.empleados = data;
-        console.log(data);
         this.empleados.forEach(empleado => {
           let roles: string[] = [];
           this.rolService.obtenerRolesUsuario(empleado.usuarioId).subscribe(
@@ -70,5 +70,10 @@ export class EmpleadoPage implements OnInit {
     );
 
     this.obtenerEmpleadosEmpresa();
+  }
+
+  onBuscarEmpleadoChange(event){
+
+    this.textoBuscar = event.detail.value
   }
 }

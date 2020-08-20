@@ -9,26 +9,24 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <form #form="ngForm" (ngSubmit)="guardarFechaVisita(form)"> 
-    <ion-list>
-      <ion-item-divider>
-        <ion-label>Nueva Fecha</ion-label>
-      </ion-item-divider>
-      <ion-item>
-        <ion-label>Fecha:</ion-label>
-        <ion-datetime name="fechaNuevaSeleccionada" [(ngModel)]="fecha"   displayFormat="DD/MM/YYYY" ></ion-datetime>
-      </ion-item>
-      <ion-item>
-        <ion-label>Horario Inicio</ion-label>
-        <ion-datetime [(ngModel)]="horaInicio" displayFormat="h:mm A" minuteValues="0,15,30,45"></ion-datetime>
-      </ion-item>
-      <ion-item>
-        <ion-label>Horario Finalizacion Estimado</ion-label>
-        <ion-datetime [(ngModel)]="horaFin" displayFormat="h:mm A" minuteValues="0,15,30,45"></ion-datetime>
-      </ion-item>
-    </ion-list>
-    <ion-button type="submit" expand="block" fill="clear" shape="round" [disabled]="form.invalid">
-      Guardar Horario
-    </ion-button>
-  </form>
+  <ion-list>
+    <ion-item-divider>
+      <ion-label>Nueva Fecha</ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-label>Fecha:</ion-label>
+      <ion-datetime name="fechaNuevaSeleccionada" [(ngModel)]="fecha"   displayFormat="DD/MM/YYYY" ></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Horario Inicio</ion-label>
+      <ion-datetime [(ngModel)]="horaInicio" displayFormat="h:mm A" minuteValues="0,15,30,45"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Horario Finalizacion Estimado</ion-label>
+      <ion-datetime [(ngModel)]="horaFin" displayFormat="h:mm A" minuteValues="0,15,30,45"></ion-datetime>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="guardarFechaVisita()" expand="block" fill="clear" shape="round" >
+    Guardar Horario
+  </ion-button>
 </ion-content>

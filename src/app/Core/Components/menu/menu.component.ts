@@ -28,7 +28,6 @@ export class MenuComponent implements OnInit {
           data => this.MenuItems = data,
           (error) => console.log(error)
         );
-        console.log(this.MenuItems)
       },
       error => console.log(error)
     );

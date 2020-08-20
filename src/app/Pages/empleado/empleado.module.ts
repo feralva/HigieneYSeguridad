@@ -10,13 +10,15 @@ import { EmpleadoPage } from './empleado.page';
 import { AltaEmpleadoComponent } from './alta-empleado/alta-empleado.component';
 import { EmpleadoEdicionComponent } from './empleado-edicion/empleado-edicion.component';
 import { EmpleadoDetalleComponent } from './empleado-detalle/empleado-detalle.component';
+import { PipesModule } from 'src/app/Core/pipes/pipes.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    EmpleadoPageRoutingModule
+    EmpleadoPageRoutingModule,
+    PipesModule
   ],
   declarations: [EmpleadoPage,
     AltaEmpleadoComponent, EmpleadoDetalleComponent,

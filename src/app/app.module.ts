@@ -33,6 +33,7 @@ import * as firebase from 'firebase';
 import { LoaderInterceptorService } from './Core/HttpInterceptors/loader-interceptor.service';
 import { AuthInterceptor } from './Core/HttpInterceptors/AuthInterceptor.service';
 import { GlobalErrorHandlerService } from './Core/Services/global-error-handler.service';
+import { PipesModule } from './Core/pipes/pipes.module';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -46,6 +47,7 @@ firebase.initializeApp(environment.firebaseConfig);
     AppRoutingModule,
     HttpClientModule,
     SharedDirectivesModule,
+    PipesModule,
     IonicStorageModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
