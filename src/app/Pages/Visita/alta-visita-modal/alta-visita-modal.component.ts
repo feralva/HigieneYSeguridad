@@ -4,6 +4,7 @@ import { ModalController } from '@ionic/angular';
 import { Visita } from 'src/app/Models/Visita';
 import { ClienteService } from 'src/app/Core/Services/Cliente/cliente.service';
 import { VisitaService } from 'src/app/Core/Services/Visita/visita.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-alta-visita-modal',
@@ -45,7 +46,7 @@ export class AltaVisitaModalComponent implements OnInit {
     )
 
   }
-  onAgregarVisita(){
+  onAgregarVisita(form: NgForm){
 
     this.modalctrl.dismiss(
       {

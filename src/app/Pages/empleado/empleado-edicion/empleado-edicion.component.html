@@ -14,7 +14,7 @@
     </ion-item-divider>
       <ion-item>
         <ion-label position="stacked">Nombre</ion-label>
-        <ion-input placeholder="Nombre" name="Nombre" [(ngModel)]="empleadoModel.nombre" required></ion-input>
+        <ion-input placeholder="Nombre" name="Nombre" [(ngModel)]="empleadoModel.nombre"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Apellido</ion-label>
@@ -22,7 +22,7 @@
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Correo Electronico</ion-label>
-        <ion-input placeholder="Correo Electronico" name="responsable.CorreoElectronico" [(ngModel)]="empleadoModel.correoElectronico"></ion-input>
+        <ion-input type="email" placeholder="Correo Electronico" name="responsable.CorreoElectronico" [(ngModel)]="empleadoModel.correoElectronico" email></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Roles</ion-label>
@@ -41,7 +41,7 @@
         </ion-row>
       </ion-grid>
       
-      <ion-button type="submit" shape="round" expand="block" fill="solid" slot="end">Modificar Empleado</ion-button>
+      <ion-button type="submit" shape="round" expand="block" fill="solid" slot="end" [disabled]="form.invalid">Modificar Empleado</ion-button>
 
   </form>
 

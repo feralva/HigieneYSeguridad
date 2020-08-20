@@ -14,13 +14,13 @@
     </ion-item-divider>
       <ion-item *ngIf="clientes">
         <ion-label position="stacked">Cliente</ion-label>
-        <ion-select  style="width: max-content;" name="clienteSeleccionado" (ionChange)="onClienteSelected($event)" [(ngModel)]="clienteSeleccionado" placeholder='Clientes'>
+        <ion-select  style="width: max-content;" name="clienteSeleccionado" (ionChange)="onClienteSelected($event)" [(ngModel)]="clienteSeleccionado" placeholder='Clientes' required>
           <ion-select-option *ngFor="let cliente of clientes" [value]="cliente.id">{{cliente.nombre}}</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Tipos Plan</ion-label>
-        <ion-select style="width: max-content;" name="rolesSeleccionados" [(ngModel)]="tipoPlanSeleccionado" placeholder='Tipo Plan'>
+        <ion-select style="width: max-content;" name="rolesSeleccionados" [(ngModel)]="tipoPlanSeleccionado" placeholder='Tipo Plan' required>
           <ion-select-option *ngFor="let tipoPlan of tiposPlan" [value]="tipoPlan.id">{{tipoPlan.nombre}}</ion-select-option>
         </ion-select>
       </ion-item>
@@ -52,6 +52,6 @@
           </ion-item-options>
         </ion-item-sliding>
     </ion-list>
-      <ion-button style="position: fixed; right: 0; bottom: 1em;" type="submit" shape="round" fill="solid" slot="end">Alta</ion-button>
+      <ion-button style="position: fixed; right: 0; bottom: 1em;" type="submit" shape="round" fill="solid" slot="end" [disabled]="form.invalid">Alta</ion-button>
   </form>
 </ion-content>

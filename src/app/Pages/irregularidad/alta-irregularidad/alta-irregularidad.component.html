@@ -6,81 +6,81 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
+    <ion-item>
+      <ionic-selectable
+        item-content
+        [(ngModel)]="clienteSeleccionado"
+        itemValueField="id"
+        itemTextField="nombre"
+        [items]="clientes"
+        [canClear]="true"
+        [isMultiple]="false"
+        name="clienteSeleccionado"
+        [canSearch]="true"
+        placeholder="Cliente"
+        (onChange)="onClienteSeleccionado()" required>
+      </ionic-selectable>
+    </ion-item>
 
-  <ion-item>
-    <ionic-selectable
-      item-content
-      [(ngModel)]="clienteSeleccionado"
-      itemValueField="id"
-      itemTextField="nombre"
-      [items]="clientes"
-      [canClear]="true"
-      [isMultiple]="false"
-      name="clienteSeleccionado"
-      [canSearch]="true"
-      placeholder="Cliente"
-      (onChange)="onClienteSeleccionado()">
-    </ionic-selectable>
-  </ion-item>
+    <ion-item *ngIf="clienteSeleccionado">
+      <ionic-selectable
+        item-content
+        [(ngModel)]="establecimientoSeleccionado"
+        itemValueField="id"
+        itemTextField="nombre"
+        [items]="establecimientos"
+        [canClear]="true"
+        [isMultiple]="false"
+        name="establecimientoSeleccionado"
+        [canSearch]="true"
+        placeholder="Establecimiento"
+        (onChange)="onEstablecimientoSeleccionado()" required>
+      </ionic-selectable>
+    </ion-item>
 
-  <ion-item *ngIf="clienteSeleccionado">
-    <ionic-selectable
-      item-content
-      [(ngModel)]="establecimientoSeleccionado"
-      itemValueField="id"
-      itemTextField="nombre"
-      [items]="establecimientos"
-      [canClear]="true"
-      [isMultiple]="false"
-      name="establecimientoSeleccionado"
-      [canSearch]="true"
-      placeholder="Establecimiento"
-      (onChange)="onEstablecimientoSeleccionado()">
-    </ionic-selectable>
-  </ion-item>
+    <buscar-ubicacion #buscadorUbicacionComponent [ubicaciones]="ubicaciones" [ngStyle]="{'display': establecimientoSeleccionado ? '' : 'none' }"></buscar-ubicacion>
 
-  <buscar-ubicacion #buscadorUbicacionComponent [ubicaciones]="ubicaciones" [ngStyle]="{'display': establecimientoSeleccionado ? '' : 'none' }"></buscar-ubicacion>
+    <ion-item>
+      <ion-label position="stacked">Severidad</ion-label>
+      <ion-select style="width: max-content;" name="tipoSeleccionado" [(ngModel)]="model.TipoId" placeholder='Severidad' required>
+        <ion-select-option *ngFor="let tipo of tiposIrregularidad; let i = index" [value]="tipo.id" selected="i === 0">{{tipo.descripcion}}</ion-select-option>
+      </ion-select>
+    </ion-item>
 
-<ion-item>
-  <ion-label position="stacked">Severidad</ion-label>
-  <ion-select style="width: max-content;" name="tipoSeleccionado" [(ngModel)]="model.TipoId" placeholder='Severidad'>
-    <ion-select-option *ngFor="let tipo of tiposIrregularidad; let i = index" [value]="tipo.id" selected="i === 0">{{tipo.descripcion}}</ion-select-option>
-  </ion-select>
-</ion-item>
+    <ion-item>
+      <ion-label position="floating">Descripcion</ion-label>
+      <ion-textarea placeholder="Descripcion Irregularidad" [(ngModel)]="model.descripcion" required></ion-textarea>
+    </ion-item>
 
-<ion-item>
-  <ion-label position="floating">Descripcion</ion-label>
-  <ion-textarea placeholder="Descripcion Irregularidad" [(ngModel)]="model.descripcion"></ion-textarea>
-</ion-item>
+    <ion-item>
+      <ion-button (click)="selectImageSource()">
+        <ion-icon name="camera"></ion-icon>
+      </ion-button>
+    </ion-item> 
 
-<ion-item>
-  <ion-button (click)="selectImageSource()">
-    <ion-icon name="camera"></ion-icon>
-  </ion-button>
-</ion-item> 
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4" offset-sm="2" offset-xs="4" offset-md="3" offset-lg="5">
+          <ion-img [src]="imageBase64" *ngIf="imageBase64 != null"></ion-img>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
-<ion-grid>
-  <ion-row>
-    <ion-col size="4" offset-sm="2" offset-xs="4" offset-md="3" offset-lg="5">
-      <ion-img [src]="imageBase64" *ngIf="imageBase64 != null"></ion-img>
-    </ion-col>
-  </ion-row>
-</ion-grid>
-
-<ion-fab vertical="bottom" horizontal="end" slot="fixed">
-  <input
-    type="file"
-    #fileInput
-    (change)="uploadFile($event)"
-    hidden="true"
-    accept="image/*"
-  />
-</ion-fab>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <input
+        type="file"
+        #fileInput
+        (change)="uploadFile($event)"
+        hidden="true"
+        accept="image/*"/>
+    </ion-fab>
 
 
-<ion-button (click)="onSubmit()" expand="block" fill="clear" shape="round">
-  Alta
-</ion-button>
+    <ion-button type="submit" expand="block" fill="clear" [disabled]="form.invalid" shape="round">
+      Alta
+    </ion-button>
 
+  </form>
 </ion-content>
 

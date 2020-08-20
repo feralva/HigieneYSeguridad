@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { AltaVisitaComponent } from './alta-visita.component';
+import { EditarClienteComponent } from './editar-cliente.component';
 
-describe('AltaVisitaComponent', () => {
-  let component: AltaVisitaComponent;
-  let fixture: ComponentFixture<AltaVisitaComponent>;
+describe('EditarClienteComponent', () => {
+  let component: EditarClienteComponent;
+  let fixture: ComponentFixture<EditarClienteComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AltaVisitaComponent ],
+      declarations: [ EditarClienteComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(AltaVisitaComponent);
+    fixture = TestBed.createComponent(EditarClienteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

@@ -131,6 +131,8 @@ export class AltaEmpleadoComponent implements OnInit {
 
   onSubmit(form: NgForm) {
 
+    this.validarModelo();
+
     //console.log(this.currentUser)
     this.empleadoModel.empresaId = this.currentUser.empresaId
     this.empleadoModel.usuario = { IdUsuario: this.empleadoModel.correoElectronico
@@ -143,6 +145,11 @@ export class AltaEmpleadoComponent implements OnInit {
 
     this.AltaEmpleadoConfirm()
 
+  }
+  
+  validarModelo() {
+    if(!this.imageBase64)
+      throw new Error("Debe Seleccionar Imagen");
   }
 
   async selectImageSource() {

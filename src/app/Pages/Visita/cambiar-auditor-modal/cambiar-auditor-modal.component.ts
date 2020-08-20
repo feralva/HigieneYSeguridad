@@ -9,6 +9,7 @@ import { EmpresaService } from 'src/app/Core/Services/Empresa/empresa.service';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { LoaderService } from 'src/app/Core/Services/loader.service';
 import { VisitaService } from 'src/app/Core/Services/Visita/visita.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-cambiar-auditor-modal',
@@ -49,7 +50,7 @@ export class CambiarAuditorModalComponent implements OnInit {
     //this.auditorActual = this.route.snapshot.data['auditorActual'];
   }
   
-  actualizarAuditor(){
+  actualizarAuditor(form: NgForm){
 
     this.visitaService.actualizarAuditorVisita(this.idVisita, this.auditorSeleccionado.id).subscribe(
       data => {

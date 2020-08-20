@@ -7,6 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { ActivatedRoute } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-alta-visita-plan',
@@ -101,7 +102,7 @@ export class AltaVisitaPlanComponent implements OnInit {
     toast.present();
   }
 
-  altaVisita(){
+  altaVisita(form: NgForm){
 
     const visitaModel = {
 

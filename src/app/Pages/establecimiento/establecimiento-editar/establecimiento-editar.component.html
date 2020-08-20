@@ -18,8 +18,7 @@
         placeholder="Nombre"
         name="Nombre"
         [(ngModel)]="model.nombre"
-        required
-      ></ion-input>
+        required></ion-input>
     </ion-item>
     <ion-item-divider color="tertiary">
       <ion-label>
@@ -31,8 +30,7 @@
       <ion-input
         placeholder="Calle"
         name="direccion.Calle"
-        [(ngModel)]="model.direccion.calle"
-      ></ion-input>
+        [(ngModel)]="model.direccion.calle" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Altura</ion-label>
@@ -40,13 +38,12 @@
         type="number"
         placeholder="Altura"
         name="direccion.Altura"
-        [(ngModel)]="model.direccion.altura"
-      ></ion-input>
+        [(ngModel)]="model.direccion.altura" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Provincia</ion-label>
       <ion-select style="width: max-content;" name="provinciaSeleccionada" [(ngModel)]="provinciaSeleccionada" placeholder='Provincia' 
-        (ngModelChange)="actualizarPartidos($event)">
+        (ngModelChange)="actualizarPartidos($event)" required>
         <ion-select-option *ngFor="let provincia of provincias; let i = index" [value]="provincia" selected="i === 0">{{provincia.nombre}}</ion-select-option>
       </ion-select>
     </ion-item>
@@ -61,8 +58,7 @@
         [isMultiple]="false"
         name="partidosSeleccionados"
         [canSearch]="true"
-        placeholder="Partido"
-      >
+        placeholder="Partido" required>
       </ionic-selectable>
     </ion-item>
     <ion-item-divider color="secondary">
@@ -83,8 +79,7 @@
         <ion-item>
           <ion-label
             class="ion-text-wrap"
-            style="margin-left: 1em; text-align: center;"
-          >
+            style="margin-left: 1em; text-align: center;">
             <h2>{{ ubicacion.nombre }}</h2>
           </ion-label>
         </ion-item>
@@ -99,7 +94,7 @@
       </ion-item-sliding>
     </ion-list>
 
-    <ion-button type="submit" shape="round" fill="outline" slot="end">Modificar</ion-button
+    <ion-button type="submit" shape="round" fill="outline" [disabled]="form.invalid" slot="end">Modificar</ion-button
     >
   </form>
 </ion-content>

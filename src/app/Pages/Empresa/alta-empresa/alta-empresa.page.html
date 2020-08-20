@@ -18,12 +18,11 @@
         placeholder="Nombre"
         name="Nombre"
         [(ngModel)]="empresaModel.nombre"
-        required
-      ></ion-input>
+        required></ion-input>
     </ion-item>
     <ion-item-divider color="tertiary">
       <ion-label>
-        direccion
+        Dirección
       </ion-label>
     </ion-item-divider>
     <ion-item>
@@ -31,8 +30,7 @@
       <ion-input
         placeholder="Calle"
         name="direccion.Calle"
-        [(ngModel)]="empresaModel.direccion.calle"
-      ></ion-input>
+        [(ngModel)]="empresaModel.direccion.calle" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Altura</ion-label>
@@ -40,13 +38,12 @@
         type="number"
         placeholder="Altura"
         name="direccion.Altura"
-        [(ngModel)]="empresaModel.direccion.altura"
-      ></ion-input>
+        [(ngModel)]="empresaModel.direccion.altura" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Provincia</ion-label>
       <ion-select style="width: max-content;" name="provinciaSeleccionada" [(ngModel)]="provinciaSeleccionada" placeholder='Provincia' 
-        (ngModelChange)="actualizarPartidos($event)">
+        (ngModelChange)="actualizarPartidos($event)" required>
         <ion-select-option *ngFor="let provincia of provincias; let i = index" [value]="provincia" selected="i === 0">{{provincia.nombre}}</ion-select-option>
       </ion-select>
     </ion-item>
@@ -61,8 +58,7 @@
         [isMultiple]="false"
         name="partidosSeleccionados"
         [canSearch]="true"
-        placeholder="Partido"
-      >
+        placeholder="Partido" required>
       </ionic-selectable>
     </ion-item>
 
@@ -76,50 +72,44 @@
       <ion-input
         placeholder="Nombre"
         name="responsable.Nombre"
-        [(ngModel)]="empresaModel.responsable.nombre"
-      ></ion-input>
+        [(ngModel)]="empresaModel.responsable.nombre" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Apellido</ion-label>
       <ion-input
         placeholder="Apellido"
         name="responsable.Apellido"
-        [(ngModel)]="empresaModel.responsable.apellido"
-      ></ion-input>
+        [(ngModel)]="empresaModel.responsable.apellido" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Correo Electronico</ion-label>
-      <ion-input
+      <ion-input type="email"
         placeholder="Correo Electronico"
         name="responsable.CorreoElectronico"
-        [(ngModel)]="empresaModel.responsable.correoElectronico"
-      ></ion-input>
+        [(ngModel)]="empresaModel.responsable.correoElectronico" required email></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Telefono</ion-label>
-      <ion-input
+      <ion-input type="number"
         placeholder="Telefono"
         name="responsable.Telefono"
-        [(ngModel)]="empresaModel.responsable.telefono"
-      ></ion-input>
+        [(ngModel)]="empresaModel.responsable.telefono" required></ion-input>
     </ion-item>
     <ion-grid>
       <ion-row>
         <ion-avatar
           class="item-avatar center"
           style="border: black; border-style: solid;"
-          (click)="selectImageSource()"
-        >
+          (click)="selectImageSource()">
           <ion-img [src]="imageBase64" *ngIf="imageBase64 != null"></ion-img>
           <ion-img
             src="./../../../assets/img/sorry-image-not-available.png"
-            *ngIf="imageBase64 == null"
-          ></ion-img>
+            *ngIf="imageBase64 == null"></ion-img>
         </ion-avatar>
       </ion-row>
     </ion-grid>
 
-    <ion-button type="submit" shape="round" fill="outline" slot="end">Alta Empresa</ion-button>
+    <ion-button type="submit" shape="round" fill="outline" slot="end" [disabled]="form.invalid">Alta Empresa</ion-button>
   </form>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">

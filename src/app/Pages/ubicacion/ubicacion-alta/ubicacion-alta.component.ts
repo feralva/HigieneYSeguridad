@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Ubicacion } from 'src/app/Models/Ubicacion';
 import { ModalController } from '@ionic/angular';
 import { Geolocation} from '@capacitor/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-ubicacion-alta',
@@ -22,7 +23,7 @@ export class UbicacionAltaComponent implements OnInit {
     this.getLocation();
   }
 
-  onAgregarUbicacion(){
+  onAgregarUbicacion(form: NgForm){
 
     this.modalctrl.dismiss(
       {

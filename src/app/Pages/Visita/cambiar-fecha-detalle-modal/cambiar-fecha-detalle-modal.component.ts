@@ -7,6 +7,7 @@ import { NavController, ModalController, AlertController } from '@ionic/angular'
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { LoaderService } from 'src/app/Core/Services/loader.service';
 import { DateService } from 'src/app/Core/Services/Utils/date.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-cambiar-fecha-detalle-modal',
@@ -35,10 +36,8 @@ export class CambiarFechaDetalleModalComponent implements OnInit {
     await this.modalController.dismiss();
   }
 
-  guardarFechaVisita(){
+  guardarFechaVisita(form: NgForm){
 
-    console.log(this.horaInicio)
-    console.log(this.dateService.ObtenerFechaDeString(this.horaInicio))
     this.visitaService.actualizarFechaVisita(this.idVisita, 
       this.dateService.combinarFechaHora(this.dateService.ObtenerFechaDeString(this.fecha),this.dateService.ObtenerFechaDeString(this.horaInicio)), 
       this.dateService.obtenerDiferenciaEnMinutos(this.dateService.ObtenerFechaDeString(this.horaInicio), 

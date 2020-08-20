@@ -16,6 +16,7 @@ import { UbicacionAltaComponent } from '../ubicacion/ubicacion-alta/ubicacion-al
 import { IonicSelectableModule } from 'ionic-selectable';
 import { PlanPageModule } from '../plan/plan.module';
 import { UbicacionPageModule } from '../ubicacion/ubicacion.module';
+import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
 @NgModule({
   entryComponents: [UbicacionAltaComponent],
   imports: [
@@ -29,6 +30,6 @@ import { UbicacionPageModule } from '../ubicacion/ubicacion.module';
   ],
   exports:[],
   declarations: [ClientePage, ClienteEstablecimientosComponent, EstablecimientoAltaComponent,
-  ClienteDetalleComponent, AltaClienteComponent, ClientePlanesComponent/* ,UbicacionAltaComponent */ ]
+  ClienteDetalleComponent, AltaClienteComponent, ClientePlanesComponent, EditarClienteComponent/* ,UbicacionAltaComponent */ ]
 })
 export class ClientePageModule {}

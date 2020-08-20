@@ -27,28 +27,28 @@
   </ion-item>
   <ion-item>
     <ion-label position="stacked">Matafuegos Vencidos:</ion-label>
-    <ion-select name="matafuegosVencidos" [(ngModel)]="model.matafuegosVencidos" placeholder="Matafuegos Vencidos">
+    <ion-select name="matafuegosVencidos" [(ngModel)]="model.matafuegosVencidos" placeholder="Matafuegos Vencidos" required>
       <ion-select-option [value]=true>Si</ion-select-option>
       <ion-select-option [value]=false>No</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-label position="stacked">Espacio Ventilado:</ion-label>
-    <ion-select name="espacioVentilado" [(ngModel)]="model.espacioVentilado" placeholder="Espacio Ventilado">
+    <ion-select name="espacioVentilado" [(ngModel)]="model.espacioVentilado" placeholder="Espacio Ventilado" required>
       <ion-select-option [value]=true>Si</ion-select-option>
       <ion-select-option [value]=false>No</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-label position="stacked">Protecciones Ignifugas instaladas:</ion-label>
-    <ion-select name="proteccionesIgnifugas" [(ngModel)]="model.proteccionesIgnifugas" placeholder="Protecciones Ignifugas">
+    <ion-select name="proteccionesIgnifugas" [(ngModel)]="model.proteccionesIgnifugas" placeholder="Protecciones Ignifugas" required>
       <ion-select-option [value]=true>Si</ion-select-option>
       <ion-select-option [value]=false>No</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-label position="stacked">Detectores de Humo:</ion-label>
-    <ion-select name="detectoresDeHumo" [(ngModel)]="model.detectoresDeHumo" placeholder="Detectores De Humo">
+    <ion-select name="detectoresDeHumo" [(ngModel)]="model.detectoresDeHumo" placeholder="Detectores De Humo" required>
       <ion-select-option [value]=true>Si</ion-select-option>
       <ion-select-option [value]=false>No</ion-select-option>
     </ion-select>

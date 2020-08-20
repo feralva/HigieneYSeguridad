@@ -118,8 +118,14 @@ export class CerrarIrregularidadComponent implements OnInit {
 
   onSubmit(form: NgForm) {
 
+    this.validarModelo();
     console.log(this.model)
     this.CompletarIrregularidadConfirm()
+  }
+  
+  private validarModelo() {
+    if(!this.imageBase64)
+      throw new Error("Debe ingresar evidencia de resolución Irregularidad");
   }
 
   async selectImageSource() {

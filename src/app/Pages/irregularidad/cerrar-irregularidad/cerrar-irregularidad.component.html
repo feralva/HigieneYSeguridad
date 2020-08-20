@@ -57,7 +57,7 @@
 
       <ion-item>
         <ion-label position="floating">Descripción Resolución</ion-label>
-        <ion-textarea placeholder="Descripcion Resolución" name="descripcionResolucion"  [(ngModel)]="model.descripcionResolucion"></ion-textarea>
+        <ion-textarea placeholder="Descripcion Resolución" name="descripcionResolucion"  [(ngModel)]="model.descripcionResolucion" required></ion-textarea>
       </ion-item>
 
       <ion-button (click)="selectImageSource()">
@@ -72,8 +72,6 @@
         </ion-row>
       </ion-grid> 
 
-
-      
       <ion-button type="submit" shape="round" expand="block" fill="solid" slot="end">Completar Irregularidad</ion-button>
 
   </form>
@@ -84,7 +82,6 @@
       #fileInput
       (change)="uploadFile($event)"
       hidden="true"
-      accept="image/*"
-    />
+      accept="image/*"/>
   </ion-fab>
 </ion-content>

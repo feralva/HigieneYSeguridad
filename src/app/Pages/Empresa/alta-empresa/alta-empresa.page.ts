@@ -90,8 +90,14 @@ export class AltaEmpresaPage implements OnInit {
     )
   }
   onSubmit(form: NgForm) {
+    this.validarModel();
     this.empresaModel.direccion.partidoId = this.partidoSeleccionado.id;
     this.AltaEmpresaConfirm()
+  }
+
+  private validarModel() {
+    if(!this.imageBase64)
+      throw new Error("Debe Seleccionar Imagen");
   }
 
   async AltaEmpresaConfirm() {

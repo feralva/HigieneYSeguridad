@@ -132,8 +132,9 @@ export class AltaIrregularidadComponent implements OnInit {
     toast.present();
   }
 
-  onSubmit() {
+  onSubmit(form: NgForm) {
 
+    this.validarModelo();
     this.model.estadoId = 1
     this.model.UbicacionId = this.buscadorUbicacionComponent.ubicacionSeleccionada.id
     this.model.empleadoId = this.currentUser.empleadoId
@@ -141,6 +142,11 @@ export class AltaIrregularidadComponent implements OnInit {
     this.model.empresaId = this.currentUser.empresaId
 
     this.AltaIrregularidadConfirm()
+  }
+
+  private validarModelo() {
+    if(!this.imageBase64)
+      throw new Error("Debe ingresar evidencia Fotografica de Irregularidad");
   }
 
   onClienteSeleccionado(){

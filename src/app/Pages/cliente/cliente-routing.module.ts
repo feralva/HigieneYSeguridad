@@ -16,6 +16,7 @@ import { PlanAltaTiposPlanResolverService } from 'src/app/Core/Services/Plan/pla
 import { ClienteEspecificoResolver } from 'src/app/Core/Services/Cliente/clienteEspecifico-resolver.service';
 import { EmpresaClienteResumenResolver } from 'src/app/Core/Services/Empresa/empresaClientesResumen-resolver.service';
 import { PlanEstadosPosiblesResolver } from 'src/app/Core/Services/Plan/planEstadosPosibles-resolver.service';
+import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,11 @@ const routes: Routes = [
   {
     path: ':id/detalle',
     component: ClienteDetalleComponent,
+    resolve: {cliente: ClienteDetalleResolver}
+  },
+  {
+    path: ':id/editar',
+    component: EditarClienteComponent,
     resolve: {cliente: ClienteDetalleResolver}
   },
   {

@@ -10,7 +10,6 @@ import { VisitaPendienteResolverService } from 'src/app/Core/Services/Visita/vis
 import { ControlesVisitaResolverService } from 'src/app/Core/Services/Control/controlesVisita-Resolver.service';
 import { VisitaDetalleResolverService } from 'src/app/Core/Services/Visita/visitaDetalle-resolver.service';
 import { MedicionesComponent } from './mediciones/mediciones.component';
-import { MedicionesAltaModalComponent } from './mediciones-alta-modal/mediciones-alta-modal.component';
 import { MedicionesControlResolverService } from 'src/app/Core/Services/Mediciones/medicionesControl-resolver.service';
 import { UbicacionesEstablecimientoResolverService } from 'src/app/Core/Services/Ubicacion/ubicacionesEstablecimiento-resolver.service';
 import { SeleccionarUbicacionControlComponent } from './seleccionar-ubicacion-control/seleccionar-ubicacion-control.component';
