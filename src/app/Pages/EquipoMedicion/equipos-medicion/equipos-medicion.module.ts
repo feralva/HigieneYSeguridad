@@ -8,6 +8,7 @@ import { EquiposMedicionPageRoutingModule } from './equipos-medicion-routing.mod
 
 import { EquiposMedicionPage } from './equipos-medicion.page';
 import { AltaEquipoMedicionComponent } from '../alta-equipo-medicion/alta-equipo-medicion.component';
+import { ModificarCantidadEquiposMedicionComponent } from '../modificar-cantidad-equipos-medicion/modificar-cantidad-equipos-medicion.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { AltaEquipoMedicionComponent } from '../alta-equipo-medicion/alta-equipo
     IonicModule,
     EquiposMedicionPageRoutingModule
   ],
-  declarations: [EquiposMedicionPage, AltaEquipoMedicionComponent]
+  declarations: [EquiposMedicionPage, AltaEquipoMedicionComponent, ModificarCantidadEquiposMedicionComponent]
 })
 export class EquiposMedicionPageModule {}

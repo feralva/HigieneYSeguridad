@@ -13,6 +13,8 @@ import { StripeComponent } from './stripe/stripe.component';
 import { AltaTipoLicenciaComponent } from './alta-tipo-licencia/alta-tipo-licencia.component';
 import { ActualizacionPrecioLicenciaComponent } from './actualizacion-precio-licencia/actualizacion-precio-licencia.component';
 import { IonicSelectableModule } from 'ionic-selectable';
+import { BajaTipoLicenciaComponent } from './baja-tipo-licencia/baja-tipo-licencia.component';
+import { ModificarTipoLicenciaComponent } from './modificar-tipo-licencia/modificar-tipo-licencia.component';
 
 @NgModule({
   imports: [
@@ -22,6 +24,7 @@ import { IonicSelectableModule } from 'ionic-selectable';
     LicenciaPageRoutingModule,
     IonicSelectableModule
   ],
-  declarations: [LicenciaPage, DetalleLicenciaComponent, AdquirirLicenciaComponent, StripeComponent, AltaTipoLicenciaComponent, ActualizacionPrecioLicenciaComponent ]
+  declarations: [LicenciaPage, DetalleLicenciaComponent, AdquirirLicenciaComponent, StripeComponent, AltaTipoLicenciaComponent, 
+    ActualizacionPrecioLicenciaComponent, BajaTipoLicenciaComponent, ModificarTipoLicenciaComponent]
 })
 export class LicenciaPageModule {}

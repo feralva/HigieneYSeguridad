@@ -10,6 +10,7 @@ import { EmpresaPage } from './empresa.page';
 import { AltaEmpresaPage } from './alta-empresa/alta-empresa.page';
 import { IonicSelectableModule } from 'ionic-selectable';
 import { EditarEmpresaComponent } from './editar-empresa/editar-empresa.component';
+import { PagosEmpresaComponent } from './pagos-empresa/pagos-empresa.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -18,6 +19,6 @@ import { EditarEmpresaComponent } from './editar-empresa/editar-empresa.componen
     EmpresaPageRoutingModule,
     IonicSelectableModule
   ],
-  declarations: [EmpresaPage, AltaEmpresaPage, EditarEmpresaComponent]
+  declarations: [EmpresaPage, AltaEmpresaPage, EditarEmpresaComponent, PagosEmpresaComponent]
 })
 export class EmpresaPageModule {}
