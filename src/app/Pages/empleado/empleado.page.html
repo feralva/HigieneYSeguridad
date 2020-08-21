@@ -32,7 +32,7 @@
         <ion-item-option color="tertiary" [routerLink]="[empleado.id, 'editar']" expandable>
           Editar
         </ion-item-option>
-        <ion-item-option color="danger" expandable>
+        <ion-item-option color="danger" (click)="onBorrarEmpleado(empleado)" expandable>
           Borrar
         </ion-item-option>
       </ion-item-options>

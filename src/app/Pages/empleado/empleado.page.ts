@@ -76,4 +76,25 @@ export class EmpleadoPage implements OnInit {
 
     this.textoBuscar = event.detail.value
   }
+
+  onBorrarEmpleado(empleado: Empleado){
+
+    empleado.activo = false;
+    this.empleadoService.actualizarEmpleado(empleado).subscribe(
+      data => {
+        this.empleados.splice(this.empleados.findIndex(e => e.id === empleado.id), 1 )
+        this.MostrarMensajeOperacion('Baja Exitosa')
+      },
+      (err: any) => this.MostrarMensajeOperacion('Falla')
+    )
+
+  }
+
+  async MostrarMensajeOperacion(mensaje:string) {
+    const toast = await this.toastController.create({
+      message: mensaje,
+      duration: 2000
+    });
+    toast.present();
+  }
 }
