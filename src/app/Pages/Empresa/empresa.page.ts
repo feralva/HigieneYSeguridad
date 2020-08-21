@@ -3,6 +3,7 @@ import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 import { EmpresaService } from 'src/app/Core/Services/Empresa/empresa.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-empresa',
@@ -14,7 +15,8 @@ export class EmpresaPage implements OnInit {
 
   nombrePagina: string;
   constructor(private appDataService: AppDataService, private translate: TranslateService, 
-    private empresaService: EmpresaService, private route: ActivatedRoute) { }
+    private empresaService: EmpresaService, private route: ActivatedRoute,
+    private toastController: ToastController) { }
 
   ngOnInit() {
 
@@ -26,6 +28,26 @@ export class EmpresaPage implements OnInit {
   ionViewWillEnter(){
     this.nombrePagina = 'Empresa.title';
     this.appDataService.changePageName(this.nombrePagina);
+  }
+
+  onBorrarEmpresa(empresa: any){
+
+    empresa.activo = false;
+    this.empresaService.ActualizarEmpresa(empresa).subscribe(
+      data => {
+        this.empresas.splice(this.empresas.findIndex(e => e.id === empresa.id), 1 )
+        this.MostrarMensajeOperacion('Baja Exitosa')
+      },
+      (err: any) => this.MostrarMensajeOperacion('Falla')
+    )
+  }
+
+  async MostrarMensajeOperacion(mensaje:string) {
+    const toast = await this.toastController.create({
+      message: mensaje,
+      duration: 2000
+    });
+    toast.present();
   }
 
   doRefresh(event) {

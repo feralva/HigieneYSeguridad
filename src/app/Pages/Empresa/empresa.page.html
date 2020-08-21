@@ -25,7 +25,7 @@
         <ion-item-option color="tertiary" [routerLink]="[empresa.id, 'editar']" expandable>
           Editar
         </ion-item-option>
-        <ion-item-option color="danger" expandable>
+        <ion-item-option color="danger" (click)="onBorrarEmpresa(empresa)" expandable>
           Borrar
         </ion-item-option>
       </ion-item-options>
