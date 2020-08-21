@@ -10,13 +10,12 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <ion-list>
-    <ion-item *ngFor="let equipoTotalizado of equiposTotalizados">
-      <ion-item detail="true" tappable [routerLink]="['tipo', equipoTotalizado.equipoMedicionNombre , 'editar']" >
-        <ion-label>{{equipoTotalizado.equipoMedicionNombre}}</ion-label>
-        <ion-label style="text-align: end" slot="end">
-          {{equipoTotalizado.cantidad}}
-        </ion-label>
-      </ion-item>
+    <ion-item detail="true" tappable [routerLink]="['tipo', equipoTotalizado.equipoMedicionNombre , 'editar']" 
+      *ngFor="let equipoTotalizado of equiposTotalizados" >
+      <ion-label>{{equipoTotalizado.equipoMedicionNombre}}</ion-label>
+      <ion-label style="text-align: end; padding-right: 10px;" slot="end">
+        {{equipoTotalizado.cantidad}}
+      </ion-label>
     </ion-item>
   </ion-list>
 
