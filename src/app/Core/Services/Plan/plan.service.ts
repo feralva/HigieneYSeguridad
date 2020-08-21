@@ -9,7 +9,6 @@ import { environment } from '../../../../environments/environment';
 })
 export class PlanService {
 
-  
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -21,7 +20,6 @@ export class PlanService {
   }
 
   obtenerPlanesEmpresa(idEmpresa: number, idEstado: number = 1): Observable<any[]> {
-    console.log(idEstado)
     return this.http.get<any[]>(environment.UrlBaseApi + `Empresa/${idEmpresa}/Planes?activo=true&estadoPlan=${idEstado}`, this.httpOptions);
   }
 
@@ -36,4 +34,17 @@ export class PlanService {
   alta(plan:any) : Observable<any> {
     return this.http.post<any>(environment.UrlBaseApi + 'Plan', {Model: plan}, this.httpOptions); 
   }
+
+  completarPlan(idPlan: number): Observable<any> {
+    return this.http.put<any>(environment.UrlBaseApi + `Plan`, {Model: {id: idPlan, estadoId: 3 }}, this.httpOptions); 
+  }
+
+  cancelarPlan(idPlan: number): Observable<any> {
+    return this.http.put<any>(environment.UrlBaseApi + `Plan`, {Model: {id: idPlan, estadoId: 4 }}, this.httpOptions); 
+  }
+
+  estanTodasLasVisitasCerradas(idPlan: number): Observable<any> {
+    return this.http.get<any[]>(environment.UrlBaseApi + `Plan/${idPlan}/VisitasCerradas`, this.httpOptions);  
+  }
+  
 }
