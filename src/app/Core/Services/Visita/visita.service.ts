@@ -50,4 +50,9 @@ export class VisitaService {
   completarVisita(idVisita: number):Observable<any> {
     return this.http.put<any>(environment.UrlBaseApi + `Visita/completarVisita`, {Model: {Id: idVisita}}, this.httpOptions);
   }
+
+  cancelarVisita(idVisita: any):Observable<any> {
+    return this.http.put<any>(environment.UrlBaseApi + `Visita/cancelarVisita`, {Model: {Id: idVisita}}, this.httpOptions);
+  }
+
 }

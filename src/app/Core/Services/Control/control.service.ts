@@ -48,19 +48,12 @@ export class ControlService {
       });
 
     });
-/*     Object.keys(mediciones).forEach(async propiedad => {
-
-      var medicion = {
-        ["idControl"]: idControl,
-        [propiedad]: mediciones[propiedad]
-      }
-
-      await this.db.collection('mediciones').add(medicion).then(function(docRef) {
-
-        idControl = docRef.id
-      });
-
-    }) */
   }
+
+  bajaControl(idcontrol: string) {
+
+    return this.db.collection('mediciones').doc(idcontrol).delete()
+  }
+
 
 }

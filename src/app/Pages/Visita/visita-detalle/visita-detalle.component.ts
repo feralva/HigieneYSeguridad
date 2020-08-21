@@ -133,8 +133,6 @@ export class VisitaDetalleComponent implements OnInit {
           this.router.navigate(['/visita',this.idVisita, 'controles', this.visita.establecimiento.id, 'medicionElectrica', 'alta'])
           break;
     }
-    
-
   }
 
   completarVisita(){
@@ -148,9 +146,8 @@ export class VisitaDetalleComponent implements OnInit {
       this.completarVisitaConfirm();
 
     }
-
-    //TODO agregar logica de completar... o agregar redireccion a pantalla detalle controles visita
   }
+
   async onEditarAuditorClick(event){
 
       const modal = await this.modalController.create({
@@ -227,6 +224,51 @@ export class VisitaDetalleComponent implements OnInit {
     });
 
     await alert.present();
+  }
+
+  cancelarVisita(){
+
+    if(this.visita.estado.descripcion === 'Completa') throw Error('No se puede Cancelar Visita Completa')
+    this.cancelarVisitaConfirm();
+  }
+
+  async cancelarVisitaConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Cancelar Visita',
+      message: '¿Esta seguro que desea cancelar Visita?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Ok',
+          handler: () => {
+            this.visitaService.cancelarVisita(this.visita.id).subscribe(
+                result => this.MostrarMensajeOperacion('Visita Cancelada'),
+                (err: any) => this.MostrarMensajeOperacion('Falla')
+            );
+          }     
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  onAnularControl(idcontrol: string){
+    console.log(idcontrol)
+
+    this.controlService.bajaControl(idcontrol).then(
+      res => {
+        this.controles.splice(this.controles.find(control => control.id === idcontrol), 1 )
+        this.MostrarMensajeOperacion('Baja Exitosa')
+      }
+    )
   }
 
 }

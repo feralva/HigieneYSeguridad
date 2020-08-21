@@ -51,6 +51,9 @@
                 <ion-label style="font-weight: bolder;">
                   {{control.ubicacion}}
                 </ion-label>
+                <ion-button slot="end" (click)="onAnularControl(control.id)" style="padding-right: 10px;">
+                  <ion-icon  name="close-outline"></ion-icon>
+                </ion-button>
             </ion-item-divider>
             <ion-item>
                 <ion-label>Fecha</ion-label>
@@ -73,11 +76,14 @@
           <ion-fab-button color="primary" (click)="onAgregarControl()">
             <ion-icon name="add-circle-outline"></ion-icon>
           </ion-fab-button>
-          <ion-fab-button color="danger" [routerLink]="['/irregularidad','establecimiento', visita.establecimientoId ,'alta']">
+          <ion-fab-button color="warning" [routerLink]="['/irregularidad','establecimiento', visita.establecimientoId ,'alta']">
             <ion-icon name="alert-circle-outline"></ion-icon>
           </ion-fab-button>
           <ion-fab-button color="success" (click)="completarVisita()">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-button color="danger" (click)="cancelarVisita()">
+            <ion-icon name="close-outline"></ion-icon>
           </ion-fab-button>
         </ion-fab-list>
     </ion-fab>
