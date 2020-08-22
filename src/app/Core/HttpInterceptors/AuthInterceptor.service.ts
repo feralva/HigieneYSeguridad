@@ -45,6 +45,12 @@ export class AuthInterceptor implements HttpInterceptor {
                             this.showRetryToast(retries)
                         }),
                         map(error => {
+                            console.log(error)
+                            if(error instanceof HttpErrorResponse){
+                                if(error.status === 409){
+                                    throw error;
+                                }
+                            }
                             if(retries++ === 3){
                                 console.log(error)
                                 throw error;
@@ -55,6 +61,11 @@ export class AuthInterceptor implements HttpInterceptor {
                 }) ,
                 catchError(err => {
                     //console.log('error: ', err);
+                    if(err instanceof HttpErrorResponse){
+                        if(err.status === 409){
+                            throw err;
+                        }
+                    }
                     console.log('redirijo a login');
                     this.authService.logout()
                     return EMPTY;
