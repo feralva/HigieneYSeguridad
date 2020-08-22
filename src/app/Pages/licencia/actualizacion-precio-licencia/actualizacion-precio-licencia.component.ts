@@ -34,7 +34,18 @@ export class ActualizacionPrecioLicenciaComponent implements OnInit {
     this.appDataService.changePageName('TipoLicencia.ActualizarPrecio.title');
 
     this.tiposLicencias = this.route.snapshot.data['tiposLicencias'];
+
+    var idTipoLicencia = +this.route.snapshot.paramMap.get('idTipoLicencia');
     
+    if(idTipoLicencia){
+
+      this.licenciaService.obtenerTipoLicenciaDetalle(idTipoLicencia).subscribe(
+        data => {
+          this.tipoLicenciaSeleccionado = this.tiposLicencias.find( t => t.id == data.id)
+        } 
+      )
+    }
+
     console.log(this.tiposLicencias)
     this.authService.getUserSubject().subscribe(
       data => {

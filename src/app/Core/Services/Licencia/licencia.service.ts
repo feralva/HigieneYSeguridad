@@ -42,4 +42,13 @@ export class LicenciaService {
   actualizarPrecioLicencia(licencia: any): Observable<any> {
     return this.http.post<any[]>(environment.UrlBaseApi + `TipoLicencia/Precio`, { model: licencia }, this.httpOptions);
   }
+
+  modificarTipoLicencia(tipoLicencia: any): Observable<any> {
+    return this.http.put<any[]>(environment.UrlBaseApi + `TipoLicencia`, { model: tipoLicencia }, this.httpOptions);
+  }
+  
+  obtenerTipoLicenciaDetalle(idTipoLicencia: number) : Observable<any> {
+    return this.http.get<any>(environment.UrlBaseApi + `TipoLicencia/${idTipoLicencia}`, this.httpOptions); 
+  }
+
 }

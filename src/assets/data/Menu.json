@@ -98,6 +98,12 @@
                 "name": "Actualizar Precio",
                 "url": "/licencia/tipo/actualizarPrecio",
                 "role": ["Coordinador"]
+            },
+            {
+                "icon": "thermometer",
+                "name": "Tipos Licencia",
+                "url": "/licencia/tipos",
+                "role": ["Coordinador"]
             }
         ]
     }

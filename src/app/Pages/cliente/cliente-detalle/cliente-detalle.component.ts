@@ -30,7 +30,7 @@ export class ClienteDetalleComponent implements OnInit {
   ngOnInit() {
     this.cliente = this.route.snapshot.data['cliente'];
     //this.nombrePagina = this.cliente.nombre;
-    this.appDataService.changePageName(this.nombrePagina);
+    this.appDataService.changePageName('Cliente.Detalle.Title');
 
     console.log(this.cliente)
   }
