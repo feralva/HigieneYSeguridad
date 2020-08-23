@@ -5,6 +5,7 @@ import { EstablecimientoPage } from './establecimiento.page';
 import { EstablecimientoEditarComponent } from './establecimiento-editar/establecimiento-editar.component';
 import { EstablecimientoDetalleComponent } from './establecimiento-detalle/establecimiento-detalle.component';
 import { EstablecimientoDetalleResolverService } from 'src/app/Core/Services/Establecimiento/establecimientoDetalle-resolver.service';
+import { EstablecimientoDeClientePropioGuard } from 'src/app/Core/Guards/Establecimiento/establecimiento-de-cliente-propio.guard';
 
 const routes: Routes = [
   {
@@ -17,7 +18,9 @@ const routes: Routes = [
     resolve: 
     {
       establecimiento: EstablecimientoDetalleResolverService
-    }  
+    },
+    canActivate: [ EstablecimientoDeClientePropioGuard ]
+
   },
   {
     path: ':id/detalle',
@@ -25,7 +28,8 @@ const routes: Routes = [
     resolve: 
     {
       establecimiento: EstablecimientoDetalleResolverService
-    } 
+    },
+    canActivate: [ EstablecimientoDeClientePropioGuard ]
   }
 ];
 

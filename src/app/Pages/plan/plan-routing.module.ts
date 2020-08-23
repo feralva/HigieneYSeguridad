@@ -12,6 +12,7 @@ import { AltaVisitaPlanComponent } from './alta-visita-plan/alta-visita-plan.com
 import { ClienteEstablecimientosResolver } from 'src/app/Core/Services/Cliente/clienteEstablecimiento-resolver.service';
 import { VisitaTiposVisitaResolverService } from 'src/app/Core/Services/Visita/visitaTiposVisita-resolver.service';
 import { PlanEstadosPosiblesResolver } from 'src/app/Core/Services/Plan/planEstadosPosibles-resolver.service';
+import { PlanDeClientePropioGuard } from 'src/app/Core/Guards/Plan/plan-de-cliente-propio.guard';
 
 const routes: Routes = [
   {
@@ -25,12 +26,14 @@ const routes: Routes = [
   {
     path: ':id/detalle',
     component: DetallePlanComponent,
-    resolve: {plan: PlanDetalleResolverService}
+    resolve: {plan: PlanDetalleResolverService},
+    canActivate: [PlanDeClientePropioGuard]
   },
   {
     path: ':id/visita/alta',
     component: AltaVisitaPlanComponent,
-    resolve: {tiposVisita: VisitaTiposVisitaResolverService}
+    resolve: {tiposVisita: VisitaTiposVisitaResolverService},
+    canActivate: [PlanDeClientePropioGuard]
   },
   {
     path: 'alta',

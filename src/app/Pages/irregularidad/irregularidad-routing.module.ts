@@ -8,6 +8,7 @@ import { ClienteResolver } from 'src/app/Core/Services/Cliente/cliente-resolver.
 import { IrregularidadesTiposResolver } from 'src/app/Core/Services/Irregularidad/irregularidadTipos-resolver.service';
 import { IrregularidadDetalleResolver } from 'src/app/Core/Services/Irregularidad/irregularidadDetalle-resolver.service';
 import { CerrarIrregularidadComponent } from './cerrar-irregularidad/cerrar-irregularidad.component';
+import { IrregularidadesDeEstablecimientoDeClientePropioGuard } from 'src/app/Core/Guards/Irregularidades/irregularidades-de-establecimiento-de-cliente-propio.guard';
 
 const routes: Routes = [
   {
@@ -35,7 +36,8 @@ const routes: Routes = [
     {
       clientes: ClienteResolver,
       tiposIrregularidades: IrregularidadesTiposResolver
-    }  
+    },
+    canActivate: [ IrregularidadesDeEstablecimientoDeClientePropioGuard ]
   },
   {
     path: ':idEstablecimiento/cerrar',
@@ -43,7 +45,8 @@ const routes: Routes = [
     resolve: 
     {
       irregularidad: IrregularidadDetalleResolver
-    }  
+    },
+    canActivate: [ IrregularidadesDeEstablecimientoDeClientePropioGuard ]  
   }
 ];
 

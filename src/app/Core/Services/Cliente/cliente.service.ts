@@ -49,8 +49,8 @@ export class ClienteService {
     return this.http.put<any[]>(environment.UrlBaseApi + `Cliente`, {Model: cliente}, this.httpOptions);
   }
 
-  obtenerCliente(idCliente: number): Observable<any[]> {
-    return this.http.get<any[]>(environment.UrlBaseApi + `Cliente/${idCliente}`, this.httpOptions);
+  obtenerCliente(idCliente: number): Observable<any> {
+    return this.http.get<any>(environment.UrlBaseApi + `Cliente/${idCliente}`, this.httpOptions);
   } 
 
 

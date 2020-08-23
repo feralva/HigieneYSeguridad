@@ -17,6 +17,7 @@ import { ClienteEspecificoResolver } from 'src/app/Core/Services/Cliente/cliente
 import { EmpresaClienteResumenResolver } from 'src/app/Core/Services/Empresa/empresaClientesResumen-resolver.service';
 import { PlanEstadosPosiblesResolver } from 'src/app/Core/Services/Plan/planEstadosPosibles-resolver.service';
 import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
+import { ClientePropioGuard } from 'src/app/Core/Guards/Cliente/cliente-propio.guard';
 
 const routes: Routes = [
   {
@@ -27,16 +28,19 @@ const routes: Routes = [
   {
     path: ':id/detalle',
     component: ClienteDetalleComponent,
-    resolve: {cliente: ClienteDetalleResolver}
+    resolve: {cliente: ClienteDetalleResolver},
+    canActivate: [ ClientePropioGuard ] 
   },
   {
     path: ':id/editar',
     component: EditarClienteComponent,
-    resolve: {cliente: ClienteDetalleResolver}
+    resolve: {cliente: ClienteDetalleResolver},
+    canActivate: [ ClientePropioGuard ] 
   },
   {
     path: ':id/establecimiento/alta',
-    component: EstablecimientoAltaComponent/* ,
+    component: EstablecimientoAltaComponent,
+    canActivate: [ ClientePropioGuard ] /* ,
     resolve: {provincias: ClienteDetalleResolver} */
   },
   {
@@ -44,7 +48,8 @@ const routes: Routes = [
     component: ClientePlanesComponent,
     resolve: {
       planes: ClientePlanesResolver,
-      estadosPlanesPosibles: PlanEstadosPosiblesResolver
+      estadosPlanesPosibles: PlanEstadosPosiblesResolver,
+      canActivate: [ ClientePropioGuard ] 
     }
   },
   {
@@ -52,13 +57,15 @@ const routes: Routes = [
     component: AltaPlanComponent,
     resolve: {
       cliente: ClienteEspecificoResolver,
-      tiposPlan: PlanAltaTiposPlanResolverService,
-    }
+      tiposPlan: PlanAltaTiposPlanResolverService
+    },
+    canActivate: [ ClientePropioGuard ] 
   },
   {
     path: ':id/establecimientos',
     component: ClienteEstablecimientosComponent,
-    resolve: {establecimientos: ClienteEstablecimientosResolver}
+    resolve: {establecimientos: ClienteEstablecimientosResolver},
+    canActivate: [ ClientePropioGuard ] 
   },
   {
     path: 'alta',

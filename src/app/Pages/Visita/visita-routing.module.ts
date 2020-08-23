@@ -20,6 +20,7 @@ import { MedicionEmisionGasesComponent } from './Medir/medicion-emision-gases/me
 import { MedicionElectricaComponent } from './Medir/medicion-electrica/medicion-electrica.component';
 import { ClienteResolver } from 'src/app/Core/Services/Cliente/cliente-resolver.service';
 import { VisitaEstadoResolverService } from 'src/app/Core/Services/Visita/visitaEstados-resolver.service';
+import { VisitaDeClientePropioGuard } from 'src/app/Core/Guards/Visita/visita-de-cliente-propio.guard';
 
 
 const routes: Routes = [
@@ -38,60 +39,64 @@ const routes: Routes = [
     resolve: {
       controles: ControlesVisitaResolverService,
       visita: VisitaDetalleResolverService
-    }
+    },
+    canActivate: [VisitaDeClientePropioGuard]
   },
-/*   {
-    path: ':id/detalle/ControlesRealizados',
-    component: 
-  }, */
   {
     path: ':id/editar',
     component: VisitaEditarComponent,
     resolve: {
       visita: VisitaDetalleResolverService
-    }
+    },
+    canActivate: [VisitaDeClientePropioGuard]
   },
   {
     path: ':id/control/:idControl/mediciones',
     component: MedicionesComponent,
     resolve: {
       mediciones: MedicionesControlResolverService
-    }
+    },
+    canActivate: [VisitaDeClientePropioGuard]
   },
   {
     path: ':id/controles/:idEstablecimiento/medicionSonora/alta',
     component: MedicionSonoraComponent,
     resolve: {
       ubicaciones: UbicacionesEstablecimientoResolverService
-    }
+    },
+    canActivate: [VisitaDeClientePropioGuard]
   }, 
   {
     path: ':id/controles/:idEstablecimiento/medicionLuz/alta',
     component: MedicionLuminicaComponent,
     resolve: {
       ubicaciones: UbicacionesEstablecimientoResolverService
-    }
+    },
+    canActivate: [VisitaDeClientePropioGuard]
   }, 
   {
     path: ':id/controles/:idEstablecimiento/medicionIncendio/alta',
     component: ControlPrevencionIncendioComponent,
     resolve: {
       ubicaciones: UbicacionesEstablecimientoResolverService
-    }
+    },
+    canActivate: [VisitaDeClientePropioGuard]
   }, 
   {
     path: ':id/controles/:idEstablecimiento/medicionEmisionGases/alta',
     component: MedicionEmisionGasesComponent,
     resolve: {
       ubicaciones: UbicacionesEstablecimientoResolverService
-    }
+    },
+    canActivate: [VisitaDeClientePropioGuard]
   }, 
   {
     path: ':id/controles/:idEstablecimiento/medicionElectrica/alta',
     component: MedicionElectricaComponent,
     resolve: {
       ubicaciones: UbicacionesEstablecimientoResolverService
-    }
+    },
+    canActivate: [VisitaDeClientePropioGuard]
   }, 
   {
     path: 'Pendientes',

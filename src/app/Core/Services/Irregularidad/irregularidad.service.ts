@@ -40,6 +40,10 @@ export class IrregularidadService {
     return this.http.get<any>(environment.UrlBaseApi + 'Irregularidad/tipos', this.httpOptions); 
   }
 
+  obtenerIrregularidad(idIrregularidad: number) : Observable<any> {
+    return this.http.get<any>(environment.UrlBaseApi + `Irregularidad/${idIrregularidad}`, this.httpOptions); 
+  }
+
   completarIrregularidad(irregularidad: any): Observable<any> {
     return this.http.put<any>(environment.UrlBaseApi + 'Irregularidad', {Model: irregularidad}, this.httpOptions); 
   }
