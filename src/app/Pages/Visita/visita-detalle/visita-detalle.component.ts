@@ -44,6 +44,7 @@ export class VisitaDetalleComponent implements OnInit {
       error => console.log(error)
     );
  
+    console.log(this.controles)
     for(let control of this.controles){
 
       this.ubicacionService.obtenerUbicacion(control.ubicacionId).subscribe(
@@ -62,36 +63,30 @@ export class VisitaDetalleComponent implements OnInit {
   doRefresh(event) {
 
     this.visitaService.obtenerVisitaDetalle(+this.route.snapshot.paramMap.get('id')).subscribe(
-      data => this.visita = data,
+      data => {
+        this.visita = data
+        this.controlService.obtenerControlesVisita(this.idVisita).subscribe(
+          dataControles => {
+            this.controles = dataControles
+            for(let control of this.controles){
+
+              this.ubicacionService.obtenerUbicacion(control.ubicacionId).subscribe(
+                dataUbicaciones => {
+                  control.ubicacion = dataUbicaciones.nombre
+                  console.log(control)
+                  
+                },
+                (error) => console.log(error)
+              )
+            }
+ 
+          },
+          (error) => console.log(error)
+        );
+        event.target.complete(); 
+      },
       (error) => console.log(error)
     )
-    
-    this.controlService.obtenerControlesVisita(this.idVisita).subscribe(
-      data => this.controles = data,
-      (error) => console.log(error)
-    );
-
-    for(let control of this.controles){
-
-      this.ubicacionService.obtenerUbicacion(control.ubicacionId).subscribe(
-        data => {
-          control.ubicacion = data.nombre
-          console.log(control)
-          event.target.complete();
-        },
-        (error) => console.log(error)
-      )
-    }  
-    event.target.complete();
-  }
-
-  redireccionarDetalleControl(){
-
-    //TODO redireccionar a detalle dependiendo tipo de control
-    /* console.log("navegando")
-    //this.navCtrl.navigateForward(['/visita',id, 'detalle']);
-    this.router.navigate(['/home']) */
-
   }
 
   async onEditarFechaClick(event){

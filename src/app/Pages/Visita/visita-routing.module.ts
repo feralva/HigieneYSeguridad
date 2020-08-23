@@ -40,7 +40,7 @@ const routes: Routes = [
       controles: ControlesVisitaResolverService,
       visita: VisitaDetalleResolverService
     },
-    canActivate: [VisitaDeClientePropioGuard]
+    canActivate: [VisitaDeClientePropioGuard] 
   },
   {
     path: ':id/editar',

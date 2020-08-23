@@ -22,7 +22,7 @@ export class EstablecimientoDeClientePropioGuard implements CanActivate {
         
     const usuario = await  this.authService.getUserSubject().pipe(first()).toPromise()
     const establecimiento = await  this.establecimientoService.obtenerEstablecimiento(idEstablecimiento).pipe(first()).toPromise()
-    const cliente = await  this.clienteService.obtenerCliente(establecimiento.ClienteId).pipe(first()).toPromise()
+    const cliente = await  this.clienteService.obtenerCliente(establecimiento.clienteId).pipe(first()).toPromise()
     
     return new Promise<boolean>((resolve, reject) => {
       resolve(usuario.empresaId === cliente.empresaId)
