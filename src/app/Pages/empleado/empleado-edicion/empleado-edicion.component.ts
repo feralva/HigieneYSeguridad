@@ -66,8 +66,6 @@ export class EmpleadoEdicionComponent implements OnInit {
     this.empleadoModel.usuario.IdUsuario = this.empleadoModel.correoElectronico;
     this.rolesDisponibles = this.route.snapshot.data['roles'];
   
-    
-
     this.empleadoModel.roles.forEach(rol => {
 
       this.rolesSeleccionados.push(

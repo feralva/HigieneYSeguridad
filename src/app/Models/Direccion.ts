@@ -5,5 +5,6 @@ export interface Direccion{
     calle: string;
     altura: number;
     partidoId: number;
+    provinciaId: number;
     partido: Partido;
 }

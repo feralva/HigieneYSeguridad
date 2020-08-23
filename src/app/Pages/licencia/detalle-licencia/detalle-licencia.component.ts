@@ -26,7 +26,8 @@ export class DetalleLicenciaComponent implements OnInit {
         altura:0,
         calle: '',
         partido: null,
-        partidoId: 0
+        partidoId: 0,
+        provinciaId: 0
       },
       nombre: '',
       responsable: null,

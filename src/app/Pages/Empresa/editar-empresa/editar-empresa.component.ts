@@ -35,6 +35,7 @@ export class EditarEmpresaComponent implements OnInit {
       calle: '',
       altura: null,
       partidoId: 0,
+      provinciaId: 0,
       partido: {
         nombre: "",
         provinciaId: null,

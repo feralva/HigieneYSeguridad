@@ -11,6 +11,9 @@
     <ion-label>
       <b>Responsable</b>
     </ion-label>
+    <ion-button slot="end" [routerLink]="['/cliente', cliente.id,'editar']">
+      <ion-icon name="pencil-outline"></ion-icon>
+    </ion-button>
   </ion-item-divider>
   <ion-item>
     <ion-label> <b>Nombre: </b> {{cliente.responsable.nombre}}</ion-label><br>
