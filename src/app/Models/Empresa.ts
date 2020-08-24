@@ -6,5 +6,6 @@ export interface Empresa {
     nombre: string;
     responsable: Responsable;
     direccion: Direccion;
-    urlFoto: string
+    urlFoto: string;
+    activo: boolean;
 }

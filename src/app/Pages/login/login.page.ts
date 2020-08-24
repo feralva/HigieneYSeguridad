@@ -21,9 +21,9 @@ export class LoginPage implements OnInit {
     this.authService.login(form.value).pipe(skip(1)).subscribe(
       
       (data)=>{
-      console.log(data);
-      this.router.navigateByUrl('home');
-      this.loader.dismiss();
+        console.log(data);
+        this.router.navigateByUrl('home');
+        this.loader.dismiss();
       },
       (error) => console.log(error)
     );

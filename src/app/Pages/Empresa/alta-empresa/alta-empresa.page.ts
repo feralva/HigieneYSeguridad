@@ -53,7 +53,8 @@ export class AltaEmpresaPage implements OnInit {
       correoElectronico: '',
       telefono: ''
     },
-    urlFoto: ''
+    urlFoto: '',
+    activo:true
   };
 
   constructor(private appDataService: AppDataService, private translate: TranslateService, 
@@ -159,7 +160,6 @@ export class AltaEmpresaPage implements OnInit {
 
   altaEmpresa(){
     this.empresaService.addEmpresa(this.empresaModel).subscribe(
-      //(id: number) => console.log(id),
       result => console.log(result),
       (err: any) => console.log(err)
     );

@@ -48,8 +48,8 @@ const routes: Routes = [
     loadChildren: () => import('./Pages/plan/plan.module').then( m => m.PlanPageModule)
   },
   {
-    path: 'empresa',
-    canActivate: [UserAuthenticatedGuard],
+    path: 'empresa',/* 
+    canActivate: [UserAuthenticatedGuard], */
     loadChildren: () => import('./Pages/empresa/empresa.module').then( m => m.EmpresaPageModule)
   },
   {

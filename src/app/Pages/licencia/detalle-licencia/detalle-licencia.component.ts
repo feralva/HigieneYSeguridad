@@ -22,6 +22,7 @@ export class DetalleLicenciaComponent implements OnInit {
     fechaFin: new Date(),
     empresa: {
       id: 0,
+      activo: null,
       direccion: {
         altura:0,
         calle: '',

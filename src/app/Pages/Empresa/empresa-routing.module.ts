@@ -6,11 +6,14 @@ import { AltaEmpresaPage } from './alta-empresa/alta-empresa.page';
 import { EmpresasResolverService } from 'src/app/Core/Services/Empresa/empresas-resolver.service';
 import { EditarEmpresaComponent } from './editar-empresa/editar-empresa.component';
 import { EmpresaDetalleResolverService } from 'src/app/Core/Services/Empresa/empresaDetalle-resolver.service';
+import { UserAuthenticatedGuard } from 'src/app/Core/Guards/user-authenticated.guard';
+import { MiembroEmpresaGuard } from 'src/app/Core/Guards/Empresa/miembro-empresa.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: EmpresaPage,
+    canActivate: [UserAuthenticatedGuard],    
     resolve: {empresas: EmpresasResolverService}  
   },
   {
@@ -20,6 +23,7 @@ const routes: Routes = [
   {
     path: ':id/editar',
     component: EditarEmpresaComponent,
+    canActivate: [UserAuthenticatedGuard, MiembroEmpresaGuard],  
     resolve: 
     {
       empresa: EmpresaDetalleResolverService

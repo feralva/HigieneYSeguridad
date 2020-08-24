@@ -50,7 +50,8 @@ export class EditarEmpresaComponent implements OnInit {
       correoElectronico: '',
       telefono: ''
     },
-    urlFoto: ''
+    urlFoto: '',
+    activo: null
   };
 
   constructor(private appDataService: AppDataService, private translate: TranslateService, 
