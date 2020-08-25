@@ -63,6 +63,13 @@ export class AltaEmpresaPage implements OnInit {
     public toastController: ToastController, private direccionService: DireccionService,
     private plt: Platform, private actionSheetCtrl: ActionSheetController) { }
 
+    set altura(altura:string){
+      this.empresaModel.direccion.altura = +altura;
+    }
+  
+    get altura(){
+      return (this.empresaModel.direccion.altura)? this.empresaModel.direccion.altura.toString(): '';
+    }
 
   ngOnInit() {
 

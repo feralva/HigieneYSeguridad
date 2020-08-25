@@ -35,10 +35,9 @@
     <ion-item>
       <ion-label position="stacked">Altura</ion-label>
       <ion-input
-        type="number"
         placeholder="Altura"
         name="direccion.Altura"
-        [(ngModel)]="empresaModel.direccion.altura" required></ion-input>
+        [(ngModel)]="altura" required OnlyNumberInputDirective></ion-input>
     </ion-item>
 
     <ion-item-divider color="tertiary">
@@ -69,10 +68,10 @@
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Telefono</ion-label>
-      <ion-input type="number"
+      <ion-input
         placeholder="Telefono"
         name="responsable.Telefono"
-        [(ngModel)]="empresaModel.responsable.telefono" required></ion-input>
+        [(ngModel)]="empresaModel.responsable.telefono" required OnlyNumberInputDirective></ion-input>
     </ion-item>
     <ion-grid>
       <ion-row>

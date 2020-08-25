@@ -21,7 +21,7 @@ export class AltaEquipoMedicionComponent implements OnInit {
     public alertController: AlertController,
     public toastController: ToastController) { }
 
-  cantidad: number;
+  private _cantidad: number;
   equipoMedicionModel: EquipoMedicion =
   {
     activo: true,
@@ -32,6 +32,14 @@ export class AltaEquipoMedicionComponent implements OnInit {
   tiposEquipoMedicion: TipoEquipoMedicion[];
   public nombrePagina: string;
   currentUser: UserLogueado = null;
+
+  set cantidad(val:string){
+    this._cantidad = +val;
+  }
+
+  get cantidad(){
+    return (this._cantidad)? this._cantidad.toString(): '';
+  }
 
   ngOnInit() {
 

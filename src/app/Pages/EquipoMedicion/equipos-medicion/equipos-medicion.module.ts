@@ -9,13 +9,15 @@ import { EquiposMedicionPageRoutingModule } from './equipos-medicion-routing.mod
 import { EquiposMedicionPage } from './equipos-medicion.page';
 import { AltaEquipoMedicionComponent } from '../alta-equipo-medicion/alta-equipo-medicion.component';
 import { ModificarCantidadEquiposMedicionComponent } from '../modificar-cantidad-equipos-medicion/modificar-cantidad-equipos-medicion.component';
+import { SharedDirectivesModule } from 'src/app/Core/Directives/shared-directives.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    EquiposMedicionPageRoutingModule
+    EquiposMedicionPageRoutingModule,
+    SharedDirectivesModule
   ],
   declarations: [EquiposMedicionPage, AltaEquipoMedicionComponent, ModificarCantidadEquiposMedicionComponent]
 })

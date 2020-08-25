@@ -11,13 +11,15 @@ import { AltaEmpresaPage } from './alta-empresa/alta-empresa.page';
 import { IonicSelectableModule } from 'ionic-selectable';
 import { EditarEmpresaComponent } from './editar-empresa/editar-empresa.component';
 import { PagosEmpresaComponent } from './pagos-empresa/pagos-empresa.component';
+import { SharedDirectivesModule } from 'src/app/Core/Directives/shared-directives.module';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     EmpresaPageRoutingModule,
-    IonicSelectableModule
+    IonicSelectableModule,
+    SharedDirectivesModule
   ],
   declarations: [EmpresaPage, AltaEmpresaPage, EditarEmpresaComponent, PagosEmpresaComponent]
 })

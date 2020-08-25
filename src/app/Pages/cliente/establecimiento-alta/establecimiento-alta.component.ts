@@ -62,6 +62,14 @@ export class EstablecimientoAltaComponent implements OnInit {
     private actionSheetCtrl: ActionSheetController
   ) {}
 
+  set altura(altura:string){
+    this.model.direccion.altura = +altura;
+  }
+
+  get altura(){
+    return (this.model.direccion.altura)? this.model.direccion.altura.toString(): '';
+  }
+
   ngOnInit() {
     this.model.clienteId = +this.route.snapshot.paramMap.get("id");
 

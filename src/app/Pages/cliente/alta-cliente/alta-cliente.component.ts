@@ -55,13 +55,22 @@ export class AltaClienteComponent implements OnInit {
     },
     urlFoto: ''
   };
-  
+
   constructor(private appDataService: AppDataService, private translate: TranslateService, 
     private clienteService: ClienteService, private photoService: PhotoService,
     public alertController: AlertController, private loaderService: LoaderService,
     public toastController: ToastController, private direccionService: DireccionService,
     private plt: Platform, private actionSheetCtrl: ActionSheetController,
     private authService: AuthService, private msgService: GenericAlertMessageService) { }
+
+
+  set altura(altura:string){
+    this.model.direccion.altura = +altura;
+  }
+
+  get altura(){
+    return (this.model.direccion.altura)? this.model.direccion.altura.toString(): '';
+  }
 
   ngOnInit() {
 

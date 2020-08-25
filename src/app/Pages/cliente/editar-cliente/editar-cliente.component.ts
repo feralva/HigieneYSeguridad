@@ -64,6 +64,14 @@ export class EditarClienteComponent implements OnInit {
     private authService: AuthService, private msgService: GenericAlertMessageService,
     private route: ActivatedRoute) { }
 
+  set altura(val: string){
+    this.model.direccion.altura = +val;
+  }
+
+  get altura():string{
+    return (this.model.direccion.altura)? this.model.direccion.altura.toString(): '';
+  }
+  
   ngOnInit() {
 
     this.model = this.route.snapshot.data['cliente'];

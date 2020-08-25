@@ -61,6 +61,13 @@ export class EditarEmpresaComponent implements OnInit {
     private plt: Platform, private actionSheetCtrl: ActionSheetController,
     private route: ActivatedRoute) { }
 
+  set altura(altura:string){
+    this.empresaModel.direccion.altura = +altura;
+  }
+
+  get altura(){
+    return (this.empresaModel.direccion.altura)? this.empresaModel.direccion.altura.toString(): '';
+  }
 
   ngOnInit() {
 

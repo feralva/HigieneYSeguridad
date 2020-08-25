@@ -18,6 +18,7 @@ import { PlanPageModule } from '../plan/plan.module';
 import { UbicacionPageModule } from '../ubicacion/ubicacion.module';
 import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
 import { PipesModule } from 'src/app/Core/pipes/pipes.module';
+import { SharedDirectivesModule } from 'src/app/Core/Directives/shared-directives.module';
 @NgModule({
   entryComponents: [UbicacionAltaComponent],
   imports: [
@@ -28,10 +29,11 @@ import { PipesModule } from 'src/app/Core/pipes/pipes.module';
     IonicSelectableModule,
     PlanPageModule,
     UbicacionPageModule,
-    PipesModule
+    PipesModule,
+    SharedDirectivesModule
   ],
   exports:[],
   declarations: [ClientePage, ClienteEstablecimientosComponent, EstablecimientoAltaComponent,
-  ClienteDetalleComponent, AltaClienteComponent, ClientePlanesComponent, EditarClienteComponent/* ,UbicacionAltaComponent */ ]
+  ClienteDetalleComponent, AltaClienteComponent, ClientePlanesComponent, EditarClienteComponent ]
 })
 export class ClientePageModule {}
