@@ -71,7 +71,7 @@ export class AltaEquipoMedicionComponent implements OnInit {
   obtenerEquiposMedicionAGuardar(): EquipoMedicion[]{
 
     let equiposMedicionAGuardar: EquipoMedicion[] = [];
-    for(let i = 1; i <= this.cantidad; i++) {
+    for(let i = 1; i <= this._cantidad; i++) {
       equiposMedicionAGuardar.push(this.equipoMedicionModel);
     }
 
