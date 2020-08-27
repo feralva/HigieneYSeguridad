@@ -100,7 +100,9 @@ export class AltaEmpleadoComponent implements OnInit {
                   result =>{
                     this.empleadoModel.urlFoto = result
                     this.empleadoService.addEmpleado(this.empleadoModel).subscribe(
-                      result => this.MostrarMensajeOperacion('Alta Exitosa'),
+                      result => {
+                        this.MostrarMensajeOperacion('Alta Exitosa')
+                      },
                       (err: any) => this.MostrarMensajeOperacion(err.message)
                     );
                   }

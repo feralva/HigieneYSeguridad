@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { LoaderService } from 'src/app/Core/Services/loader.service';
 import { DateService } from 'src/app/Core/Services/Utils/date.service';
 import { NgForm } from '@angular/forms';
+import { UserLogueado } from 'src/app/Models/UserLogueado';
 
 @Component({
   selector: 'app-cambiar-fecha-detalle-modal',
@@ -18,6 +19,7 @@ export class CambiarFechaDetalleModalComponent implements OnInit {
 
   @Input() public fecha;
   @Input() public idVisita: number;
+  currentUser: UserLogueado;
   horaInicio;
   horaFin;
 
@@ -28,7 +30,10 @@ export class CambiarFechaDetalleModalComponent implements OnInit {
 
   ngOnInit() {
 
-    //this.fecha = this.dateService.convertirFechaAStringFormatoDDMMYYYY(this.fecha)
+    this.authService.getUserSubject().subscribe(
+      data => this.currentUser = data,
+      error => console.log(error)
+    );
 
   }
 
@@ -41,7 +46,8 @@ export class CambiarFechaDetalleModalComponent implements OnInit {
     this.visitaService.actualizarFechaVisita(this.idVisita, 
       this.dateService.combinarFechaHora(this.dateService.ObtenerFechaDeString(this.fecha),this.dateService.ObtenerFechaDeString(this.horaInicio)), 
       this.dateService.obtenerDiferenciaEnMinutos(this.dateService.ObtenerFechaDeString(this.horaInicio), 
-      this.dateService.ObtenerFechaDeString(this.horaFin))).subscribe(
+      this.dateService.ObtenerFechaDeString(this.horaFin))
+      ,this.currentUser.empleadoId).subscribe(
         data =>{
           console.log(data)
           this.closeModal()

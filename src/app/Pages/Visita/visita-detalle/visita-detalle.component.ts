@@ -83,7 +83,7 @@ export class VisitaDetalleComponent implements OnInit {
           },
           (error) => console.log(error)
         );
-        event.target.complete(); 
+        if(event != null ) event.target.complete(); 
       },
       (error) => console.log(error)
     )
@@ -101,7 +101,7 @@ export class VisitaDetalleComponent implements OnInit {
     modal.onWillDismiss().then(dataReturned => {
       // trigger when about to close the modal
       //ver el param que paso
-      this.doRefresh(modal);
+      this.doRefresh(null);
     });  
     
     return await modal.present().then(_ => {
@@ -156,7 +156,7 @@ export class VisitaDetalleComponent implements OnInit {
       modal.onWillDismiss().then(dataReturned => {
         // trigger when about to close the modal
         //ver el param que paso
-        this.doRefresh(modal);
+        this.doRefresh(null);
       });  
       
       return await modal.present().then(_ => {
