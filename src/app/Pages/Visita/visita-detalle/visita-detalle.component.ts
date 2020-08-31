@@ -31,7 +31,6 @@ export class VisitaDetalleComponent implements OnInit {
     public toastController: ToastController) { }
 
   ngOnInit() {
-
     this.appDataService.changePageName('Visita.Detalle.title');
 
     this.controles = this.route.snapshot.data['controles'];
@@ -47,6 +46,9 @@ export class VisitaDetalleComponent implements OnInit {
     console.log(this.controles)
     for(let control of this.controles){
 
+      //Convierto tipo de datos firestore en date
+      if(control.fecha.seconds) control.fecha = new Date(control.fecha.seconds * 1000)
+
       this.ubicacionService.obtenerUbicacion(control.ubicacionId).subscribe(
         data => {
           control.ubicacion = data.nombre
@@ -56,7 +58,7 @@ export class VisitaDetalleComponent implements OnInit {
       )
     }  
 
-    console.log(this.controles )
+    console.log(this.controles)
     console.log(this.visita)
   }
 

@@ -6,8 +6,9 @@ import { NetworkService, ConnectionStatus } from '../network-service.service';
 import { map, tap } from 'rxjs/operators';
 import { OfflineManagerService } from '../offline-manager-service.service';
 import { Storage } from "@ionic/storage"
+import { UbicacionService } from '../Ubicacion/ubicacion.service';
 
-const API_STORAGE_KEY = 'unaKey';
+const API_STORAGE_KEY = 'safetify';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class VisitaService {
   };
 
   constructor(private http: HttpClient, private networkService: NetworkService, private offlineManager: OfflineManagerService,
-    public storage: Storage) { }
+    public storage: Storage, private ubicacionService: UbicacionService) { }
 
   private setLocalData(key, data) {
     this.storage.set(`${API_STORAGE_KEY}-${key}`, data);
@@ -36,18 +37,14 @@ export class VisitaService {
   obtenerVisitasPendientesEmpleado(idEmpleado: number): Observable<any> {
 
     if (this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline) {
-      // Return the cached data from Storage
       return from(this.getLocalData('misVisitas'));
     } else {
-
-      // Return real API data and store it locally
       return this.http.get(environment.UrlBaseApi + `Visita/Empleado/${idEmpleado}?activo=true&estado=1`, this.httpOptions).pipe(
         tap(res => {
           this.setLocalData('misVisitas', res);
         })
       )
     }
-    //return this.http.get<any[]>(environment.UrlBaseApi + `Visita/Empleado/${idEmpleado}?activo=true&estado=1`, this.httpOptions);
   }
 
   obtenerTiposVisita(): Observable<any[]> {
@@ -63,8 +60,22 @@ export class VisitaService {
   }
 
   obtenerVisitaDetalle(idVisita: number): Observable<any> {
-    return this.http.get<any[]>(environment.UrlBaseApi + `Visita/${idVisita}`, this.httpOptions);
-  }
+
+    if (this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline) {
+      return from(this.getLocalData(`Visita/${idVisita}`));
+    } else {
+      return this.http.get<any[]>(environment.UrlBaseApi + `Visita/${idVisita}`, this.httpOptions).pipe(
+        tap(res => {
+          this.setLocalData(`Visita/${idVisita}`, res);
+          this.ubicacionService.obtenerUbicacionesEstablecimiento(res.establecimientoId).pipe(
+            tap(ubicaciones =>{
+              this.setLocalData(`Establecimiento/${res.establecimientoId}/Ubicaciones`, res);
+            })
+          )
+        })
+      )
+    }
+ }
 
   actualizarAuditorVisita(idVisita: number, idAuditor: number):Observable<any> {
     return this.http.put<any>(environment.UrlBaseApi + `Visita/reasignar`, {Model: {Id: idVisita, EmpleadoId: idAuditor}}, this.httpOptions);

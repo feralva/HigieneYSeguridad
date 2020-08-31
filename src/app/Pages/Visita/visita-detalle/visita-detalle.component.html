@@ -57,7 +57,7 @@
             </ion-item-divider>
             <ion-item>
                 <ion-label>Fecha</ion-label>
-                <ion-label>{{control.fecha.toDate() | date: 'd/MM/yy, H:mm'}}</ion-label>
+                <ion-label>{{control.fecha | date: 'd/MM/yy, H:mm'}}</ion-label>
             </ion-item>
             <ion-item button [routerLink]="['../control', control.id ,'mediciones']" detail="true">
                 <ion-icon name="clipboard"></ion-icon>
