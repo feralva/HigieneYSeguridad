@@ -27,16 +27,14 @@ export class DetallePlanComponent implements OnInit {
     private toastController: ToastController
     ) { }
 
-  ngOnInit() {
-
-    this.plan = this.route.snapshot.data['plan'];
-  
-    console.log(this.plan)
-  }
+  ngOnInit() {}
 
   ionViewWillEnter(){
     this.nombrePagina = 'Plan.title';
     this.appDataService.changePageName(this.nombrePagina);
+    this.plan = this.route.snapshot.data['plan'];
+  
+    console.log(this.plan)
   }
   
   doRefresh(event) {

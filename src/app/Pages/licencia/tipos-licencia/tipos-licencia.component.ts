@@ -16,7 +16,7 @@ import { ToastController } from '@ionic/angular';
 })
 export class TiposLicenciaComponent implements OnInit {
 
-  tiposLicencias: any[] =[];
+  tiposLicencias: any[] = [];
   currentUser: UserLogueado;
   
   constructor(private translate: TranslateService, private route: ActivatedRoute,

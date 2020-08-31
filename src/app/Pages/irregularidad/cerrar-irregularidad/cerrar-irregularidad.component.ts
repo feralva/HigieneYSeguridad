@@ -8,7 +8,7 @@ import { PhotoService } from 'src/app/Core/Services/photo/photo.service';
 import { IrregularidadService } from 'src/app/Core/Services/Irregularidad/irregularidad.service';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { AlertController, ToastController, Platform, ActionSheetController } from '@ionic/angular';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { NgForm } from '@angular/forms';
 
@@ -30,7 +30,7 @@ export class CerrarIrregularidadComponent implements OnInit {
   constructor(private rolService: RolService, private translate: TranslateService, 
     private appDataService: AppDataService, public photoService: PhotoService,
     private irregularidadService: IrregularidadService, private authService: AuthService,
-    public alertController: AlertController,
+    public alertController: AlertController, private router: Router,
     public toastController: ToastController,private route: ActivatedRoute,
     private plt: Platform, private actionSheetCtrl: ActionSheetController) { }
 
@@ -94,7 +94,10 @@ export class CerrarIrregularidadComponent implements OnInit {
 
   private completarIrregularidad() {
     this.irregularidadService.completarIrregularidad(this.model).subscribe(
-    result => this.MostrarMensajeOperacion('Modificación Exitosa'),
+    result => {
+      this.MostrarMensajeOperacion('Modificación Exitosa')
+      this.router.navigate(['/irregularidad'])
+    },
     (err: any) => this.MostrarMensajeOperacion('Falla')
     );
   }

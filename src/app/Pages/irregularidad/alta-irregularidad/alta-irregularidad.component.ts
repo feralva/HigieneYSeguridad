@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ToastController, LoadingController, Platform, AlertController, ActionSheetController } from '@ionic/angular';
 import { ControlService } from 'src/app/Core/Services/Control/control.service';
 import { TranslateService } from '@ngx-translate/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 import { UbicacionService } from 'src/app/Core/Services/Ubicacion/ubicacion.service';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
@@ -42,7 +42,7 @@ export class AltaIrregularidadComponent implements OnInit {
     private appDataService: AppDataService, private ubicacionService: UbicacionService, 
     private authService: AuthService, public alertController: AlertController,
     private clienteService: ClienteService, public photoService: PhotoService,
-    private actionSheetCtrl: ActionSheetController) { }
+    private actionSheetCtrl: ActionSheetController, private router: Router) { }
 
   ngOnInit() {}
 
@@ -110,7 +110,10 @@ export class AltaIrregularidadComponent implements OnInit {
                 result =>{
                   this.model.url = result
                   this.irregularidadService.alta(this.model).subscribe(
-                    result => this.MostrarMensajeOperacion('Alta Exitosa'),
+                    result => {
+                      this.MostrarMensajeOperacion('Alta Exitosa')
+                      this.router.navigate(['/irregularidad'])
+                    },
                     (err: any) => this.MostrarMensajeOperacion('Falla')
                   );
                 }

@@ -12,7 +12,7 @@ import { Establecimiento } from "src/app/Models/Establecimiento";
 import { EstablecimientoService } from "src/app/Core/Services/Establecimiento/establecimiento.service";
 import { NgForm } from "@angular/forms";
 import { UbicacionAltaComponent } from "../../ubicacion/ubicacion-alta/ubicacion-alta.component";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router, Router } from "@angular/router";
 import { DireccionService } from 'src/app/Core/Services/Direccion/direccion.service';
 import { LoaderService } from 'src/app/Core/Services/loader.service';
 import { Ubicacion } from 'src/app/Models/Ubicacion';
@@ -59,7 +59,7 @@ export class EstablecimientoAltaComponent implements OnInit {
     public toastController: ToastController,
     private route: ActivatedRoute, private loaderService: LoaderService,
     private plt: Platform, private direccionService: DireccionService,
-    private actionSheetCtrl: ActionSheetController
+    private actionSheetCtrl: ActionSheetController, private router: Router
   ) {}
 
   set altura(altura:string){
@@ -141,7 +141,10 @@ export class EstablecimientoAltaComponent implements OnInit {
           text: "Ok",
           handler: () => {
             this.establecimientoService.alta(this.model).subscribe(
-              (result) => this.MostrarMensajeOperacion("Alta Exitosa"),
+              (result) => {
+                this.MostrarMensajeOperacion("Alta Exitosa")
+                this.router.navigate(['/cliente', this.model.clienteId ,'editar'])
+              },
               (err: any) => this.MostrarMensajeOperacion("Falla")
             );
           },

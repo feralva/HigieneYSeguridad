@@ -14,6 +14,8 @@ const { Camera } = Plugins;
 import { environment } from 'src/environments/environment';
 import { LoaderService } from 'src/app/Core/Services/loader.service';
 import { DireccionService } from 'src/app/Core/Services/Direccion/direccion.service';
+import {Location} from '@angular/common';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-alta-empresa',
   templateUrl: './alta-empresa.page.html',
@@ -61,7 +63,8 @@ export class AltaEmpresaPage implements OnInit {
     private empresaService: EmpresaService, private photoService: PhotoService,
     public alertController: AlertController, private loaderService: LoaderService,
     public toastController: ToastController, private direccionService: DireccionService,
-    private plt: Platform, private actionSheetCtrl: ActionSheetController) { }
+    private plt: Platform, private actionSheetCtrl: ActionSheetController, private location: Location,
+    private router: Router) { }
 
     set altura(altura:string){
       this.empresaModel.direccion.altura = +altura;
@@ -143,6 +146,7 @@ export class AltaEmpresaPage implements OnInit {
                         data => {
                           this.loaderService.dismiss();
                           this.MostrarMensajeOperacion('Alta Exitosa')
+                          this.router.navigate(['/empresa'])                        
                         },
                         (err: any) => this.MostrarMensajeOperacion('Falla')
                       )},

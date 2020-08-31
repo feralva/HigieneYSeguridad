@@ -9,6 +9,7 @@ import { PagoService } from 'src/app/Core/Services/Pago/pago.service';
 import { Pago } from 'src/app/Models/Pago';
 import { ToastController } from '@ionic/angular';
 import { LicenciaService } from 'src/app/Core/Services/Licencia/licencia.service';
+import { Router } from '@angular/router';
 
 declare var Stripe;
 
@@ -30,7 +31,7 @@ export class StripeComponent implements OnInit {
 
   constructor(private translate: TranslateService, private http: HttpClient, private pagoService: PagoService,
     private authService: AuthService, private licenciaService: LicenciaService, private appDataService: AppDataService,
-    private toastController: ToastController) {}
+    private toastController: ToastController, private router: Router) {}
   
   ngOnInit() {
 
@@ -130,6 +131,7 @@ export class StripeComponent implements OnInit {
           result => {
             console.log(result)
             this.MostrarMensajeOperacion('Alta Exitosa')
+            this.router.navigate(['/licencia', 'detalle'])
           },
           (err: any) =>  this.MostrarMensajeOperacion('Falla')
         )

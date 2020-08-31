@@ -16,13 +16,13 @@ import { ClienteService } from 'src/app/Core/Services/Cliente/cliente.service';
 export class IrregularidadPage implements OnInit {
 
   irregularidades:any[] = []
-  currentUser: UserLogueado;
-  clientes: any[];
-  clienteSeleccionado: any;
-  establecimientos: any[];
-  establecimientoSeleccionado: any;
+  currentUser: UserLogueado = null;
+  clientes: any[]= [];
+  clienteSeleccionado: any = null;
+  establecimientos: any[]= [];
+  establecimientoSeleccionado: any = null;
 
-  filteredIrregularidades: any[]
+  filteredIrregularidades: any[] = []
 
   constructor(private translate: TranslateService, private route: ActivatedRoute,
     private appDataService: AppDataService, private irregularidadService: IrregularidadService,

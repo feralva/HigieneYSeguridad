@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { GenericAlertMessageService } from 'src/app/Core/Services/generic-alert-message.service';
 import { NgForm } from '@angular/forms';
 import { environment } from 'src/environments/environment';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-editar-cliente',
@@ -62,7 +62,7 @@ export class EditarClienteComponent implements OnInit {
     public toastController: ToastController, private direccionService: DireccionService,
     private plt: Platform, private actionSheetCtrl: ActionSheetController,
     private authService: AuthService, private msgService: GenericAlertMessageService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute, private router:Router) { }
 
   set altura(val: string){
     this.model.direccion.altura = +val;
@@ -168,6 +168,7 @@ export class EditarClienteComponent implements OnInit {
     this.clienteService.ActualizarCliente(this.model).subscribe(
       data => {
         this.MostrarMensajeOperacion('Modificación Exitosa');
+        this.router.navigate(['/cliente']);
       },
       (err: any) => {
         this.MostrarMensajeOperacion('Falla');

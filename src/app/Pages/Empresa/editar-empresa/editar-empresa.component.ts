@@ -10,7 +10,7 @@ import { PhotoService } from 'src/app/Core/Services/photo/photo.service';
 import { LoaderService } from 'src/app/Core/Services/loader.service';
 import { DireccionService } from 'src/app/Core/Services/Direccion/direccion.service';
 import { environment } from 'src/environments/environment';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-editar-empresa',
@@ -21,12 +21,6 @@ export class EditarEmpresaComponent implements OnInit {
   @ViewChild('fileInput', { static: false }) fileInput: ElementRef;
   imagenEmpleado: CameraPhoto = null;
   imageBase64: string;
-
-  /* partidos: any[];
-  partidoSeleccionado: any;
-  provincias: any[];
-  provinciaSeleccionada: any; */
-  public nombrePagina: string;
 
   empresaModel: Empresa = {
     id: 0,
@@ -59,7 +53,7 @@ export class EditarEmpresaComponent implements OnInit {
     public alertController: AlertController, private loaderService: LoaderService,
     public toastController: ToastController, private direccionService: DireccionService,
     private plt: Platform, private actionSheetCtrl: ActionSheetController,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute, private router:Router) { }
 
   set altura(altura:string){
     this.empresaModel.direccion.altura = +altura;
@@ -71,8 +65,7 @@ export class EditarEmpresaComponent implements OnInit {
 
   ngOnInit() {
 
-    this.empresaModel =  this.route.snapshot.data['empresa'];
-    console.log(this.empresaModel)
+
     //this.provinciaSeleccionada = this.empresaModel.direccion.
 /*     this.direccionService.obtenerProvincias().subscribe(
       data => this.provincias = data,
@@ -81,10 +74,11 @@ export class EditarEmpresaComponent implements OnInit {
   }
 
   ionViewWillEnter(){
-    this.nombrePagina = 'Empresa.title';
-    this.appDataService.changePageName(this.nombrePagina);
+
+    this.appDataService.changePageName('Empresa.title');
 
     this.empresaModel =  this.route.snapshot.data['empresa'];
+    console.log(this.empresaModel)
   }
 
   /* actualizarPartidos(event){
@@ -156,7 +150,10 @@ export class EditarEmpresaComponent implements OnInit {
 
   private ActualizarEmpresa() {
     this.empresaService.ActualizarEmpresa(this.empresaModel).subscribe(
-      result => this.MostrarMensajeOperacion('Modificación Exitosa'),
+      result => {
+        this.MostrarMensajeOperacion('Modificación Exitosa')
+        this.router.navigate(['/empresa'])
+      },
       (err: any) => this.MostrarMensajeOperacion('Falla')
     );
   }

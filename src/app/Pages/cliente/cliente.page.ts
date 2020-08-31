@@ -23,7 +23,11 @@ export class ClientePage implements OnInit {
     private appDataService: AppDataService, private empresaService: EmpresaService,
     private clienteService: ClienteService, private authService: AuthService) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ionViewWillEnter(){
+    this.appDataService.changePageName('Cliente.title');
+
     this.clientes = this.route.snapshot.data['clientes'];
 
     this.authService.getUserSubject().subscribe(
@@ -31,11 +35,6 @@ export class ClientePage implements OnInit {
       error => console.log(error)
     );
     console.log(this.clientes)
-  }
-
-  ionViewWillEnter(){
-    this.nombrePagina = 'Cliente.title';
-    this.appDataService.changePageName(this.nombrePagina);
   }
 
   doRefresh(event) {

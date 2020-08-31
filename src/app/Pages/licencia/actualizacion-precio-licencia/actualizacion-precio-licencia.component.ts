@@ -5,7 +5,7 @@ import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { AlertController, ToastController, Platform, ActionSheetController } from '@ionic/angular';
 import { LicenciaService } from 'src/app/Core/Services/Licencia/licencia.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -24,7 +24,8 @@ export class ActualizacionPrecioLicenciaComponent implements OnInit {
     private appDataService: AppDataService, private authService: AuthService,
     public alertController: AlertController, private licenciaService: LicenciaService,
     public toastController: ToastController, private route: ActivatedRoute,
-    private plt: Platform, private actionSheetCtrl: ActionSheetController) { }
+    private plt: Platform, private actionSheetCtrl: ActionSheetController,
+    private router: Router) { }
 
 
   ngOnInit() {}
@@ -75,7 +76,10 @@ export class ActualizacionPrecioLicenciaComponent implements OnInit {
           handler: () => {
             this.licenciaService.actualizarPrecioLicencia(this.tipoLicenciaSeleccionado)
               .subscribe(
-                result => this.MostrarMensajeOperacion('Actualizacion Exitosa'),
+                result => {
+                  this.MostrarMensajeOperacion('Actualizacion Exitosa')
+                  this.router.navigate(['/licencia', 'tipos'])
+                },
                 (err: any) => this.MostrarMensajeOperacion('Falla')
               );
           }

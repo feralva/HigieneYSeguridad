@@ -11,23 +11,20 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./empresa.page.scss'],
 })
 export class EmpresaPage implements OnInit {
-  empresas: any[];
+  empresas: any[] = [];
 
   nombrePagina: string;
   constructor(private appDataService: AppDataService, private translate: TranslateService, 
     private empresaService: EmpresaService, private route: ActivatedRoute,
     private toastController: ToastController) { }
 
-  ngOnInit() {
-
-    this.empresas = this.route.snapshot.data['empresas'];
-  
-    console.log(this.empresas)
-  }
+  ngOnInit() {}
 
   ionViewWillEnter(){
-    this.nombrePagina = 'Empresa.title';
-    this.appDataService.changePageName(this.nombrePagina);
+    this.appDataService.changePageName('Empresa.title');
+
+    this.empresas = this.route.snapshot.data['empresas']; 
+    console.log(this.empresas)
   }
 
   onBorrarEmpresa(empresa: any){

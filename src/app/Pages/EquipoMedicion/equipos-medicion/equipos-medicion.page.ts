@@ -19,7 +19,9 @@ export class EquiposMedicionPage implements OnInit {
   public nombrePagina: string;
   currentUser: UserLogueado = null;
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ionViewWillEnter(){
 
     this.nombrePagina = 'EquipoMedicion.title';
     this.appDataService.changePageName(this.nombrePagina);

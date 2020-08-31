@@ -18,14 +18,17 @@ export class PlanPage implements OnInit {
   nombrePagina: string;
   currentUser: UserLogueado;
   estadoPlanAFiltrarId: number = 1;
-  estadosPlanesPosibles: any[];
+  estadosPlanesPosibles: any[] = [];
   
   constructor(private translate: TranslateService, private route: ActivatedRoute,
     private appDataService: AppDataService, private planService: PlanService, 
     private authService: AuthService, public loaderService: LoaderService) { }
 
-  ngOnInit() {
+  ngOnInit() {}
 
+  ionViewWillEnter(){
+    this.nombrePagina = 'Empresa.Planes';
+    this.appDataService.changePageName(this.nombrePagina);
     this.planes = this.route.snapshot.data['planes'];
     this.estadosPlanesPosibles = this.route.snapshot.data['estadosPlanesPosibles'];
 
@@ -38,11 +41,6 @@ export class PlanPage implements OnInit {
 
     console.log(this.planes)
     console.log(this.estadosPlanesPosibles)
-  }
-
-  ionViewWillEnter(){
-    this.nombrePagina = 'Empresa.Planes';
-    this.appDataService.changePageName(this.nombrePagina);
   }
 
   actualizarPlanesPorEstado(event){

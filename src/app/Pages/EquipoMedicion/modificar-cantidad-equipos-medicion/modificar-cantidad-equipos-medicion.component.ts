@@ -4,7 +4,7 @@ import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 import { PhotoService } from 'src/app/Core/Services/photo/photo.service';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { AlertController, ToastController, Platform, ActionSheetController } from '@ionic/angular';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EquipoMedicionService } from 'src/app/Core/Services/EquipoMedicion/equipo-medicion.service';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
 
@@ -22,7 +22,7 @@ export class ModificarCantidadEquiposMedicionComponent implements OnInit {
   constructor(private translate: TranslateService, 
     private appDataService: AppDataService, public photoService: PhotoService,
     private authService: AuthService, private equipoMedicionService: EquipoMedicionService,
-    public alertController: AlertController,
+    public alertController: AlertController, private router: Router,
     public toastController: ToastController,private route: ActivatedRoute,
     private plt: Platform, private actionSheetCtrl: ActionSheetController) { }
 
@@ -73,7 +73,10 @@ export class ModificarCantidadEquiposMedicionComponent implements OnInit {
 
   modificarCantidadEquipoMedicion() {
     this.equipoMedicionService.actualizarCantidadEquiposMedicion(this.tipoEquipo.equipoMedicionNombre, this.currentUser.empresaId, this.cantidadAAgregar).subscribe(
-      data => this.MostrarMensajeOperacion('Actualizacion Exitosa'),
+      data => {
+        this.MostrarMensajeOperacion('Actualizacion Exitosa')
+        this.router.navigate(['/equiposMedicion'])
+      },
       (error) => console.log(error)
     )
   }

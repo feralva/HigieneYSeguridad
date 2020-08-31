@@ -15,7 +15,7 @@ import { LoaderService } from 'src/app/Core/Services/loader.service';
 })
 export class VisitaPage implements OnInit {
   nombrePagina;
-  visitas: any[];
+  visitas: any[] = [];
   currentUser: UserLogueado;
   estadoVisitaAFiltrarId: number = 0;
   estadosVisitasPosibles: any[] = [];
@@ -37,13 +37,15 @@ export class VisitaPage implements OnInit {
     console.log(clienteSeleccionado)
     this._clienteAFiltrar = clienteSeleccionado;
 
-    this.actualizarVisitasPorFiltros({})
+    this.actualizarVisitasPorFiltros(null)
 
   }
 
-  ngOnInit() {
-    this.nombrePagina = 'Visita.title';
-    this.appDataService.changePageName(this.nombrePagina);
+  ngOnInit() {}
+
+  ionViewWillEnter(){
+
+    this.appDataService.changePageName('Visita.title');
 
     this.visitas = this.route.snapshot.data['visitas'];
     this.clientes = this.route.snapshot.data['clientes'];
@@ -56,11 +58,6 @@ export class VisitaPage implements OnInit {
     console.log(this.visitas)
   }
 
-  navegarADetalle(id){
-    console.log("navegando")
-    //this.navCtrl.navigateForward(['/visita',id, 'detalle']);
-    this.router.navigate(['/home'])
-  }
   doRefresh(event) {
     
     this.visitaService.obtenerVisitasEmpresa(this.currentUser.empresaId).subscribe(

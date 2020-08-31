@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { LoaderService } from 'src/app/Core/Services/loader.service';
 import { DireccionService } from 'src/app/Core/Services/Direccion/direccion.service';
 import { NgForm } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-establecimiento-editar',
@@ -33,7 +34,7 @@ export class EstablecimientoEditarComponent implements OnInit {
     public toastController: ToastController,
     private route: ActivatedRoute, private loaderService: LoaderService,
     private plt: Platform, private direccionService: DireccionService,
-    private actionSheetCtrl: ActionSheetController
+    private actionSheetCtrl: ActionSheetController, private location: Location
   ) {}
 
   ngOnInit() {
@@ -149,7 +150,10 @@ export class EstablecimientoEditarComponent implements OnInit {
           text: "Ok",
           handler: () => {
             this.establecimientoService.ActualizarEstablecimiento(this.model).subscribe(
-              (result) => this.MostrarMensajeOperacion("Modificación Exitosa"),
+              (result) => {
+                this.MostrarMensajeOperacion("Modificación Exitosa")
+                this.location.back()
+              },
               (err: any) => this.MostrarMensajeOperacion("Falla")
             );
           },

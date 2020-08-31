@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 import { LicenciaService } from 'src/app/Core/Services/Licencia/licencia.service';
 import { NgForm } from '@angular/forms';
 import { TipoLicencia } from 'src/app/Models/TipoLicencia';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-alta-tipo-licencia',
@@ -28,7 +29,7 @@ export class AltaTipoLicenciaComponent implements OnInit {
   constructor(private translate: TranslateService, 
     private appDataService: AppDataService, private authService: AuthService,
     public alertController: AlertController, private licenciaService: LicenciaService,
-    public toastController: ToastController,
+    public toastController: ToastController, private router: Router,
     private plt: Platform, private actionSheetCtrl: ActionSheetController) { }
 
   ngOnInit() {}
@@ -65,7 +66,10 @@ export class AltaTipoLicenciaComponent implements OnInit {
           handler: () => {
             this.licenciaService.AltaTipoLicencia(this.tipoLicencia)
               .subscribe(
-                result => this.MostrarMensajeOperacion('Alta Exitosa'),
+                result => {
+                  this.MostrarMensajeOperacion('Alta Exitosa')
+                  this.router.navigate(['/licencia', 'tipos'])
+                },
                 (err: any) => this.MostrarMensajeOperacion('Falla')
               );
           }

@@ -8,6 +8,7 @@ import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { NgForm } from '@angular/forms';
 import { AlertController, ToastController } from '@ionic/angular';
 import { TipoEquipoMedicion } from 'src/app/Models/TipoEquipoMedicion';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-alta-equipo-medicion',
@@ -18,7 +19,7 @@ export class AltaEquipoMedicionComponent implements OnInit {
 
   constructor(private equipoMedicionService: EquipoMedicionService, private translate: TranslateService, 
     private appDataService: AppDataService, private authService: AuthService,
-    public alertController: AlertController,
+    public alertController: AlertController, private router: Router,
     public toastController: ToastController) { }
 
   private _cantidad: number;
@@ -98,7 +99,10 @@ export class AltaEquipoMedicionComponent implements OnInit {
             console.log(this.obtenerEquiposMedicionAGuardar())
             this.obtenerEquiposMedicionAGuardar().forEach(equipoMedicion => {
               this.equipoMedicionService.addEquipoMedicion(equipoMedicion).subscribe(
-                result => this.MostrarMensajeOperacion('Alta Exitosa'),
+                result => {
+                  this.MostrarMensajeOperacion('Alta Exitosa')
+                  this.router.navigate(['/equiposMedicion'])
+                },
                 (err: any) => this.MostrarMensajeOperacion('Falla')
               );
             });

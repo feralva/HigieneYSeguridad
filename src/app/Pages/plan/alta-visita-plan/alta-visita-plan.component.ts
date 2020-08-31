@@ -6,7 +6,7 @@ import { VisitaService } from 'src/app/Core/Services/Visita/visita.service';
 import { TranslateService } from '@ngx-translate/core';
 import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -32,7 +32,8 @@ export class AltaVisitaPlanComponent implements OnInit {
     private translate: TranslateService, private route: ActivatedRoute,
     private appDataService: AppDataService, private clienteService: ClienteService,
     private authService: AuthService, private planService: PlanService,
-    public alertController: AlertController, public toastController: ToastController) { }
+    public alertController: AlertController, public toastController: ToastController,
+    private router: Router) { }
 
   ngOnInit() {}
 
@@ -51,13 +52,11 @@ export class AltaVisitaPlanComponent implements OnInit {
           data => this.establecimientos = data,
           (error) => console.log(error)
         )
-
       },
       (error) => console.log(error)
     )
 
-    const nombrePagina = 'Plan.Visita.Alta.title';
-    this.appDataService.changePageName(nombrePagina)
+    this.appDataService.changePageName('Plan.Visita.Alta.title')
 
     this.authService.getUserSubject().subscribe(
       data => this.currentUser = data,
@@ -83,7 +82,10 @@ export class AltaVisitaPlanComponent implements OnInit {
           handler: () => {
             
                 this.visitaService.alta(visita).subscribe(
-                  result => this.MostrarMensajeOperacion('Alta Exitosa'),
+                  result => {
+                    this.MostrarMensajeOperacion('Alta Exitosa')
+                    this.router.navigate(['/plan', this.idPlan,'detalle'])
+                  },
                   (error) => this.MostrarMensajeOperacion('Falla')
                 );              
           }

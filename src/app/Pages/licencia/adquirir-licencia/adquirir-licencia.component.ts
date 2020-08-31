@@ -3,7 +3,7 @@ import { LicenciaService } from 'src/app/Core/Services/Licencia/licencia.service
 import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 import { TranslateService } from '@ngx-translate/core';
 import { AlertController, ActionSheetController, ToastController } from '@ionic/angular';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoaderService } from 'src/app/Core/Services/loader.service';
 import { Pago } from 'src/app/Models/Pago';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
@@ -23,7 +23,7 @@ export class AdquirirLicenciaComponent implements OnInit {
   currentUser: UserLogueado = null;
   
   constructor(private appDataService: AppDataService,
-    private translate: TranslateService,
+    private translate: TranslateService, private router: Router,
     public alertController: AlertController,
     private route: ActivatedRoute, private loaderService: LoaderService,
     private actionSheetCtrl: ActionSheetController, private pagoService: PagoService,

@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { Familia } from 'src/app/Models/Familia';
 import { environment } from 'src/environments/environment';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-empleado-edicion',
   templateUrl: './empleado-edicion.component.html',
@@ -32,7 +32,7 @@ export class EmpleadoEdicionComponent implements OnInit {
   constructor(private rolService: RolService, private translate: TranslateService, 
                 private appDataService: AppDataService, public photoService: PhotoService,
                 private empleadoService: EmpleadoService, private authService: AuthService,
-                public alertController: AlertController,
+                public alertController: AlertController, private router: Router,
                 public toastController: ToastController,private route: ActivatedRoute,
                 private plt: Platform, private actionSheetCtrl: ActionSheetController) { }
 
@@ -73,8 +73,6 @@ export class EmpleadoEdicionComponent implements OnInit {
       );
     });
 
-
-    
     this.authService.getUserSubject().subscribe(
         data => this.currentUser = data,
         error => console.log(error)
@@ -128,7 +126,10 @@ export class EmpleadoEdicionComponent implements OnInit {
 
   private ActualizarEmpleado() {
     this.empleadoService.actualizarEmpleado(this.empleadoModel).subscribe(
-      result => this.MostrarMensajeOperacion('Modificación Exitosa'),
+      result => {
+        this.MostrarMensajeOperacion('Modificación Exitosa')
+        this.router.navigate(['/empleado'])
+      },
       (err: any) => this.MostrarMensajeOperacion('Falla')
     );
   }

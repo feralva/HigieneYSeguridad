@@ -14,6 +14,7 @@ import { CameraPhoto } from '@capacitor/core';
 import { environment } from 'src/environments/environment';
 import { Plugins, CameraSource } from '@capacitor/core';
 import { Platform, ActionSheetController } from '@ionic/angular';
+import { Router } from '@angular/router';
 const { Camera } = Plugins;
 @Component({
   selector: 'app-alta-empleado',
@@ -34,7 +35,7 @@ export class AltaEmpleadoComponent implements OnInit {
   constructor(private rolService: RolService, private translate: TranslateService, 
                 private appDataService: AppDataService, public photoService: PhotoService,
                 private empleadoService: EmpleadoService, private authService: AuthService,
-                public alertController: AlertController,
+                public alertController: AlertController, private router: Router,
                 public toastController: ToastController,
                 private plt: Platform, private actionSheetCtrl: ActionSheetController) { }
 
@@ -102,6 +103,7 @@ export class AltaEmpleadoComponent implements OnInit {
                     this.empleadoService.addEmpleado(this.empleadoModel).subscribe(
                       result => {
                         this.MostrarMensajeOperacion('Alta Exitosa')
+                        this.router.navigate(['/empleado'])
                       },
                       (err: any) => this.MostrarMensajeOperacion(err.message)
                     );

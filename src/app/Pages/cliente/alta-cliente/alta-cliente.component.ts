@@ -13,6 +13,7 @@ import { Cliente } from 'src/app/Models/Cliente';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { NgForm } from '@angular/forms';
 import { GenericAlertMessageService } from 'src/app/Core/Services/generic-alert-message.service';
+import { Router } from '@angular/router';
 const { Camera } = Plugins;
 @Component({
   selector: 'app-alta-cliente',
@@ -24,12 +25,12 @@ export class AltaClienteComponent implements OnInit {
   @ViewChild('fileInput', { static: false }) fileInput: ElementRef;
   imagenEmpleado: CameraPhoto = null;
   imageBase64: string;
-  currentUser: any;
+  currentUser: any = null;
 
-  partidos: any[];
-  partidoSeleccionado: any;
-  provincias: any[];
-  provinciaSeleccionada: any;
+  partidos: any[] = [];
+  partidoSeleccionado: any = null;
+  provincias: any[] = [];
+  provinciaSeleccionada: any = null;
   model: Cliente = {
     id: 0,
     nombre: '',
@@ -61,7 +62,8 @@ export class AltaClienteComponent implements OnInit {
     public alertController: AlertController, private loaderService: LoaderService,
     public toastController: ToastController, private direccionService: DireccionService,
     private plt: Platform, private actionSheetCtrl: ActionSheetController,
-    private authService: AuthService, private msgService: GenericAlertMessageService) { }
+    private authService: AuthService, private msgService: GenericAlertMessageService,
+    private router: Router) { }
 
 
   set altura(altura:string){
@@ -72,7 +74,10 @@ export class AltaClienteComponent implements OnInit {
     return (this.model.direccion.altura)? this.model.direccion.altura.toString(): '';
   }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ionViewWillEnter(){
+    this.appDataService.changePageName('Cliente.Alta.title');
 
     this.direccionService.obtenerProvincias().subscribe(
       data => this.provincias = data,
@@ -85,10 +90,6 @@ export class AltaClienteComponent implements OnInit {
       },
       error => console.log(error)
     );
-  }
-
-  ionViewWillEnter(){
-    this.appDataService.changePageName('Cliente.Alta.title');
   }
 
   actualizarPartidos(event){
@@ -156,6 +157,7 @@ export class AltaClienteComponent implements OnInit {
                         data => {
                           this.loaderService.dismiss();
                           this.MostrarMensajeOperacion('Alta Exitosa')
+                          this.router.navigate(['cliente'])
                         },
                         (err: any) => {
                           this.loaderService.dismiss();

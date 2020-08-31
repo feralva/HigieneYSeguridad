@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 import { TranslateService } from '@ngx-translate/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PlanService } from 'src/app/Core/Services/Plan/plan.service';
 import { ModalController, AlertController, ToastController } from '@ionic/angular';
 import { AltaVisitaModalComponent } from '../../Visita/alta-visita-modal/alta-visita-modal.component';
@@ -33,12 +33,9 @@ export class AltaPlanComponent implements OnInit {
     private appDataService: AppDataService, private planService: PlanService,
     private authService: AuthService, private modalctrl: ModalController,
     private clienteService: ClienteService,public alertController: AlertController,
-    public toastController: ToastController) { }
+    public toastController: ToastController, private router: Router) { }
 
-  ngOnInit() {
-
-
-  }
+  ngOnInit() {}
 
   ionViewWillEnter(){
     //clientes cuando se accede a alta planes directamente
@@ -98,7 +95,10 @@ export class AltaPlanComponent implements OnInit {
           handler: () => {
             
                 this.planService.alta(this.generarPlan()).subscribe(
-                  result => this.MostrarMensajeOperacion('Alta Exitosa'),
+                  result => {
+                    this.MostrarMensajeOperacion('Alta Exitosa')
+                    this.router.navigate(['/plan'])
+                  },
                   (err: any) => this.MostrarMensajeOperacion('Falla')
                 );              
           }

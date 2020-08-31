@@ -10,7 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class LicenciaPage implements OnInit {
 
-  licenciasEmpresas: any[]
+  licenciasEmpresas: any[] = []
 
   constructor(private route: ActivatedRoute, private appDataService: AppDataService, 
     private translate: TranslateService, private router: Router) { }
