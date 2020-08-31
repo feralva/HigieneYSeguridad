@@ -10,6 +10,8 @@ import { AuthService } from './Core/Services/auth/auth.service';
 import { Router, Event, NavigationCancel, NavigationEnd, NavigationError,
   NavigationStart } from '@angular/router';
 import { LoaderService } from './Core/Services/loader.service';
+import { OfflineManagerService } from './Core/Services/offline-manager-service.service';
+import { NetworkService, ConnectionStatus } from './Core/Services/network-service.service';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +31,9 @@ export class AppComponent implements OnInit {
     private languageService: LanguageService,
     private appDataService: AppDataService,
     private popOverCtrl: PopoverController,
-    public auth: AuthService, private router: Router
+    public auth: AuthService, private router: Router,
+    private offlineManager: OfflineManagerService,
+    private networkService: NetworkService
   ) {
       this.initializeApp();
   }
@@ -71,6 +75,11 @@ export class AppComponent implements OnInit {
           }
         }
       }) */
+      this.networkService.onNetworkChange().subscribe((status: ConnectionStatus) => {
+        if (status == ConnectionStatus.Online) {
+          this.offlineManager.checkForEvents().subscribe();
+        }
+      });
       this.languageService.setInitialAppLanguage();
 
 /*       this.auth.currentUser.subscribe(

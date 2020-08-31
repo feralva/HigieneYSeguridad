@@ -12,7 +12,7 @@ import { Establecimiento } from "src/app/Models/Establecimiento";
 import { EstablecimientoService } from "src/app/Core/Services/Establecimiento/establecimiento.service";
 import { NgForm } from "@angular/forms";
 import { UbicacionAltaComponent } from "../../ubicacion/ubicacion-alta/ubicacion-alta.component";
-import { ActivatedRoute, Router, Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { DireccionService } from 'src/app/Core/Services/Direccion/direccion.service';
 import { LoaderService } from 'src/app/Core/Services/loader.service';
 import { Ubicacion } from 'src/app/Models/Ubicacion';

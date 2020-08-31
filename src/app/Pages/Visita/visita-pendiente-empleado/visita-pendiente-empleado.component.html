@@ -13,7 +13,7 @@
 <ion-searchbar placeholder="Cliente" (ionChange)="onBuscarClienteChange($event)"
   showCancelButton="always" animated></ion-searchbar>
 
-  <div class="page" *ngIf="visitas.length > 0">
+  <div class="page" *ngIf="visitas?.length > 0">
     <div class="timeline" >
       <div class="timeline__group" *ngFor="let visita of visitas | filtro: textoBuscar: 'nombreCliente'" >
         <span class="timeline__year" *ngIf="visita.fecha">{{visita.fecha | date:'yyyy'}}</span>
@@ -39,6 +39,6 @@
   </div>
 
   <br>
-  <ion-label *ngIf="visitas.length == 0">No Hay Visitas Asignadas</ion-label>
+  <ion-label *ngIf="visitas?.length == 0">No Hay Visitas Asignadas</ion-label>
   
 </ion-content>

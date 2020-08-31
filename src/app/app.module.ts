@@ -15,7 +15,7 @@ import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-import {IonicStorageModule} from '@ionic/storage';
+import { IonicStorageModule } from '@ionic/storage';
 import { LanguagePopupPageModule } from './Pages/language-popup/language-popup.module';
 import { HasRoleDirective } from './Core/Directives/has-role.directive';
 
@@ -34,6 +34,8 @@ import { LoaderInterceptorService } from './Core/HttpInterceptors/loader-interce
 import { AuthInterceptor } from './Core/HttpInterceptors/AuthInterceptor.service';
 import { GlobalErrorHandlerService } from './Core/Services/global-error-handler.service';
 import { PipesModule } from './Core/pipes/pipes.module';
+
+import { Network } from '@ionic-native/network/ngx';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -66,7 +68,8 @@ firebase.initializeApp(environment.firebaseConfig);
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Camera,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    {provide: ErrorHandler, useClass: GlobalErrorHandlerService}
+    {provide: ErrorHandler, useClass: GlobalErrorHandlerService},
+    Network
     
     /* ,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true } */

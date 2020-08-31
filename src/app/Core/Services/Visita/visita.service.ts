@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
+import { NetworkService, ConnectionStatus } from '../network-service.service';
+import { map, tap } from 'rxjs/operators';
+import { OfflineManagerService } from '../offline-manager-service.service';
+import { Storage } from "@ionic/storage"
+
+const API_STORAGE_KEY = 'unaKey';
 
 @Injectable({
   providedIn: 'root'
@@ -11,16 +17,37 @@ export class VisitaService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  
-  constructor(private http: HttpClient) { }
 
+  constructor(private http: HttpClient, private networkService: NetworkService, private offlineManager: OfflineManagerService,
+    public storage: Storage) { }
+
+  private setLocalData(key, data) {
+    this.storage.set(`${API_STORAGE_KEY}-${key}`, data);
+  }
+ 
+  private getLocalData(key) {
+    return this.storage.get(`${API_STORAGE_KEY}-${key}`);
+  }
 
   obtenerVisitasEmpresa(idEmpresa: number, idCliente: number = 0, idEstadoVisita: number = 0): Observable<any[]> {
     return this.http.get<any[]>(environment.UrlBaseApi + `Empresa/${idEmpresa}/Visitas?activo=true&clienteId=${idCliente}&estadoVisitaId=${idEstadoVisita}`, this.httpOptions);
   }
 
-  obtenerVisitasPendientesEmpleado(idEmpleado: number): Observable<any[]> {
-    return this.http.get<any[]>(environment.UrlBaseApi + `Visita/Empleado/${idEmpleado}?activo=true&estado=1`, this.httpOptions);
+  obtenerVisitasPendientesEmpleado(idEmpleado: number): Observable<any> {
+
+    if (this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline) {
+      // Return the cached data from Storage
+      return from(this.getLocalData('misVisitas'));
+    } else {
+
+      // Return real API data and store it locally
+      return this.http.get(environment.UrlBaseApi + `Visita/Empleado/${idEmpleado}?activo=true&estado=1`, this.httpOptions).pipe(
+        tap(res => {
+          this.setLocalData('misVisitas', res);
+        })
+      )
+    }
+    //return this.http.get<any[]>(environment.UrlBaseApi + `Visita/Empleado/${idEmpleado}?activo=true&estado=1`, this.httpOptions);
   }
 
   obtenerTiposVisita(): Observable<any[]> {
