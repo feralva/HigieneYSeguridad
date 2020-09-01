@@ -72,16 +72,17 @@ export class VisitaDetalleComponent implements OnInit {
             this.controles = dataControles
             for(let control of this.controles){
 
+              //Convierto tipo de datos firestore en date
+              if(control.fecha.seconds) control.fecha = new Date(control.fecha.seconds * 1000)
+
               this.ubicacionService.obtenerUbicacion(control.ubicacionId).subscribe(
                 dataUbicaciones => {
                   control.ubicacion = dataUbicaciones.nombre
-                  console.log(control)
-                  
+                  console.log(control)                 
                 },
                 (error) => console.log(error)
               )
             }
- 
           },
           (error) => console.log(error)
         );

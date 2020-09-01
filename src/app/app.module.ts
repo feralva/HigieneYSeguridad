@@ -29,7 +29,9 @@ export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 import { Camera } from '@ionic-native/camera/ngx';
+
 import * as firebase from 'firebase';
+
 import { LoaderInterceptorService } from './Core/HttpInterceptors/loader-interceptor.service';
 import { AuthInterceptor } from './Core/HttpInterceptors/AuthInterceptor.service';
 import { GlobalErrorHandlerService } from './Core/Services/global-error-handler.service';
@@ -60,6 +62,7 @@ firebase.initializeApp(environment.firebaseConfig);
     }),
     LanguagePopupPageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule.enablePersistence(),
     AngularFirestoreModule
   ],
   providers: [
