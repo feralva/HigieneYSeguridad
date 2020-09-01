@@ -3,12 +3,13 @@ import { SeleccionarUbicacionControlComponent } from '../../seleccionar-ubicacio
 import { ToastController, LoadingController, Platform, AlertController } from '@ionic/angular';
 import { ControlService } from 'src/app/Core/Services/Control/control.service';
 import { TranslateService } from '@ngx-translate/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 import { UbicacionService } from 'src/app/Core/Services/Ubicacion/ubicacion.service';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { Control } from 'src/app/Models/Control';
 import { NgForm } from '@angular/forms';
+import { NetworkService, ConnectionStatus } from 'src/app/Core/Services/network-service.service';
 
 @Component({
   selector: 'app-medicion-luminica',
@@ -25,10 +26,11 @@ export class MedicionLuminicaComponent implements OnInit {
   @ViewChild(SeleccionarUbicacionControlComponent, { static: true }) seleccionUbicacionComponent: SeleccionarUbicacionControlComponent
 
   constructor(private toastCtrl: ToastController, private controlService: ControlService,
-    private loadingCtrl: LoadingController,
+    private loadingCtrl: LoadingController, private router: Router,
     private plt: Platform, private translate: TranslateService, private route: ActivatedRoute,
     private appDataService: AppDataService, private ubicacionService: UbicacionService, 
-    private authService: AuthService, public alertController: AlertController) { }
+    private authService: AuthService, public alertController: AlertController,
+    private networkService: NetworkService) { }
 
   ngOnInit() {
     console.log(+this.route.snapshot.paramMap.get('id'))
@@ -36,7 +38,7 @@ export class MedicionLuminicaComponent implements OnInit {
     this.idEstablecimiento = +this.route.snapshot.paramMap.get('idEstablecimiento')
     this.ubicaciones = this.route.snapshot.data['ubicaciones'];
     
-    
+    console.log(this.ubicaciones)
     this.appDataService.changePageName('Medicion.Sonora.Alta.Title');
   }
 
@@ -58,9 +60,18 @@ export class MedicionLuminicaComponent implements OnInit {
           handler: () => {
 
             this.controlService.altaControlVisita(this.obtenerControl(), this.obtenerMediciones()).then(
-              result => this.MostrarMensajeOperacion('Alta Exitosa'),
+              result => {
+                this.MostrarMensajeOperacion('Alta Exitosa')
+                this.router.navigate(['/visita', this.idVisita, 'detalle'])
+              },
               (err: any) => this.MostrarMensajeOperacion('Falla')
             );
+
+            if(this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline){
+              
+              this.router.navigate(['/visita', this.idVisita, 'detalle'])
+            }
+
           }
         }
       ]

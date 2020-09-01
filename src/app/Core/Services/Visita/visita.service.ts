@@ -67,11 +67,6 @@ export class VisitaService {
       return this.http.get<any[]>(environment.UrlBaseApi + `Visita/${idVisita}`, this.httpOptions).pipe(
         tap(res => {
           this.setLocalData(`Visita/${idVisita}`, res);
-          this.ubicacionService.obtenerUbicacionesEstablecimiento(res.establecimientoId).pipe(
-            tap(ubicaciones =>{
-              this.setLocalData(`Establecimiento/${res.establecimientoId}/Ubicaciones`, res);
-            })
-          )
         })
       )
     }

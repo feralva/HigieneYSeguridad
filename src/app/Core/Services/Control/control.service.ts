@@ -50,10 +50,10 @@ export class ControlService {
     }
   } */
   obtenerControlesVisita(idVisita: number): Observable<any> {
-
+/* 
     if (this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline) {
       return from(this.getLocalData(`Control/Visita/${idVisita}`));
-    } else {
+    } else { */
       return this.db.collection<any[]>('controles', ref => ref.where('visitaId', '==', idVisita)).valueChanges({ idField: 'id' })
       .pipe(
         take(1),
@@ -63,7 +63,7 @@ export class ControlService {
         })/* ,
         tap(() => ref.loadingCtrl.dismiss()) */
       )   
-    }
+   /*  } */
   }
 
   async altaControlVisita(control: Control, mediciones: any[]){
@@ -89,8 +89,7 @@ export class ControlService {
 
   bajaControl(idcontrol: string) {
 
-    return this.db.collection('mediciones').doc(idcontrol).delete()
+    return this.db.collection('controles').doc(idcontrol).delete()
   }
-
 
 }

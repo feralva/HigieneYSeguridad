@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -29,37 +29,74 @@ export class VisitaDetalleComponent implements OnInit {
     private visitaService: VisitaService, private ubicacionService: UbicacionService,
     private modalController: ModalController, public alertController: AlertController,
     public toastController: ToastController) { }
+  
+    ionViewWillEnter(){
+      this.appDataService.changePageName('Visita.Detalle.title');
+
+      this.controles = this.route.snapshot.data['controles'];
+      this.visita = this.route.snapshot.data['visita'];
+  
+      this.idVisita = +this.route.snapshot.paramMap.get('id');
+  
+      this.authService.getUserSubject().subscribe(
+        data => this.currentUser = data,
+        error => console.log(error)
+      );
+   
+      console.log(this.controles)
+      for(let control of this.controles){
+  
+        //Convierto tipo de datos firestore en date
+        if(control.fecha.seconds) control.fecha = new Date(control.fecha.seconds * 1000)
+  
+        this.ubicacionService.obtenerUbicacion(control.ubicacionId).subscribe(
+          data => {
+            control.ubicacion = data.nombre
+            console.log(control)
+          },
+          (error) => console.log(error)
+        )
+      }
+      
+      this.ubicacionService.obtenerUbicacionesEstablecimiento(this.visita.establecimientoId).subscribe(
+        data => console.log(data)
+      );
+  
+      console.log(this.controles)
+      console.log(this.visita) 
+    }
 
   ngOnInit() {
-    this.appDataService.changePageName('Visita.Detalle.title');
 
-    this.controles = this.route.snapshot.data['controles'];
-    this.visita = this.route.snapshot.data['visita'];
+    /* this.appDataService.changePageName('Visita.Detalle.title');
 
-    this.idVisita = +this.route.snapshot.paramMap.get('id');
-
-    this.authService.getUserSubject().subscribe(
-      data => this.currentUser = data,
-      error => console.log(error)
-    );
- 
-    console.log(this.controles)
-    for(let control of this.controles){
-
-      //Convierto tipo de datos firestore en date
-      if(control.fecha.seconds) control.fecha = new Date(control.fecha.seconds * 1000)
-
-      this.ubicacionService.obtenerUbicacion(control.ubicacionId).subscribe(
-        data => {
-          control.ubicacion = data.nombre
-          console.log(control)
-        },
-        (error) => console.log(error)
-      )
-    }  
-
-    console.log(this.controles)
-    console.log(this.visita)
+      this.controles = this.route.snapshot.data['controles'];
+      this.visita = this.route.snapshot.data['visita'];
+  
+      this.idVisita = +this.route.snapshot.paramMap.get('id');
+  
+      this.authService.getUserSubject().subscribe(
+        data => this.currentUser = data,
+        error => console.log(error)
+      );
+   
+      console.log(this.controles)
+      for(let control of this.controles){
+  
+        //Convierto tipo de datos firestore en date
+        if(control.fecha.seconds) control.fecha = new Date(control.fecha.seconds * 1000)
+  
+        this.ubicacionService.obtenerUbicacion(control.ubicacionId).subscribe(
+          data => {
+            control.ubicacion = data.nombre
+            console.log(control)
+          },
+          (error) => console.log(error)
+        )
+      }  
+  
+      console.log(this.controles)
+      console.log(this.visita) */
   }
 
   doRefresh(event) {
