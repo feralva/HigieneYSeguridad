@@ -129,7 +129,7 @@ export class VisitaDetalleComponent implements OnInit {
     )
   }
 
-  async onEditarFechaClick(event){
+  async onEditarFechaClick(){
     const modal = await this.modalController.create({
       component: CambiarFechaModalComponent,
       componentProps: {
@@ -183,7 +183,7 @@ export class VisitaDetalleComponent implements OnInit {
     }
   }
 
-  async onEditarAuditorClick(event){
+  async onEditarAuditorClick(){
 
       const modal = await this.modalController.create({
         component: CambiarAuditorModalComponent,

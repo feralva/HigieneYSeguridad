@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { take, mergeMap, map, tap } from 'rxjs/operators';
 import { Control } from 'src/app/Models/Control';
 import { Medicion } from 'src/app/Models/Medicion';

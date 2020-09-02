@@ -12,5 +12,5 @@ export const environment = {
   rutaFotosEmpleadosBase: 'FotosEmpleados',
   rutaFotosEmpresaBase: 'FotosEmpresas',
   rutaFotosClienteBase: 'FotosEmpresas',
-  UrlBaseApi: 'https://apialvarezuai.azurewebsites.net'
-};
+  UrlBaseApi: 'https://apialvarezuai.azurewebsites.net/api/'
+}

@@ -22,15 +22,16 @@ import { HasRoleDirective } from './Core/Directives/has-role.directive';
 import { SharedDirectivesModule } from './Core/Directives/shared-directives.module';
 
 import { environment } from '../environments/environment'
-import { AngularFireModule } from 'angularfire2'
-import { AngularFirestoreModule } from 'angularfire2/firestore'
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 import { Camera } from '@ionic-native/camera/ngx';
 
-import * as firebase from 'firebase';
+/* import * as firebase from 'firebase'; */
 
 import { LoaderInterceptorService } from './Core/HttpInterceptors/loader-interceptor.service';
 import { AuthInterceptor } from './Core/HttpInterceptors/AuthInterceptor.service';
@@ -38,8 +39,10 @@ import { GlobalErrorHandlerService } from './Core/Services/global-error-handler.
 import { PipesModule } from './Core/pipes/pipes.module';
 
 import { Network } from '@ionic-native/network/ngx';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { AngularFireStorage, AngularFireStorageModule } from '@angular/fire/storage';
 
-firebase.initializeApp(environment.firebaseConfig);
+/* firebase.initializeApp(environment.firebaseConfig); */
 
 @NgModule({
   declarations: [AppComponent, MenuComponent],
@@ -63,7 +66,9 @@ firebase.initializeApp(environment.firebaseConfig);
     LanguagePopupPageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule.enablePersistence(),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     StatusBar,
@@ -72,8 +77,9 @@ firebase.initializeApp(environment.firebaseConfig);
     Camera,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     {provide: ErrorHandler, useClass: GlobalErrorHandlerService},
-    Network
-    
+    Network,
+    AngularFirestore,
+    AngularFireStorage
     /* ,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true } */
   ],

@@ -26,6 +26,6 @@ import { PipesModule } from 'src/app/Core/pipes/pipes.module';
     IonicSelectableModule,
     PipesModule
   ],
-  declarations: [PlanPage, DetallePlanComponent, AltaPlanComponent, AltaVisitaModalComponent, AltaVisitaPlanComponent]
+  declarations: [PlanPage, DetallePlanComponent, AltaPlanComponent, AltaVisitaPlanComponent]
 })
 export class PlanPageModule {}

@@ -48,10 +48,7 @@ registerLocaleData(localeDe); */
     MedicionesComponent, SeleccionarUbicacionControlComponent,
     CambiarAuditorModalComponent, CambiarFechaModalComponent, CambiarFechaDetalleModalComponent,
     ControlCapacitacionComponent, ControlPrevencionIncendioComponent, MedicionElectricaComponent,
-    MedicionEmisionGasesComponent, MedicionLuminicaComponent, MedicionSonoraComponent]/* ,
-    providers: [
-      { provide: LOCALE_ID, useValue: 'de-DE' }
-    ]*/, 
+    MedicionEmisionGasesComponent, MedicionLuminicaComponent, MedicionSonoraComponent],
   exports: [ AltaVisitaModalComponent ]
 })
 export class VisitaPageModule {}
