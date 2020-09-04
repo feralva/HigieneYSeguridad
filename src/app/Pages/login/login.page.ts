@@ -17,13 +17,13 @@ export class LoginPage implements OnInit {
   }
 
   login(form){
-    this.loader.present();
+    //this.loader.present();
     this.authService.login(form.value).pipe(skip(1)).subscribe(
       
       (data)=>{
         console.log(data);
         this.router.navigateByUrl('home');
-        this.loader.dismiss();
+        //this.loader.dismiss();
       },
       (error) => console.log(error)
     );

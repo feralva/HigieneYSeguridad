@@ -12,7 +12,7 @@ import { environment } from '../../../../environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  
+
   constructor(private hashingService: HashingService, private router: Router, private http: HttpClient) { }
 
   encriptarContrasenia(contrasenia: string): string {
@@ -109,4 +109,17 @@ export class AuthService {
         })})
 
   }
+
+  establecerNuevaPassword(emailUsuario: string, nuevaPass: any, token: string): Observable<any> {
+    return this.http.post<any>(environment.UrlBaseApi +'Authenticate/User/ReestablecerPass', 
+      { emailUsuario: emailUsuario, 
+        nuevaPass: this.encriptarContrasenia(nuevaPass), 
+        tokenRefresh: token 
+      }, {headers: new HttpHeaders({ 'Content-Type': 'application/json' })})
+  }
+
+  solicitarMailPasswordReset(emailUsuario: string): Observable<any>{
+    return this.http.post<any>(environment.UrlBaseApi +`Authenticate/user/${emailUsuario}/forgotPassword`, {headers: new HttpHeaders({ 'Content-Type': 'application/json' })})
+  }
+  
 }

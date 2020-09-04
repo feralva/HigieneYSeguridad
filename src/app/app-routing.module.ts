@@ -2,13 +2,9 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { UserAuthenticatedGuard } from './Core/Guards/user-authenticated.guard';
+import { LoginPage } from './Pages/login/login.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
   {
     path: 'home',
     canActivate: [UserAuthenticatedGuard],
@@ -86,7 +82,10 @@ const routes: Routes = [
     path: 'pago',
     canActivate: [UserAuthenticatedGuard],
     loadChildren: () => import('./Pages/pago/pago.module').then( m => m.PagoPageModule)
-  }
+  },
+  { path: '**', 
+    loadChildren: () => import('./Pages/login/login.module').then( m => m.LoginPageModule)
+  },  // Wildcard redirect to login
 ];
 
 

@@ -19,8 +19,8 @@ export class VisitaDeClientePropioGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Promise<boolean> {
 
-      return true;
-    /* const idVisita = +next.paramMap.get('id');
+/*       return true; */
+    const idVisita = +next.paramMap.get('id');
 
     const usuario = await  this.authService.getUserSubject().pipe(first()).toPromise()
     const visita = await  this.visitaService.obtenerVisitaDetalle(idVisita).pipe(first()).toPromise()
@@ -29,7 +29,7 @@ export class VisitaDeClientePropioGuard implements CanActivate {
 
     return new Promise<boolean>((resolve, reject) => {
       resolve(usuario.empresaId === cliente.empresaId)
-    })  */
+    })
   }
   
 }
