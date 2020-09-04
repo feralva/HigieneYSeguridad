@@ -40,7 +40,7 @@ export class AuthInterceptor implements HttpInterceptor {
                 }),
                 retryWhen(err => {
                     console.log(err)
-                    let retries = 1;
+                    let retries = 1
                     return err.pipe(
                         delay(1000),
                         tap(() => {

@@ -25,7 +25,7 @@ export class LoginPage implements OnInit {
         this.router.navigateByUrl('home');
         //this.loader.dismiss();
       },
-      (error) => console.log(error)
+      (error) => {throw Error(error)}
     );
   }
 }

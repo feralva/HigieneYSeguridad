@@ -56,7 +56,6 @@ export class ForgotPasswordComponent implements OnInit {
               tap(res => console.log(res))
             ).subscribe(     
               (data)=>{
-                console.log(data);
                 this.MostrarMensajeOperacion('Operación Exitosa')
                 this.router.navigate(['/login']);
               },

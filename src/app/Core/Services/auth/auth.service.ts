@@ -29,7 +29,6 @@ export class AuthService {
 
   currentUser: BehaviorSubject<UserLogueado> = new BehaviorSubject(null);
 
-  //TODO Funcion dummy login, generar la funcion real
   login(usuarioFromForm) {
 
     var usuario;
@@ -51,12 +50,13 @@ export class AuthService {
               this.currentUser.next(usuario);
               //this.currentUser.asObservable();
             }, 
-            (error) => console.log(error)
+            (error) => {
+              throw error
+            }
           )
         },
         (error) => {
-          // TODO Tomar el error code y mostrar mensaje de error
-          console.log(error)
+          throw error
         }
     )
 

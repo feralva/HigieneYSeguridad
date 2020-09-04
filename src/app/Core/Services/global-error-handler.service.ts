@@ -13,25 +13,24 @@ export class GlobalErrorHandlerService {
 
     handleError(error: Error | HttpErrorResponse) {
 
+      const logger = this.injector.get(LoggingService);
+      const notifier = this.injector.get(GenericAlertMessageService);
+
       if(!(error instanceof  HttpErrorResponse)) {
-        const logger = this.injector.get(LoggingService);
-        const notifier = this.injector.get(GenericAlertMessageService);
 
-        let message;
-        let stackTrace;
-        // Client Error
-        
-          message = error.message;
-          stackTrace = error.stack;
-        
-        console.log(error)
+        const message = error.message;
+        const stackTrace = error.stack;
+
         notifier.mostrarMensajeGenerico(message); 
-      
 
-        // Always log errors
         logger.logError(message, stackTrace); 
-      } /* else {
-        this.authService.logout()
-      } */
+      }else{
+        if(error.status === 409){
+
+          notifier.mostrarMensajeGenerico(error.error); 
+
+          logger.logError(error.error, error.url); 
+        }
+      }
     }
 }
