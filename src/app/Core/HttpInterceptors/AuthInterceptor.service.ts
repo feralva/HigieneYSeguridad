@@ -14,7 +14,9 @@ export class AuthInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         
-        if(!req.url.includes('Authenticate/refreshToken')){
+        if(!req.url.includes('Authenticate/refreshToken') 
+            && !req.url.includes('user/ReestablecerPass')
+            && !req.url.includes('forgotPassword')){
             const token = localStorage.getItem('auth_token');
             if (!token) {
                 return next.handle(req);
