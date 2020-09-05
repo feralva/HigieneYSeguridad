@@ -10,6 +10,8 @@ import { LicenciaEmpresaResolver } from 'src/app/Core/Services/Licencia/licencia
 import { AltaTipoLicenciaComponent } from './alta-tipo-licencia/alta-tipo-licencia.component';
 import { ActualizacionPrecioLicenciaComponent } from './actualizacion-precio-licencia/actualizacion-precio-licencia.component';
 import { TiposLicenciaComponent } from './tipos-licencia/tipos-licencia.component';
+import { ModificarTipoLicenciaComponent } from './modificar-tipo-licencia/modificar-tipo-licencia.component';
+import { TipoLicenciaDetalleResolver } from 'src/app/Core/Services/Licencia/tipoLicenciaDetalle-resolver.service';
 
 const routes: Routes = [
   {
@@ -57,6 +59,13 @@ const routes: Routes = [
   {
     path: 'tipo/alta',
     component: AltaTipoLicenciaComponent
+  },
+  {
+    path: 'tipo/:id/modificar',
+    component: ModificarTipoLicenciaComponent,
+    resolve: {
+      tipoLicencia: TipoLicenciaDetalleResolver
+    }
   }
 ];
 

@@ -11,7 +11,6 @@ export class ClienteDetalleResolver implements Resolve<any[]>{
 
     constructor(private clienteService: ClienteService){}
 
-    idEmpresa: number;
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any>{
         const idCliente = +route.paramMap.get('id');
 

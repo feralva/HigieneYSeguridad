@@ -25,6 +25,6 @@ import { TiposLicenciaComponent } from './tipos-licencia/tipos-licencia.componen
     IonicSelectableModule
   ],
   declarations: [LicenciaPage, DetalleLicenciaComponent, AdquirirLicenciaComponent, StripeComponent, AltaTipoLicenciaComponent, 
-    ActualizacionPrecioLicenciaComponent, ModificarTipoLicenciaComponent, TiposLicenciaComponent]
+    ActualizacionPrecioLicenciaComponent, ModificarTipoLicenciaComponent, TiposLicenciaComponent, ModificarTipoLicenciaComponent]
 })
 export class LicenciaPageModule {}

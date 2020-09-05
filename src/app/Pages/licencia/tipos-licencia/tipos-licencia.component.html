@@ -20,7 +20,10 @@
       </ion-item>
       <ion-item-options>
         <ion-item-option color="tertiary" [routerLink]="['/licencia', 'tipo', tipoLicencia.id, 'actualizarPrecio']" expandable>
-          Editar
+          Precio
+        </ion-item-option>
+        <ion-item-option color="warning" [routerLink]="['/licencia', 'tipo', tipoLicencia.id, 'modificar']" expandable>
+          Modificar
         </ion-item-option>
         <ion-item-option color="danger" (click)="onDeshabilitarTipoLicencia(tipoLicencia)" expandable>
           Deshabilitar

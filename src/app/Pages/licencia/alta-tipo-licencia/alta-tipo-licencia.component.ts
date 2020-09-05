@@ -18,11 +18,12 @@ import { Router } from '@angular/router';
 export class AltaTipoLicenciaComponent implements OnInit {
 
   tipoLicencia: TipoLicencia = {
-    Cantidad_Maxima_Usuarios: 0,
+    cantidad_Maxima_Usuarios: 0,
     id: 0,
     nombre: '',
     precioActual: 0,
-    descripcion: ''
+    descripcion: '',
+    activo: true
   }
   currentUser: UserLogueado = null;
 

@@ -2,6 +2,7 @@ export interface TipoLicencia{
     id: number;
     nombre: string; 
     descripcion: string; 
-    Cantidad_Maxima_Usuarios: number;
+    cantidad_Maxima_Usuarios: number;
     precioActual: number;
+    activo: boolean
 }
