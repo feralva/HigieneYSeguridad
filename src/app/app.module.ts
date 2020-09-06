@@ -42,6 +42,8 @@ import { Network } from '@ionic-native/network/ngx';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AngularFireStorage, AngularFireStorageModule } from '@angular/fire/storage';
 
+import { FileOpener } from '@ionic-native/file-opener/ngx';
+
 /* firebase.initializeApp(environment.firebaseConfig); */
 
 @NgModule({
@@ -79,7 +81,8 @@ import { AngularFireStorage, AngularFireStorageModule } from '@angular/fire/stor
     {provide: ErrorHandler, useClass: GlobalErrorHandlerService},
     Network,
     AngularFirestore,
-    AngularFireStorage
+    AngularFireStorage,
+    FileOpener
     /* ,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true } */
   ],

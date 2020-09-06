@@ -27,7 +27,11 @@ export class DetallePlanComponent implements OnInit {
     private toastController: ToastController
     ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.plan = this.route.snapshot.data['plan'];
+  
+    console.log(this.plan)
+  }
 
   ionViewWillEnter(){
     this.nombrePagina = 'Plan.title';

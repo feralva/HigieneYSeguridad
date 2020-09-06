@@ -35,11 +35,12 @@ export class DetalleLicenciaComponent implements OnInit {
       urlFoto: ''
     },
     tipoLicencia: {
-      Cantidad_Maxima_Usuarios: 0,
+      cantidad_Maxima_Usuarios: 0,
       id: 0,
       nombre: '',
       precioActual: 0,
-      descripcion:''
+      descripcion:'',
+      activo: null
     }
   }
   currentUser: UserLogueado;

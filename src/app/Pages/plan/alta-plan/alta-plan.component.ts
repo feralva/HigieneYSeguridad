@@ -5,10 +5,10 @@ import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PlanService } from 'src/app/Core/Services/Plan/plan.service';
 import { ModalController, AlertController, ToastController } from '@ionic/angular';
-import { AltaVisitaModalComponent } from '../../Visita/alta-visita-modal/alta-visita-modal.component';
 import { ClienteService } from 'src/app/Core/Services/Cliente/cliente.service';
 import { NgForm } from '@angular/forms';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
+import { AltaVisitaPlanModalComponent } from '../alta-visita-plan-modal/alta-visita-plan-modal.component';
 
 @Component({
   selector: 'app-alta-plan',
@@ -58,7 +58,7 @@ export class AltaPlanComponent implements OnInit {
   async abrirModalVisita(){
 
     const modal = await this.modalctrl.create({
-      component: AltaVisitaModalComponent,
+      component: AltaVisitaPlanModalComponent,
       componentProps: {
         idCliente: this.clienteSeleccionado? this.clienteSeleccionado : this.cliente.id
       }

@@ -11,6 +11,11 @@ import { UbicacionService } from 'src/app/Core/Services/Ubicacion/ubicacion.serv
 import { CambiarAuditorModalComponent } from '../cambiar-auditor-modal/cambiar-auditor-modal.component';
 import { CambiarFechaModalComponent } from '../cambiar-fecha-modal/cambiar-fecha-modal.component';
 
+import { FileOpener } from '@ionic-native/file-opener/ngx';
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 @Component({
   selector: 'app-visita-detalle',
   templateUrl: './visita-detalle.component.html',
@@ -304,6 +309,19 @@ export class VisitaDetalleComponent implements OnInit {
         this.MostrarMensajeOperacion('Baja Exitosa')
       }
     )
+  }
+
+  generarPDF(){
+
+    var docDefinition = {
+      content: [
+        'First paragraph',
+        'Another paragraph, this time a little bit longer to make sure, this line will be divided into at least two lines'
+      ]
+      
+    }
+
+    pdfMake.createPdf(docDefinition).download();
   }
 
 }

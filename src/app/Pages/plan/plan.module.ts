@@ -10,13 +10,13 @@ import { PlanPage } from './plan.page';
 import { DetallePlanComponent } from './detalle-plan/detalle-plan.component';
 import { AltaPlanComponent } from './alta-plan/alta-plan.component';
 import { VisitaPageModule } from '../visita/visita.module';
-import { AltaVisitaModalComponent } from '../Visita/alta-visita-modal/alta-visita-modal.component';
 import { AltaVisitaPlanComponent } from './alta-visita-plan/alta-visita-plan.component';
 import { IonicSelectableModule } from 'ionic-selectable';
 import { PipesModule } from 'src/app/Core/pipes/pipes.module';
+import { AltaVisitaPlanModalComponent } from './alta-visita-plan-modal/alta-visita-plan-modal.component';
 
 @NgModule({
-  entryComponents: [AltaVisitaModalComponent],
+  entryComponents: [AltaVisitaPlanModalComponent], 
   imports: [    
     CommonModule,
     FormsModule,
@@ -26,6 +26,6 @@ import { PipesModule } from 'src/app/Core/pipes/pipes.module';
     IonicSelectableModule,
     PipesModule
   ],
-  declarations: [PlanPage, DetallePlanComponent, AltaPlanComponent, AltaVisitaPlanComponent]
+  declarations: [PlanPage, DetallePlanComponent, AltaPlanComponent, AltaVisitaPlanComponent, AltaVisitaPlanModalComponent]
 })
 export class PlanPageModule {}

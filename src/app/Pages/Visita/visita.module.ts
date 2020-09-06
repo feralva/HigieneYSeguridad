@@ -32,7 +32,7 @@ import localeDe from '@angular/common/locales/de';
 registerLocaleData(localeDe); */
 
 @NgModule({
-  entryComponents: [AltaVisitaModalComponent, CambiarAuditorModalComponent, CambiarFechaModalComponent, CambiarFechaDetalleModalComponent ],
+  entryComponents: [CambiarAuditorModalComponent, CambiarFechaModalComponent, CambiarFechaDetalleModalComponent ],
   imports: [
     CommonModule,
     FormsModule,
