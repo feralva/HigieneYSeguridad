@@ -25,7 +25,7 @@
       <div *ngFor="let p of MenuItems ">
 
         <ion-menu-toggle auto-hide="false" *ngIf="p.url">
-          <ion-item routerLinkActive="active" routerDirection="root" [routerLink]="p.url" lines="none" 
+          <ion-item routerLinkActive="active" routerDirection="root" [routerLink]="p.url" lines="none" [routerLinkActiveOptions]="{exact: true}"
           detail="false" *appHasRole="p.role">
             <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
             <ion-label>{{ p.name | translate }}</ion-label>
@@ -44,7 +44,7 @@
           <ion-menu-toggle>
             <div *ngFor="let sub of p.children">
               <ion-item class="sub-item"  [routerLink]="sub.url"
-                routerDirection="root" routerLinkActive="active" lines="none" *appHasRole="sub.role">
+                routerDirection="root" routerLinkActive="active"  lines="none" *appHasRole="sub.role">
                 <ion-icon slot="start" [name]="sub.icon"></ion-icon>
                 <ion-label>{{sub.name}}</ion-label>
               </ion-item>
