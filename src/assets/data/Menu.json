@@ -2,7 +2,7 @@
     {
         "icon": "bar-chart",
         "name": "Dash Board",
-        "url": "#",
+        "url": "/dashboard",
         "role": ["Coordinador"]
     },
     {
