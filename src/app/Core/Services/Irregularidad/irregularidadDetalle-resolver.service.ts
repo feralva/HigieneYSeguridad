@@ -12,7 +12,7 @@ export class IrregularidadDetalleResolver implements Resolve<any[]>{
   
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any[]>{
 
-    const idIrregularidad = +route.paramMap.get('idEstablecimiento');
+    const idIrregularidad = +route.paramMap.get('idIrregularidado');
     return this.irregularidadService.ObtenerIrregularidades(undefined, undefined, undefined, idIrregularidad);
   }
 

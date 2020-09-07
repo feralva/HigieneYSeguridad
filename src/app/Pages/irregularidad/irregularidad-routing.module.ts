@@ -9,6 +9,7 @@ import { IrregularidadesTiposResolver } from 'src/app/Core/Services/Irregularida
 import { IrregularidadDetalleResolver } from 'src/app/Core/Services/Irregularidad/irregularidadDetalle-resolver.service';
 import { CerrarIrregularidadComponent } from './cerrar-irregularidad/cerrar-irregularidad.component';
 import { IrregularidadesDeEstablecimientoDeClientePropioGuard } from 'src/app/Core/Guards/Irregularidades/irregularidades-de-establecimiento-de-cliente-propio.guard';
+import { IrregularidadDeEstablecimientoDeClientePropioGuard } from 'src/app/Core/Guards/Irregularidades/irregularidad-de-establecimiento-de-cliente-propio.guard';
 
 const routes: Routes = [
   {
@@ -40,13 +41,13 @@ const routes: Routes = [
     canActivate: [ IrregularidadesDeEstablecimientoDeClientePropioGuard ]
   },
   {
-    path: ':idEstablecimiento/cerrar',
+    path: ':idIrregularidado/cerrar',
     component: CerrarIrregularidadComponent,
     resolve: 
     {
       irregularidad: IrregularidadDetalleResolver
-    },
-    canActivate: [ IrregularidadesDeEstablecimientoDeClientePropioGuard ]  
+    }/* ,
+    canActivate: [ IrregularidadDeEstablecimientoDeClientePropioGuard ]   */
   }
 ];
 
