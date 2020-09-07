@@ -14,6 +14,10 @@ import { CambiarFechaModalComponent } from '../cambiar-fecha-modal/cambiar-fecha
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
+import { MedicionService } from 'src/app/Core/Services/Mediciones/medicion.service';
+import { ReportingService } from 'src/app/Core/Services/reporting-service.service';
+import { EstablecimientoService } from 'src/app/Core/Services/Establecimiento/establecimiento.service';
+import { forkJoin } from 'rxjs';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -33,7 +37,8 @@ export class VisitaDetalleComponent implements OnInit {
     private controlService: ControlService, private authService: AuthService,
     private visitaService: VisitaService, private ubicacionService: UbicacionService,
     private modalController: ModalController, public alertController: AlertController,
-    public toastController: ToastController) { }
+    public toastController: ToastController, private medicionService: MedicionService,
+    private reportingService: ReportingService, private establecimientoService: EstablecimientoService) { }
   
     ionViewWillEnter(){
       this.appDataService.changePageName('Visita.Detalle.title');
@@ -313,15 +318,32 @@ export class VisitaDetalleComponent implements OnInit {
 
   generarPDF(){
 
-    var docDefinition = {
-      content: [
-        'First paragraph',
-        'Another paragraph, this time a little bit longer to make sure, this line will be divided into at least two lines'
-      ]
-      
-    }
+    var tasks$ = [];
 
-    pdfMake.createPdf(docDefinition).download();
+    this.controles.forEach(control => {
+      
+      tasks$.push(this.medicionService.obtenerMedicionesControl(control.id))
+    });
+
+    forkJoin(...tasks$).subscribe(
+      results => { 
+        console.log(results)
+        
+        var index = 0;
+        results.forEach(mediciones => {
+          this.controles[index].mediciones = mediciones
+          index++         
+        });
+        this.visita.controles = this.controles;
+        console.log(this.visita)
+        this.establecimientoService.obtenerClienteDeEstablecimiento(this.visita.establecimiento.id).subscribe(
+          data => {
+            this.visita.cliente = data 
+            this.reportingService.generarReporteVisita(this.visita)
+          }
+        )
+      }
+    );
   }
 
 }

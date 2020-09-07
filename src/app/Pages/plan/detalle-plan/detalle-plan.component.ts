@@ -7,6 +7,10 @@ import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { PlanService } from 'src/app/Core/Services/Plan/plan.service';
 import { PlanDetalle } from 'src/app/Models/PlanDetalle';
 import { AlertController, ToastController } from '@ionic/angular';
+import { ControlService } from 'src/app/Core/Services/Control/control.service';
+import { MedicionService } from 'src/app/Core/Services/Mediciones/medicion.service';
+import { VisitaService } from 'src/app/Core/Services/Visita/visita.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-detalle-plan',
@@ -24,7 +28,8 @@ export class DetallePlanComponent implements OnInit {
   constructor(private translate: TranslateService, private route: ActivatedRoute,
     private appDataService: AppDataService, private alertController: AlertController,
     private planService: PlanService, private authService: AuthService,
-    private toastController: ToastController
+    private toastController: ToastController, private visitaService: VisitaService,
+    private controlService: ControlService, private medicionService: MedicionService
     ) { }
 
   ngOnInit() {
@@ -147,4 +152,5 @@ export class DetallePlanComponent implements OnInit {
     });
     toast.present();
   }
+
 }

@@ -6,4 +6,5 @@ export interface Visita {
     fechaPactada: Date;
     fecha: Date;
     estado: string;
+    controles: any[]
 }
