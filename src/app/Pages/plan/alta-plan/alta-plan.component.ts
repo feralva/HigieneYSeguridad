@@ -17,8 +17,6 @@ import { AltaVisitaPlanModalComponent } from '../alta-visita-plan-modal/alta-vis
 })
 export class AltaPlanComponent implements OnInit {
 
-  public nombrePagina: string;
-
   clientes: any[];
   tiposPlan: any[];
   clienteSeleccionado: any;
@@ -45,8 +43,7 @@ export class AltaPlanComponent implements OnInit {
     //Cuando se accede alta plan desde cliente
     this.cliente = this.route.snapshot.data['cliente'];
 
-    this.nombrePagina = 'Plan.Alta.title';
-    this.appDataService.changePageName(this.nombrePagina)
+    this.appDataService.changePageName('Plan.Alta.title')
 
     console.log(this.cliente)
     this.authService.getUserSubject().subscribe(
@@ -69,7 +66,7 @@ export class AltaPlanComponent implements OnInit {
     const { data } = await modal.onDidDismiss();
     console.log(data)
 
-    this.visitas.push(data); 
+    if(data) this.visitas.push(data); 
   }
 
   public borrarVisitaLista(index:number){
