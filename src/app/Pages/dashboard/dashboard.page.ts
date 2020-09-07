@@ -1,65 +1,67 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartDataSets } from 'chart.js';
-import { Color, Label } from 'ng2-charts';
 import { HttpClient } from '@angular/common/http';
+import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
+import { Label, Color, SingleDataSet, monkeyPatchChartJsTooltip, monkeyPatchChartJsLegend } from 'ng2-charts';
+import { EmpresaService } from 'src/app/Core/Services/Empresa/empresa.service';
+import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/Core/Services/auth/auth.service';
+import { first } from 'rxjs/operators';
+import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
-// Data
-chartData: ChartDataSets[] = [{ data: [], label: 'Stock price' }];
-chartLabels: Label[];
 
-// Options
-chartOptions = {
-  responsive: true,
-  title: {
-    display: true,
-    text: 'Historic Stock price'
-  },
-  pan: {
-    enabled: true,
-    mode: 'xy'
-  },
-  zoom: {
-    enabled: true,
-    mode: 'xy'
-  }
-};
-  chartColors: Color[] = [
-    {
-      borderColor: '#000000',
-      backgroundColor: '#ff00ff'
+  idEmpresa: number;
+  datosEstadoVisitaEmpresa: any;
+  public pieChartOptions: ChartOptions = {
+    responsive: true,
+    legend: {
+      position: 'left',
     }
-  ];
-  chartType = 'line';
-  showLegend = false;
+  };
+  public pieChartLabels: Label[] = ['Pendiente', 'Completa', 'Cancelada'];
+  public pieChartData: SingleDataSet = null;
+  public pieChartType: ChartType = 'pie';
+  public pieChartLegend = true;
+  public pieChartPlugins = [];
 
-  // For search
-  stock = '';
-  constructor(private http: HttpClient) { }
-
-  ngOnInit() {
+  constructor(private empresaService: EmpresaService, private route: ActivatedRoute, private authService: AuthService,
+    private appDataService: AppDataService) {
+/*     monkeyPatchChartJsTooltip();
+    monkeyPatchChartJsLegend(); */
   }
 
-  getData() {
-    this.http.get(`https://financialmodelingprep.com/api/v3/historical-price-full/${this.stock}?from=2018-03-12&to=2019-03-12`).subscribe(res => {
-      const history = res['historical'];
+  ionViionViewWillEnter() {
 
-      this.chartLabels = [];
-      this.chartData[0].data = [];
+    this.appDataService.changePageName('Dashboard.Title');
+  
+  }
 
-      for (let entry of history) {
-        this.chartLabels.push(entry.date);
-        this.chartData[0].data.push(entry['close']);
+  ngOnInit(): void {
+
+    this.authService.getUserSubject().pipe(first()).subscribe(
+      data => this.idEmpresa = data.empresaId,
+      error => console.log(error)
+    );
+
+    this.datosEstadoVisitaEmpresa = this.route.snapshot.data['totalizados'];
+    this.pieChartData =[ this.datosEstadoVisitaEmpresa.Pendiente, 
+      this.datosEstadoVisitaEmpresa.Completa, 
+      this.datosEstadoVisitaEmpresa.Cancelada? this.datosEstadoVisitaEmpresa.Cancelada : 0]
+    
+  }
+
+  doRefresh(event) {
+
+
+    this.empresaService.obtenerInformacionVisitasPorEstado(this.idEmpresa).subscribe(
+      data => {
+        this.datosEstadoVisitaEmpresa = data
+        event.target.complete();
       }
-    });
-  } 
-
-  typeChanged(e) {
-    const on = e.detail.checked;
-    this.chartType = on ? 'line' : 'bar';
+    )
   }
 }

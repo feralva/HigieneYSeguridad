@@ -52,4 +52,8 @@ export class EmpresaService {
     return this.http.get<any[]>(environment.UrlBaseApi + `Empresa/${idEmpresa}/Licencia`, this.httpOptions);
   }
 
+  obtenerInformacionVisitasPorEstado(idEmpresa: number): Observable<any> {
+    return this.http.get<any[]>(environment.UrlBaseApi + `Empresa/${idEmpresa}/VisitasPorEstado`, this.httpOptions);
+  }
+
 }

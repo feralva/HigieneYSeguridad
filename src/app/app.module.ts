@@ -43,7 +43,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { AngularFireStorage, AngularFireStorageModule } from '@angular/fire/storage';
 
 import { FileOpener } from '@ionic-native/file-opener/ngx';
-
+import 'chartjs-plugin-zoom';
 /* firebase.initializeApp(environment.firebaseConfig); */
 
 @NgModule({
