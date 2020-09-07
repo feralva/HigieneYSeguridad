@@ -41,13 +41,13 @@ const routes: Routes = [
     canActivate: [ IrregularidadesDeEstablecimientoDeClientePropioGuard ]
   },
   {
-    path: ':idIrregularidado/cerrar',
+    path: ':idIrregularidad/cerrar',
     component: CerrarIrregularidadComponent,
     resolve: 
     {
       irregularidad: IrregularidadDetalleResolver
-    }/* ,
-    canActivate: [ IrregularidadDeEstablecimientoDeClientePropioGuard ]   */
+    },
+    canActivate: [ IrregularidadDeEstablecimientoDeClientePropioGuard ]  
   }
 ];
 
