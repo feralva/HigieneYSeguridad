@@ -22,7 +22,6 @@ export class EmpleadoEdicionComponent implements OnInit {
 
   @ViewChild('fileInput', { static: false }) fileInput: ElementRef;
 
-  public nombrePagina: string;
   rolesDisponibles: Familia[];
   rolesSeleccionados: any[]=[];
   currentUser: UserLogueado = null;
@@ -80,9 +79,8 @@ export class EmpleadoEdicionComponent implements OnInit {
   }
 
   ionViewWillEnter(){
-    this.nombrePagina = 'Empleado.Editar.title';
-    this.appDataService.changePageName(this.nombrePagina);
-
+    
+    this.appDataService.changePageName('Empleado.Editar.title');
   }
   async ModificarEmpleadoConfirm() {
     const alert = await this.alertController.create({
