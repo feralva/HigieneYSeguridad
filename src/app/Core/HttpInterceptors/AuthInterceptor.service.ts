@@ -74,8 +74,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
                         this.genericAlertMessageService.mostrarMensajeGenerico(err.error)
                         return EMPTY;
-                        //throw err;
-                        
+                          
                     }else{
                         console.log('redirijo a login');
                         this.authService.logout()
