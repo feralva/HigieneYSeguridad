@@ -6,18 +6,37 @@ import { LoadingController, ToastController } from '@ionic/angular';
 import { AuthService } from '../Services/auth/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { GenericAlertMessageService } from '../Services/generic-alert-message.service';
+import { LoaderService } from '../Services/loader.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
+    isLoading = false;
 
     constructor(private toastCtrl: ToastController, private loadingCtrl: LoadingController,
-        private authService: AuthService, private genericAlertMessageService: GenericAlertMessageService){}
+        private authService: AuthService, private genericAlertMessageService: GenericAlertMessageService,
+        public loaderService: LoaderService){}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         
         if(!req.url.includes('Authenticate/refreshToken') 
             && !req.url.includes('user/ReestablecerPass')
             && !req.url.includes('forgotPassword')){
+
+            this.loadingCtrl.getTop().then(hasloading =>{
+                if(!hasloading){
+                    this.loadingCtrl.create({
+                        spinner: 'circular',
+                        translucent: true,
+                        duration: 1000
+                    }).then(loading => {
+                        this.isLoading = true;
+                        loading.present()
+                    })
+                }
+            })
+
+            /* this.loaderService.present() */
+
             const token = localStorage.getItem('auth_token');
             if (!token) {
                 return next.handle(req);
@@ -80,6 +99,14 @@ export class AuthInterceptor implements HttpInterceptor {
                         this.authService.logout()
                         return EMPTY;
                     }
+                }),
+                finalize(() => {
+                    this.loadingCtrl.getTop().then(hasloading => {
+                        if(hasloading){
+                            this.loadingCtrl.dismiss()
+                        }
+                    })
+                    /* this.loaderService.dismiss() */
                 }) 
             )
         }else return next.handle(req)

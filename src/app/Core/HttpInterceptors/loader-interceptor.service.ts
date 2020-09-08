@@ -17,9 +17,9 @@ export class LoaderInterceptorService {
 
   isLoading = false;
   loaderToShow: any;
-  constructor(
-    public loadingController: LoadingController
-    ) { }
+
+  constructor(private loadingController: LoadingController) { }
+  
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
       this.present();
       return next.handle(req).pipe(
@@ -47,7 +47,7 @@ export class LoaderInterceptorService {
       let topLoader = await this.loadingController.getTop();
       while (topLoader) {
         if (!(await topLoader.dismiss())) {
-          // throw new Error('Could not dismiss the topmost loader. Aborting...');
+          //throw new Error('Could not dismiss the topmost loader. Aborting...');
           break
         }
         topLoader = await this.loadingController.getTop();

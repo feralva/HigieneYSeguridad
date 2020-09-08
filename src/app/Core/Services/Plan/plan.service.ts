@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { PlanDetalle } from 'src/app/Models/PlanDetalle';
 import { environment } from '../../../../environments/environment';
+import { take, first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,9 @@ export class PlanService {
   }
 
   obtenerPlanesEmpresa(idEmpresa: number, idEstado: number = 1): Observable<any[]> {
-    return this.http.get<any[]>(environment.UrlBaseApi + `Empresa/${idEmpresa}/Planes?activo=true&estadoPlan=${idEstado}`, this.httpOptions);
+    return this.http.get<any[]>(environment.UrlBaseApi + `Empresa/${idEmpresa}/Planes?activo=true&estadoPlan=${idEstado}`, this.httpOptions).pipe(
+      take(1)
+    );
   }
 
   obtenerTiposPlan(): Observable<any> {
@@ -28,7 +31,9 @@ export class PlanService {
   }
 
   obtenerEstadosPosiblesPlan(): Observable<any> {
-    return this.http.get<any[]>(environment.UrlBaseApi + `Plan/Estados`, this.httpOptions);  
+    return this.http.get<any[]>(environment.UrlBaseApi + `Plan/Estados`, this.httpOptions).pipe(
+      take(1)
+    );  
   }
 
   alta(plan:any) : Observable<any> {

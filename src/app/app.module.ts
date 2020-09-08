@@ -78,13 +78,12 @@ import 'chartjs-plugin-zoom';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Camera,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+   /*  { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true }, */
     {provide: ErrorHandler, useClass: GlobalErrorHandlerService},
     Network,
     AngularFirestore,
     AngularFireStorage,
     FileOpener
-    /* ,
-    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true } */
   ],
   bootstrap: [AppComponent]
 })
