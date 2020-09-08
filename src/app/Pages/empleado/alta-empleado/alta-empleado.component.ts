@@ -152,6 +152,8 @@ export class AltaEmpleadoComponent implements OnInit {
   }
   
   validarModelo() {
+    if(this.rolesSeleccionados.length == 0) throw new Error('Debe Seleccionar Al Menos un Rol')
+    
     if(!this.imageBase64)
       throw new Error("Debe Seleccionar Imagen");
   }

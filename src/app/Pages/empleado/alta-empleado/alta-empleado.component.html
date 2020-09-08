@@ -29,7 +29,8 @@
         <ion-col size="12" size-lg="6">
           <ion-item>
             <ion-label position="stacked">Correo Electronico</ion-label>
-            <ion-input type="email" placeholder="Correo Electronico" name="responsable.correoElectronico" [(ngModel)]="empleadoModel.correoElectronico" required email></ion-input>
+            <ion-input type="email" placeholder="Correo Electronico" name="responsable.correoElectronico" [(ngModel)]="empleadoModel.correoElectronico" required
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="12" size-lg="6">
