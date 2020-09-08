@@ -10,6 +10,7 @@ import { LanguageService } from 'src/app/Core/Services/language-service.service'
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { LoaderService } from 'src/app/Core/Services/loader.service';
 import { map } from 'rxjs/internal/operators/map';
+import { filter } from 'rxjs/internal/operators/filter';
 
 @Component({
   selector: 'app-calendario',
@@ -24,10 +25,11 @@ export class CalendarioPage implements OnInit {
   fechaInicial = (new Date());
   fechaLimite = (new Date().setFullYear(this.fechaInicial.getFullYear() +1));
 
-  eventSource;
+  eventSource = [];
   viewTitle;
 
   eventosEmpleado: EventoCalendario[] = [] 
+  eventosEmpresa: EventoCalendario[] = [] 
 
   isToday:boolean;
   calendar = {
@@ -72,13 +74,18 @@ export class CalendarioPage implements OnInit {
   ngOnInit() {
 
     this.eventosEmpleado = this.route.snapshot.data['eventosEmpleado'];
-    this.eventSource = this.eventosEmpleado;
+    this.eventosEmpresa = this.route.snapshot.data['eventosEmpresa'];
+    this.eventSource = this.eventosEmpleado? this.eventosEmpleado: this.eventosEmpresa;
+
+    console.log(this.eventosEmpleado)
+    console.log(this.eventosEmpresa)
+    
      this.authService.getUserSubject().subscribe(
       data => {
         this.currentUser = data
       },
       error => console.log(error)
-    )//.add(() => this.loader.dismiss());*/
+    )
   } 
 
   onViewTitleChanged(title) {
@@ -141,6 +148,23 @@ export class CalendarioPage implements OnInit {
       (error) => console.log(error)
     )
   }
+
+
+  private obtenerVisitasEmpresa(){
+
+    this.visitaService.obtenerVisitasPendientesEmpresa(this.currentUser.empresaId).pipe(
+      filter(visita=> visita.empleadoAsignado != 'NA'),
+      map(visitas => visitas.map(visita =>({
+          title: visita.nombreCliente + ' - ' + visita.nombreEstablecimiento + ' - ' + visita.tipoVisita,
+          allday: false,
+          startTime: new Date(visita.fecha),
+          endTime: new Date(new Date(visita.fecha).getTime() + (visita.duracion)*60000),
+          empleado: visita.empleadoAsignado
+          })
+        ) 
+      )
+);
+  }
  
   onRangeChanged(ev) {
       console.log('range changed: startTime: ' + ev.startTime + ', endTime: ' + ev.endTime);
@@ -154,7 +178,9 @@ export class CalendarioPage implements OnInit {
     
   doRefresh(event) {
     
-    this.obtenerVisitasEmpleado();
+    if (this.eventosEmpleado != null) this.obtenerVisitasEmpleado();
+    if (this.eventosEmpresa != null) this.obtenerVisitasEmpresa();
+
     event.target.complete();
   }
 }

@@ -3,7 +3,7 @@ import { Observable, from } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import { NetworkService, ConnectionStatus } from '../network-service.service';
-import { map, tap } from 'rxjs/operators';
+import { map, tap, filter, flatMap } from 'rxjs/operators';
 import { OfflineManagerService } from '../offline-manager-service.service';
 import { Storage } from "@ionic/storage"
 import { UbicacionService } from '../Ubicacion/ubicacion.service';
@@ -42,6 +42,19 @@ export class VisitaService {
       return this.http.get(environment.UrlBaseApi + `Visita/Empleado/${idEmpleado}?activo=true&estado=1`, this.httpOptions).pipe(
         tap(res => {
           this.setLocalData('misVisitas', res);
+        })
+      )
+    }
+  }
+
+  obtenerVisitasPendientesEmpresa(idEmpresa: number): Observable<any> {
+
+    if (this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline) {
+      return from(this.getLocalData(`Empresa/${idEmpresa}/Visitas`));
+    } else {
+      return this.http.get(environment.UrlBaseApi + `Empresa/${idEmpresa}/Visitas?activo=true&estadoVisitaId=1`, this.httpOptions).pipe(
+        tap(res => {
+          this.setLocalData(`Empresa/${idEmpresa}/Visitas`, res);
         })
       )
     }

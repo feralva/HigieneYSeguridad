@@ -3,4 +3,5 @@ export interface EventoCalendario{
     allday: boolean;
     startTime: Date;
     endTime: Date;
+    empleado: string;
 }
