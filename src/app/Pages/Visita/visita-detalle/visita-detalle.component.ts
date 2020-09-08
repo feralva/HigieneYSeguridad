@@ -187,6 +187,8 @@ export class VisitaDetalleComponent implements OnInit {
       this.alertaFaltaInformacion();
 
     }else{
+      
+      if(this.controles.length == 0) throw Error('Debe cargar Controles antes de completar Visita')
 
       this.completarVisitaConfirm();
 
@@ -220,7 +222,7 @@ export class VisitaDetalleComponent implements OnInit {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Completar Visita',
-      message: 'Message ¿Esta seguro que desea completar Visita?',
+      message: '¿Esta seguro que desea completar Visita?',
       buttons: [
         {
           text: 'Cancelar',
@@ -233,7 +235,7 @@ export class VisitaDetalleComponent implements OnInit {
           text: 'Ok',
           handler: () => {
             this.visitaService.completarVisita(this.idVisita).subscribe(
-                result => this.MostrarMensajeOperacion('Alta Exitosa'),
+                result => this.MostrarMensajeOperacion('Visita Completada'),
                 (err: any) => this.MostrarMensajeOperacion('Falla')
             );
           }     

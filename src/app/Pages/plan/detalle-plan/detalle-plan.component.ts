@@ -52,8 +52,11 @@ export class DetallePlanComponent implements OnInit {
     var id = +this.route.snapshot.paramMap.get('id')
 
     this.planService.obtenerDetallePlan(id).subscribe(
-      data => this.plan = data,
-      (error) => console.log(error)
+      data => {
+        this.plan = data
+        event.target.complete(); 
+      },
+      (error) => event.target.complete()
     );
   }
 
