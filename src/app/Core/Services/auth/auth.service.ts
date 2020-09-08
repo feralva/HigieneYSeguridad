@@ -13,6 +13,10 @@ import { environment } from '../../../../environments/environment';
 })
 export class AuthService {
 
+  private _currentUser: BehaviorSubject<UserLogueado> = new BehaviorSubject(null);
+
+  currentUser = this._currentUser.asObservable();
+
   constructor(private hashingService: HashingService, private router: Router, private http: HttpClient) { }
 
   encriptarContrasenia(contrasenia: string): string {
@@ -26,8 +30,6 @@ export class AuthService {
     localStorage.setItem('auth_token', authResult.token);
     localStorage.setItem('auth_Refresh_token', authResult.refreshToken);
 }  
-
-  currentUser: BehaviorSubject<UserLogueado> = new BehaviorSubject(null);
 
   login(usuarioFromForm) {
 
@@ -44,11 +46,11 @@ export class AuthService {
           this.setSession(data)
           this.obtenerDetalleUsuario(usuarioFromForm.email).subscribe(
             data=>{
-              //console.log(data)
               usuario = data;
-              //console.log(usuario)
-              this.currentUser.next(usuario);
-              //this.currentUser.asObservable();
+              /* this._currentUser.isStopped = false;
+              this._currentUser.closed = false; */
+              this._currentUser.next(usuario);
+
             }, 
             (error) => {
               throw error
@@ -58,17 +60,15 @@ export class AuthService {
         (error) => {
           throw error
         }
-    )
-
-    return this.currentUser.asObservable();
+      )
   }
 
   getUserSubject() {
-    return this.currentUser.asObservable();
+    return this._currentUser.asObservable();
   }
 
   isLoggedIn() {
-    return !!this.currentUser.value;
+    return !!this._currentUser.value;
   }
 
   obtenerDetalleUsuario(usuario: string): Observable<any>{
@@ -82,8 +82,8 @@ export class AuthService {
       localStorage.removeItem('auth_token')
       localStorage.removeItem('auth_Refresh_token')
       
-      this.currentUser.next(null);
-      this.currentUser.complete();
+      this._currentUser.next(null);
+      //this._currentUser.complete();
 
       this.router.navigate(['/login'])
 
@@ -91,7 +91,7 @@ export class AuthService {
 
   hasRoles(roles: string[]): boolean {
     for (const oneRole of roles) {
-      if (!this.currentUser.value || !this.currentUser.value.roles.includes(oneRole)) {
+      if (!this._currentUser.value || !this._currentUser.value.roles.includes(oneRole)) {
         return false;
       }
     }
