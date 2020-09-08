@@ -5,12 +5,13 @@ import { catchError, retryWhen, finalize, delay, tap, map, switchMap } from 'rxj
 import { LoadingController, ToastController } from '@ionic/angular';
 import { AuthService } from '../Services/auth/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { GenericAlertMessageService } from '../Services/generic-alert-message.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
     constructor(private toastCtrl: ToastController, private loadingCtrl: LoadingController,
-        private authService: AuthService){}
+        private authService: AuthService, private genericAlertMessageService: GenericAlertMessageService){}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         
@@ -40,11 +41,17 @@ export class AuthInterceptor implements HttpInterceptor {
                 }),
                 retryWhen(err => {
                     console.log(err)
-                    let retries = 1
+                    let retries = 1;
                     return err.pipe(
                         delay(1000),
-                        tap(() => {
-                            this.showRetryToast(retries)
+                        tap(error => {
+                            if(error instanceof HttpErrorResponse){
+                                if(error.status != 409){
+                                    this.showRetryToast(retries)
+                                }
+                            }else{
+                                this.showRetryToast(retries)
+                            }
                         }),
                         map(error => {
                             console.log(error)
@@ -63,14 +70,17 @@ export class AuthInterceptor implements HttpInterceptor {
                 }) ,
                 catchError(err => {
                     //console.log('error: ', err);
-                    if(err instanceof HttpErrorResponse){
-                        if(err.status === 409){
-                            throw err;
-                        }
+                    if(err instanceof HttpErrorResponse && err.status === 409){
+
+                        this.genericAlertMessageService.mostrarMensajeGenerico(err.error)
+                        return EMPTY;
+                        //throw err;
+                        
+                    }else{
+                        console.log('redirijo a login');
+                        this.authService.logout()
+                        return EMPTY;
                     }
-                    console.log('redirijo a login');
-                    this.authService.logout()
-                    return EMPTY;
                 }) 
             )
         }else return next.handle(req)
