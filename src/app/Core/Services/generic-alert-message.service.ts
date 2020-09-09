@@ -12,9 +12,9 @@ export class GenericAlertMessageService {
   public async mostrarMensajeGenerico(mensaje: string){
 
     const alert = await this.alertCtrl.create({
-      cssClass: 'my-custom-class',
-      header:  'Header'/* this.translate.instant('Mensaje') */,
-      subHeader: 'Subtitle',
+      cssClass: '',
+      header:  'Error'/* this.translate.instant('Mensaje') */,
+      subHeader: 'Se Produjo un error',
       message: this.translate.instant(mensaje),
       buttons: ['OK']
     });

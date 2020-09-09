@@ -39,6 +39,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
             const token = localStorage.getItem('auth_token');
             if (!token) {
+                if(req.url.includes('Authenticate/Login')) this.showMessageToast('Problema de Conexion con servidor')
                 return next.handle(req);
             }
             const reqWithHeaders = req.clone({
@@ -116,6 +117,13 @@ export class AuthInterceptor implements HttpInterceptor {
   async showRetryToast(retryCount){
       const toast = await this.toastCtrl.create({
           message:`Retry: ${retryCount}/3`,
+          duration: 1000
+      });
+      toast.present();
+  }
+  async showMessageToast(mensaje){
+      const toast = await this.toastCtrl.create({
+          message:mensaje,
           duration: 1000
       });
       toast.present();
