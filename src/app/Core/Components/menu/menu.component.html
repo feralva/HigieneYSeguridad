@@ -6,7 +6,7 @@
         <ion-col offset="3" >
           <ion-item lines="none" style="text-align: center;">  
             <ion-avatar slot="start" class="ion-align-items-center" style="width: 8em;height: 8em; ">  
-              <img [src]="currentUser.urlFotoEmpresa">
+              <img *ngIf="currentUser" [src]="currentUser.urlFotoEmpresa">
             </ion-avatar>  
           </ion-item> 
         </ion-col>
@@ -54,19 +54,11 @@
         </ion-list>
 
       </div>
-<!--       <ion-menu-toggle auto-hide="false" *ngFor="let p of MenuItems | async ; let i = index">
-        <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="p.url" lines="none" 
-        detail="false" [class.selected]="selectedIndex == i" *appHasRole="p.role">
-          <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-          <ion-label>{{ p.name | translate }}</ion-label>
-        </ion-item>
 
-      </ion-menu-toggle> -->
-
-      <ion-item lines="none"  routerDirection="root" (click)="logOut()" button>
+<!--       <ion-item lines="none"  routerDirection="root" (click)="logOut()" button>
         <ion-icon slot="start" ios="log-out-outline" md="log-out-sharp"></ion-icon>
         <ion-label>{{ 'Log Out'| translate }}</ion-label>
-      </ion-item>
+      </ion-item> -->
     </ion-list>
 
 

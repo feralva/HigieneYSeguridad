@@ -47,8 +47,10 @@ export class AuthService {
           this.obtenerDetalleUsuario(usuarioFromForm.email).subscribe(
             data=>{
               usuario = data;
+              //this._currentUser = new BehaviorSubject(usuario)
               /* this._currentUser.isStopped = false;
               this._currentUser.closed = false; */
+              //this._currentUser.lift()
               this._currentUser.next(usuario);
 
             }, 
@@ -82,11 +84,10 @@ export class AuthService {
       localStorage.removeItem('auth_token')
       localStorage.removeItem('auth_Refresh_token')
       
-      this._currentUser.next(null);
-      //this._currentUser.complete();
-
       this.router.navigate(['/login'])
 
+      this._currentUser.next(null);
+      //this._currentUser.complete();
   }
 
   hasRoles(roles: string[]): boolean {
@@ -99,7 +100,6 @@ export class AuthService {
   }
 
   refrescarToken(token: string, refreshToken: string): Observable<any> {
-    // Try refreshing tokens using refresh token
 
     const credentials = JSON.stringify({ accessToken: token, refreshToken: refreshToken });
   

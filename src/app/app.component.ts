@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
 
   public selectedIndex = 0;
   pageName: string;
-  currentUser: any;
+  currentUser
   
   constructor(
     private platform: Platform, private loaderService: LoaderService,
@@ -45,6 +45,8 @@ export class AppComponent implements OnInit {
     this.auth.getUserSubject().subscribe(
       (res)=>{
         console.log(res)
+
+        if(res == null) this.router.navigateByUrl('/login')
         this.currentUser = res;
       },
       (error) => console.log(error)
@@ -52,29 +54,19 @@ export class AppComponent implements OnInit {
     
   }
 
+  isLoggedIn(){
+    return this.auth.isLoggedIn()
+  }
+
+  logOut(){
+    this.auth.logout()
+  }
+
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      /* this.router.events.subscribe((event: Event) => {
-        switch(true){
-          case event instanceof NavigationStart: {
-            this.loaderService.present();
-          
-            break;
-          }
-  
-          case event instanceof NavigationEnd:
-          case event instanceof NavigationCancel:
-          case event instanceof NavigationError: {
-            this.loaderService.dismiss();
-            break;
-          }
-          default: {
-            break;
-          }
-        }
-      }) */
+     
       this.networkService.onNetworkChange().subscribe((status: ConnectionStatus) => {
         if (status == ConnectionStatus.Online) {
           this.offlineManager.checkForEvents().subscribe();
@@ -82,17 +74,6 @@ export class AppComponent implements OnInit {
       });
       this.languageService.setInitialAppLanguage();
 
-/*       this.auth.currentUser.subscribe(
-        data=> {
-          if(data){
-            this.router.navigate(['home'])
-          } else{
-            this.router.navigate(['login'])
-          }
-        }
-      ) */
-
-      //this.auth.login('user');
     });
   }
 

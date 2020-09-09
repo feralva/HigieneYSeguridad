@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { LoaderService } from 'src/app/Core/Services/loader.service';
@@ -17,17 +17,20 @@ export class LoginPage implements OnInit {
   }
 
   login(form){
+
+    this.authService.login(form.value);
     
     this.authService.currentUser.subscribe(
       (data)=>{
         console.log(data);
         if(data) {this.router.navigateByUrl('home')}
-          else this.router.navigate(['/login'])
+          else {
+            
+            this.router.navigateByUrl('/login')
+          }
       },
       (error) => {throw Error(error)}
     );
-
-    this.authService.login(form.value);
     
   }
 }

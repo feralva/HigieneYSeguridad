@@ -1,6 +1,6 @@
 <ion-app>
 
-    <app-menu *ngIf="currentUser"></app-menu>
+  <app-menu *ngIf="currentUser"></app-menu>
     <ion-header [translucent]="false" *ngIf="currentUser">
         <ion-toolbar color="medium">
           <ion-buttons slot="start">
@@ -9,17 +9,21 @@
           <ion-title>{{ pageName | translate }}</ion-title>
 
           <ion-buttons slot="end">
+
             <ion-button (click)="openLanguagePopover($event)">
               <ion-icon name="earth" slot="end">
               </ion-icon>
             </ion-button>
+            <ion-button (click)="logOut()">
+              <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+            </ion-button> 
           </ion-buttons>   
 
         </ion-toolbar>
 
-      </ion-header>
+    </ion-header> 
       <ion-content>
-          <ion-router-outlet id="main-content"></ion-router-outlet>            
+          <ion-router-outlet id="main-content"></ion-router-outlet>      
       </ion-content>
 
 </ion-app>
