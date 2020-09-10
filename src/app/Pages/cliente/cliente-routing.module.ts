@@ -49,8 +49,8 @@ const routes: Routes = [
     resolve: {
       planes: ClientePlanesResolver,
       estadosPlanesPosibles: PlanEstadosPosiblesResolver,
-      canActivate: [ ClientePropioGuard ] 
-    }
+    },
+    canActivate: [ ClientePropioGuard ]
   },
   {
     path: ':id/planes/alta',
