@@ -19,6 +19,8 @@ import { filter } from 'rxjs/internal/operators/filter';
 })
 export class CalendarioPage implements OnInit {
 
+  rerender;
+  /* localizacion; */
   fechaNuevaSeleccionada: Date = new Date();
   horarioNuevoSeleccionado;
 
@@ -67,7 +69,7 @@ export class CalendarioPage implements OnInit {
   currentUser: UserLogueado;
 
   constructor(private translate: TranslateService, private route: ActivatedRoute, private visitaService: VisitaService,
-    private appDataService: AppDataService,private router: Router, public navCtrl: NavController,private languageService: LanguageService,
+    private appDataService: AppDataService,private router: Router, public navCtrl: NavController, public languageService: LanguageService,
     private authService: AuthService, private modalController: ModalController, private loader: LoaderService,
     private alertCtrl: AlertController) {}
 

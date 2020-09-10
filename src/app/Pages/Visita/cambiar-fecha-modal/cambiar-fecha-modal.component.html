@@ -63,7 +63,7 @@
               (onTitleChanged)="onViewTitleChanged($event)"
               (onTimeSelected)="onTimeSelected($event)"
               step="30"
-              [locale]="calendar.locale"
+              [locale]="languageService.selected"
               [monthviewEventDetailTemplate]="template">
     </calendar>
 </ion-content>

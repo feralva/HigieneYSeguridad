@@ -11,9 +11,13 @@ import { LanguageService } from 'src/app/Core/Services/language-service.service'
 import { map, tap } from 'rxjs/operators';
 import { EventoCalendario } from 'src/app/Models/EventoCalendario';
 import { Visita } from 'src/app/Models/Visita';
-import { formatDate } from '@angular/common';
+import { formatDate, registerLocaleData } from '@angular/common';
 import { CambiarFechaDetalleModalComponent } from '../cambiar-fecha-detalle-modal/cambiar-fecha-detalle-modal.component';
+import localeEs from '@angular/common/locales/es';
+import localeDe from '@angular/common/locales/de';
 
+registerLocaleData(localeDe);
+registerLocaleData(localeEs); 
 @Component({
   selector: 'app-cambiar-fecha-modal',
   templateUrl: './cambiar-fecha-modal.component.html',
@@ -69,7 +73,7 @@ export class CambiarFechaModalComponent implements OnInit {
   currentUser: UserLogueado;
 
   constructor(private translate: TranslateService, private route: ActivatedRoute, private visitaService: VisitaService,
-    private appDataService: AppDataService,private router: Router, public navCtrl: NavController,private languageService: LanguageService,
+    private appDataService: AppDataService,private router: Router, public navCtrl: NavController, public languageService: LanguageService,
     private authService: AuthService, private modalController: ModalController, private loader: LoaderService,
     private alertCtrl: AlertController) {}
 

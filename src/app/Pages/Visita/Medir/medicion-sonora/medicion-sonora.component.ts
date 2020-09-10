@@ -97,6 +97,8 @@ export class MedicionSonoraComponent implements OnInit {
 
   onSubmit(form: NgForm) {
 
+    if(!this.seleccionUbicacionComponent.ubicacionSeleccionada) throw new Error('Favor de Seleccionar Ubicación')
+
     this.AltaControlMedicionesConfirm()
 
   }

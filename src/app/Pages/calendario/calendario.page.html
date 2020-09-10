@@ -10,10 +10,11 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <br>
+
   <ion-segment>
     <ion-title>{{ viewTitle }}</ion-title>
   </ion-segment>
-  <ion-segment [(ngModel)]="calendar.mode">
+  <ion-segment [(ngModel)]="languageService.selected">
     <ion-segment-button value="month">
       <ion-label>Month</ion-label>
     </ion-segment-button>
@@ -25,14 +26,15 @@
     </ion-segment-button>
   </ion-segment>
 
-    <calendar [eventSource]="eventSource"
-              [calendarMode]="calendar.mode"
-              [currentDate]="calendar.currentDate"
-              (onCurrentDateChanged)="onCurrentDateChanged($event)"
-              (onEventSelected)="onEventSelected($event)"
-              (onTitleChanged)="onViewTitleChanged($event)"
-              (onTimeSelected)="onTimeSelected($event)"
-              step="30"
-              [locale]="calendar.locale">
-    </calendar>
+  <calendar [eventSource]="eventSource"
+            [calendarMode]="calendar.mode"
+            [currentDate]="calendar.currentDate"
+            (onCurrentDateChanged)="onCurrentDateChanged($event)"
+            (onEventSelected)="onEventSelected($event)"
+            (onTitleChanged)="onViewTitleChanged($event)"
+            (onTimeSelected)="onTimeSelected($event)"
+            step="30"
+            [locale]="languageService.selected">
+  </calendar>
+  
 </ion-content>

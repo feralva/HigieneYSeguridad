@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import {Storage} from '@ionic/storage';
+import { BehaviorSubject } from 'rxjs';
 
 const LNG_KEY = 'SELECTED_LANGUAGE';
 
@@ -9,13 +10,14 @@ const LNG_KEY = 'SELECTED_LANGUAGE';
 })
 export class LanguageService {
   selected = '';
+  //selected$ = new BehaviorSubject(this.translate.getBrowserLang());
 
   constructor(private translate: TranslateService, private storage: Storage) { }
 
   setInitialAppLanguage() {
     const language = this.translate.getBrowserLang();
     this.translate.setDefaultLang(language);
-
+    //this.selected$.next(language)
     this.storage.get(LNG_KEY).then(val => {
       if (val) {
         this.setLanguage(val);
@@ -35,6 +37,7 @@ export class LanguageService {
   setLanguage(lng) {
     this.translate.use(lng);
     this.selected = lng;
+    //this.selected$.next(lng);
     this.storage.set(LNG_KEY, lng);
   }
 }
