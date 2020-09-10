@@ -25,5 +25,19 @@
         ]
       }
     }
+  ],
+  "dataGroups": [
+    {
+      "name": "api-cacheo",
+      "urls": [
+        "https://apialvarezuai.azurewebsites.net/api/**"
+      ],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "timeout": "5s",
+        "maxSize": 100,
+        "maxAge": "3d"
+      }
+    }
   ]
 }
