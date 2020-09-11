@@ -38,6 +38,20 @@
         "maxSize": 100,
         "maxAge": "3d"
       }
+    },
+    {
+      "name": "firebase-cacheo",
+      "urls": [
+        "https://firebasestorage.googleapis.com/v0/b/higiene-y-seguridad-feaf5.appspot.com/**",
+        "https://firebasestorage.googleapis.com/**"
+      ],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "timeout": "5s",
+        "maxSize": 100,
+        "maxAge": "3d"
+      }
     }
+
   ]
 }
