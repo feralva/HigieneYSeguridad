@@ -45,6 +45,7 @@ import { AngularFireStorage, AngularFireStorageModule } from '@angular/fire/stor
 
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import 'chartjs-plugin-zoom';
+import { FormsModule } from '@angular/forms';
 /* firebase.initializeApp(environment.firebaseConfig); */
 
 @NgModule({
@@ -58,6 +59,7 @@ import 'chartjs-plugin-zoom';
     HttpClientModule,
     SharedDirectivesModule,
     PipesModule,
+    FormsModule,
     IonicStorageModule.forRoot(),
     TranslateModule.forRoot({
       loader: {

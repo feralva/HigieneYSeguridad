@@ -9,7 +9,12 @@
           <ion-title>{{ pageName | translate }}</ion-title>
 
           <ion-buttons slot="end">
-
+            <ion-icon slot="end" *ngIf="darkMode" name="sunny-outline"></ion-icon>           
+            <ion-icon slot="end" *ngIf="!darkMode" name="moon-outline"></ion-icon>           
+            <ion-toggle slot="end"
+                  [ngModel]="darkMode"
+                  (ionChange)="cambioToDarkSide()" color="primary">
+            </ion-toggle>
             <ion-button (click)="openLanguagePopover($event)">
               <ion-icon name="earth" slot="end">
               </ion-icon>

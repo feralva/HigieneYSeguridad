@@ -22,7 +22,8 @@ export class AppComponent implements OnInit {
 
   public selectedIndex = 0;
   pageName: string;
-  currentUser
+  currentUser;
+  darkMode: boolean = false;
   
   constructor(
     private platform: Platform, private loaderService: LoaderService,
@@ -83,4 +84,12 @@ export class AppComponent implements OnInit {
     });
     await popOver.present();
   }
+
+  cambioToDarkSide() {
+    // const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    this.darkMode = !this.darkMode;
+    document.body.classList.toggle( 'dark' );
+    
+  }
+
 }

@@ -1,5 +1,11 @@
 [
     {
+        "icon": "home",
+        "name": "Inicio",
+        "url": "/home",
+        "role": []
+    },
+    {
         "icon": "bar-chart",
         "name": "Dash Board",
         "url": "/dashboard",
