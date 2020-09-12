@@ -83,14 +83,12 @@ export class SeleccionarUbicacionControlComponent implements OnInit {
 
     var ubicacion = JSON.parse(dataDeQR)
 
-    return ubicacion
-    
-    //TODO agregar validacion de data proviniente de qr y mostrar mensaje de error en caso de no ser una ubicacion
-
+    if(!ubicacion.id) throw new Error('Ubicacion no Valida')
+    else return ubicacion
   }
 
   async startScan() {
-    // Not working on iOS standalone mode!
+    
     const stream = await navigator.mediaDevices.getUserMedia({
       video: { facingMode: 'environment' }
     });
@@ -103,7 +101,7 @@ export class SeleccionarUbicacionControlComponent implements OnInit {
     await this.loading.present();
    
     this.videoElement.play();
-    requestAnimationFrame(this.scan.bind(this));
+    requestAnimationFrame(this.scan.bind(this)); 
   }
    
   async scan() {
@@ -139,6 +137,7 @@ export class SeleccionarUbicacionControlComponent implements OnInit {
 
         this.ubicacionSeleccionada = this.obtenerUbicacionPorQr(code.data)
         this.scanResult = code.data;
+        
       } else {
         if (this.scanActive) {
           requestAnimationFrame(this.scan.bind(this));

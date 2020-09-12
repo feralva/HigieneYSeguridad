@@ -26,7 +26,6 @@ import { MedicionSonoraComponent } from './Medir/medicion-sonora/medicion-sonora
 import { IonicSelectableModule } from 'ionic-selectable';
 import { SeleccionarUbicacionControlComponent } from './seleccionar-ubicacion-control/seleccionar-ubicacion-control.component';
 import { PipesModule } from 'src/app/Core/pipes/pipes.module';
-
 /* import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 registerLocaleData(localeDe); */

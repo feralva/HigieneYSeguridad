@@ -19,12 +19,13 @@
     </ion-button>
   </ion-item>
 
-  <!-- Shows our camera stream -->
-  <video #video [hidden]="!scanActive" width="100%"></video>
- 
-  <!-- Used to render the camera stream images -->
-  <canvas #canvas hidden></canvas>
- 
+  <ion-col size="6" offset="3">
+
+    <video #video [hidden]="!scanActive" width="50%"></video>
+  
+    <canvas #canvas hidden></canvas>
+  </ion-col>
+
   <!-- Stop our scanner preview if active -->
   <ion-button expand="full" (click)="stopScan()" color="danger" *ngIf="scanActive">
     <ion-icon slot="start" name="close"></ion-icon>
