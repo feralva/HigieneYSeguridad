@@ -11,7 +11,7 @@
   </ion-refresher> 
 
   <ion-searchbar placeholder="Empleado" (ionChange)="onBuscarEmpleadoChange($event)"
-   showCancelButton="always" animated></ion-searchbar>
+    animated></ion-searchbar>
 
   <ion-list *ngIf="empleados.length > 0"> 
     <ion-item-sliding *ngFor="let empleado of empleados | filtro: textoBuscar: 'apellido'">

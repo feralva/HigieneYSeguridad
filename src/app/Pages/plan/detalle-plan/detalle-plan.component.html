@@ -11,38 +11,43 @@
   </ion-refresher>
 
   <ion-searchbar placeholder="Establecimiento" (ionChange)="onBuscarPlanChange($event)"
-   showCancelButton="always" animated></ion-searchbar>
+    inputmode="text" animated></ion-searchbar>
 
   <ion-item-divider color="secondary">
     <ion-label>Visitas</ion-label>
   </ion-item-divider>
 
-  <ion-card *ngFor="let visita of plan?.visitas  | filtro: textoBuscar: 'nombreEstablecimiento'" [routerLink]="['/visita',visita.id, 'detalle']">
-    <ion-card-header style="font-size: large;">
-      <b>{{plan.cliente +  ' - ' + visita.nombreEstablecimiento}}</b>
-    </ion-card-header>
-    <ion-card-content style="font-size: x-small;">
-      <ion-grid>
-        <ion-row>
-          <ion-col col-12><b>Estado:</b> {{visita.estado}}</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col col-12><b>Tipo:</b> {{visita.tipoVisita}}</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col *ngIf="visita.empleadoAsignado"><b>Asignado A:</b> {{visita.empleadoAsignado}}</ion-col>
-          <ion-col *ngIf="!visita.empleadoAsignado"><b>Asignado A:</b> NA</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col><b>Fecha Pactada: </b> {{visita.fechaPactada | date: 'shortDate'}}</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col *ngIf="visita.fecha"><b>Fecha Concreta: </b> {{visita.fecha | date: 'shortDate'}}</ion-col>
-          <ion-col *ngIf="!visita.fecha"><b>Fecha Concreta: </b> NA</ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-card-content>
-  </ion-card>
+  <ion-row>
+    
+    <ion-col size="12" size-lg="6" size-md="6" *ngFor="let visita of plan?.visitas  | filtro: textoBuscar: 'nombreEstablecimiento'">
+      <ion-card class="tarjeta" [routerLink]="['/visita',visita.id, 'detalle']">
+        <ion-card-header style="font-size: large;">
+          <b>{{plan.cliente +  ' - ' + visita.nombreEstablecimiento}}</b>
+        </ion-card-header>
+        <ion-card-content style="font-size: x-small;">
+          <ion-grid>
+            <ion-row>
+              <ion-col col-12><b>Estado:</b> {{visita.estado}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-12><b>Tipo:</b> {{visita.tipoVisita}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col *ngIf="visita.empleadoAsignado"><b>Asignado A:</b> {{visita.empleadoAsignado}}</ion-col>
+              <ion-col *ngIf="!visita.empleadoAsignado"><b>Asignado A:</b> NA</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col><b>Fecha Pactada: </b> {{visita.fechaPactada | date: 'shortDate'}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col *ngIf="visita.fecha"><b>Fecha Concreta: </b> {{visita.fecha | date: 'shortDate'}}</ion-col>
+              <ion-col *ngIf="!visita.fecha"><b>Fecha Concreta: </b> NA</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
   
   <ion-fab vertical="bottom" horizontal="end" slot="fixed"><!-- *ngIf="visita.empleadoId != null && visita.empleadoId == currentUser.empleadoId" -->
     <ion-fab-button>
@@ -59,5 +64,5 @@
         <ion-icon name="checkmark-circle-outline"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>
-</ion-fab>
+  </ion-fab>
 </ion-content>
