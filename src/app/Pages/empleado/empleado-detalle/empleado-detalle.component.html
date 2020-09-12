@@ -28,16 +28,11 @@
       <ion-label position="stacked">Roles</ion-label>
       <ion-input [(ngModel)]="empleadoModel.roles" [readonly]="true"></ion-input>
     </ion-item>
-    <ion-grid >
-      <ion-row>
-      <ion-col size="4" offset="2" >
-          <ion-avatar class="item-avatar" style="border: black;border-style: solid;" >
-            <ion-img [src]="imageBase64" *ngIf="imageBase64 != null"></ion-img>
-            <ion-img [src]="empleadoModel.urlFoto" *ngIf="imageBase64 == null"></ion-img>
-          </ion-avatar>            
-      </ion-col>
-      </ion-row>
-    </ion-grid>
-
+    <div style="text-align:center; padding-top: 2em;">
+        <ion-avatar class="item-avatar" style="border: black;border-style: solid;margin:auto" >
+          <ion-img [src]="imageBase64" *ngIf="imageBase64 != null"></ion-img>
+          <ion-img [src]="empleadoModel.urlFoto" *ngIf="imageBase64 == null"></ion-img>
+        </ion-avatar>            
+    </div>
 </ion-content>
 
