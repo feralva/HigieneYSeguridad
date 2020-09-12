@@ -27,10 +27,15 @@
     <ng-template #template let-showEventDetail="showEventDetail" let-selectedDate="selectedDate" let-noEventsLabel="noEventsLabel">
       <ion-list >
         <div *ngIf="selectedDate.events.length > 0">
-          <ion-item *ngFor="let event of selectedDate.events">
-            {{("0" + event.startTime.getHours()).slice(-2).toString() + ':' + ("0" +event.startTime.getMinutes()).slice(-2) + ' - ' +
-            ("0" + event.endTime.getHours()).slice(-2).toString() + ':' + ("0" +event.endTime.getMinutes()).slice(-2) + ' | ' + event.title}}
-           </ion-item>
+          <ion-item lines *ngFor="let event of selectedDate.events">
+              <ion-col size="4" >
+                {{("0" + event.startTime.getHours()).slice(-2).toString() + ':' + ("0" +event.startTime.getMinutes()).slice(-2) + ' - ' +
+              ("0" + event.endTime.getHours()).slice(-2).toString() + ':' + ("0" +event.endTime.getMinutes()).slice(-2)}}
+              </ion-col>
+              <ion-col size="8">
+                <ion-label style="padding-left: 0.5em;border-left: solid;" class="ion-text-wrap">{{event.title}}</ion-label>         
+              </ion-col>
+          </ion-item>
            <ion-item lines="none">
             <ion-buttons slot="end">
               <ion-button (click)="abrirModalDeterminarHorario()">

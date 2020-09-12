@@ -26,6 +26,22 @@
     </ion-segment-button>
   </ion-segment>
 
+  <ng-template #template let-showEventDetail="showEventDetail" let-selectedDate="selectedDate" let-noEventsLabel="noEventsLabel">
+    <ion-list >
+      <div *ngIf="selectedDate.events.length > 0">
+        <ion-item lines *ngFor="let event of selectedDate.events">
+          <ion-col size="4" >
+            {{("0" + event.startTime.getHours()).slice(-2).toString() + ':' + ("0" +event.startTime.getMinutes()).slice(-2) + ' - ' +
+          ("0" + event.endTime.getHours()).slice(-2).toString() + ':' + ("0" +event.endTime.getMinutes()).slice(-2)}}
+          </ion-col>
+          <ion-col size="8">
+            <ion-label style="padding-left: 0.5em;border-left: solid;" class="ion-text-wrap">{{event.title}}</ion-label>         
+          </ion-col>
+      </ion-item>
+      </div>   
+    </ion-list>
+  </ng-template>
+
   <calendar [eventSource]="eventSource"
             [calendarMode]="calendar.mode"
             [currentDate]="calendar.currentDate"
@@ -34,7 +50,8 @@
             (onTitleChanged)="onViewTitleChanged($event)"
             (onTimeSelected)="onTimeSelected($event)"
             step="30"
-            [locale]="languageService.selected">
+            [locale]="languageService.selected"
+            [monthviewEventDetailTemplate]="template">
   </calendar>
   
 </ion-content>
