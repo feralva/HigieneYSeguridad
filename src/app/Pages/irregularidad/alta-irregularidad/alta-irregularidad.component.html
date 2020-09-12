@@ -6,10 +6,13 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <ion-item-divider color="primary">
+    <ion-label><b>Nueva Irregularidad</b></ion-label>
+  </ion-item-divider>
   <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
     <ion-item>
       <ionic-selectable
-        item-content
+        item-content name="seleccioncliente"
         [(ngModel)]="clienteSeleccionado"
         itemValueField="id"
         itemTextField="nombre"
@@ -24,7 +27,7 @@
     </ion-item>
 
     <ion-item *ngIf="clienteSeleccionado">
-      <ionic-selectable
+      <ionic-selectable name="seleccionEstablecimiento"
         item-content
         [(ngModel)]="establecimientoSeleccionado"
         itemValueField="id"
@@ -50,7 +53,7 @@
 
     <ion-item>
       <ion-label position="floating">Descripcion</ion-label>
-      <ion-textarea placeholder="Descripcion Irregularidad" [(ngModel)]="model.descripcion" required></ion-textarea>
+      <ion-textarea name="descipcion" placeholder="Descripcion Irregularidad" [(ngModel)]="model.descripcion" required></ion-textarea>
     </ion-item>
 
     <ion-item>
@@ -61,26 +64,25 @@
 
     <ion-grid>
       <ion-row>
-        <ion-col size="4" offset-sm="2" offset-xs="4" offset-md="3" offset-lg="5">
+        <ion-col size-lg="8" size-md="8" size-sm="10" size-xs="10" offset-sm="1" offset-xs="1" offset-md="2" offset-lg="2">
           <ion-img [src]="imageBase64" *ngIf="imageBase64 != null"></ion-img>
         </ion-col>
       </ion-row>
     </ion-grid>
-
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <input
-        type="file"
-        #fileInput
-        (change)="uploadFile($event)"
-        hidden="true"
-        accept="image/*"/>
-    </ion-fab>
-
 
     <ion-button type="submit" expand="block" fill="clear" [disabled]="form.invalid" shape="round">
       Alta
     </ion-button>
 
   </form>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <input
+      type="file"
+      #fileInput
+      (change)="uploadFile($event)"
+      hidden="true"
+      accept="image/*"/>
+  </ion-fab>
 </ion-content>
 
