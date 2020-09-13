@@ -16,11 +16,12 @@
       <ion-select-option *ngFor="let estadoPlan of estadosPlanesPosibles" [value]="estadoPlan.id">{{estadoPlan.descipcion}}</ion-select-option>
     </ion-select>
   </ion-item>
-  <ion-card *ngFor="let plan of planes" [routerLink]="['/plan',plan.plan.id, 'detalle']">
+  <ion-card class="tarjeta" *ngFor="let plan of planes" [routerLink]="['/plan',plan.plan.id, 'detalle']">
     <ion-card-header style="font-size: large;">
       <b>{{plan.plan.tipoPlan}}</b>
     </ion-card-header>
     <ion-card-content style="font-size: x-small;">
+      <hr>
       <ion-grid>
         <ion-row>
           <ion-col col-12><b>Estado:</b> {{plan.plan.estado}}</ion-col>

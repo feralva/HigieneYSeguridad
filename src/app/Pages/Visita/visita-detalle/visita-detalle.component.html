@@ -9,39 +9,54 @@
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
-
       <ion-list>
         <ion-item-divider color="primary">
           <ion-label style="font-weight: bolder;">
             Detalle
           </ion-label>
-      </ion-item-divider>
-        <ion-item class="ion-text-wrap">
-          <ion-label>Establecimiento: </ion-label>
-          <ion-label>{{visita?.establecimiento?.nombre}} </ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label>Tipo Visita: </ion-label>
-          <ion-label>{{visita?.tipoVisita?.descripcion}}</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label>Fecha Pactada: </ion-label>
-          <ion-label>{{visita?.mesPactado.toString() + '/' + visita?.anioPactado.toString()}}</ion-label>
-        </ion-item>
-        <ion-item button detail (click)="onEditarFechaClick()">
-          <ion-label>Fecha De Visita: </ion-label>
-          <ion-label *ngIf="visita?.fecha != null">{{visita?.fecha | date: 'd/MM/yy, H:mm'}}</ion-label>
-          <ion-label *ngIf="visita?.fecha == null"> NA </ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label>Estado: </ion-label>
-          <ion-label>{{visita?.estado.descripcion}}</ion-label>
-        </ion-item>
-        <ion-item *appHasRole="['Coordinador']" button detail (click)="onEditarAuditorClick()">
-          <ion-label>Asignado a: </ion-label>
-          <ion-label *ngIf="visita?.empleado != null">{{visita?.empleado.apellido + ', ' + visita?.empleado.nombre}}</ion-label>
-          <ion-label *ngIf="visita?.empleado == null"> NA </ion-label>
-        </ion-item>
+        </ion-item-divider>
+        <ion-grid fixed>
+          <ion-row>
+            <ion-col size="12" size-lg="6">
+              <ion-item class="ion-text-wrap">
+                <ion-label>Establecimiento: </ion-label>
+                <ion-label>{{visita?.establecimiento?.nombre}} </ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col size="12" size-lg="6">
+              <ion-item>
+                <ion-label>Tipo Visita: </ion-label>
+                <ion-label>{{visita?.tipoVisita?.descripcion}}</ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col size="12" size-lg="6">
+              <ion-item>
+                <ion-label>Fecha Pactada: </ion-label>
+                <ion-label>{{visita?.mesPactado.toString() + '/' + visita?.anioPactado.toString()}}</ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col size="12" size-lg="6">
+              <ion-item button detail (click)="onEditarFechaClick()">
+                <ion-label>Fecha De Visita: </ion-label>
+                <ion-label *ngIf="visita?.fecha != null">{{visita?.fecha | date: 'd/MM/yy, H:mm'}}</ion-label>
+                <ion-label *ngIf="visita?.fecha == null"> NA </ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col size="12" size-lg="6">
+              <ion-item>
+                <ion-label>Estado: </ion-label>
+                <ion-label>{{visita?.estado.descripcion}}</ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col size="12" size-lg="6">
+              <ion-item *appHasRole="['Coordinador']" button detail (click)="onEditarAuditorClick()">
+                <ion-label>Asignado a: </ion-label>
+                <ion-label *ngIf="visita?.empleado != null">{{visita?.empleado.apellido + ', ' + visita?.empleado.nombre}}</ion-label>
+                <ion-label *ngIf="visita?.empleado == null"> NA </ion-label>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-list>
 
      <div *ngIf="controles.length > 0">
@@ -55,15 +70,22 @@
                   <ion-icon  name="close-outline"></ion-icon>
                 </ion-button>
             </ion-item-divider>
-            <ion-item>
-                <ion-label>Fecha</ion-label>
-                <ion-label>{{control.fecha | date: 'd/MM/yy, H:mm'}}</ion-label>
-            </ion-item>
-            <ion-item button [routerLink]="['../control', control.id ,'mediciones']" detail="true">
-                <ion-icon name="clipboard"></ion-icon>
-                  Mediciones
-            </ion-item>
-    
+            <ion-grid fixed>
+              <ion-row>
+                <ion-col size="12" size-lg="6">
+                  <ion-item>
+                      <ion-label>Fecha</ion-label>
+                      <ion-label>{{control.fecha | date: 'd/MM/yy, H:mm'}}</ion-label>
+                  </ion-item>
+                </ion-col>
+                <ion-col size="12" size-lg="6">
+                  <ion-item button [routerLink]="['../control', control.id ,'mediciones']" detail="true">
+                      <ion-icon name="clipboard"></ion-icon>
+                        Mediciones
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>    
         </ion-list>
     </div>
     <ion-row>
