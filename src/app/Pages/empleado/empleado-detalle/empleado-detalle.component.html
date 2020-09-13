@@ -6,33 +6,44 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-
   <ion-item-divider color="secondary">
     <ion-label>
       Empleado
     </ion-label>
   </ion-item-divider>
-    <ion-item>
-      <ion-label position="stacked">Nombre</ion-label>
-      <ion-input placeholder="Nombre" [readonly]="true" name="Nombre" [(ngModel)]="empleadoModel.nombre"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Apellido</ion-label>
-      <ion-input placeholder="Apellido" [readonly]="true" name="responsable.Apellido" [(ngModel)]="empleadoModel.apellido"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Correo Electronico</ion-label>
-      <ion-input type="email" [readonly]="true" placeholder="Correo Electronico" name="responsable.CorreoElectronico" [(ngModel)]="empleadoModel.correoElectronico" email></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Roles</ion-label>
-      <ion-input [(ngModel)]="empleadoModel.roles" [readonly]="true"></ion-input>
-    </ion-item>
-    <div style="text-align:center; padding-top: 2em;">
-        <ion-avatar class="item-avatar" style="border: black;border-style: solid;margin:auto" >
-          <ion-img [src]="imageBase64" *ngIf="imageBase64 != null"></ion-img>
-          <ion-img [src]="empleadoModel.urlFoto" *ngIf="imageBase64 == null"></ion-img>
-        </ion-avatar>            
-    </div>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12" size-lg="6">
+        <ion-item>
+          <ion-label position="stacked">Nombre</ion-label>
+          <ion-input placeholder="Nombre" [readonly]="true" name="Nombre" [(ngModel)]="empleadoModel.nombre"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" size-lg="6">
+        <ion-item>
+          <ion-label position="stacked">Apellido</ion-label>
+          <ion-input placeholder="Apellido" [readonly]="true" name="responsable.Apellido" [(ngModel)]="empleadoModel.apellido"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" size-lg="6">
+        <ion-item>
+          <ion-label position="stacked">Correo Electronico</ion-label>
+          <ion-input type="email" [readonly]="true" placeholder="Correo Electronico" name="responsable.CorreoElectronico" [(ngModel)]="empleadoModel.correoElectronico" email></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" size-lg="6">
+        <ion-item>
+          <ion-label position="stacked">Roles</ion-label>
+          <ion-input [(ngModel)]="empleadoModel.roles" [readonly]="true"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div style="text-align:center; padding-top: 2em;">
+    <ion-avatar class="item-avatar" style="border: black;border-style: solid;margin:auto" >
+      <ion-img [src]="imageBase64" *ngIf="imageBase64 != null"></ion-img>
+      <ion-img [src]="empleadoModel.urlFoto" *ngIf="imageBase64 == null"></ion-img>
+    </ion-avatar>            
+  </div>
 </ion-content>
 
