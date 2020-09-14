@@ -18,20 +18,18 @@ export class LoginPage implements OnInit {
 
   login(form){
 
-    this.authService.login(form.value).then(
-      res => {
-        this.authService.currentUser.subscribe(
-          (data)=>{
-            console.log(data);
-            if(data) {this.router.navigateByUrl('home')}
-              else {
-                
-                this.router.navigateByUrl('/login')
-              }
-          },
-          (error) => {throw Error(error)}
-        );
-      }
-    )
+    this.authService.login(form.value);
+    
+    this.authService.currentUser.subscribe(
+      (data)=>{
+        console.log(data);
+        if(data) {this.router.navigateByUrl('home')}
+          else {
+            
+            this.router.navigateByUrl('/login')
+          }
+      },
+      (error) => {throw Error(error)}
+    );
   }
 }

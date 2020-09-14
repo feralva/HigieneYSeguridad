@@ -45,10 +45,10 @@ export class AuthInterceptor implements HttpInterceptor {
             return next.handle(reqWithHeaders).pipe(
                 catchError(err =>{
                     
-                    if (!token) {
+ /*                    if (!token) {
                         if(req.url.includes('Authenticate/Login')) this.showMessageToast('Problema de Conexion con servidor')
                         return next.handle(req);
-                    }
+                    } */
                     if(err instanceof HttpErrorResponse){
                         switch((<HttpErrorResponse>err).status){
                             case 401:
