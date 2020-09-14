@@ -19,9 +19,16 @@
               Login
             </ion-button>
           
-            <ion-button expand="block" fill="clear" color="dark" [routerLink]="['solicitarforgotPassword']" margin-top>
+            <!-- <ion-button expand="block" class="forgotPassButton" shape="round" [routerLink]="['solicitarforgotPassword']" margin-top>
               ¿Olvido la Contraseña?
-            </ion-button>
+            </ion-button> -->
+
+            <div style="text-align: center;">
+              <a [routerLink]="['solicitarforgotPassword']">
+                ¿Olvido la Contraseña?
+              </a>
+            </div>
+            
           
             <ion-button class="outline-login-button" expand="block" shape="round" fill="outline" [routerLink]="['/empresa','alta']" margin-top>
               Registrar Empresa
