@@ -62,6 +62,7 @@
         </ion-col>
         <ion-col size="12" size-lg="6">
           <ion-item *ngIf="provinciaSeleccionada!= null">
+            <ion-label position="stacked" *ngIf="provinciaSeleccionada!= null">Partido</ion-label>
             <ionic-selectable
               item-content
               [(ngModel)]="partidoSeleccionado"
