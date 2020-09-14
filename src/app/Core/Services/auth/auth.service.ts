@@ -31,38 +31,26 @@ export class AuthService {
     localStorage.setItem('auth_Refresh_token', authResult.refreshToken);
 }  
 
-  login(usuarioFromForm) {
+  async login(usuarioFromForm) {
 
     var usuario;
     var dataToken;
 
-    this.http.post<any>(environment.UrlBaseApi +'Authenticate/Login', { username: usuarioFromForm.email, 
+    const authentificationData = await this.http.post<any>(environment.UrlBaseApi +'Authenticate/Login', { username: usuarioFromForm.email, 
       password: this.encriptarContrasenia(usuarioFromForm.password) }, 
-      {headers: new HttpHeaders({ 'Content-Type': 'application/json' })})
-      .subscribe(
-        data => {
-          console.log(data)
-          dataToken = data
-          this.setSession(data)
-          this.obtenerDetalleUsuario(usuarioFromForm.email).subscribe(
-            data=>{
-              usuario = data;
-              //this._currentUser = new BehaviorSubject(usuario)
-              /* this._currentUser.isStopped = false;
-              this._currentUser.closed = false; */
-              //this._currentUser.lift()
-              this._currentUser.next(usuario);
+      {headers: new HttpHeaders({ 'Content-Type': 'application/json' })}).toPromise()
 
-            }, 
-            (error) => {
-              throw error
-            }
-          )
-        },
-        (error) => {
-          throw error
-        }
-      )
+    console.log(authentificationData)
+    dataToken = authentificationData
+
+    this.setSession(authentificationData)
+
+    const detalleUsuario = await this.obtenerDetalleUsuario(usuarioFromForm.email).toPromise()
+
+    usuario = detalleUsuario
+    this._currentUser.next(usuario);
+
+    return true;
   }
 
   getUserSubject() {
