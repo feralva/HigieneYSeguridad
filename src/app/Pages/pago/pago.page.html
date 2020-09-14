@@ -9,46 +9,43 @@
 <ion-content>
 
   <ion-row class="table-header-row">
-    <ion-col size="2">
+    <ion-col size-xs="4" size-sm="2">
       Cliente
     </ion-col>
-    <ion-col size="2">
+    <ion-col size-xs="3" size-sm="2">
       Tipo Licencia
     </ion-col>
-    <ion-col size="2">
+    <ion-col size-xs="2" class="hide-only-xs">
       Cantidad Meses
     </ion-col>
-    <ion-col size="2">
+    <ion-col size-xs="2" class="hide-only-xs">
       Precio Licencia
     </ion-col>
-    <ion-col size="2">
-      Monto Total
+    <ion-col size-xs="2">
+      Total
     </ion-col>
-    <ion-col size="2">
+    <ion-col size-xs="3" size-sm="2">
       Fecha
-    </ion-col>
-    <ion-col size="2">
-      Pagos
     </ion-col>
   </ion-row>
   <ion-row *ngFor="let pago of pagosEmpresas" class="data-row">
-    <ion-col size="2">
+    <ion-col size-xs="4" size-sm="2">
       {{pago.empresa.nombre}}
     </ion-col>
-    <ion-col size="2">
+    <ion-col size-xs="3" size-sm="2">
       {{pago.tipoLicencia.nombre}}
     </ion-col>
-    <ion-col size="2">
+    <ion-col size-xs="2" size-sm="2" class="hide-only-xs">
       {{pago.cantidadMeses}}
     </ion-col>
-    <ion-col size="2">
+    <ion-col size-xs="2" class="hide-only-xs">
       {{pago.precioLicencia}}
     </ion-col>
-    <ion-col size="2">
+    <ion-col size-xs="2">
       {{pago.monto}}
     </ion-col>
-    <ion-col size="2">
-      {{pago.fecha | date: 'short'}}
+    <ion-col size-xs="3" size-sm="2">
+      {{pago.fecha | date: 'dd/MM/yy'}}
     </ion-col>
   </ion-row>
 
