@@ -60,8 +60,12 @@
       </ion-list>
 
      <div *ngIf="controles.length > 0">
-       <h4>Controles por Ubicacion:</h4>
-        <ion-list *ngFor="let control of controles" >
+       <ion-item-divider color="primary">
+        <ion-label style="font-weight: bolder;text-align: center;">
+          Controles por Ubicacion
+        </ion-label>
+      </ion-item-divider>
+        <ion-list *ngFor="let control of controles" style="padding-top: 0px !important;">
             <ion-item-divider color="secondary">
                 <ion-label style="font-weight: bolder;">
                   {{control.ubicacion}}

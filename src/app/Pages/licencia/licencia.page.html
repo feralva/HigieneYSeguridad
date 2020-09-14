@@ -7,41 +7,40 @@
 </ion-header>
 
 <ion-content>
-  <ion-row class="table-header-row">
-    <ion-col size="2">
-      Cliente
-    </ion-col>
-    <ion-col size="2">
-      Tipo Licencia
-    </ion-col>
-    <ion-col size="2">
-      Fecha Expiración
-    </ion-col>
-    <ion-col size="2">
-      Estado
-    </ion-col>
-    <ion-col size="2">
-      Pagos
-    </ion-col>
-  </ion-row>
-  <ion-row *ngFor="let licencia of licenciasEmpresas" class="data-row">
-    <ion-col size="2">
-      {{licencia.empresa.nombre}}
-    </ion-col>
-    <ion-col size="2">
-      {{licencia.tipoLicencia.nombre}}
-    </ion-col>
-    <ion-col size="2">
-      {{licencia.fechaFin | date: 'short'}}
-    </ion-col>
-    <ion-col size="2">
-      {{licencia.estado.descripcion}}
-    </ion-col>
-    <ion-col tappable size="2">
-      <ion-button (click)="direccionarAPagos(licencia.id)" expand="block" fill="clear" shape="round">
+    <ion-row class="table-header-row">
+      <ion-col size-xs="4" size-md="3">
+        Cliente
+      </ion-col>
+      <ion-col size="2" size-xs="3" size-md="2">
+        Tipo Licencia
+      </ion-col>
+      <ion-col size="2" size-xs="3" size-md="2" class="hide-only-xs">
+        Fecha Expiración
+      </ion-col>
+      <ion-col size="2" size-xs="3" size-md="2">
+        Estado
+      </ion-col>
+      <ion-col size="2" size-xs="2" size-md="2" style="text-align: center;">
         Pagos
-      </ion-button>
-    </ion-col>
-  </ion-row>
-
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let licencia of licenciasEmpresas" class="data-row">
+      <ion-col size-xs="4" size-md="3">
+        {{licencia.empresa.nombre}}
+      </ion-col>
+      <ion-col size="2" size-xs="3" size-md="2">
+        {{licencia.tipoLicencia.nombre}}
+      </ion-col>
+      <ion-col size-xs="3" size-md="2" class="hide-only-xs">
+        {{licencia.fechaFin | date: 'dd/MM/yy'}}
+      </ion-col>
+      <ion-col size-xs="3" size-md="2">
+        {{licencia.estado.descripcion}}
+      </ion-col>
+      <ion-col tappable size-xs="2" style="text-align: center;">
+        <ion-button (click)="direccionarAPagos(licencia.id)" fill="clear">
+          <ion-icon slot="icon-only" name="cash-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
 </ion-content>

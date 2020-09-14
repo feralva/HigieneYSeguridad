@@ -112,7 +112,7 @@ export class EstablecimientoAltaComponent implements OnInit {
     const { data } = await modal.onDidDismiss();
     console.log(data);
 
-    this.model.ubicaciones.push(data.ubicacion);
+    if(data) this.model.ubicaciones.push(data.ubicacion);
 
     console.log(this.model.ubicaciones);
   }

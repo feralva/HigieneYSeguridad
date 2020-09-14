@@ -1,0 +1,25 @@
+$screen-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+$breakpoints-keys: map-keys($screen-breakpoints);
+$breakpoints-values: map-values($screen-breakpoints);
+@for $i from 1 to length($breakpoints-keys)+1 {
+  @if $i < length($breakpoints-keys) {
+    .hide-only-#{nth($breakpoints-keys, $i)} {
+      @media (min-width: nth($breakpoints-values, $i)) and (max-width: #{nth($breakpoints-values, $i+1)}) {
+        display: none;
+      }
+    }
+  } @else {
+    .hide-only-#{nth($breakpoints-keys, $i)} {
+      @media (min-width: nth($breakpoints-values, $i)) {
+        display: none;
+      }
+    }
+  }
+}

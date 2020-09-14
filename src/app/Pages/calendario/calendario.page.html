@@ -30,7 +30,7 @@
     <ion-list >
       <div *ngIf="selectedDate.events.length > 0">
         <ion-item lines *ngFor="let event of selectedDate.events">
-          <ion-col size="4" style="text-align: end;">
+          <ion-col size="auto" style="text-align: end;">
             {{("0" + event.startTime.getHours()).slice(-2).toString() + ':' + ("0" +event.startTime.getMinutes()).slice(-2) + ' - ' +
           ("0" + event.endTime.getHours()).slice(-2).toString() + ':' + ("0" +event.endTime.getMinutes()).slice(-2)}}
           </ion-col>
