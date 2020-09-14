@@ -7,7 +7,7 @@
 </ion-header>
 <ion-content>
   <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
-    <ion-item-divider color="secondary">
+    <ion-item-divider color="primary" style="text-align: center;">
       <ion-label>
        Irregularidad
       </ion-label>
@@ -45,11 +45,12 @@
         <ion-label><b>{{model.fechaDeteccion}}</b></ion-label>
       </ion-item>
 
-      <ion-label>Evidencia:</ion-label>
+      <ion-item-divider style="text-align: center;" color="secondary">
+        <ion-label><b>Evidencia</b></ion-label>
+      </ion-item-divider>
       <ion-grid >
         <ion-row>
-        <ion-col size="4" offset="2" >
-
+        <ion-col size-xs="10" offset-xs="1" size-sm="6" offset-sm="3" >
           <ion-img [src]="model.url"></ion-img>         
         </ion-col>
         </ion-row>
@@ -66,7 +67,7 @@
 
       <ion-grid>
         <ion-row>
-        <ion-col size="4" offset="2" >
+        <ion-col size-xs="10" offset-xs="1" size-sm="6" offset-sm="3"  >
           <ion-img [src]="imageBase64" *ngIf="imageBase64 != null"></ion-img>     
         </ion-col>
         </ion-row>
