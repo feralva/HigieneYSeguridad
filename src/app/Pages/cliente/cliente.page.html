@@ -14,7 +14,7 @@
 
   <ion-grid fixed>
     <ion-row>
-      <ion-col size="12" size-lg="6" offset="3">
+      <ion-col size-xs="10" offset-xs="1" size-sm="8" offset-sm="2">
         <ion-card *ngFor="let cliente of clientes | filtro: textoBuscar: 'nombre'" [routerLink]="[cliente.id, 'detalle']" >
           <img [src]="cliente.urlFoto"/>
           <div class="card-title"><b>{{cliente.nombre}}</b></div>
