@@ -12,7 +12,7 @@
       placeholder="Ubicacion">
     </ionic-selectable>
   </ion-item>
-  <ion-item>
+  <ion-item *ngIf="!ubicacionSeleccionada">
     <ion-label>Obtener Ubicación por QR</ion-label>
     <ion-button (click)="startScan()" slot="end">
       <ion-icon name="qr-code-outline"></ion-icon>

@@ -16,6 +16,8 @@ import { LoaderService } from 'src/app/Core/Services/loader.service';
 import { DireccionService } from 'src/app/Core/Services/Direccion/direccion.service';
 import {Location} from '@angular/common';
 import { Router } from '@angular/router';
+import { UserLogueado } from 'src/app/Models/UserLogueado';
+import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 @Component({
   selector: 'app-alta-empresa',
   templateUrl: './alta-empresa.page.html',
@@ -26,6 +28,7 @@ export class AltaEmpresaPage implements OnInit {
   @ViewChild('fileInput', { static: false }) fileInput: ElementRef;
   imagenEmpleado: CameraPhoto = null;
   imageBase64: string;
+  currentUser: UserLogueado = null;
 
   partidos: any[];
   partidoSeleccionado: any;
@@ -64,7 +67,7 @@ export class AltaEmpresaPage implements OnInit {
     public alertController: AlertController, private loaderService: LoaderService,
     public toastController: ToastController, private direccionService: DireccionService,
     private plt: Platform, private actionSheetCtrl: ActionSheetController, private location: Location,
-    private router: Router) { }
+    private router: Router, private authService: AuthService) { }
 
     set altura(altura:string){
       this.empresaModel.direccion.altura = +altura;
@@ -80,6 +83,14 @@ export class AltaEmpresaPage implements OnInit {
       data => this.provincias = data,
       (error) => console.log(error)
     )
+
+    this.authService.getUserSubject().subscribe(
+      data => {
+        console.log(data)
+        this.currentUser = data
+      },
+      error => console.log(error)
+  );
   }
 
   ionViewWillEnter(){
@@ -146,7 +157,8 @@ export class AltaEmpresaPage implements OnInit {
                         data => {
                           this.loaderService.dismiss();
                           this.MostrarMensajeOperacion('Alta Exitosa')
-                          this.router.navigate(['/empresa'])                        
+                          if(this.currentUser) this.router.navigate(['/empresa'])
+                            else this.router.navigate(['/login'])                     
                         },
                         (err: any) => this.MostrarMensajeOperacion('Falla')
                       )},

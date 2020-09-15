@@ -3,7 +3,7 @@ import { SeleccionarUbicacionControlComponent } from '../../seleccionar-ubicacio
 import { ToastController, LoadingController, Platform, AlertController } from '@ionic/angular';
 import { ControlService } from 'src/app/Core/Services/Control/control.service';
 import { TranslateService } from '@ngx-translate/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 import { UbicacionService } from 'src/app/Core/Services/Ubicacion/ubicacion.service';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
@@ -28,7 +28,8 @@ export class ControlPrevencionIncendioComponent implements OnInit {
     private loadingCtrl: LoadingController,
     private plt: Platform, private translate: TranslateService, private route: ActivatedRoute,
     private appDataService: AppDataService, private ubicacionService: UbicacionService, 
-    private authService: AuthService, public alertController: AlertController) { }
+    private authService: AuthService, public alertController: AlertController,
+    private router: Router) { }
 
   ngOnInit() {
     console.log(+this.route.snapshot.paramMap.get('id'))
@@ -58,7 +59,10 @@ export class ControlPrevencionIncendioComponent implements OnInit {
           handler: () => {
 
             this.controlService.altaControlVisita(this.obtenerControl(), this.obtenerMediciones()).then(
-              result => this.MostrarMensajeOperacion('Alta Exitosa'),
+              result => {
+                this.MostrarMensajeOperacion('Alta Exitosa')
+                this.router.navigate([`/visita/${this.idVisita}/detalle`])
+              },
               (err: any) => this.MostrarMensajeOperacion('Falla')
             );
           }
