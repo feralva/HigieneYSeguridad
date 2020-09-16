@@ -101,7 +101,7 @@ export class AltaEmpleadoComponent implements OnInit {
                   result =>{
                     this.empleadoModel.urlFoto = result
                     this.empleadoService.addEmpleado(this.empleadoModel).subscribe(
-                      result => {
+                      result => {                        
                         this.MostrarMensajeOperacion('Alta Exitosa')
                         this.router.navigate(['/empleado'])
                       },

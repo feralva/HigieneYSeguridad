@@ -9,41 +9,40 @@
   <form #form="ngForm" (ngSubmit)="onSubmit(form)">
     <ion-item-divider color="secondary">
       <ion-label>
-        Cliente
+        {{ 'Cliente.title'  | translate }}
       </ion-label>
     </ion-item-divider>
     <ion-item>
-      <ion-label position="stacked">Nombre</ion-label>
+      <ion-label position="stacked">{{ 'General.Nombre'  | translate }}</ion-label>
       <ion-input
-        placeholder="Nombre"
+        placeholder="{{ 'General.Nombre'  | translate }}"
         name="Nombre"
         [(ngModel)]="model.nombre"
-        required
-      ></ion-input>
+        required></ion-input>
     </ion-item>
     <ion-item-divider color="tertiary">
       <ion-label>
-        direccion
+        {{ 'General.Direccion'  | translate }}
       </ion-label>
     </ion-item-divider>
     <ion-item>
-      <ion-label position="stacked">Calle</ion-label>
+      <ion-label position="stacked">{{ 'General.Calle'  | translate }}</ion-label>
       <ion-input
-        placeholder="Calle"
+        placeholder="{{ 'General.Calle'  | translate }}"
         name="direccion.Calle"
         [(ngModel)]="model.direccion.calle"
       ></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">Altura</ion-label>
+      <ion-label position="stacked">{{ 'General.Altura'  | translate }}</ion-label>
       <ion-input
-        placeholder="Altura"
+        placeholder="{{ 'General.Altura'  | translate }}"
         name="direccion.Altura"
         [(ngModel)]="altura" OnlyNumber></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">Provincia</ion-label>
-      <ion-select style="width: max-content;" name="provinciaSeleccionada" [(ngModel)]="provinciaSeleccionada" placeholder='Provincia' 
+      <ion-label position="stacked">{{ 'General.Provincia'  | translate }}</ion-label>
+      <ion-select style="width: max-content;" name="provinciaSeleccionada" [(ngModel)]="provinciaSeleccionada" placeholder="{{ 'General.Provincia'  | translate }}"
         (ngModelChange)="actualizarPartidos($event)">
         <ion-select-option *ngFor="let provincia of provincias; let i = index" [value]="provincia" selected="i === 0">{{provincia.nombre}}</ion-select-option>
       </ion-select>
@@ -59,40 +58,40 @@
         [isMultiple]="false"
         name="partidosSeleccionados"
         [canSearch]="true"
-        placeholder="Partido">
+        placeholder="{{ 'General.Partido'  | translate }}">
       </ionic-selectable>
     </ion-item>
 
     <ion-item-divider color="tertiary">
       <ion-label>
-        Responsable
+        {{ 'General.Responsable'  | translate }}      
       </ion-label>
     </ion-item-divider>
     <ion-item>
-      <ion-label position="stacked">Nombre</ion-label>
+      <ion-label position="stacked">{{ 'General.Nombre'  | translate }}</ion-label>
       <ion-input
-        placeholder="Nombre"
+        placeholder="{{ 'General.Nombre'  | translate }}"
         name="responsable.Nombre"
         [(ngModel)]="model.responsable.nombre" required></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">Apellido</ion-label>
+      <ion-label position="stacked">{{ 'General.Apellido'  | translate }}</ion-label>
       <ion-input
-        placeholder="Apellido"
+        placeholder="{{ 'General.Apellido'  | translate }}"
         name="responsable.Apellido"
         [(ngModel)]="model.responsable.apellido" required></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">Correo Electronico</ion-label>
+      <ion-label position="stacked">{{ 'General.CorreoElectronico'  | translate }}</ion-label>
       <ion-input type="email"
-        placeholder="Correo Electronico"
+        placeholder="{{ 'General.CorreoElectronico'  | translate }}"
         name="responsable.CorreoElectronico"
         [(ngModel)]="model.responsable.correoElectronico" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}$"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">Telefono</ion-label>
+      <ion-label position="stacked">{{ 'General.Telefono'  | translate }}</ion-label>
       <ion-input
-        placeholder="Telefono"
+        placeholder="{{ 'General.Telefono'  | translate }}"
         name="responsable.Telefono"
         [(ngModel)]="model.responsable.telefono" required OnlyNumber></ion-input>
     </ion-item>
@@ -112,7 +111,7 @@
       </ion-row>
     </ion-grid>
 
-    <ion-button type="submit" shape="round" fill="outline" slot="end" [disabled]="form.invalid">Alta Cliente</ion-button>
+    <ion-button type="submit" shape="round" fill="outline" slot="end" [disabled]="form.invalid">{{ 'Cliente.Alta.title'  | translate }}</ion-button>
   
   </form>
 

@@ -29,6 +29,7 @@
         "Alta": {
             "title": "Alta Cliente"
         },
+        "Cliente": "Cliente",
         "Planes": "Planes de Cliente"
     },
     "Plan":{
@@ -43,6 +44,25 @@
     },
     "Irregularidad":{
         "Title": "Irregularidad"
+    },
+    "Calendario": {
+        "title":"Calendario",
+        "Mes": "Mes",
+        "Dia": "Día",
+        "Anio": "Año",
+        "Semana": "Semana"
+    },
+    "General":{
+        "Nombre": "Nombre",
+        "Apellido": "Apellido",
+        "Telefono": "Telefono",
+        "CorreoElectronico": "Correo Electronico",
+        "Direccion": "Dirección",
+        "Calle": "Calle",
+        "Altura": "Altura",
+        "Provincia": "Provincia",
+        "Partido": "Partido",
+        "Responsable": "Responsable"
     }
     
 }

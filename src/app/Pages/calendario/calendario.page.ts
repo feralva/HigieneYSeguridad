@@ -75,6 +75,8 @@ export class CalendarioPage implements OnInit {
 
   ngOnInit() {
 
+    this.appDataService.changePageName('Calendario.title');
+
     this.eventosEmpleado = this.route.snapshot.data['eventosEmpleado'];
     this.eventosEmpresa = this.route.snapshot.data['eventosEmpresa'];
     this.eventSource = this.eventosEmpleado? this.eventosEmpleado: this.eventosEmpresa;
@@ -95,6 +97,9 @@ export class CalendarioPage implements OnInit {
       this.viewTitle = title;
   }
 
+  onViewWillenter(){
+    this.appDataService.changePageName('Calendario.title');
+  }
   async onEventSelected(event) {
 
       //this.fechaNuevaSeleccionada = event

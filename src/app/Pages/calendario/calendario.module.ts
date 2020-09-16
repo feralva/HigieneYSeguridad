@@ -12,6 +12,7 @@ import { SharedDirectivesModule } from 'src/app/Core/Directives/shared-directive
 
 import localeEs from '@angular/common/locales/es';
 import localeDe from '@angular/common/locales/de';
+import { TranslateModule } from '@ngx-translate/core';
 
 registerLocaleData(localeDe);
 registerLocaleData(localeEs); 
@@ -22,7 +23,8 @@ registerLocaleData(localeEs);
     IonicModule,
     CalendarioPageRoutingModule,
     SharedDirectivesModule,
-    NgCalendarModule
+    NgCalendarModule,
+    TranslateModule
   ],
   declarations: [CalendarioPage]
 })

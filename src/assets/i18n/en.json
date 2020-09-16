@@ -42,5 +42,23 @@
     },
     "Irregularidad":{
         "Title": "Irregularidad"
+    },
+    "Calendario": {
+        "Mes": "Month",
+        "Dia": "Day",
+        "Anio": "Year",
+        "Semana": "Week"
+    },
+    "General":{
+        "Nombre": "Name",
+        "Apellido": "Last Name",
+        "Telefono": "Telephone",
+        "CorreoElectronico": "e-mail",
+        "Direccion": "Address",
+        "Calle": "Street",
+        "Altura": "Number",
+        "Provincia": "Province",
+        "Partido": "Location",
+        "Responsable": "Responsable"
     }
 }

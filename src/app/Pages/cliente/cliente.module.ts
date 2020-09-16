@@ -19,6 +19,7 @@ import { UbicacionPageModule } from '../ubicacion/ubicacion.module';
 import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
 import { PipesModule } from 'src/app/Core/pipes/pipes.module';
 import { SharedDirectivesModule } from 'src/app/Core/Directives/shared-directives.module';
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   entryComponents: [UbicacionAltaComponent],
   imports: [
@@ -30,7 +31,8 @@ import { SharedDirectivesModule } from 'src/app/Core/Directives/shared-directive
     PlanPageModule,
     UbicacionPageModule,
     PipesModule,
-    SharedDirectivesModule
+    SharedDirectivesModule,
+    TranslateModule
   ],
   exports:[],
   declarations: [ClientePage, ClienteEstablecimientosComponent, EstablecimientoAltaComponent,
