@@ -48,6 +48,7 @@
       </ion-select>
     </ion-item>
     <ion-item *ngIf="provinciaSeleccionada!= null">
+      <ion-label position="stacked">{{'General.Partido' | translate }}</ion-label>
       <ionic-selectable
         item-content
         [(ngModel)]="partidoSeleccionado"
@@ -64,7 +65,7 @@
 
     <ion-item-divider color="tertiary">
       <ion-label>
-        {{ 'General.Responsable'  | translate }}      
+        {{ 'General.Responsable'  | translate }}
       </ion-label>
     </ion-item-divider>
     <ion-item>

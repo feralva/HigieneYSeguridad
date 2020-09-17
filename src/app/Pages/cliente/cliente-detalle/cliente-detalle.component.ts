@@ -14,10 +14,6 @@ import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 })
 export class ClienteDetalleComponent implements OnInit {
 
-  /* cliente: any = {
-    responsable: {},
-    direccion: {}
-  }; */
   cliente: any;
   
   nombrePagina: string;
@@ -28,8 +24,8 @@ export class ClienteDetalleComponent implements OnInit {
     private clienteService: ClienteService, private authService: AuthService) {}
 
   ngOnInit() {
+    
     this.cliente = this.route.snapshot.data['cliente'];
-    //this.nombrePagina = this.cliente.nombre;
     this.appDataService.changePageName('Cliente.Detalle.Title');
 
     console.log(this.cliente)

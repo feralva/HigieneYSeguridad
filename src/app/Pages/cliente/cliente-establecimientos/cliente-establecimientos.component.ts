@@ -14,7 +14,6 @@ import { ClienteService } from 'src/app/Core/Services/Cliente/cliente.service';
 export class ClienteEstablecimientosComponent implements OnInit {
   
   establecimientos: any[] = []
-  nombrePagina: string;
   currentUser: UserLogueado;
   idCliente: number;
   
@@ -24,8 +23,7 @@ export class ClienteEstablecimientosComponent implements OnInit {
 
   ngOnInit() {
     this.establecimientos = this.route.snapshot.data['establecimientos'];
-    this.nombrePagina = 'Cliente.Establecimientos';
-    this.appDataService.changePageName(this.nombrePagina);
+    this.appDataService.changePageName('Cliente.Establecimientos');
     this.idCliente = +this.route.snapshot.paramMap.get('id');
 
     console.log(this.establecimientos)

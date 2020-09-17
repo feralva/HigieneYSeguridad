@@ -16,7 +16,9 @@
     },
     "Mensaje": {
         "Exito": "Operacion Exitosa",
-        "Falla": "Reintentar mas Tarde"
+        "Falla": "Reintentar mas Tarde",
+        "Confirmacion": "¿Esta seguro que desea {{accion}} {{entidad}}?",
+        "Cancelar": "Cancelar"
     },
     "EquipoMedicion": {
         "title": "Equipos Medicion",
@@ -29,8 +31,19 @@
         "Alta": {
             "title": "Alta Cliente"
         },
+        "EditarCliente":{
+            "title": "Editar Cliente",
+            "Boton": "Editar Cliente"
+        },
         "Cliente": "Cliente",
-        "Planes": "Planes de Cliente"
+        "Planes": "Planes de Cliente",
+        "Establecimientos": "Establecimientos",
+        "EstadoPlan": "Estado Plan",
+        "VisitasPendientes": "Visitas Pendientes"
+    },
+    "Establecimiento":{
+        "Establecimiento": "Establecimiento",
+        "Alta": "Alta Establecimiento"
     },
     "Plan":{
         "title": "Detalle Plan",
@@ -62,7 +75,31 @@
         "Altura": "Altura",
         "Provincia": "Provincia",
         "Partido": "Partido",
-        "Responsable": "Responsable"
+        "Responsable": "Responsable",
+        "Detalles": "Detalles",
+        "Detalle": "Detalle",
+        "Editar": "Editar",
+        "Borrar": "Borrar",
+        "Todos": "Todos",
+        "Estado": "Estado",
+        "CreadoPor": "Creado Por",
+        "FechaCreacion": "Fecha Creación",
+        "Ubicaciones": "Ubicaciones"
+    },
+    "Accion":{
+        "Crear": "Crear",
+        "Alta": "Alta",
+        "Modificar": "Modificar",
+        "Borrar": "Borrar"
+    },
+    "SeleccionFuenteImagen":{
+        "Mensaje": "Seleccione Fuente Imagen",
+        "Camara": "Camara Fotografica",
+        "Galeria": "Galeria de Imagenes",
+        "SistemaArchivos": "Sistema Archivos"
+    },
+    "Boton":{
+        "Operacion": "{{accion}} {{entidad}}"
     }
     
 }

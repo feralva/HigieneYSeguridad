@@ -16,7 +16,6 @@ import { PlanService } from 'src/app/Core/Services/Plan/plan.service';
 export class ClientePlanesComponent implements OnInit {
 
   planes: any[] = []
-  nombrePagina: string;
   currentUser: UserLogueado;
   estadoPlanAFiltrarId: number = 0;
   estadosPlanesPosibles: any[];
@@ -31,8 +30,7 @@ export class ClientePlanesComponent implements OnInit {
 
     this.planes = this.route.snapshot.data['planes'];
     this.estadosPlanesPosibles = this.route.snapshot.data['estadosPlanesPosibles'];
-    this.nombrePagina = 'Cliente.Planes';
-    this.appDataService.changePageName(this.nombrePagina);
+    this.appDataService.changePageName('Cliente.Planes');
     this.idCliente = +this.route.snapshot.paramMap.get('id')
   
     this.authService.getUserSubject().subscribe(
@@ -41,7 +39,6 @@ export class ClientePlanesComponent implements OnInit {
       },
       error => console.log(error)
     );
-
 
     console.log(this.planes)
   }

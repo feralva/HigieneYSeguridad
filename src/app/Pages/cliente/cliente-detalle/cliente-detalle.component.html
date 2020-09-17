@@ -8,7 +8,7 @@
 <ion-content>
   <ion-item-divider color="secondary">
     <ion-label>
-      <b>Responsable</b>
+      <b>{{'General.Responsable' | translate}}</b>
     </ion-label>
     <ion-button slot="end" [routerLink]="['/cliente', cliente.id,'editar']">
       <ion-icon name="pencil-outline"></ion-icon>
@@ -18,53 +18,53 @@
     <ion-row>
       <ion-col size="12" size-lg="6">
         <ion-item>
-          <ion-label> <b>Nombre: </b> {{cliente.responsable.nombre}}</ion-label><br>
+          <ion-label> <b>{{'General.Nombre' | translate}}: </b> {{cliente.responsable.nombre}}</ion-label><br>
         </ion-item>
       </ion-col>
       <ion-col size="12" size-lg="6">
         <ion-item>
-          <ion-label> <b>Apellido: </b> {{cliente.responsable.apellido}}</ion-label><br>
+          <ion-label> <b>{{'General.Apellido' | translate}}: </b> {{cliente.responsable.apellido}}</ion-label><br>
         </ion-item>
       </ion-col>
       <ion-col size="12" size-lg="6">
         <ion-item>
-          <ion-label> <b>Correo Electronico: </b> {{cliente.responsable.correoElectronico}}</ion-label><br>
+          <ion-label> <b>{{'General.CorreoElectronico' | translate}}: </b> {{cliente.responsable.correoElectronico}}</ion-label><br>
         </ion-item>
       </ion-col>
       <ion-col size="12" size-lg="6">
         <ion-item>
-          <ion-label> <b>Telefono: </b> {{cliente.responsable.telefono}}</ion-label><br>
+          <ion-label> <b>{{'General.Telefono' |translate}}: </b> {{cliente.responsable.telefono}}</ion-label><br>
         </ion-item>
       </ion-col>
     </ion-row>
   </ion-grid>
   <ion-item-divider color="secondary">
     <ion-label>
-      <b>Dirección</b>
+      <b>{{'General.Direccion' | translate}}</b>
     </ion-label>
   </ion-item-divider>
   <ion-grid fixed>
     <ion-row>
       <ion-col size="12" size-lg="6">
         <ion-item>
-          <ion-label> <b>Direccion: </b> {{cliente.direccion.calle + " " + cliente.direccion.altura}}</ion-label><br>
+          <ion-label> <b>{{'General.Direccion' | translate}}: </b> {{cliente.direccion.calle + " " + cliente.direccion.altura}}</ion-label><br>
         </ion-item>
       </ion-col>
       <ion-col size="12" size-lg="6">
         <ion-item>
-          <ion-label> <b>Partido: </b> {{cliente.direccion.partidoNombre}}</ion-label><br>
+          <ion-label> <b>{{'General.Partido' | translate}}: </b> {{cliente.direccion.partidoNombre}}</ion-label><br>
         </ion-item>
       </ion-col>
       <ion-col size="12" size-lg="6">
         <ion-item>
-          <ion-label> <b>Provincia: </b> {{cliente.direccion.provinciaNombre}}</ion-label><br>
+          <ion-label> <b>{{'General.Provincia' | translate}}: </b> {{cliente.direccion.provinciaNombre}}</ion-label><br>
         </ion-item>
       </ion-col>
     </ion-row>
   </ion-grid>
   <ion-item-divider color="secondary">
     <ion-label>
-      <b>Detalles</b>
+      <b>{{'General.Detalles' | translate}}</b>
     </ion-label>
   </ion-item-divider>
   <ion-grid fixed>
@@ -78,7 +78,7 @@
       <ion-col size="12" size-lg="6">
         <ion-item button [routerLink]="['/cliente', cliente.id,'establecimientos']" detail="true">
           <ion-icon name="home"></ion-icon>
-            Establecimientos
+          {{'Cliente.Establecimientos'}}
         </ion-item>
       </ion-col>
     </ion-row>

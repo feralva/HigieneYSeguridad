@@ -22,13 +22,13 @@
       </ion-item>
       <ion-item-options>
         <ion-item-option color="success" [routerLink]="['/establecimiento',establecimiento.id, 'detalle']" expandable>
-          Detalle
+          {{'General.Detalle' | translate}}
         </ion-item-option>
         <ion-item-option color="tertiary" [routerLink]="['/establecimiento',establecimiento.id, 'editar']" expandable>
-          Editar
+          {{'General.Editar' | translate}}
         </ion-item-option>
         <ion-item-option color="danger" expandable>
-          Borrar
+          {{'General.Borrar' | translate}} 
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>

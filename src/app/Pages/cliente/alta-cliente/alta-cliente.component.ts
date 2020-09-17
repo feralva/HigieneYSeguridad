@@ -124,11 +124,12 @@ export class AltaClienteComponent implements OnInit {
   async AltaClienteConfirm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Alta Cliente',
-      message: '¿Esta seguro que desea crear Cliente?',
+      header: this.translate.instant('Cliente.Alta.title'),
+      message: this.translate.instant('Mensaje.Confirmacion',{accion: this.translate.instant('Accion.Crear'),
+                                                              entidad: this.translate.instant('Cliente.title')}),
       buttons: [
         {
-          text: 'Cancelar',
+          text: this.translate.instant('Mensaje.Cancelar'),
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
@@ -141,12 +142,10 @@ export class AltaClienteComponent implements OnInit {
 
             this.loaderService.present();
             this.clienteService.addCliente(this.model).subscribe(
-              //(id: number) => console.log(id),
               data => {
                 console.log(data)
                 this.guardarImagenCliente(this.imageBase64, this.model.empresaId, data.id).then(result => { 
                   console.log('imagen guardada')
-                  //console.log(result.ref.getDownloadURL())
                   var rutaImagen = result.ref.getDownloadURL().then(
                     result =>{
                       console.log('Ruta imagen')
@@ -156,12 +155,12 @@ export class AltaClienteComponent implements OnInit {
                       this.clienteService.ActualizarCliente(this.model).subscribe(
                         data => {
                           this.loaderService.dismiss();
-                          this.MostrarMensajeOperacion('Alta Exitosa')
+                          this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
                           this.router.navigate(['cliente'])
                         },
                         (err: any) => {
                           this.loaderService.dismiss();
-                          this.MostrarMensajeOperacion('Falla')
+                          this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
                         }
                       )},
                     (err: any) => console.log(err)
@@ -185,7 +184,6 @@ export class AltaClienteComponent implements OnInit {
 
   altaCliente(){
     this.clienteService.addCliente(this.model).subscribe(
-      //(id: number) => console.log(id),
       result => console.log(result),
       (err: any) => console.log(err)
     );
@@ -201,13 +199,10 @@ export class AltaClienteComponent implements OnInit {
   async selectImageSource() {
     const buttons = [];
 
-
-
- 
     // Only allow file selection inside a browser
     if (!this.plt.is('hybrid')) {
       buttons.push({
-        text: 'Choose a File',
+        text: this.translate.instant('SeleccionFuenteImagen.SistemaArchivos'),
         icon: 'attach',
         handler: () => {
           this.fileInput.nativeElement.click();
@@ -216,7 +211,7 @@ export class AltaClienteComponent implements OnInit {
     }
     if (this.plt.is('hybrid')) {
       buttons.push({
-        text: 'Choose From Gallery',
+        text: this.translate.instant('SeleccionFuenteImagen.Galeria'),
         icon: 'image',
         handler: () => {
           this.addImage(CameraSource.Photos);
@@ -225,7 +220,7 @@ export class AltaClienteComponent implements OnInit {
     }
  
     const actionSheet = await this.actionSheetCtrl.create({
-      header: 'Select Image Source',
+      header: this.translate.instant('SeleccionFuenteImagen.Mensaje'),
       buttons
     });
     await actionSheet.present();
@@ -239,7 +234,7 @@ export class AltaClienteComponent implements OnInit {
     })
   }
 
-    // Used for browser direct file upload
+  // Used for browser direct file upload
   uploadFile(event: EventTarget) {
     const eventObj: MSInputMethodContext = event as MSInputMethodContext;
     const target: HTMLInputElement = eventObj.target as HTMLInputElement;

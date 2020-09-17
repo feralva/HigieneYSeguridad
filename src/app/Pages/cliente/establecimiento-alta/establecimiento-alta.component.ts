@@ -126,11 +126,12 @@ export class EstablecimientoAltaComponent implements OnInit {
   async AltaEstablecimientoConfirm() {
     const alert = await this.alertController.create({
       cssClass: "my-custom-class",
-      header: "Alta Establecimiento",
-      message: "¿Esta seguro que desea crear Establecimiento?",
+      header: this.translate.instant("Establecimiento.Alta"),
+      message: this.translate.instant('Mensaje.Confirmacion',{accion: this.translate.instant('Accion.Crear'),
+      entidad: this.translate.instant('Establecimiento.Establecimiento')}),
       buttons: [
         {
-          text: "Cancelar",
+          text: this.translate.instant('Mensaje.Cancelar'),
           role: "cancel",
           cssClass: "secondary",
           handler: (blah) => {
@@ -142,10 +143,10 @@ export class EstablecimientoAltaComponent implements OnInit {
           handler: () => {
             this.establecimientoService.alta(this.model).subscribe(
               (result) => {
-                this.MostrarMensajeOperacion("Alta Exitosa")
+                this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
                 this.router.navigate(['/cliente', this.model.clienteId ,'editar'])
               },
-              (err: any) => this.MostrarMensajeOperacion("Falla")
+              (err: any) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
             );
           },
         },
