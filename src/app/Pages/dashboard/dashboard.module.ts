@@ -8,6 +8,7 @@ import { DashboardPageRoutingModule } from './dashboard-routing.module';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { DashboardPage } from './dashboard.page';
 import { ChartsModule } from 'ng2-charts';
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   imports: [
     CommonModule,
@@ -15,7 +16,8 @@ import { ChartsModule } from 'ng2-charts';
     IonicModule,
     DashboardPageRoutingModule,
     ChartsModule,
-    Ng2GoogleChartsModule
+    Ng2GoogleChartsModule,
+    TranslateModule
   ],
   declarations: [DashboardPage]
 })

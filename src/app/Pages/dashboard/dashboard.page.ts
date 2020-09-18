@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { first } from 'rxjs/operators';
 import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
@@ -22,21 +23,23 @@ export class DashboardPage implements OnInit {
       position: 'left',
     }
   };
-  public pieChartLabels: Label[] = ['Pendiente', 'Completa', 'Cancelada'];
+  public pieChartLabels: Label[] = [this.translate.instant('DashBoard.Estado.Pendiente'), 
+                                    this.translate.instant('DashBoard.Estado.Completa'),
+                                    this.translate.instant('DashBoard.Estado.Cancelada')];
   public pieChartData: SingleDataSet = null;
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
   public pieChartPlugins = [];
 
   constructor(private empresaService: EmpresaService, private route: ActivatedRoute, private authService: AuthService,
-    private appDataService: AppDataService) {
+    private appDataService: AppDataService, private translate: TranslateService) {
 /*     monkeyPatchChartJsTooltip();
     monkeyPatchChartJsLegend(); */
   }
 
   ionViionViewWillEnter() {
 
-    this.appDataService.changePageName('Dashboard.Title');
+    this.appDataService.changePageName('Dashboard.title');
   
   }
 

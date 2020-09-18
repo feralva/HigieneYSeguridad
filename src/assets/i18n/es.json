@@ -100,6 +100,16 @@
     },
     "Boton":{
         "Operacion": "{{accion}} {{entidad}}"
+    },
+    "DashBoard":{
+        "title": "Tablero Control",
+        "Estadisticas": "Estadisticas",
+        "Total_Visitas_Por_Estado": "Totalizado Visitas Por Estado",
+        "Estado": {
+            "Pendiente": "Pendiente",
+            "Completa": "Completa",
+            "Cancelada": "Cancelada"
+        }
     }
     
 }
