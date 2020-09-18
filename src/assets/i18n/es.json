@@ -10,8 +10,18 @@
     },
     "Empleado": {
         "title": "Empleado",
+        "Empleado": "Empleado",
         "Alta": {
             "title": "Alta Empleado"
+        },
+        "Error": {
+            "Falta_Roles": "Debe Seleccionar Al Menos un Rol"
+        },
+        "Detalle": {
+            "title": "Detalle Empleado"
+        },
+        "Edicion":{
+            "title": "Modificar Empleado"
         }
     },
     "Mensaje": {
@@ -84,7 +94,12 @@
         "Estado": "Estado",
         "CreadoPor": "Creado Por",
         "FechaCreacion": "Fecha Creación",
-        "Ubicaciones": "Ubicaciones"
+        "Ubicaciones": "Ubicaciones",
+        "Password": "Contraseña",
+        "Roles": "Roles",
+        "Error": {
+            "Falta_Imagen": "Debe Seleccionar Imagen"
+        }
     },
     "Accion":{
         "Crear": "Crear",

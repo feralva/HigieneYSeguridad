@@ -9,40 +9,40 @@
 <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
     <ion-item-divider color="secondary">
       <ion-label>
-       Empleado
+       {{'Empleado.Empleado' | translate}}
       </ion-label>
     </ion-item-divider>
     <ion-grid fixed>
       <ion-row>
         <ion-col size="12" size-lg="6">
           <ion-item>
-            <ion-label position="stacked">Nombre</ion-label>
-            <ion-input placeholder="Nombre" name="Nombre" [(ngModel)]="empleadoModel.nombre" required #nombreInput="ngModel"></ion-input>
+            <ion-label position="stacked">{{'General.Nombre' | translate}}</ion-label>
+            <ion-input placeholder="{{'General.Nombre' | translate}}" name="Nombre" [(ngModel)]="empleadoModel.nombre" required #nombreInput="ngModel"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="12" size-lg="6">
           <ion-item>
-            <ion-label position="stacked">Apellido</ion-label>
-            <ion-input placeholder="Apellido" name="responsable.Apellido" [(ngModel)]="empleadoModel.apellido" required></ion-input>
+            <ion-label position="stacked">{{'General.Apellido' | translate}}</ion-label>
+            <ion-input placeholder="{{'General.Apellido' | translate}}" name="responsable.Apellido" [(ngModel)]="empleadoModel.apellido" required></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="12" size-lg="6">
           <ion-item>
-            <ion-label position="stacked">Correo Electronico</ion-label>
-            <ion-input type="email" placeholder="Correo Electronico" name="responsable.correoElectronico" [(ngModel)]="empleadoModel.correoElectronico" required
+            <ion-label position="stacked">{{'General.Apellido' | translate}}CorreoElectronico</ion-label>
+            <ion-input type="email" placeholder="{{'General.Apellido' | translate}}" name="responsable.correoElectronico" [(ngModel)]="empleadoModel.correoElectronico" required
             pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}$"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="12" size-lg="6">
           <ion-item>
-            <ion-label position="stacked">Contraseña</ion-label>
-            <ion-input placeholder="Contraseña" type="password" name="responsable.contrasenia" [(ngModel)]="empleadoModel.contrasenia" required></ion-input>
+            <ion-label position="stacked">{{'General.Password' | translate}}</ion-label>
+            <ion-input placeholder="{{'General.Password' | translate}}" type="password" name="responsable.contrasenia" [(ngModel)]="empleadoModel.contrasenia" required></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="12">
           <ion-item>
-            <ion-label position="stacked">Roles</ion-label>
-            <ion-select style="width: max-content;" name="rolesSeleccionados" multiple="true" [(ngModel)]="rolesSeleccionados" placeholder='Roles' required>
+            <ion-label position="stacked">{{'General.Roles' | translate}}</ion-label>
+            <ion-select style="width: max-content;" name="rolesSeleccionados" multiple="true" [(ngModel)]="rolesSeleccionados" placeholder="{{'General.Roles' | translate}}" required>
               <ion-select-option *ngFor="let rol of rolesDisponibles" value="{{rol.idFamilia}}">{{rol.nombre}}</ion-select-option>
             </ion-select>
           </ion-item>
@@ -58,7 +58,7 @@
     </div>
       <ion-row>
         <ion-col size="12" size-lg="8" offset-lg="2" class="ion-text-center" style="margin-top: 3em;">
-          <ion-button type="submit" shape="round" expand="block" fill="solid" [disabled]="form.invalid">Alta Empleado</ion-button>
+          <ion-button type="submit" shape="round" expand="block" fill="solid" [disabled]="form.invalid">{{'Empleado.Alta.title' | translate}}</ion-button>
         </ion-col>
       </ion-row>
   </form>

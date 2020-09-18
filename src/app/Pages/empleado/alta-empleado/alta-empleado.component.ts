@@ -74,18 +74,18 @@ export class AltaEmpleadoComponent implements OnInit {
   }
 
   ionViewWillEnter(){
-    this.nombrePagina = 'Empleado.Alta.title';
-    this.appDataService.changePageName(this.nombrePagina);
+    this.appDataService.changePageName('Empleado.Alta.title');
 
   }
   async AltaEmpleadoConfirm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Alta Empleado',
-      message: 'Message ¿Esta seguro que desea crear Empleado?',
+      header: this.translate.instant('Empleado.Alta.title'),
+      message: this.translate.instant('Mensaje.Confirmacion',{accion: this.translate.instant('Accion.Crear'),
+      entidad: this.translate.instant('Empleado.Empleado')}),
       buttons: [
         {
-          text: 'Cancelar',
+          text: this.translate.instant('Mensaje.Cancelar'),
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
@@ -102,10 +102,10 @@ export class AltaEmpleadoComponent implements OnInit {
                     this.empleadoModel.urlFoto = result
                     this.empleadoService.addEmpleado(this.empleadoModel).subscribe(
                       result => {                        
-                        this.MostrarMensajeOperacion('Alta Exitosa')
+                        this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
                         this.router.navigate(['/empleado'])
                       },
-                      (err: any) => this.MostrarMensajeOperacion(err.message)
+                      (err: any) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
                     );
                   }
                   );
@@ -152,23 +152,23 @@ export class AltaEmpleadoComponent implements OnInit {
   }
   
   validarModelo() {
-    if(this.rolesSeleccionados.length == 0) throw new Error('Debe Seleccionar Al Menos un Rol')
+    if(this.rolesSeleccionados.length == 0) throw new Error('Empleado.Error.Falta_Roles')
     
     if(!this.imageBase64)
-      throw new Error("Debe Seleccionar Imagen");
+      throw new Error('General.Error.Falta_Imagen');
   }
 
   async selectImageSource() {
     const buttons = [
       {
-        text: 'Take Photo',
+        text: this.translate.instant('SeleccionFuenteImagen.Camara'),
         icon: 'camera',
         handler: () => {
           this.addImage(CameraSource.Camera);
         }
       },
       {
-        text: 'Choose From Photos Photo',
+        text: this.translate.instant('SeleccionFuenteImagen.Galeria'),
         icon: 'image',
         handler: () => {
           this.addImage(CameraSource.Photos);
@@ -179,7 +179,7 @@ export class AltaEmpleadoComponent implements OnInit {
     // Only allow file selection inside a browser
     if (!this.plt.is('hybrid')) {
       buttons.push({
-        text: 'Choose a File',
+        text: this.translate.instant('SeleccionFuenteImagen.SistemaArchivos'),
         icon: 'attach',
         handler: () => {
           this.fileInput.nativeElement.click();
@@ -188,7 +188,7 @@ export class AltaEmpleadoComponent implements OnInit {
     }
  
     const actionSheet = await this.actionSheetCtrl.create({
-      header: 'Select Image Source',
+      header: this.translate.instant('SeleccionFuenteImagen.Mensaje'),
       buttons
     });
     await actionSheet.present();

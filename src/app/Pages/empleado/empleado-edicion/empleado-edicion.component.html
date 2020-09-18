@@ -9,33 +9,33 @@
   <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
     <ion-item-divider color="secondary">
       <ion-label>
-       Empleado
+        {{'Empleado.Empleado' | translate}}
       </ion-label>
     </ion-item-divider>
         <ion-grid fixed>
       <ion-row>
         <ion-col size="12" size-lg="6">
           <ion-item>
-            <ion-label position="stacked">Nombre</ion-label>
-            <ion-input placeholder="Nombre" name="Nombre" [(ngModel)]="empleadoModel.nombre"></ion-input>
+            <ion-label position="stacked">{{'General.Nombre' | translate}}</ion-label>
+            <ion-input placeholder="{{'General.Nombre' | translate}}" name="Nombre" [(ngModel)]="empleadoModel.nombre"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="12" size-lg="6">
           <ion-item>
-            <ion-label position="stacked">Apellido</ion-label>
-            <ion-input placeholder="Apellido" name="responsable.Apellido" [(ngModel)]="empleadoModel.apellido"></ion-input>
+            <ion-label position="stacked">{{ 'General.Apellido'  | translate }}</ion-label>
+            <ion-input placeholder="{{ 'General.Apellido'  | translate }}" name="responsable.Apellido" [(ngModel)]="empleadoModel.apellido"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="12" size-lg="6">
           <ion-item>
-            <ion-label position="stacked">Correo Electronico</ion-label>
-            <ion-input type="email" placeholder="Correo Electronico" name="responsable.CorreoElectronico" [(ngModel)]="empleadoModel.correoElectronico" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}$"></ion-input>
+            <ion-label position="stacked">{{ 'General.CorreoElectronico'  | translate }}</ion-label>
+            <ion-input type="email" placeholder="{{ 'General.CorreoElectronico'  | translate }}" name="responsable.CorreoElectronico" [(ngModel)]="empleadoModel.correoElectronico" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}$"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="12" size-lg="6">
           <ion-item>
-            <ion-label position="stacked">Roles</ion-label>
-            <ion-select style="width: max-content;" name="rolesSeleccionados" multiple="true" [(ngModel)]="rolesSeleccionados" placeholder='Roles'>
+            <ion-label position="stacked">{{'General.Roles' | translate}}</ion-label>
+            <ion-select style="width: max-content;" name="rolesSeleccionados" multiple="true" [(ngModel)]="rolesSeleccionados" placeholder="{{'General.Roles' | translate}}">
               <ion-select-option *ngFor="let rol of rolesDisponibles" [value]="rol">{{rol.nombre}}</ion-select-option>
             </ion-select>
           </ion-item>
@@ -50,7 +50,7 @@
         </ion-avatar>            
       </div>
 
-      <ion-button type="submit" style="top:2em" shape="round" expand="block" fill="solid" slot="end" [disabled]="form.invalid">Modificar Empleado</ion-button>
+      <ion-button type="submit" style="top:2em" shape="round" expand="block" fill="solid" slot="end" [disabled]="form.invalid">{{'Empleado.Edicion.title' | translate}}</ion-button>
 
   </form>
 

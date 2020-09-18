@@ -85,11 +85,12 @@ export class EmpleadoEdicionComponent implements OnInit {
   async ModificarEmpleadoConfirm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Modificar Empleado',
-      message: '¿Esta seguro que desea modificar Empleado?',
+      header: this.translate.instant('Empleado.Editar.title'),
+      message: this.translate.instant('Mensaje.Confirmacion',{accion: this.translate.instant('Accion.Modificar'),
+      entidad: this.translate.instant('Empleado.Empleado')}),
       buttons: [
         {
-          text: 'Cancelar',
+          text: this.translate.instant('Mensaje.Cancelar'),
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
@@ -125,10 +126,10 @@ export class EmpleadoEdicionComponent implements OnInit {
   private ActualizarEmpleado() {
     this.empleadoService.actualizarEmpleado(this.empleadoModel).subscribe(
       result => {
-        this.MostrarMensajeOperacion('Modificación Exitosa')
+        this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
         this.router.navigate(['/empleado'])
       },
-      (err: any) => this.MostrarMensajeOperacion('Falla')
+      (err: any) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
     );
   }
 
@@ -162,14 +163,14 @@ export class EmpleadoEdicionComponent implements OnInit {
   async selectImageSource() {
     const buttons = [
       {
-        text: 'Take Photo',
+        text: this.translate.instant('SeleccionFuenteImagen.Camara'),
         icon: 'camera',
         handler: () => {
           this.addImage(CameraSource.Camera);
         }
       },
       {
-        text: 'Choose From Photos Photo',
+        text: this.translate.instant('SeleccionFuenteImagen.Galeria'),
         icon: 'image',
         handler: () => {
           this.addImage(CameraSource.Photos);
@@ -180,7 +181,7 @@ export class EmpleadoEdicionComponent implements OnInit {
     // Only allow file selection inside a browser
     if (!this.plt.is('hybrid')) {
       buttons.push({
-        text: 'Choose a File',
+        text: this.translate.instant('SeleccionFuenteImagen.SistemaArchivos'),
         icon: 'attach',
         handler: () => {
           this.fileInput.nativeElement.click();
@@ -189,7 +190,7 @@ export class EmpleadoEdicionComponent implements OnInit {
     }
  
     const actionSheet = await this.actionSheetCtrl.create({
-      header: 'Select Image Source',
+      header: this.translate.instant('SeleccionFuenteImagen.SistemaArchivos'),
       buttons
     });
     await actionSheet.present();

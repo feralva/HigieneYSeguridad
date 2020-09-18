@@ -11,6 +11,7 @@ import { AltaEmpleadoComponent } from './alta-empleado/alta-empleado.component';
 import { EmpleadoEdicionComponent } from './empleado-edicion/empleado-edicion.component';
 import { EmpleadoDetalleComponent } from './empleado-detalle/empleado-detalle.component';
 import { PipesModule } from 'src/app/Core/pipes/pipes.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { PipesModule } from 'src/app/Core/pipes/pipes.module';
     FormsModule,
     IonicModule,
     EmpleadoPageRoutingModule,
-    PipesModule
+    PipesModule,
+    TranslateModule
   ],
   declarations: [EmpleadoPage,
     AltaEmpleadoComponent, EmpleadoDetalleComponent,

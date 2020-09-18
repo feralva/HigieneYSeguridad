@@ -10,7 +10,7 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher> 
 
-  <ion-searchbar placeholder="Empleado" (ionChange)="onBuscarEmpleadoChange($event)"
+  <ion-searchbar placeholder="{{'Empleado.Empleado' | translate}}" (ionChange)="onBuscarEmpleadoChange($event)"
     animated></ion-searchbar>
 
   <ion-list *ngIf="empleados.length > 0"> 
@@ -27,13 +27,13 @@
       </ion-item>
       <ion-item-options>
         <ion-item-option color="success" [routerLink]="[empleado.id, 'detalle']" expandable>
-          Detalle
+          {{'General.Detalle' | translate}}
         </ion-item-option>
         <ion-item-option color="tertiary" [routerLink]="[empleado.id, 'editar']" expandable>
-          Editar
+          {{'General.Editar' | translate}}
         </ion-item-option>
         <ion-item-option color="danger" (click)="onBorrarEmpleado(empleado)" expandable>
-          Borrar
+          {{'General.Borrar' | translate}}
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
