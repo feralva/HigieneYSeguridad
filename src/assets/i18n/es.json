@@ -6,7 +6,11 @@
         "Alta": {
             "title": "Alta Empresa"
         },
-        "Planes":"Planes de Empresa"
+        "Editar": {
+            "title": "Modificar Empresa"
+        },
+        "Planes":"Planes de Empresa",
+        "Empresa": "Empresa"
     },
     "Empleado": {
         "title": "Empleado",
@@ -34,6 +38,13 @@
         "title": "Equipos Medicion",
         "Alta": {
             "title": "Alta Equipo Medicion"
+        },
+        "Cantidad": "Cantidad",
+        "Tipo_Equipo_Medicion": "Tipo Equipo Medición",
+        "ActualizarCantidad": {
+            "title": "Actualizar Cantidad",
+            "Modificar_Cantidad_Equipos_Medicion": "Modificar Cantidad Equipos Medición",
+            "entidad": "Cantidad Equipo Medición"
         }
     },
     "Cliente": {
@@ -99,7 +110,8 @@
         "Roles": "Roles",
         "Error": {
             "Falta_Imagen": "Debe Seleccionar Imagen"
-        }
+        },
+        "Tipo": "Tipo"
     },
     "Accion":{
         "Crear": "Crear",

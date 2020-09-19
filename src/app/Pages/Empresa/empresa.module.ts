@@ -10,8 +10,8 @@ import { EmpresaPage } from './empresa.page';
 import { AltaEmpresaPage } from './alta-empresa/alta-empresa.page';
 import { IonicSelectableModule } from 'ionic-selectable';
 import { EditarEmpresaComponent } from './editar-empresa/editar-empresa.component';
-import { PagosEmpresaComponent } from './pagos-empresa/pagos-empresa.component';
 import { SharedDirectivesModule } from 'src/app/Core/Directives/shared-directives.module';
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   imports: [
     CommonModule,
@@ -19,8 +19,9 @@ import { SharedDirectivesModule } from 'src/app/Core/Directives/shared-directive
     IonicModule,
     EmpresaPageRoutingModule,
     IonicSelectableModule,
-    SharedDirectivesModule
+    SharedDirectivesModule,
+    TranslateModule
   ],
-  declarations: [EmpresaPage, AltaEmpresaPage, EditarEmpresaComponent, PagosEmpresaComponent]
+  declarations: [EmpresaPage, AltaEmpresaPage, EditarEmpresaComponent]
 })
 export class EmpresaPageModule {}

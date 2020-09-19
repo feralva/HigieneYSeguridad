@@ -33,9 +33,9 @@ export class EmpresaPage implements OnInit {
     this.empresaService.ActualizarEmpresa(empresa).subscribe(
       data => {
         this.empresas.splice(this.empresas.findIndex(e => e.id === empresa.id), 1 )
-        this.MostrarMensajeOperacion('Baja Exitosa')
+        this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
       },
-      (err: any) => this.MostrarMensajeOperacion('Falla')
+      (err: any) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
     )
   }
 

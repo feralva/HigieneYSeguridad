@@ -9,25 +9,25 @@
   <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
       <ion-item-divider color="secondary">
         <ion-label>
-         Equipo Medicion
+         {{'EquipoMedicion.title' | translate }}
         </ion-label>
       </ion-item-divider>
         <ion-item>
-          <ion-label position="stacked">Nombre</ion-label>
-          <ion-input placeholder="Nombre" name="Nombre" [(ngModel)]="equipoMedicionModel.nombre" required></ion-input>
+          <ion-label position="stacked">{{'General.Nombre' | translate }}</ion-label>
+          <ion-input placeholder="{{'General.Nombre' | translate }}" name="Nombre" [(ngModel)]="equipoMedicionModel.nombre" required></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label position="stacked">Cantidad</ion-label>
-          <ion-input placeholder="Cantidad" name="cantidad" [(ngModel)]="cantidad" OnlyNumberInputDirective></ion-input>
+          <ion-label position="stacked">{{'EquipoMedicion.Cantidad' | translate }}</ion-label>
+          <ion-input placeholder="{{'EquipoMedicion.Cantidad' | translate }}" name="cantidad" [(ngModel)]="cantidad" OnlyNumberInputDirective></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label position="stacked">Tipo Equipo Medicion</ion-label>
-          <ion-select style="width: max-content;" name="equipoMedicionModel.tipoEquipoMedicionId" [(ngModel)]="equipoMedicionModel.tipoEquipoMedicionId" placeholder='Tipo'>
+          <ion-label position="stacked">{{'EquipoMedicion.Tipo_Equipo_Medicion' | translate }}</ion-label>
+          <ion-select style="width: max-content;" name="equipoMedicionModel.tipoEquipoMedicionId" [(ngModel)]="equipoMedicionModel.tipoEquipoMedicionId" placeholder="{{'General.Tipo' | translate }}">
             <ion-select-option *ngFor="let tipo of tiposEquipoMedicion" [value]="tipo.id">{{tipo.descripcion}}</ion-select-option>
           </ion-select>
         </ion-item>
 
-        <ion-button type="submit" shape="round" fill="outline" slot="end">Alta Equipo Medicion</ion-button>
+        <ion-button type="submit" shape="round" fill="outline" slot="end">{{'EquipoMedicion.Alta.title' | translate }}</ion-button>
   
     </form>
   </ion-content>

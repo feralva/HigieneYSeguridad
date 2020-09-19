@@ -47,11 +47,12 @@ export class ModificarCantidadEquiposMedicionComponent implements OnInit {
   async ModificarCantidadEquiposMedicionConfirm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Modificar Cantidad Equipos Medición',
-      message: '¿Esta seguro que desea modificar Cantidad Equipo Medición?',
+      header: this.translate.instant('EquipoMedicion.ActualizarCantidad.Modificar_Cantidad_Equipos_Medicion'),
+      message: this.translate.instant('Mensaje.Confirmacion',{accion: this.translate.instant('Accion.Modificar'),
+                                        entidad: this.translate.instant('EquipoMedicion.ActualizarCantidad.entidad')}),
       buttons: [
         {
-          text: 'Cancelar',
+          text: this.translate.instant('Mensaje.Cancelar'),
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
@@ -74,10 +75,10 @@ export class ModificarCantidadEquiposMedicionComponent implements OnInit {
   modificarCantidadEquipoMedicion() {
     this.equipoMedicionService.actualizarCantidadEquiposMedicion(this.tipoEquipo.equipoMedicionNombre, this.currentUser.empresaId, this.cantidadAAgregar).subscribe(
       data => {
-        this.MostrarMensajeOperacion('Actualizacion Exitosa')
+        this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
         this.router.navigate(['/equiposMedicion'])
       },
-      (error) => console.log(error)
+      (error) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
     )
   }
 

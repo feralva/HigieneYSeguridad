@@ -9,16 +9,16 @@
   <form #form="ngForm" (ngSubmit)="onSubmit(form)">
     <ion-item-divider color="secondary">
       <ion-label>
-        Empresa
+        {{ 'Empresa.Empresa' | translate }}
       </ion-label>
     </ion-item-divider>
     <ion-grid fixed>
       <ion-row>
         <ion-col size="12" size-lg="6">
           <ion-item>
-            <ion-label position="stacked">Nombre</ion-label>
+            <ion-label position="stacked">{{ 'General.Nombre' | translate }}</ion-label>
             <ion-input
-              placeholder="Nombre"
+              placeholder="{{ 'General.Nombre' | translate }}"
               name="Nombre"
               [(ngModel)]="empresaModel.nombre"
               required></ion-input>
@@ -28,33 +28,33 @@
     </ion-grid>
     <ion-item-divider color="tertiary">
       <ion-label>
-        Dirección
+        {{ 'General.Direccion' | translate }}
       </ion-label>
     </ion-item-divider>
     <ion-grid fixed>
       <ion-row>
         <ion-col size="12" size-lg="6">
           <ion-item>
-            <ion-label position="stacked">Calle</ion-label>
+            <ion-label position="stacked">{{ 'General.Calle' | translate }}</ion-label>
             <ion-input
-              placeholder="Calle"
+              placeholder="{{ 'General.Calle' | translate }}"
               name="direccion.Calle"
               [(ngModel)]="empresaModel.direccion.calle" required></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="12" size-lg="6">
           <ion-item>
-            <ion-label position="stacked">Altura</ion-label>
+            <ion-label position="stacked"{{ 'General.Altura' | translate }}></ion-label>
             <ion-input
-              placeholder="Altura"
+              placeholder="{{ 'General.Altura' | translate }}"
               name="direccion.Altura"
               [(ngModel)]="altura" required OnlyNumberInputDirective></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="12" size-lg="6">
           <ion-item>
-            <ion-label position="stacked">Provincia</ion-label>
-            <ion-select style="width: max-content;" name="provinciaSeleccionada" [(ngModel)]="provinciaSeleccionada" placeholder='Provincia' 
+            <ion-label position="stacked">{{ 'General.Provincia' | translate }}</ion-label>
+            <ion-select style="width: max-content;" name="provinciaSeleccionada" [(ngModel)]="provinciaSeleccionada" placeholder='{{ 'General.Provincia' | translate }}Provincia' 
               (ngModelChange)="actualizarPartidos($event)" required>
               <ion-select-option *ngFor="let provincia of provincias; let i = index" [value]="provincia" selected="i === 0">{{provincia.nombre}}</ion-select-option>
             </ion-select>
@@ -62,7 +62,7 @@
         </ion-col>
         <ion-col size="12" size-lg="6">
           <ion-item *ngIf="provinciaSeleccionada!= null">
-            <ion-label position="stacked" *ngIf="provinciaSeleccionada!= null">Partido</ion-label>
+            <ion-label position="stacked" *ngIf="provinciaSeleccionada!= null">{{ 'General.Partido' | translate }}</ion-label>
             <ionic-selectable
               item-content
               [(ngModel)]="partidoSeleccionado"
@@ -73,7 +73,7 @@
               [isMultiple]="false"
               name="partidosSeleccionados"
               [canSearch]="true"
-              placeholder="Partido" required>
+              placeholder="{{ 'General.Partido' | translate }}" required>
             </ionic-selectable>
           </ion-item>
         </ion-col>
@@ -81,43 +81,43 @@
     </ion-grid>
     <ion-item-divider color="tertiary">
       <ion-label>
-        responsable
+        {{ 'General.Responsable' | translate }}
       </ion-label>
     </ion-item-divider>
     <ion-grid fixed>
       <ion-row>
         <ion-col size="12" size-lg="6">
           <ion-item>
-            <ion-label position="stacked">Nombre</ion-label>
+            <ion-label position="stacked"{{ 'General.Nombre' | translate }}></ion-label>
             <ion-input
-              placeholder="Nombre"
+              placeholder="{{ 'General.Nombre' | translate }}"
               name="responsable.Nombre"
               [(ngModel)]="empresaModel.responsable.nombre" required></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="12" size-lg="6">
           <ion-item>
-            <ion-label position="stacked">Apellido</ion-label>
+            <ion-label position="stacked">{{ 'General.Apellido' | translate }}</ion-label>
             <ion-input
-              placeholder="Apellido"
+              placeholder="{{ 'General.Apellido' | translate }}Apellido"
               name="responsable.Apellido"
               [(ngModel)]="empresaModel.responsable.apellido" required></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="12" size-lg="6">
           <ion-item>
-            <ion-label position="stacked">Correo Electronico</ion-label>
+            <ion-label position="stacked">{{ 'General.CorreoElectronico' | translate }}</ion-label>
             <ion-input type="email"
-              placeholder="Correo Electronico"
+              placeholder="{{ 'General.CorreoElectronico' | translate }}"
               name="responsable.CorreoElectronico"
               [(ngModel)]="empresaModel.responsable.correoElectronico" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}$"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="12" size-lg="6">
           <ion-item>
-            <ion-label position="stacked">Telefono</ion-label>
+            <ion-label position="stacked">{{ 'General.Telefono' | translate }}</ion-label>
             <ion-input
-              placeholder="Telefono"
+              placeholder="{{ 'General.Telefono' | translate }}"
               name="responsable.Telefono"
               [(ngModel)]="empresaModel.responsable.telefono" required></ion-input>
           </ion-item>
@@ -137,7 +137,7 @@
 
     <ion-item>
       <ion-button type="submit" shape="round" fill="outline" slot="end" size="default" [disabled]="form.invalid">
-        Alta Empresa
+        {{ 'Empresa.Alta.title' | translate }}
       </ion-button>
     </ion-item> 
   </form>

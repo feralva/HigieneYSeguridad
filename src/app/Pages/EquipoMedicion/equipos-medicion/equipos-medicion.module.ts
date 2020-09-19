@@ -10,6 +10,7 @@ import { EquiposMedicionPage } from './equipos-medicion.page';
 import { AltaEquipoMedicionComponent } from '../alta-equipo-medicion/alta-equipo-medicion.component';
 import { ModificarCantidadEquiposMedicionComponent } from '../modificar-cantidad-equipos-medicion/modificar-cantidad-equipos-medicion.component';
 import { SharedDirectivesModule } from 'src/app/Core/Directives/shared-directives.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { SharedDirectivesModule } from 'src/app/Core/Directives/shared-directive
     FormsModule,
     IonicModule,
     EquiposMedicionPageRoutingModule,
-    SharedDirectivesModule
+    SharedDirectivesModule,
+    TranslateModule
   ],
   declarations: [EquiposMedicionPage, AltaEquipoMedicionComponent, ModificarCantidadEquiposMedicionComponent]
 })

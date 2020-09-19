@@ -34,7 +34,6 @@ export class AltaEmpresaPage implements OnInit {
   partidoSeleccionado: any;
   provincias: any[];
   provinciaSeleccionada: any;
-  public nombrePagina: string;
 
   empresaModel: Empresa = {
     id: 0,
@@ -94,8 +93,7 @@ export class AltaEmpresaPage implements OnInit {
   }
 
   ionViewWillEnter(){
-    this.nombrePagina = 'Empresa.title';
-    this.appDataService.changePageName(this.nombrePagina);
+    this.appDataService.changePageName('Empresa.title');
   }
 
   actualizarPartidos(event){
@@ -120,17 +118,18 @@ export class AltaEmpresaPage implements OnInit {
 
   private validarModel() {
     if(!this.imageBase64)
-      throw new Error("Debe Seleccionar Imagen");
+      throw new Error('General.Error.Falta_Imagen');
   }
 
   async AltaEmpresaConfirm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Alta Empresa',
-      message: '¿Esta seguro que desea crear Empresa?',
+      header: this.translate.instant('Empresa.Alta.title'),
+      message: this.translate.instant('Mensaje.Confirmacion',{accion: this.translate.instant('Accion.Crear'),
+                                      entidad: this.translate.instant('Empresa.Empresa')}),
       buttons: [
         {
-          text: 'Cancelar',
+          text: this.translate.instant('Mensaje.Cancelar'),
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
@@ -143,7 +142,6 @@ export class AltaEmpresaPage implements OnInit {
 
             this.loaderService.present();
             this.empresaService.addEmpresa(this.empresaModel).subscribe(
-              //(id: number) => console.log(id),
               data => {
                 console.log(data)
 
@@ -156,11 +154,11 @@ export class AltaEmpresaPage implements OnInit {
                       this.empresaService.ActualizarEmpresa(this.empresaModel).subscribe(
                         data => {
                           this.loaderService.dismiss();
-                          this.MostrarMensajeOperacion('Alta Exitosa')
+                          this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
                           if(this.currentUser) this.router.navigate(['/empresa'])
                             else this.router.navigate(['/login'])                     
                         },
-                        (err: any) => this.MostrarMensajeOperacion('Falla')
+                        (err: any) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
                       )},
                     (err: any) => console.log(err)
                     )});
@@ -204,7 +202,7 @@ export class AltaEmpresaPage implements OnInit {
     // Only allow file selection inside a browser
     if (!this.plt.is('hybrid')) {
       buttons.push({
-        text: 'Choose a File',
+        text: this.translate.instant('SeleccionFuenteImagen.SistemaArchivos'),
         icon: 'attach',
         handler: () => {
           this.fileInput.nativeElement.click();
@@ -213,7 +211,7 @@ export class AltaEmpresaPage implements OnInit {
     }
     if (this.plt.is('hybrid')) {
       buttons.push({
-        text: 'Choose From Gallery',
+        text: this.translate.instant('SeleccionFuenteImagen.Galeria'),
         icon: 'image',
         handler: () => {
           this.addImage(CameraSource.Photos);
@@ -222,7 +220,7 @@ export class AltaEmpresaPage implements OnInit {
     }
  
     const actionSheet = await this.actionSheetCtrl.create({
-      header: 'Select Image Source',
+      header: this.translate.instant('SeleccionFuenteImagen.Mensaje'),
       buttons
     });
     await actionSheet.present();

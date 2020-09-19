@@ -16,15 +16,13 @@ export class EquiposMedicionPage implements OnInit {
     private appDataService: AppDataService, private authService: AuthService) { }
 
   equiposTotalizados: any;
-  public nombrePagina: string;
   currentUser: UserLogueado = null;
 
   ngOnInit() {}
 
   ionViewWillEnter(){
 
-    this.nombrePagina = 'EquipoMedicion.title';
-    this.appDataService.changePageName(this.nombrePagina);
+    this.appDataService.changePageName('EquipoMedicion.title');
 
     this.authService.getUserSubject().subscribe(
       data => this.currentUser = data,

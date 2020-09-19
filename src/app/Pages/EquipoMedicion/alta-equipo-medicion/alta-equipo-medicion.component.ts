@@ -31,7 +31,6 @@ export class AltaEquipoMedicionComponent implements OnInit {
     tipoEquipoMedicionId: 0
   };
   tiposEquipoMedicion: TipoEquipoMedicion[];
-  public nombrePagina: string;
   currentUser: UserLogueado = null;
 
   set cantidad(val:string){
@@ -44,8 +43,7 @@ export class AltaEquipoMedicionComponent implements OnInit {
 
   ngOnInit() {
 
-    this.nombrePagina = 'EquipoMedicion.Alta.title';
-    this.appDataService.changePageName(this.nombrePagina);
+    this.appDataService.changePageName('EquipoMedicion.Alta.title');
 
     this.authService.getUserSubject().subscribe(
       data => this.currentUser = data,
@@ -82,11 +80,12 @@ export class AltaEquipoMedicionComponent implements OnInit {
   async AltaEquipoMedicionConfirm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Alta Equipo Medicion',
-      message: 'Message ¿Esta seguro que desea crear Equipo Medicion?',
+      header: this.translate.instant('EquipoMedicion.Alta.title'),
+      message:  this.translate.instant('Mensaje.Confirmacion',{accion: this.translate.instant('Accion.Crear'),
+                          entidad: this.translate.instant('EquipoMedicion.title')}),
       buttons: [
         {
-          text: 'Cancelar',
+          text: this.translate.instant('Mensaje.Cancelar'),
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
@@ -100,10 +99,10 @@ export class AltaEquipoMedicionComponent implements OnInit {
             this.obtenerEquiposMedicionAGuardar().forEach(equipoMedicion => {
               this.equipoMedicionService.addEquipoMedicion(equipoMedicion).subscribe(
                 result => {
-                  this.MostrarMensajeOperacion('Alta Exitosa')
+                  this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
                   this.router.navigate(['/equiposMedicion'])
                 },
-                (err: any) => this.MostrarMensajeOperacion('Falla')
+                (err: any) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
               );
             });
           }
