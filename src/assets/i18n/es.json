@@ -143,7 +143,9 @@
         },
         "Tipo": "Tipo",
         "Ver_QR": "Ver QR",
-        "Descripcion": "Descripción"
+        "Descripcion": "Descripción",
+        "Atras": "Atras",
+        "Fecha": "Fecha"
     },
     "Accion":{
         "Crear": "Crear",
@@ -196,7 +198,8 @@
         "Cantidad_Meses_Dinamico": "{{cantidad}} meses",
         "PagoTotal": "Pago Total",
         "RealizarPago": "Realizar Pago",
-        "Pagos": "Pagos"
+        "Pagos": "Pagos",
+        "Total": "Total"
     },
     "Login": {
         "Password": "Contraseña",

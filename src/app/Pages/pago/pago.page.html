@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button text="Atras" defaultHref="home"></ion-back-button>
+      <ion-back-button text="{{'General.Atras' | translate}}" defaultHref="home"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -10,22 +10,22 @@
 
   <ion-row class="table-header-row">
     <ion-col size-xs="4" size-sm="2">
-      Cliente
+      {{'Cliente.Cliente' | translate}}
     </ion-col>
     <ion-col size-xs="3" size-sm="2">
-      Tipo Licencia
+      {{'Licencia.Tipo_Licencia' | translate}}
     </ion-col>
     <ion-col size-xs="2" class="hide-only-xs">
-      Cantidad Meses
+      {{'Licencia.Cantidad_Meses' | translate}}
     </ion-col>
     <ion-col size-xs="2" class="hide-only-xs">
-      Precio Licencia
+      {{'Licencia.Precio' | translate}}
     </ion-col>
     <ion-col size-xs="2">
-      Total
+      {{'Licencia.Total' | translate}}
     </ion-col>
     <ion-col size-xs="3" size-sm="2">
-      Fecha
+      {{'Fecha.Fecha' | translate}}
     </ion-col>
   </ion-row>
   <ion-row *ngFor="let pago of pagosEmpresas" class="data-row">
