@@ -15,6 +15,7 @@ import { ActualizacionPrecioLicenciaComponent } from './actualizacion-precio-lic
 import { IonicSelectableModule } from 'ionic-selectable';
 import { ModificarTipoLicenciaComponent } from './modificar-tipo-licencia/modificar-tipo-licencia.component';
 import { TiposLicenciaComponent } from './tipos-licencia/tipos-licencia.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { TiposLicenciaComponent } from './tipos-licencia/tipos-licencia.componen
     FormsModule,
     IonicModule,
     LicenciaPageRoutingModule,
-    IonicSelectableModule
+    IonicSelectableModule,
+    TranslateModule
   ],
   declarations: [LicenciaPage, DetalleLicenciaComponent, AdquirirLicenciaComponent, StripeComponent, AltaTipoLicenciaComponent, 
     ActualizacionPrecioLicenciaComponent, ModificarTipoLicenciaComponent, TiposLicenciaComponent, ModificarTipoLicenciaComponent]

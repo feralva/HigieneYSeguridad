@@ -130,13 +130,13 @@ export class StripeComponent implements OnInit {
         ).subscribe(
           result => {
             console.log(result)
-            this.MostrarMensajeOperacion('Alta Exitosa')
+            this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
             this.router.navigate(['/licencia', 'detalle'])
           },
-          (err: any) =>  this.MostrarMensajeOperacion('Falla')
+          (err: any) =>  this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
         )
       },
-      (error) => this.MostrarMensajeOperacion('Falla')
+      (error) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
     )
     //this.makePayment(result.id);
   }

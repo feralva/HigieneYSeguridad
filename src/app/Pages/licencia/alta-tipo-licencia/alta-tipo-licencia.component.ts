@@ -37,7 +37,7 @@ export class AltaTipoLicenciaComponent implements OnInit {
 
   ionViewWillEnter(){
 
-    this.appDataService.changePageName('TipoLicencia.Alta.title');
+    this.appDataService.changePageName('Licencia.Alta_Tipo_Licencia');
 
     this.authService.getUserSubject().subscribe(
       data => {
@@ -52,11 +52,12 @@ export class AltaTipoLicenciaComponent implements OnInit {
   async AltaTipoLicenciaConfirm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Alta Tipo Licencia',
-      message: 'Message ¿Esta seguro que desea crear Tipo Licencia?',
+      header: this.translate.instant('Licencia.Alta_Tipo_Licencia'),
+      message: this.translate.instant('Mensaje.Confirmacion',{accion: this.translate.instant('Accion.Crear'),
+                                            entidad: this.translate.instant('Licencia.Licencia')}),
       buttons: [
         {
-          text: 'Cancelar',
+          text: this.translate.instant('Mensaje.Cancelar'),
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
@@ -68,10 +69,10 @@ export class AltaTipoLicenciaComponent implements OnInit {
             this.licenciaService.AltaTipoLicencia(this.tipoLicencia)
               .subscribe(
                 result => {
-                  this.MostrarMensajeOperacion('Alta Exitosa')
+                  this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
                   this.router.navigate(['/licencia', 'tipos'])
                 },
-                (err: any) => this.MostrarMensajeOperacion('Falla')
+                (err: any) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
               );
           }
         }

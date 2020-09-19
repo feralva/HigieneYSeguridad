@@ -9,19 +9,19 @@
 <ion-content>
     <ion-row class="table-header-row">
       <ion-col size-xs="4" size-sm="3">
-        Cliente
+        {{'Cliente.Cliente' | translate}}
       </ion-col>
       <ion-col size-xs="3" size-sm="2">
-        Tipo Licencia
+        {{'Licencia.Tipo_Licencia' | translate}}
       </ion-col>
       <ion-col size-xs="3" size-sm="2" class="hide-only-xs">
-        Fecha Expiración
+        {{'Licencia.Fecha_Expiracion' | translate}}
       </ion-col>
       <ion-col size-xs="3" size-sm="2">
-        Estado
+        {{'General.Estado' | translate}}
       </ion-col>
       <ion-col size-xs="2" size-sm="2" style="text-align: center;">
-        Pagos
+        {{'Licencia.Pagos' | translate}}
       </ion-col>
     </ion-row>
     <ion-row *ngFor="let licencia of licenciasEmpresas" class="data-row">

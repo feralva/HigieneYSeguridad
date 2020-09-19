@@ -38,7 +38,7 @@ export class ModificarTipoLicenciaComponent implements OnInit {
 
   ionViewWillEnter(){
 
-    this.appDataService.changePageName('TipoLicencia.Modificar.title');
+    this.appDataService.changePageName('Licencia.Modificar.title');
 
     this.tipoLicencia = this.route.snapshot.data['tipoLicencia'];
 
@@ -54,11 +54,12 @@ export class ModificarTipoLicenciaComponent implements OnInit {
   async ModificarTipoLicenciaConfirm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Modificar Tipo Licencia',
-      message: '¿Esta seguro que desea Modificar Tipo Licencia?',
+      header: this.translate.instant('Licencia.Modificar.title'),
+      message: this.translate.instant('Mensaje.Confirmacion',{accion: this.translate.instant('Accion.Modificar'),
+                                                              entidad: this.translate.instant('Licencia.Tipo_Licencia')}),
       buttons: [
         {
-          text: 'Cancelar',
+          text:  this.translate.instant('Mensaje.Cancelar'),
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
@@ -70,10 +71,10 @@ export class ModificarTipoLicenciaComponent implements OnInit {
             this.licenciaService.modificarTipoLicencia(this.tipoLicencia)
               .subscribe(
                 result => {
-                  this.MostrarMensajeOperacion('Modificación Exitosa')
+                  this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
                   this.router.navigate(['/licencia', 'tipos'])
                 },
-                (err: any) => this.MostrarMensajeOperacion('Falla')
+                (err: any) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
               );
           }
         }

@@ -54,7 +54,9 @@ export class DetalleLicenciaComponent implements OnInit {
     private authService: AuthService,
     private toastController: ToastController) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.licencia = this.route.snapshot.data['licencia'];
+  }
 
   ionViewWillEnter() {
     this.appDataService.changePageName("Licencia.Detalle.title");

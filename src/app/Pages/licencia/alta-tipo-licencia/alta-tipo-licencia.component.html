@@ -9,33 +9,33 @@
 <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
     <ion-item-divider color="secondary">
       <ion-label>
-       Alta Tipo Licencia
+       {{'Licencia.Alta_Tipo_Licencia' | translate}}
       </ion-label>
     </ion-item-divider>
     <ion-grid fixed>
       <ion-row>
         <ion-col size="12" size-lg="6">
           <ion-item>
-            <ion-label position="stacked">Nombre</ion-label>
-            <ion-input placeholder="Nombre" name="tipoLicencia.nombre" [(ngModel)]="tipoLicencia.nombre" required></ion-input>
+            <ion-label position="stacked">{{'General.Nombre' | translate}}</ion-label>
+            <ion-input placeholder="{{'General.Nombre' | translate}}" name="tipoLicencia.nombre" [(ngModel)]="tipoLicencia.nombre" required></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="12" size-lg="6">
           <ion-item>
-            <ion-label position="stacked">Cantidad Maxima Usuarios</ion-label>
-            <ion-input placeholder="Cantidad Maxima Usuarios" type="number" name="tipoLicencia.cantidad_Maxima_Usuarios" [(ngModel)]="tipoLicencia.cantidad_Maxima_Usuarios" required></ion-input>
+            <ion-label position="stacked">{{'Licencia.Cantidad_Maxima_Usuarios' | translate}}</ion-label>
+            <ion-input placeholder="{{'Licencia.Cantidad_Maxima_Usuarios' | translate}}" type="number" name="tipoLicencia.cantidad_Maxima_Usuarios" [(ngModel)]="tipoLicencia.cantidad_Maxima_Usuarios" required></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="12" size-lg="6">
           <ion-item>
-            <ion-label position="stacked">Descripción</ion-label>
-            <ion-input  placeholder="Descripción" name="tipoLicencia.descripcion" [(ngModel)]="tipoLicencia.descripcion" required></ion-input>
+            <ion-label position="stacked">{{'General.Descripcion' | translate}}</ion-label>
+            <ion-input  placeholder="{{'General.Descripcion' | translate}}" name="tipoLicencia.descripcion" [(ngModel)]="tipoLicencia.descripcion" required></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="12" size-lg="6">
           <ion-item>
-            <ion-label position="stacked">Precio </ion-label>
-            <ion-input placeholder="Precio" type="number" name="tipoLicencia.precioActual" [(ngModel)]="tipoLicencia.precioActual" required></ion-input>
+            <ion-label position="stacked">{{'Licencia.Precio' | translate}} </ion-label>
+            <ion-input placeholder="{{'Licencia.Precio' | translate}}" type="number" name="tipoLicencia.precioActual" [(ngModel)]="tipoLicencia.precioActual" required></ion-input>
           </ion-item>
         </ion-col>
         
@@ -43,7 +43,7 @@
 
       <ion-row>
         <ion-col size="12" size-lg="8" offset-lg="2" class="ion-text-center" style="margin-top: 3em;">
-          <ion-button type="submit" shape="round" expand="block" fill="solid" [disabled]="form.invalid">Alta</ion-button>
+          <ion-button type="submit" shape="round" expand="block" fill="solid" [disabled]="form.invalid">{{'Licencia.Alta_Tipo_Licencia' | translate}}</ion-button>
         </ion-col>
       </ion-row>
 

@@ -19,7 +19,7 @@ export class LicenciaPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.appDataService.changePageName('Licencia.Title');
+    this.appDataService.changePageName('Licencia.Licencia');
 
     this.licenciasEmpresas = this.route.snapshot.data['licencias'];
   }

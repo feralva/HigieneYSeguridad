@@ -28,7 +28,7 @@ export class TiposLicenciaComponent implements OnInit {
 
   ionViewWillEnter() {
 
-    this.appDataService.changePageName('TipoLicencia.Title');
+    this.appDataService.changePageName('Licencia.Tipo_Licencia');
 
     this.tiposLicencias = this.route.snapshot.data['tiposLicencias'];
 
@@ -60,7 +60,7 @@ export class TiposLicenciaComponent implements OnInit {
     this.licenciaService.modificarTipoLicencia(tipoLicencia).subscribe(
       data => {
         this.tiposLicencias.splice( this.tiposLicencias.findIndex(t => t.id == tipoLicencia.id) , 1)
-        this.MostrarMensajeOperacion('Deshabilitacion Exitosa')
+        this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
       },
       (error) => console.log(error)
     )

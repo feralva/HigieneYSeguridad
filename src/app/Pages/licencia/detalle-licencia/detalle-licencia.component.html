@@ -14,30 +14,29 @@
       </ion-col>
        <ion-col size="12" size-lg="6">
         <ion-item>
-          <ion-label>Nombre Empresa</ion-label>
+          <ion-label>{{'Empresa.Nombre_Empresa' | translate}}</ion-label>
           <ion-label class="labelRight" slot="end">
             {{licencia.empresa.nombre}}
           </ion-label>
         </ion-item>
         <ion-item>
-          <ion-label>Tipo Licencia</ion-label>
+          <ion-label>{{'Licencia.Tipo_Licencia' | translate}}</ion-label>
           <ion-label class="labelRight" slot="end">
             {{licencia.tipoLicencia.nombre}}
           </ion-label>
         </ion-item>
         <ion-item>
-          <ion-label>Fecha Expiración</ion-label>
+          <ion-label>{{'Licencia.Fecha_Expiracion' | translate}}</ion-label>
           <ion-label class="labelRight" slot="end">
             {{licencia.fechaFin | date: 'short'}}
           </ion-label>
         </ion-item>
         <ion-item lines="none">
           <ion-button [routerLink]="['/licencia', 'adquisicion']" expand="block" fill="clear" shape="round" slot="end">
-            Adquirir Licencia
+            {{'Licencia.Detalle.title' | translate}}
           </ion-button>
         </ion-item>
       </ion-col>
-
     </ion-row>
   </ion-grid>
 </ion-content>

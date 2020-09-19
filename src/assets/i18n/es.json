@@ -13,7 +13,8 @@
         "Empresa": "Empresa",
         "Detalle": {
             "title": "Detalle Empresa"
-        }
+        },      
+        "Nombre_Empresa": "Nombre Empresa"
     },
     "Empleado": {
         "title": "Empleado",
@@ -149,7 +150,8 @@
         "Alta": "Alta",
         "Modificar": "Modificar",
         "Completar": "Completar",
-        "Borrar": "Borrar"
+        "Borrar": "Borrar",
+        "Deshabilitar": "Deshabilitar"
     },
     "SeleccionFuenteImagen":{
         "Mensaje": "Seleccione Fuente Imagen",
@@ -169,6 +171,32 @@
             "Completa": "Completa",
             "Cancelada": "Cancelada"
         }
+    },
+    "Licencia": {
+        "Tipo_Licencia": "Tipo Licencia",
+        "Precio": "Precio",
+        "Precio_Nuevo": "Precio Nuevo",
+        "Actualizar": {
+            "title": "Actualizar Precio Tipo Licencia"
+        },
+        "Licencia": "Licencia",
+        "Adquirir": {
+            "title": "Adquirir Licencia"
+        },
+        "Modificar": {
+            "title": "Modificar Licencia"
+        },
+        "Detalle": {
+            "title": "Detalle Licencia"
+        },
+        "Alta_Tipo_Licencia": "Alta Tipo Licencia",
+        "Cantidad_Maxima_Usuarios": "Cantidad Maxima Usuarios",
+        "Fecha_Expiracion": "Fecha Expiración",
+        "Cantidad_Meses": "Cantidad Meses",
+        "Cantidad_Meses_Dinamico": "{{cantidad}} meses",
+        "PagoTotal": "Pago Total",
+        "RealizarPago": "Realizar Pago",
+        "Pagos": "Pagos"
     }
     
 }
