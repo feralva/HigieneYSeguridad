@@ -56,7 +56,7 @@ export class AltaVisitaPlanComponent implements OnInit {
       (error) => console.log(error)
     )
 
-    this.appDataService.changePageName('Plan.Visita.Alta.title')
+    this.appDataService.changePageName('Visita.Alta')
 
     this.authService.getUserSubject().subscribe(
       data => this.currentUser = data,
@@ -67,11 +67,12 @@ export class AltaVisitaPlanComponent implements OnInit {
   async AltaVisitaConfirm(visita: any) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Alta Visita',
-      message: '¿Esta seguro que desea crear Visita?',
+      header: this.translate.instant('Visita.Alta'),
+      message: this.translate.instant('Mensaje.Confirmacion',{accion: this.translate.instant('Accion.Crear'),
+                                                              entidad: this.translate.instant('Visita.Visita')}),
       buttons: [
         {
-          text: 'Cancelar',
+          text: this.translate.instant('Mensaje.Cancelar'),
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
@@ -83,10 +84,10 @@ export class AltaVisitaPlanComponent implements OnInit {
             
                 this.visitaService.alta(visita).subscribe(
                   result => {
-                    this.MostrarMensajeOperacion('Alta Exitosa')
+                    this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
                     this.router.navigate(['/plan', this.idPlan,'detalle'])
                   },
-                  (error) => this.MostrarMensajeOperacion('Falla')
+                  (error) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
                 );              
           }
         }

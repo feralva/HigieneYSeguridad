@@ -83,11 +83,26 @@
         "title": "Detalle Plan",
         "Alta":{
             "title":"Alta Plan"
+        },
+        "Plan": "Plan",
+        "Tipos_Plan": "Tipos Plan",
+        "Asignado_A": "Asignado A",
+        "Fecha_Pactada": "Fecha Pactada",
+        "Fecha_Concreta": "Fecha Concreta",
+        "Completar_Plan": "Completar Plan",
+        "Cancelar_Plan": "Cancelar Plan",
+        "Error": {
+            "Visitas_No_Cerradas": "Las Visitas deben estar Cerradas antes de completar Plan'"
         }
     },
     "Visita":{       
-        "title": "Visitas"
-
+        "title": "Visitas",
+        "Tipo_Visita": "Tipo Visita",
+        "Mes_Pactado": "Mes Pactado",
+        "Anio_Pactado": "Año Pactado",
+        "AgregarVisita": "Agregar visita",
+        "Alta": "Alta Visita",
+        "Visita": "Visita"
     },
     "Irregularidad":{
         "Title": "Irregularidad",
@@ -153,7 +168,8 @@
         "Modificar": "Modificar",
         "Completar": "Completar",
         "Borrar": "Borrar",
-        "Deshabilitar": "Deshabilitar"
+        "Deshabilitar": "Deshabilitar",
+        "Cancelar": "Cancelar"
     },
     "SeleccionFuenteImagen":{
         "Mensaje": "Seleccione Fuente Imagen",

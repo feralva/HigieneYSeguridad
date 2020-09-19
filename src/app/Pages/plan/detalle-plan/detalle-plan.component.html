@@ -10,11 +10,11 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-searchbar placeholder="Establecimiento" (ionChange)="onBuscarPlanChange($event)"
+  <ion-searchbar placeholder="{{'Establecimiento.Establecimiento' | translate}}" (ionChange)="onBuscarPlanChange($event)"
     inputmode="text" animated></ion-searchbar>
 
   <ion-item-divider color="secondary">
-    <ion-label>Visitas</ion-label>
+    <ion-label>{{'Establecimiento.Establecimiento' | translate}}Visitas</ion-label>
   </ion-item-divider>
 
   <ion-row>
@@ -28,21 +28,21 @@
           <hr>
           <ion-grid>
             <ion-row>
-              <ion-col col-12><b>Estado:</b> {{visita.estado}}</ion-col>
+              <ion-col col-12><b>{{'General.Estado' | translate}}:</b> {{visita.estado}}</ion-col>
             </ion-row>
             <ion-row>
-              <ion-col col-12><b>Tipo:</b> {{visita.tipoVisita}}</ion-col>
+              <ion-col col-12><b>{{'General.Tipo' | translate}}:</b> {{visita.tipoVisita}}</ion-col>
             </ion-row>
             <ion-row>
-              <ion-col *ngIf="visita.empleadoAsignado"><b>Asignado A:</b> {{visita.empleadoAsignado}}</ion-col>
-              <ion-col *ngIf="!visita.empleadoAsignado"><b>Asignado A:</b> NA</ion-col>
+              <ion-col *ngIf="visita.empleadoAsignado"><b>{{'Plan.Asignado_A' | translate}}:</b> {{visita.empleadoAsignado}}</ion-col>
+              <ion-col *ngIf="!visita.empleadoAsignado"><b>{{'Plan.Asignado_A' | translate}}:</b> NA</ion-col>
             </ion-row>
             <ion-row>
-              <ion-col><b>Fecha Pactada: </b> {{visita.fechaPactada | date: 'shortDate'}}</ion-col>
+              <ion-col><b>{{'Plan.Fecha_Pactada' | translate}}: </b> {{visita.fechaPactada | date: 'shortDate'}}</ion-col>
             </ion-row>
             <ion-row>
-              <ion-col *ngIf="visita.fecha"><b>Fecha Concreta: </b> {{visita.fecha | date: 'shortDate'}}</ion-col>
-              <ion-col *ngIf="!visita.fecha"><b>Fecha Concreta: </b> NA</ion-col>
+              <ion-col *ngIf="visita.fecha"><b>{{'Plan.Fecha_Concreta' | translate}}: </b> {{visita.fecha | date: 'shortDate'}}</ion-col>
+              <ion-col *ngIf="!visita.fecha"><b>{{'Plan.Fecha_Concreta' | translate}}: </b> NA</ion-col>
             </ion-row>
           </ion-grid>
         </ion-card-content>

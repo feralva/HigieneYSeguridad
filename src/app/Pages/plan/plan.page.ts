@@ -15,7 +15,6 @@ import { LoaderService } from 'src/app/Core/Services/loader.service';
 export class PlanPage implements OnInit {
 
   planes: any[] = []
-  nombrePagina: string;
   currentUser: UserLogueado;
   estadoPlanAFiltrarId: number = 1;
   estadosPlanesPosibles: any[] = [];
@@ -27,8 +26,8 @@ export class PlanPage implements OnInit {
   ngOnInit() {}
 
   ionViewWillEnter(){
-    this.nombrePagina = 'Empresa.Planes';
-    this.appDataService.changePageName(this.nombrePagina);
+
+    this.appDataService.changePageName('Empresa.Planes');
     this.planes = this.route.snapshot.data['planes'];
     this.estadosPlanesPosibles = this.route.snapshot.data['estadosPlanesPosibles'];
 

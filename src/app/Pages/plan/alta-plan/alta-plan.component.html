@@ -9,25 +9,25 @@
   <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
     <ion-item-divider color="secondary">
       <ion-label>
-       Plan
+       {{'Plan.Plan' | translate}}
       </ion-label>
     </ion-item-divider>
       <ion-item *ngIf="clientes">
-        <ion-label position="stacked">Cliente</ion-label>
-        <ion-select  style="width: max-content;" name="clienteSeleccionado" (ionChange)="onClienteSelected($event)" [(ngModel)]="clienteSeleccionado" placeholder='Clientes' required>
+        <ion-label position="stacked">{{'Cliente.Cliente' | translate}}</ion-label>
+        <ion-select  style="width: max-content;" name="clienteSeleccionado" (ionChange)="onClienteSelected($event)" [(ngModel)]="clienteSeleccionado" placeholder="{{'Cliente.Cliente' | translate}}" required>
           <ion-select-option *ngFor="let cliente of clientes" [value]="cliente.id">{{cliente.nombre}}</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item>
-        <ion-label position="stacked">Tipos Plan</ion-label>
-        <ion-select style="width: max-content;" name="rolesSeleccionados" [(ngModel)]="tipoPlanSeleccionado" placeholder='Tipo Plan' required>
+        <ion-label position="stacked">{{'Plan.Tipos_Plan' | translate}}</ion-label>
+        <ion-select style="width: max-content;" name="rolesSeleccionados" [(ngModel)]="tipoPlanSeleccionado" placeholder="{{'Plan.Tipos_Plan' | translate}}Tipo Plan" required>
           <ion-select-option *ngFor="let tipoPlan of tiposPlan" [value]="tipoPlan.id">{{tipoPlan.nombre}}</ion-select-option>
         </ion-select>
       </ion-item>
 
       <ion-item-divider color="secondary">
         <ion-label>
-         Visitas
+          {{'Visita.title' | translate}}
         </ion-label>
       </ion-item-divider>
       <ion-row style="margin-top: 1em;margin-left:1em">
@@ -47,11 +47,11 @@
           </ion-item>
           <ion-item-options>
             <ion-item-option color="danger" (click)="borrarVisitaLista(i)" expandable>
-              Delete
+              {{'Accion.Borrar' | translate}}Delete
             </ion-item-option>
           </ion-item-options>
         </ion-item-sliding>
     </ion-list>
-      <ion-button style="position: fixed; right: 0; bottom: 1em;" type="submit" shape="round" fill="solid" slot="end" [disabled]="form.invalid">Alta</ion-button>
+      <ion-button style="position: fixed; right: 0; bottom: 1em;" type="submit" shape="round" fill="solid" slot="end" [disabled]="form.invalid">{{'Plan.Alta.title' | translate}}</ion-button>
   </form>
 </ion-content>

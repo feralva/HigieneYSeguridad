@@ -20,7 +20,6 @@ import { forkJoin } from 'rxjs';
 export class DetallePlanComponent implements OnInit {
 
   plan: PlanDetalle;
-  nombrePagina: string;
   currentUser: UserLogueado;
   
   textoBuscar: string = '';
@@ -39,8 +38,8 @@ export class DetallePlanComponent implements OnInit {
   }
 
   ionViewWillEnter(){
-    this.nombrePagina = 'Plan.title';
-    this.appDataService.changePageName(this.nombrePagina);
+
+    this.appDataService.changePageName('Plan.Plan');
     this.plan = this.route.snapshot.data['plan'];
   
     console.log(this.plan)
@@ -68,11 +67,12 @@ export class DetallePlanComponent implements OnInit {
   async completarPlanConfirm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Completar Plan',
-      message: '¿Esta seguro que desea completar Plan?',
+      header: this.translate.instant('Plan.Completar_Plan'),
+      message: this.translate.instant('Mensaje.Confirmacion',{accion: this.translate.instant('Accion.Completar'),
+                                                              entidad: this.translate.instant('Plan.Plan')}),
       buttons: [
         {
-          text: 'Cancelar',
+          text: this.translate.instant('Mensaje.Cancelar'),
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
@@ -82,8 +82,8 @@ export class DetallePlanComponent implements OnInit {
           text: 'Ok',
           handler: () => {
             this.planService.completarPlan(this.plan.id).subscribe(
-                result => this.MostrarMensajeOperacion('Plan Completado'),
-                (err: any) => this.MostrarMensajeOperacion('Falla')
+                result => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito')),
+                (err: any) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
             );
           }     
         }
@@ -96,11 +96,12 @@ export class DetallePlanComponent implements OnInit {
   async cancelarPlanConfirm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Cancelar Plan',
-      message: '¿Esta seguro que desea cancelar Plan?',
+      header: this.translate.instant('Plan.Cancelar_Plan'),
+      message: this.translate.instant('Mensaje.Confirmacion',{accion: this.translate.instant('Accion.Cancelar'),
+                                                              entidad: this.translate.instant('Plan.Plan')}),
       buttons: [
         {
-          text: 'Cancelar',
+          text: this.translate.instant('Mensaje.Cancelar'),
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
@@ -110,8 +111,8 @@ export class DetallePlanComponent implements OnInit {
           text: 'Ok',
           handler: () => {
             this.planService.cancelarPlan(this.plan.id).subscribe(
-                result => this.MostrarMensajeOperacion('Plan Cancelado'),
-                (err: any) => this.MostrarMensajeOperacion('Falla')
+                result => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito')),
+                (err: any) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
             );
           }     
         }
@@ -134,7 +135,7 @@ export class DetallePlanComponent implements OnInit {
       this.planService.estanTodasLasVisitasCerradas(this.plan.id).subscribe((data: any) => {
         console.log(data.resultado)
           if (!data.resultado) {
-              throw new Error('Las Visitas deben estar Cerradas antes de completar Plan')
+              throw new Error(this.translate.instant('Plan.Error.Visitas_No_Cerradas'))
           }
           resolve(data);
       }, (error: any) => {

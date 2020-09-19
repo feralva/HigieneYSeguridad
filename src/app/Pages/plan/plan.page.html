@@ -10,8 +10,8 @@
       <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
     <ion-item>
-      <ion-label>Estado Plan: </ion-label>
-      <ion-select name="estadoPlanAFiltrarId" [(ngModel)]="estadoPlanAFiltrarId" multiple="false" placeholder="Estado Plan" (ngModelChange)="actualizarPlanesPorEstado($event)">
+      <ion-label>{{'Cliente.EstadoPlan' | translate}}: </ion-label>
+      <ion-select name="estadoPlanAFiltrarId" [(ngModel)]="estadoPlanAFiltrarId" multiple="false" placeholder="{{'Cliente.EstadoPlan' | translate}}" (ngModelChange)="actualizarPlanesPorEstado($event)">
         <ion-select-option *ngFor="let estadoPlan of estadosPlanesPosibles" [value]="estadoPlan.id">{{estadoPlan.descipcion}}</ion-select-option>
       </ion-select>
     </ion-item>
@@ -26,19 +26,19 @@
             <hr>
             <ion-grid>
               <ion-row>
-                <ion-col col-12><b>Estado:</b> {{plan.estado}}</ion-col>
+                <ion-col col-12><b>{{'General.Estado' | translate}}:</b> {{plan.estado}}</ion-col>
               </ion-row>
               <ion-row>
-                <ion-col col-12><b>Visitas Pendientes:</b> {{plan.visitasPendientes}}</ion-col>
+                <ion-col col-12><b>{{'Cliente.VisitasPendientes' | translate}}:</b> {{plan.visitasPendientes}}</ion-col>
               </ion-row>
               <ion-row>
-                <ion-col><b>Establecimientos:</b> {{plan.establecimientos}}</ion-col>
+                <ion-col><b>{{'Cliente.Establecimientos' | translate}}:</b> {{plan.establecimientos}}</ion-col>
               </ion-row>
               <ion-row>
-                <ion-col><b>Creado Por: </b> {{plan.usuarioCreador}}</ion-col>
+                <ion-col><b>{{'General.CreadoPor' | translate}}: </b> {{plan.usuarioCreador}}</ion-col>
               </ion-row>
               <ion-row>
-                <ion-col><b>Fecha Creación: </b> {{plan.fechaCreacion | date: 'shortDate'}}</ion-col>
+                <ion-col><b>{{'General.FechaCreacion' | translate}}: </b> {{plan.fechaCreacion | date: 'shortDate'}}</ion-col>
               </ion-row>
             </ion-grid>
           </ion-card-content>

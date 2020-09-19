@@ -77,11 +77,12 @@ export class AltaPlanComponent implements OnInit {
   async AltaPlanConfirm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Alta Plan',
-      message: 'Message ¿Esta seguro que desea crear Plan?',
+      header: this.translate.instant('Plan.Alta.title'),
+      message: this.translate.instant('Mensaje.Confirmacion',{accion: this.translate.instant('Accion.Crear'),
+                                              entidad: this.translate.instant('Plan.Plan')}),
       buttons: [
         {
-          text: 'Cancelar',
+          text: this.translate.instant('Mensaje.Cancelar'),
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
@@ -93,10 +94,10 @@ export class AltaPlanComponent implements OnInit {
             
                 this.planService.alta(this.generarPlan()).subscribe(
                   result => {
-                    this.MostrarMensajeOperacion('Alta Exitosa')
+                    this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
                     this.router.navigate(['/plan'])
                   },
-                  (err: any) => this.MostrarMensajeOperacion('Falla')
+                  (err: any) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
                 );              
           }
         }
