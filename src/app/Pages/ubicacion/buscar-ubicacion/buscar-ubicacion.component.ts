@@ -80,10 +80,8 @@ export class BuscarUbicacionComponent implements OnInit {
 
     var ubicacion = JSON.parse(dataDeQR)
 
-    return ubicacion
-    
-    //TODO agregar validacion de data proviniente de qr y mostrar mensaje de error en caso de no ser una ubicacion
-
+    if(ubicacion.id) return ubicacion
+    else throw Error('General.Error.QR_Invalido')
   }
 
   async startScan() {

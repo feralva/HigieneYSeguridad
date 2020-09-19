@@ -12,6 +12,7 @@ import { VerQrUbicacionModalComponent } from './ver-qr-ubicacion-modal/ver-qr-ub
 import { QRCodeModule } from 'angularx-qrcode';
 import { BuscarUbicacionComponent } from './buscar-ubicacion/buscar-ubicacion.component';
 import { IonicSelectableModule } from 'ionic-selectable';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   entryComponents: [UbicacionAltaComponent, VerQrUbicacionModalComponent],
@@ -21,7 +22,8 @@ import { IonicSelectableModule } from 'ionic-selectable';
     IonicModule,
     UbicacionPageRoutingModule,
     QRCodeModule,
-    IonicSelectableModule
+    IonicSelectableModule,
+    TranslateModule
   ],
   declarations: [UbicacionPage, VerQrUbicacionModalComponent, BuscarUbicacionComponent, UbicacionAltaComponent],
   exports: [  VerQrUbicacionModalComponent, BuscarUbicacionComponent, UbicacionAltaComponent]

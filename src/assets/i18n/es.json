@@ -154,13 +154,17 @@
         "Password": "Contraseña",
         "Roles": "Roles",
         "Error": {
-            "Falta_Imagen": "Debe Seleccionar Imagen"
+            "Falta_Imagen": "Debe Seleccionar Imagen",
+            "QR_Invalido": "QR Invalido"
         },
         "Tipo": "Tipo",
         "Ver_QR": "Ver QR",
         "Descripcion": "Descripción",
         "Atras": "Atras",
-        "Fecha": "Fecha"
+        "Fecha": "Fecha",
+        "Obtener_Ubicacion_por_QR": "Obtener Ubicación por QR",
+        "DejarEscanear": "Dejar Escanear",
+        "Codigo_QR_de_Ubicacion": "Codigo QR de Ubicación"
     },
     "Accion":{
         "Crear": "Crear",
