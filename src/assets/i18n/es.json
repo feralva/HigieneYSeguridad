@@ -188,7 +188,9 @@
         "Codigo_QR_de_Ubicacion": "Codigo QR de Ubicación",
         "Mediciones": "Mediciones",
         "Si": "Si",
-        "No": "No"
+        "No": "No",
+        "SeProdujounerror": "Se Produjo un error",
+        "Reintentar": "Reintento"
     },
     "Accion":{
         "Crear": "Crear",

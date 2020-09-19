@@ -117,7 +117,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   async showRetryToast(retryCount){
       const toast = await this.toastCtrl.create({
-          message:`Retry: ${retryCount}/3`,
+          message:`{{'General.Reintentar'}}: ${retryCount}/3`,
           duration: 1000
       });
       toast.present();

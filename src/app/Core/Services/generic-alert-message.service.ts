@@ -14,7 +14,7 @@ export class GenericAlertMessageService {
     const alert = await this.alertCtrl.create({
       cssClass: '',
       header:  'Error'/* this.translate.instant('Mensaje') */,
-      subHeader: 'Se Produjo un error',
+      subHeader:  this.translate.instant('General.SeProdujounerror'),
       message: this.translate.instant(mensaje),
       buttons: ['OK']
     });

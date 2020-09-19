@@ -3,13 +3,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { LoggingService } from './logging.service';
 import { GenericAlertMessageService } from './generic-alert-message.service';
 import { AuthService } from './auth/auth.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GlobalErrorHandlerService {
 
-  constructor(private injector: Injector, private authService: AuthService) { }
+  constructor(private injector: Injector, private authService: AuthService, private translate: TranslateService) { }
 
     handleError(error: Error | HttpErrorResponse) {
 
