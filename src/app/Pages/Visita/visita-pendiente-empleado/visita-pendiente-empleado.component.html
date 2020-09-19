@@ -10,7 +10,7 @@
     <ion-refresher-content></ion-refresher-content>
 </ion-refresher>
 
-<ion-searchbar placeholder="Cliente" (ionChange)="onBuscarClienteChange($event)"
+<ion-searchbar placeholder="{{'Cliente.Cliente' | translate}}" (ionChange)="onBuscarClienteChange($event)"
   animated></ion-searchbar>
 
   <div class="page" *ngIf="visitas?.length > 0">
@@ -30,7 +30,7 @@
               <p><b>{{visita.nombreCliente + ' - ' + visita.nombreEstablecimiento}}</b></p>
               <p><b>Tipo visita: </b>{{visita.tipoVisita}}</p>
               <!-- <p><b>Asignado a: </b>{{visita.empleadoAsignado}}</p> -->
-              <ion-button color="medium" [routerLink]="['/visita',visita.id, 'detalle']" size="small">Detalle</ion-button>
+              <ion-button color="medium" [routerLink]="['/visita',visita.id, 'detalle']" size="small">{{'General.Detalle' | translate}}</ion-button>
             </div>
           </div>
         </div>
@@ -39,6 +39,6 @@
   </div>
 
   <br>
-  <ion-label *ngIf="visitas?.length == 0">No Hay Visitas Asignadas</ion-label>
+  <ion-label *ngIf="visitas?.length == 0">{{'Visita.NoHayVisitasAsignadas' | translate}}</ion-label>
   
 </ion-content>

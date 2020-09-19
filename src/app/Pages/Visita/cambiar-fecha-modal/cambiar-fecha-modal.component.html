@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Establecer Fecha Visita</ion-title>
+    <ion-title>{{'Visita.Establecer_Fecha_Visita' | translate }}</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="closeModal()">
         <ion-icon slot="icon-only" name="close"></ion-icon>
@@ -14,13 +14,13 @@
   </ion-segment>
   <ion-segment [(ngModel)]="calendar.mode">
     <ion-segment-button value="month">
-      <ion-label>Month</ion-label>
+      <ion-label>{{'Calendario.Mes' | translate }}</ion-label>
     </ion-segment-button>
     <ion-segment-button value="week">
-      <ion-label>Week</ion-label>
+      <ion-label>{{'Calendario.Semana' | translate }}</ion-label>
     </ion-segment-button>
     <ion-segment-button value="day">
-      <ion-label>Day</ion-label>
+      <ion-label>{{'Calendario.Dia' | translate }}</ion-label>
     </ion-segment-button>
   </ion-segment>
 
@@ -46,7 +46,7 @@
         </div>
         <div *ngIf="selectedDate.events.length == 0" style="margin: 0 auto;">
           <ion-item style="text-align: center;">
-            <ion-label style="text-align: center;">No hay Eventos</ion-label>
+            <ion-label style="text-align: center;">{{'Calendario.NohayEventos' | translate}}</ion-label>
           </ion-item>
           <ion-item lines="none">
             <ion-buttons slot="end">

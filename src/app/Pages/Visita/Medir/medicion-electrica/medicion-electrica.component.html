@@ -11,34 +11,34 @@
 
 <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
   <ion-item-divider color="primary">
-    <ion-label>Mediciones</ion-label>
+    <ion-label>{{'General.Mediciones' | translate }}</ion-label>
   </ion-item-divider>
   <ion-item>
-    <ion-label position="stacked">Puesta a Tierra:</ion-label>
-    <ion-select name="puestaATierra" [(ngModel)]="model.puestaATierra" placeholder="Puesta a Tierra" required>
-      <ion-select-option [value]=true>Si</ion-select-option>
-      <ion-select-option [value]=false>No</ion-select-option>
+    <ion-label position="stacked">{{'Control.Incendio.PuestaATierra' | translate }}:</ion-label>
+    <ion-select name="puestaATierra" [(ngModel)]="model.puestaATierra" placeholder="{{'Control.Incendio.PuestaATierra' | translate }}" required>
+      <ion-select-option [value]=true>{{'General.Si' | translate }}</ion-select-option>
+      <ion-select-option [value]=false>{{'General.No' | translate }}</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked">Tableros Electricos con Tapa:</ion-label>
-    <ion-select name="tablerosElectricosTapados" [(ngModel)]="model.tablerosElectricosTapados" placeholder="Tableros Electricos Tapados" required>
-      <ion-select-option [value]=true>Si</ion-select-option>
-      <ion-select-option [value]=false>No</ion-select-option>
+    <ion-label position="stacked">{{'Control.Incendio.TablerosElectricosconTapa' | translate }}:</ion-label>
+    <ion-select name="tablerosElectricosTapados" [(ngModel)]="model.tablerosElectricosTapados" placeholder="{{'Control.Incendio.TablerosElectricosconTapa' | translate }}" required>
+      <ion-select-option [value]=true>{{'General.Si' | translate }}</ion-select-option>
+      <ion-select-option [value]=false>{{'General.No' | translate }}</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked">Utilizacion de Protecciones Electricas:</ion-label>
-    <ion-select name="proteccionesElectricas" [(ngModel)]="model.proteccionesElectricas" placeholder="Protecciones Electricas" required>
-      <ion-select-option [value]=true>Si</ion-select-option>
-      <ion-select-option [value]=false>No</ion-select-option>
+    <ion-label position="stacked">{{'Control.Incendio.UtilizaciondeProteccionesElectricas' | translate }}:</ion-label>
+    <ion-select name="proteccionesElectricas" [(ngModel)]="model.proteccionesElectricas" placeholder="{{'Control.Incendio.UtilizaciondeProteccionesElectricas' | translate }}Protecciones Electricas" required>
+      <ion-select-option [value]=true>{{'General.Si' | translate }}</ion-select-option>
+      <ion-select-option [value]=false>{{'General.No' | translate }}</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked">Aislante Electrico:</ion-label>
-    <ion-select name="aislanteElectrico" [(ngModel)]="model.aislanteElectrico" placeholder="Aislante Electrico" required>
-      <ion-select-option [value]=true>Si</ion-select-option>
-      <ion-select-option [value]=false>No</ion-select-option>
+    <ion-label position="stacked">{{'Control.Incendio.AislanteElectrico' | translate }}:</ion-label>
+    <ion-select name="aislanteElectrico" [(ngModel)]="model.aislanteElectrico" placeholder="{{'Control.Incendio.AislanteElectrico' | translate }}" required>
+      <ion-select-option [value]=true>{{'General.Si' | translate }}</ion-select-option>
+      <ion-select-option [value]=false>{{'General.No' | translate }}</ion-select-option>
     </ion-select>
   </ion-item>
 

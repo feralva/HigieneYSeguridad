@@ -136,7 +136,7 @@ export class CambiarFechaModalComponent implements OnInit {
         const alert = await this.alertCtrl.create({
           header: event.title,
           subHeader: event.desc,
-          message: 'Desde: ' + event.startTime + '<br><br>Hasta: ' + event.endTime,
+          message: "{{'Calendario.Desde' | translate }}: " + event.startTime + "<br><br>{{'Calendario.Hasta' | translate }}"+ ':'  + event.endTime,
           buttons: ['OK'],
         });
         alert.present();

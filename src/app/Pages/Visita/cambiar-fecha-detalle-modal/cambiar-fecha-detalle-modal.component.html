@@ -11,18 +11,18 @@
 <ion-content>
   <ion-list>
     <ion-item-divider>
-      <ion-label>Nueva Fecha</ion-label>
+      <ion-label>{{'Visita.NuevaFecha' | translate}}</ion-label>
     </ion-item-divider>
     <ion-item>
-      <ion-label>Fecha:</ion-label>
+      <ion-label>{{'General.Fecha' | translate}}:</ion-label>
       <ion-datetime name="fechaNuevaSeleccionada" [(ngModel)]="fecha"   displayFormat="DD/MM/YYYY" ></ion-datetime>
     </ion-item>
     <ion-item>
-      <ion-label>Horario Inicio</ion-label>
+      <ion-label>{{'Visita.HorarioInicio' | translate}}</ion-label>
       <ion-datetime [(ngModel)]="horaInicio" displayFormat="h:mm A" minuteValues="0,15,30,45"></ion-datetime>
     </ion-item>
     <ion-item>
-      <ion-label>Horario Finalizacion Estimado</ion-label>
+      <ion-label>{{'Visita.HorarioFinalizacionEstimado' | translate}}</ion-label>
       <ion-datetime [(ngModel)]="horaFin" displayFormat="h:mm A" minuteValues="0,15,30,45"></ion-datetime>
     </ion-item>
   </ion-list>

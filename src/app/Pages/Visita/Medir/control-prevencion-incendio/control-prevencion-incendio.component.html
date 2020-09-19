@@ -11,51 +11,51 @@
 
 <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
   <ion-item-divider color="primary">
-    <ion-label>Mediciones</ion-label>
+    <ion-label>{{'General.Mediciones' | translate }}</ion-label>
   </ion-item-divider>
   <ion-item>
-    <ion-label position="floating">Cantidad de Matafuegos:</ion-label>
+    <ion-label position="floating">{{'Control.Incendio.CantidadMatafuegos' | translate }}:</ion-label>
     <ion-input type="number"  name="cantidadMatafuegos" [(ngModel)]="model.cantidadMatafuegos" required></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Cantidad Salidas Emergencia:</ion-label>
+    <ion-label position="floating">{{'Control.Incendio.CantidadSalidasEmergencia' | translate }}:</ion-label>
     <ion-input type="number" name="cantidadSalidasEmergencia" [(ngModel)]="model.cantidadSalidasEmergencia" required></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Candidad Baldes Arena:</ion-label>
+    <ion-label position="floating">{{'Control.Incendio.CantidadBaldesDeArena' | translate }}:</ion-label>
     <ion-input type="number" name="cantidadBaldesArena" [(ngModel)]="model.cantidadBaldesArena" required></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked">Matafuegos Vencidos:</ion-label>
-    <ion-select name="matafuegosVencidos" [(ngModel)]="model.matafuegosVencidos" placeholder="Matafuegos Vencidos" required>
-      <ion-select-option [value]=true>Si</ion-select-option>
-      <ion-select-option [value]=false>No</ion-select-option>
+    <ion-label position="stacked">{{'Control.Incendio.MatafuegosVencidos' | translate }}</ion-label>
+    <ion-select name="matafuegosVencidos" [(ngModel)]="model.matafuegosVencidos" placeholder="{{'Control.Incendio.MatafuegosVencidos' | translate }}" required>
+      <ion-select-option [value]=true>{{'General.Si' | translate }}</ion-select-option>
+      <ion-select-option [value]=false>{{'General.No' | translate }}</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked">Espacio Ventilado:</ion-label>
-    <ion-select name="espacioVentilado" [(ngModel)]="model.espacioVentilado" placeholder="Espacio Ventilado" required>
-      <ion-select-option [value]=true>Si</ion-select-option>
-      <ion-select-option [value]=false>No</ion-select-option>
+    <ion-label position="stacked">{{'Control.Incendio.EspacioVentilado' | translate }}:</ion-label>
+    <ion-select name="espacioVentilado" [(ngModel)]="model.espacioVentilado" placeholder="{{'Control.Incendio.EspacioVentilado' | translate }}" required>
+      <ion-select-option [value]=true>{{'General.Si' | translate }}</ion-select-option>
+      <ion-select-option [value]=false>{{'General.No' | translate }}</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked">Protecciones Ignifugas instaladas:</ion-label>
-    <ion-select name="proteccionesIgnifugas" [(ngModel)]="model.proteccionesIgnifugas" placeholder="Protecciones Ignifugas" required>
-      <ion-select-option [value]=true>Si</ion-select-option>
-      <ion-select-option [value]=false>No</ion-select-option>
+    <ion-label position="stacked">{{'Control.Incendio.ProteccionesIgnifugas' | translate }}:</ion-label>
+    <ion-select name="proteccionesIgnifugas" [(ngModel)]="model.proteccionesIgnifugas" placeholder="{{'Control.Incendio.ProteccionesIgnifugas' | translate }}" required>
+      <ion-select-option [value]=true>{{'General.Si' | translate }}</ion-select-option>
+      <ion-select-option [value]=false>{{'General.No' | translate }}</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked">Detectores de Humo:</ion-label>
-    <ion-select name="detectoresDeHumo" [(ngModel)]="model.detectoresDeHumo" placeholder="Detectores De Humo" required>
-      <ion-select-option [value]=true>Si</ion-select-option>
-      <ion-select-option [value]=false>No</ion-select-option>
+    <ion-label position="stacked">{{'Control.Incendio.DetectoresDeHumo' | translate }}:</ion-label>
+    <ion-select name="detectoresDeHumo" [(ngModel)]="model.detectoresDeHumo" placeholder="{{'Control.Incendio.DetectoresDeHumo' | translate }}" required>
+      <ion-select-option [value]=true>{{'General.Si' | translate }}</ion-select-option>
+      <ion-select-option [value]=false>{{'General.No' | translate }}</ion-select-option>
     </ion-select>
   </ion-item>
 
   <ion-button expand="block" type="submit" expand="block" fill="solid" shape="round" [disabled]="form.invalid">
-    Agregar Control a Visita
+    {{'Control.AgregarControlAVisita' | translate }}
   </ion-button>
 </form>
 

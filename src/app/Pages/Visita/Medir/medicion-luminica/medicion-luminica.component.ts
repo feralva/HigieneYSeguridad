@@ -39,17 +39,18 @@ export class MedicionLuminicaComponent implements OnInit {
     this.ubicaciones = this.route.snapshot.data['ubicaciones'];
     
     console.log(this.ubicaciones)
-    this.appDataService.changePageName('Medicion.Sonora.Alta.Title');
+    this.appDataService.changePageName('Medicion.Luminico.title');
   }
 
   async AltaControlMedicionesConfirm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Alta Control',
-      message: '¿Esta seguro que desea Asociar control?',
+      header: this.translate.instant('Control.title'),
+      message: this.translate.instant('Mensaje.Confirmacion',{accion: this.translate.instant('Accion.Asociar'),
+                                                              entidad: this.translate.instant('Control.Control')}),
       buttons: [
         {
-          text: 'Cancelar',
+          text: this.translate.instant('Mensaje.Cancelar'),
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
@@ -61,10 +62,10 @@ export class MedicionLuminicaComponent implements OnInit {
 
             this.controlService.altaControlVisita(this.obtenerControl(), this.obtenerMediciones()).then(
               result => {
-                this.MostrarMensajeOperacion('Alta Exitosa')
+                this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
                 this.router.navigate(['/visita', this.idVisita, 'detalle'])
               },
-              (err: any) => this.MostrarMensajeOperacion('Falla')
+              (err: any) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
             );
 
             if(this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline){
@@ -91,9 +92,9 @@ export class MedicionLuminicaComponent implements OnInit {
 
   private obtenerMediciones(): any[] {
     return [
-      { valor: this.model.flujoLuminoso, nombre: 'Flujo Luminoso' },
-      { valor: this.model.iluminancia, nombre: 'Iluminancia' },
-      { valor: this.model.intensidadLuminosa, nombre: 'Intensidad luminosa' }
+      { valor: this.model.flujoLuminoso, nombre: this.translate.instant('Control.Luminico.FlujoLuminoso') },
+      { valor: this.model.iluminancia, nombre: this.translate.instant('Control.Luminico.Iluminancia') },
+      { valor: this.model.intensidadLuminosa, nombre: this.translate.instant('Control.Luminico.Intensidadluminosa') }
     ];
   }
 
@@ -107,7 +108,7 @@ export class MedicionLuminicaComponent implements OnInit {
 
   onSubmit(form: NgForm) {
 
-    if(!this.seleccionUbicacionComponent.ubicacionSeleccionada) throw new Error('Favor de Seleccionar Ubicación')
+    if(!this.seleccionUbicacionComponent.ubicacionSeleccionada) throw new Error('Control.Error.Falta_Ubicacion')
 
     this.AltaControlMedicionesConfirm()
 

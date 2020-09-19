@@ -9,11 +9,11 @@
       [isMultiple]="false"
       name="ubicacionSeleccionada"
       [canSearch]="true"
-      placeholder="Ubicacion">
+      placeholder="{{'General.Ubicacion' | translate}}">
     </ionic-selectable>
   </ion-item>
   <ion-item *ngIf="!ubicacionSeleccionada">
-    <ion-label>Obtener Ubicación por QR</ion-label>
+    <ion-label>{{'General.Obtener_Ubicacion_por_QR' | translate}}</ion-label>
     <ion-button (click)="startScan()" slot="end">
       <ion-icon name="qr-code-outline"></ion-icon>
     </ion-button>
@@ -29,5 +29,5 @@
   <!-- Stop our scanner preview if active -->
   <ion-button expand="full" (click)="stopScan()" color="danger" *ngIf="scanActive">
     <ion-icon slot="start" name="close"></ion-icon>
-    Stop scan
+    {{'General.DejarEscanear' | translate}}
   </ion-button>

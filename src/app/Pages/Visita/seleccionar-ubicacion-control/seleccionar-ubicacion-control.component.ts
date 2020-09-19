@@ -83,7 +83,7 @@ export class SeleccionarUbicacionControlComponent implements OnInit {
 
     var ubicacion = JSON.parse(dataDeQR)
 
-    if(!ubicacion.id) throw new Error('Ubicacion no Valida')
+    if(!ubicacion.id) throw new Error('General.Error.QR_Invalido')
     else return ubicacion
   }
 

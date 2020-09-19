@@ -61,6 +61,7 @@
             "Boton": "Editar Cliente"
         },
         "Cliente": "Cliente",
+        "Clientes": "Clientes",
         "Planes": "Planes de Cliente",
         "Establecimientos": "Establecimientos",
         "EstadoPlan": "Estado Plan",
@@ -101,8 +102,23 @@
         "Mes_Pactado": "Mes Pactado",
         "Anio_Pactado": "Año Pactado",
         "AgregarVisita": "Agregar visita",
+        "AuditorActual": "Auditor Actual",
+        "AuditorNuevo": "Auditor Nuevo",
+        "Auditor": "Auditor",
         "Alta": "Alta Visita",
-        "Visita": "Visita"
+        "Visita": "Visita",
+        "NuevaFecha": "Nueva Fecha",
+        "HorarioInicio": "Horario Inicio",
+        "HorarioFinalizacionEstimado": "Horario Finalizacion Estimado",
+        "Establecer_Fecha_Visita": "Establecer Fecha Visita",
+        "Detalle": "Detalle Visita",
+        "CompletarVisita": "Completar Visita",
+        "CancelarVisita": "Cancelar Visita",
+        "DebecargarControlesantesdecompletarVisita": "Debe cargar Controles antes de completar Visita",
+        "VisitaCompletaError": "No se puede Cancelar Visita Completa",
+        "NoHayVisitasAsignadas": "No Hay Visitas Asignadas",
+        "NoHayVisitasPendientes": "No hay Visitas Para Mostrar",
+        "VisitasPendientes": "Visitas Pendientes"
     },
     "Irregularidad":{
         "Title": "Irregularidad",
@@ -128,7 +144,10 @@
         "Mes": "Mes",
         "Dia": "Día",
         "Anio": "Año",
-        "Semana": "Semana"
+        "Semana": "Semana",
+        "NohayEventos": "No hay Eventos",
+        "Desde": "Desde",
+        "Hasta": "Hasta"
     },
     "General":{
         "Nombre": "Nombre",
@@ -155,7 +174,9 @@
         "Roles": "Roles",
         "Error": {
             "Falta_Imagen": "Debe Seleccionar Imagen",
-            "QR_Invalido": "QR Invalido"
+            "QR_Invalido": "QR Invalido",
+            "DatosFaltantes": "Datos Faltantes",
+            "DatosSinAsignar": "La visita no se puede completar con la fecha o auditor sin Asignar"
         },
         "Tipo": "Tipo",
         "Ver_QR": "Ver QR",
@@ -164,7 +185,10 @@
         "Fecha": "Fecha",
         "Obtener_Ubicacion_por_QR": "Obtener Ubicación por QR",
         "DejarEscanear": "Dejar Escanear",
-        "Codigo_QR_de_Ubicacion": "Codigo QR de Ubicación"
+        "Codigo_QR_de_Ubicacion": "Codigo QR de Ubicación",
+        "Mediciones": "Mediciones",
+        "Si": "Si",
+        "No": "No"
     },
     "Accion":{
         "Crear": "Crear",
@@ -173,7 +197,8 @@
         "Completar": "Completar",
         "Borrar": "Borrar",
         "Deshabilitar": "Deshabilitar",
-        "Cancelar": "Cancelar"
+        "Cancelar": "Cancelar",
+        "Asociar": "Asociar"
     },
     "SeleccionFuenteImagen":{
         "Mensaje": "Seleccione Fuente Imagen",
@@ -226,6 +251,60 @@
         "ForgotPassword": "¿Olvido la Contraseña?",
         "RegistrarEmpresa": "Registrar Empresa",
         "Login": "Ingresar"
+    },
+    "Control": {
+        "title": "Alta Control",
+        "Control": "Control",
+        "NohayControlesRealizadosAun": "No hay Controles Realizados Aun",
+        "ControlesporUbicacion": "Controles por Ubicacion",
+        "AgregarControlAVisita": "Agregar Control a Visita",
+        "Error": {
+            "Falta_Ubicacion": "Favor de Seleccionar Ubicación"
+        },
+        "Incendio": {
+            "title": "Alta Control Incendio",
+            "CantidadMatafuegos": "Cantidad Mata fuegos",
+            "CantidadSalidasEmergencia": "Cantidad Salidas Emergencia",
+            "CantidadBaldesDeArena": "Cantidad Baldes de Arena",
+            "EspacioVentilado": "Espacio Ventilado",
+            "MatafuegosVencidos": "Matafuegos Vencidos",
+            "ProteccionesIgnifugas": "Protecciones Ignifugas",
+            "DetectoresDeHumo": "Detectores de Humo"
+        },
+        "Electrico": {
+            "title": "Alta Control Electrico",
+            "PuestaATierra": "Puesta a Tierra",
+            "TablerosElectricosconTapa": "Tableros Electricos con Tapa",
+            "UtilizaciondeProteccionesElectricas": "Utilizacion de Protecciones Electricas",
+            "AislanteElectrico": "Aislante Electrico"
+        },
+        "Emisiones":{
+            "title": "Alta Control Emisiones",
+            "SePresentaAzufreenAire": "Se Presenta Azufre en Aire",
+            "AzufreenAire": "Azufre en Aire",
+            "SePresentaNitrogenoenAire": "Se Presenta Nitrógeno en Aire",
+            "NitrogenoenAire": "Nitrógeno en Aire",
+            "SePresentaCarbonoenAire": "Se Presenta Carbono en Aire",
+            "CarbonoenAire": "Carbono en Aire",
+            "SePresentaHalogenosenAire": "Se Presenta Halógenos en Aire",
+            "HalogenosenAire": "Halógenos en Aire"
+        },
+        "Sonoro": {
+            "title": "Alta Control Sonoro",
+            "PresionSonora": "Presión Sonora",
+            "PresionSonoraMin": "Presión Sonora Min",
+            "PresionSonoraMax": "Presión Sonora Max",
+            "ValorEndBA": "Valor en dBA"
+        },
+        "Luminico": {
+            "title": "Alta Control Luminico",
+            "FlujoLuminoso": "Flujo Luminoso",
+            "Iluminancia": "Iluminancia",
+            "Intensidadluminosa": "Intensidad luminosa",
+            "Valorenlm": "Valor en lm",
+            "Valorenlx": "Valor en lx",
+            "Valorencd": "Valor en cd"
+        }
     }
     
 }

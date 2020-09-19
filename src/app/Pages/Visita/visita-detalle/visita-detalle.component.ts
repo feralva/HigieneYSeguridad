@@ -41,7 +41,7 @@ export class VisitaDetalleComponent implements OnInit {
     private reportingService: ReportingService, private establecimientoService: EstablecimientoService) { }
   
     ionViewWillEnter(){
-      this.appDataService.changePageName('Visita.Detalle.title');
+      this.appDataService.changePageName('Visita.Detalle');
 
       this.controles = this.route.snapshot.data['controles'];
       this.visita = this.route.snapshot.data['visita'];
@@ -188,7 +188,7 @@ export class VisitaDetalleComponent implements OnInit {
 
     }else{
       
-      if(this.controles.length == 0) throw Error('Debe cargar Controles antes de completar Visita')
+      if(this.controles.length == 0) throw Error('Visita.DebecargarControlesantesdecompletarVisita')
 
       this.completarVisitaConfirm();
 
@@ -221,8 +221,9 @@ export class VisitaDetalleComponent implements OnInit {
   async completarVisitaConfirm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Completar Visita',
-      message: '¿Esta seguro que desea completar Visita?',
+      header: this.translate.instant('Visita.CompletarVisita'),
+      message: this.translate.instant('Mensaje.Confirmacion',{accion: this.translate.instant('Accion.Completar'),
+                                                              entidad: this.translate.instant('Visita.Visita')}),
       buttons: [
         {
           text: 'Cancelar',
@@ -235,8 +236,8 @@ export class VisitaDetalleComponent implements OnInit {
           text: 'Ok',
           handler: () => {
             this.visitaService.completarVisita(this.idVisita).subscribe(
-                result => this.MostrarMensajeOperacion('Visita Completada'),
-                (err: any) => this.MostrarMensajeOperacion('Falla')
+                result => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito')),
+                (err: any) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
             );
           }     
         }
@@ -257,8 +258,8 @@ export class VisitaDetalleComponent implements OnInit {
   async alertaFaltaInformacion() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Datos Faltantes',
-      message: 'La visita no se puede completar con la fecha o auditor sin Asignar',
+      header: this.translate.instant('General.Error.DatosFaltantes'),
+      message: this.translate.instant('General.Error.DatosSinAsignar'),
       buttons: [
         {
           text: 'Ok',
@@ -275,18 +276,19 @@ export class VisitaDetalleComponent implements OnInit {
 
   cancelarVisita(){
 
-    if(this.visita.estado.descripcion === 'Completa') throw Error('No se puede Cancelar Visita Completa')
+    if(this.visita.estado.descripcion === 'Completa') throw Error('Visita.VisitaCompletaError')
     this.cancelarVisitaConfirm();
   }
 
   async cancelarVisitaConfirm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Cancelar Visita',
-      message: '¿Esta seguro que desea cancelar Visita?',
+      header: this.translate.instant('Visita.CancelarVisita'),
+      message: this.translate.instant('Mensaje.Confirmacion',{accion: this.translate.instant('Accion.Cancelar'),
+      entidad: this.translate.instant('Visita.Visita')}),
       buttons: [
         {
-          text: 'Cancelar',
+          text: this.translate.instant('Mensaje.Cancelar'),
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
@@ -296,8 +298,8 @@ export class VisitaDetalleComponent implements OnInit {
           text: 'Ok',
           handler: () => {
             this.visitaService.cancelarVisita(this.visita.id).subscribe(
-                result => this.MostrarMensajeOperacion('Visita Cancelada'),
-                (err: any) => this.MostrarMensajeOperacion('Falla')
+                result => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito')),
+                (err: any) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
             );
           }     
         }
@@ -313,7 +315,7 @@ export class VisitaDetalleComponent implements OnInit {
     this.controlService.bajaControl(idcontrol).then(
       res => {
         this.controles.splice(this.controles.find(control => control.id === idcontrol), 1 )
-        this.MostrarMensajeOperacion('Baja Exitosa')
+        this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
       }
     )
   }

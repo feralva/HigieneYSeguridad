@@ -30,7 +30,7 @@ export class MedicionesComponent implements OnInit {
 
   ngOnInit() {
 
-    this.appDataService.changePageName('Visita.Mediciones.title');
+    this.appDataService.changePageName('General.Mediciones');
 
     this.mediciones = this.route.snapshot.data['mediciones'];
 

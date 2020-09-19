@@ -6,25 +6,25 @@
   </ion-item-divider>
   <form #form="ngForm" (ngSubmit)="onAgregarVisita(form)" >
     <ion-item>
-      <ion-label position="stacked">Establecimientos</ion-label>
-      <ion-select style="width: max-content;" name="establecimientoSeleccionado" [(ngModel)]="establecimientoSeleccionado" placeholder='Establecimiento' required>
+      <ion-label position="stacked">{{'Cliente.Establecimientos' | translate}}</ion-label>
+      <ion-select style="width: max-content;" name="establecimientoSeleccionado" [(ngModel)]="establecimientoSeleccionado" placeholder="{{'Cliente.Establecimientos' | translate}}" required>
         <ion-select-option *ngFor="let establecimiento of establecimientos" [value]="establecimiento">{{establecimiento.nombre}}</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">Tipo Visita</ion-label>
-      <ion-select style="width: max-content;" name="tipoVisitaSeleccionada" [(ngModel)]="tipoVisitaSeleccionada" placeholder='Tipo Visita' required>
+      <ion-label position="stacked">{{'Visita.Tipo_Visita' | translate}}</ion-label>
+      <ion-select style="width: max-content;" name="tipoVisitaSeleccionada" [(ngModel)]="tipoVisitaSeleccionada" placeholder="{{'Visita.Tipo_Visita' | translate}}" required>
         <ion-select-option *ngFor="let tipoVisita of tiposVisitas" [value]="tipoVisita">{{tipoVisita.descripcion}}</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-label>Mes Pactado</ion-label>
+      <ion-label>{{'Visita.Mes_Pactado' | translate}}</ion-label>
       <ion-datetime [(ngModel)]="mesPactado" name="mesPactado" displayFormat="MM" required></ion-datetime>
     </ion-item>
     <ion-item>
-      <ion-label>Año Pactado</ion-label>
+      <ion-label>{{'Visita.Anio_Pactado' | translate}}Año Pactado</ion-label>
       <ion-datetime [(ngModel)]="anioPactado" name="anioPactado" displayFormat="YYYY" [min]="anioInicial" [max]="anioInicial + 1" required></ion-datetime>
     </ion-item>
-    <ion-button shape="round" fill="outline" [disabled]="form.invalid" type="submit">Agregar Visita</ion-button>
+    <ion-button shape="round" fill="outline" [disabled]="form.invalid" type="submit">{{'Visita.AgregarVisita' | translate}}</ion-button>
   </form>
 </ion-content>

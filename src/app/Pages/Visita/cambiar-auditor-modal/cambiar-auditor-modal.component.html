@@ -11,13 +11,13 @@
 <ion-content>
   <ion-list>
     <ion-item>
-      <ion-label>Auditor Actual:</ion-label>
+      <ion-label>{{'Visita.AuditorActual' | translate}}:</ion-label>
       <ion-label *ngIf="auditorActual != null">{{auditorActual.apellido + ', ' + auditorActual.nombre}}</ion-label>
       <ion-label *ngIf="auditorActual == null">NA</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label>Auditor Nuevo</ion-label>
-      <ion-select style="width: max-content;" name="auditorSeleccionado" [(ngModel)]="auditorSeleccionado" placeholder='Auditor' required>
+      <ion-label>{{'Visita.AuditorNuevo'| translate}}</ion-label>
+      <ion-select style="width: max-content;" name="auditorSeleccionado" [(ngModel)]="auditorSeleccionado" placeholder="{{'Visita.Auditor'| translate}}" required>
         <ion-select-option *ngFor="let auditor of auditoresPosibles; let i = index" [value]="auditor" selected="i === 0">
           {{auditor.apellido + ', ' + auditor.nombre}}
         </ion-select-option>

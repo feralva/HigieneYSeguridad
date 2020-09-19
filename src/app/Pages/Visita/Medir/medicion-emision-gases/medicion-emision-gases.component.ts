@@ -38,17 +38,18 @@ export class MedicionEmisionGasesComponent implements OnInit {
     this.ubicaciones = this.route.snapshot.data['ubicaciones'];
     
     
-    this.appDataService.changePageName('Medicion.Sonora.Alta.Title');
+    this.appDataService.changePageName('Control.Emisiones.title');
   }
 
   async AltaControlMedicionesConfirm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Alta Control',
-      message: '¿Esta seguro que desea Asociar control?',
+      header: this.translate.instant('Control.title'),
+      message: this.translate.instant('Mensaje.Confirmacion',{accion: this.translate.instant('Accion.Asociar'),
+                                                              entidad: this.translate.instant('Control.Control')}),
       buttons: [
         {
-          text: 'Cancelar',
+          text: this.translate.instant('Mensaje.Cancelar'),
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
@@ -60,10 +61,10 @@ export class MedicionEmisionGasesComponent implements OnInit {
 
             this.controlService.altaControlVisita(this.obtenerControl(), this.obtenerMediciones()).then(
               result => {
-                this.MostrarMensajeOperacion('Alta Exitosa')
+                this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
                 this.router.navigate([`/visita/${this.idVisita}/detalle`])
               },
-              (err: any) => this.MostrarMensajeOperacion('Falla')
+              (err: any) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
             );
           }
         }
@@ -84,10 +85,10 @@ export class MedicionEmisionGasesComponent implements OnInit {
 
   private obtenerMediciones(): any[] {
     return [
-      { valor: this.model.azufreEnAire, nombre: 'Azufre en Aire' },
-      { valor: this.model.nitrogenoEnAire, nombre: 'Nitrogeno en Aire' },
-      { valor: this.model.carbonoEnAire, nombre: 'Carbono en Aire' },
-      { valor: this.model.halogenoEnAire, nombre: 'Halogeno en Aire' }
+      { valor: this.model.azufreEnAire, nombre: this.translate.instant('Control.Emisiones.AzufreenAire') },
+      { valor: this.model.nitrogenoEnAire, nombre: this.translate.instant('Control.Emisiones.NitrogenoenAire') },
+      { valor: this.model.carbonoEnAire, nombre: this.translate.instant('Control.Emisiones.CarbonoenAire') },
+      { valor: this.model.halogenoEnAire, nombre: this.translate.instant('Control.Emisiones.HalogenosenAire') }
     ];
   }
 
@@ -101,7 +102,7 @@ export class MedicionEmisionGasesComponent implements OnInit {
 
   onSubmit(form: NgForm) {
 
-    if(!this.seleccionUbicacionComponent.ubicacionSeleccionada) throw new Error('Favor de Seleccionar Ubicación')
+    if(!this.seleccionUbicacionComponent.ubicacionSeleccionada) throw new Error('Control.Error.Falta_Ubicacion')
 
     this.AltaControlMedicionesConfirm()
 

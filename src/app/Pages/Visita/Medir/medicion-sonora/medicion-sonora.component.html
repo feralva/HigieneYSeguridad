@@ -11,23 +11,23 @@
 
 <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
   <ion-item-divider color="primary">
-    <ion-label>Mediciones</ion-label>
+    <ion-label>{{'General.Mediciones' | translate }}</ion-label>
   </ion-item-divider>
   <ion-item>
-    <ion-label position="floating">Presión Sonora:</ion-label>
-    <ion-input type="number" placeholder="Valor en dBA" name="presionSonora" [(ngModel)]="model.presionSonora" required></ion-input>
+    <ion-label position="floating">{{'Control.Sonoro.PresionSonora' | translate }}:</ion-label>
+    <ion-input type="number" placeholder="{{'Control.Sonoro.ValorEndBA' | translate }}" name="presionSonora" [(ngModel)]="model.presionSonora" required></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Presión Sonora Min:</ion-label>
-    <ion-input type="number" placeholder="Valor en dBA" name="presionSonora" [(ngModel)]="model.presionSonoraMin" required></ion-input>
+    <ion-label position="floating">{{'Control.Sonoro.PresionSonoraMin' | translate }}:</ion-label>
+    <ion-input type="number" placeholder="{{'Control.Sonoro.ValorEndBA' | translate }}" name="presionSonora" [(ngModel)]="model.presionSonoraMin" required></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Presión Sonora Max:</ion-label>
-    <ion-input type="number" placeholder="Valor en dBA" name="presionSonoraMax" [(ngModel)]="model.presionSonoraMax" required></ion-input>
+    <ion-label position="floating">{{'Control.Sonoro.PresionSonoraMax' | translate }}:</ion-label>
+    <ion-input type="number" placeholder="{{'Control.Sonoro.ValorEndBA' | translate }}" name="presionSonoraMax" [(ngModel)]="model.presionSonoraMax" required></ion-input>
   </ion-item>
 
   <ion-button expand="block" type="submit" expand="block" fill="solid" shape="round" [disabled]="form.invalid">
-    Agregar Control a Visita
+    {{'Control.AgregarControlAVisita' | translate }}
   </ion-button>
 </form>
 

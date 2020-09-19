@@ -38,17 +38,18 @@ export class ControlPrevencionIncendioComponent implements OnInit {
     this.ubicaciones = this.route.snapshot.data['ubicaciones'];
     
     
-    this.appDataService.changePageName('Medicion.Sonora.Alta.Title');
+    this.appDataService.changePageName('Control.Incendio.title');
   }
 
   async AltaControlMedicionesConfirm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Alta Control',
-      message: '¿Esta seguro que desea Asociar control?',
+      header: this.translate.instant('Control.title'),
+      message: this.translate.instant('Mensaje.Confirmacion',{accion: this.translate.instant('Accion.Asociar'),
+                                                              entidad: this.translate.instant('Control.Control')}),
       buttons: [
         {
-          text: 'Cancelar',
+          text: this.translate.instant('Mensaje.Cancelar'),
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
@@ -60,10 +61,10 @@ export class ControlPrevencionIncendioComponent implements OnInit {
 
             this.controlService.altaControlVisita(this.obtenerControl(), this.obtenerMediciones()).then(
               result => {
-                this.MostrarMensajeOperacion('Alta Exitosa')
+                this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
                 this.router.navigate([`/visita/${this.idVisita}/detalle`])
               },
-              (err: any) => this.MostrarMensajeOperacion('Falla')
+              (err: any) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
             );
           }
         }
@@ -84,13 +85,13 @@ export class ControlPrevencionIncendioComponent implements OnInit {
 
   private obtenerMediciones(): any[] {
     return [
-      { valor: this.model.cantidadMatafuegos, nombre: 'Cantidad Mata fuegos' },
-      { valor: this.model.cantidadSalidasEmergencia, nombre: 'Cantidad Salidas Emergencia' },
-      { valor: this.model.cantidadBaldesArena, nombre: 'Cantidad Baldes de Arena' },
-      { valor: this.model.matafuegosVencidos, nombre: 'Matafuegos Vencidos' },
-      { valor: this.model.espacioVentilado, nombre: 'Espacio Ventilado' },
-      { valor: this.model.proteccionesIgnifugas, nombre: 'Protecciones Ignifugas' },
-      { valor: this.model.detectoresDeHumo, nombre: 'Detectores de Humo' }
+      { valor: this.model.cantidadMatafuegos, nombre: this.translate.instant('Control.Incendio.CantidadMatafuegos') },
+      { valor: this.model.cantidadSalidasEmergencia, nombre: this.translate.instant('Control.Incendio.CantidadSalidasEmergencia') },
+      { valor: this.model.cantidadBaldesArena, nombre: this.translate.instant('Control.Incendio.CantidadBaldesDeArena') },
+      { valor: this.model.matafuegosVencidos, nombre: this.translate.instant('Control.Incendio.MatafuegosVencidos') },
+      { valor: this.model.espacioVentilado, nombre: this.translate.instant('Control.Incendio.EspacioVentilado') },
+      { valor: this.model.proteccionesIgnifugas, nombre: this.translate.instant('Control.Incendio.ProteccionesIgnifugas') },
+      { valor: this.model.detectoresDeHumo, nombre: this.translate.instant('Control.Incendio.DetectoresDeHumo') }
     ];
   }
 
@@ -104,7 +105,7 @@ export class ControlPrevencionIncendioComponent implements OnInit {
 
   onSubmit(form: NgForm) {
 
-    if(!this.seleccionUbicacionComponent.ubicacionSeleccionada) throw new Error('Favor de Seleccionar Ubicación')
+    if(!this.seleccionUbicacionComponent.ubicacionSeleccionada) throw new Error('Control.Error.Falta_Ubicacion')
 
     this.AltaControlMedicionesConfirm()
 

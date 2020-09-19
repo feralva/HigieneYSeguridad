@@ -11,40 +11,40 @@
 
 <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
   <ion-item-divider color="primary">
-    <ion-label>Mediciones</ion-label>
+    <ion-label>{{'General.Mediciones' | translate }}</ion-label>
   </ion-item-divider>
 
   <ion-item>
-    <ion-label position="stacked">Se Presenta Azufre en Aire:</ion-label>
-    <ion-select name="azufreEnAire" [(ngModel)]="model.azufreEnAire" placeholder="Azufre en Aire" required>
-      <ion-select-option [value]=true>Si</ion-select-option>
-      <ion-select-option [value]=false>No</ion-select-option>
+    <ion-label position="stacked">{{'Control.Emisiones.SePresentaAzufreenAire' | translate}}:</ion-label>
+    <ion-select name="azufreEnAire" [(ngModel)]="model.azufreEnAire" placeholder="{{'Control.Emisiones.AzufreenAire' | translate}}" required>
+      <ion-select-option [value]=true>{{'General.Si' | translate }}</ion-select-option>
+      <ion-select-option [value]=false>{{'General.No' | translate }}</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked">Se Presenta Nitrógeno en Aire:</ion-label>
-    <ion-select name="nitrogenoEnAire" [(ngModel)]="model.nitrogenoEnAire" placeholder="Nitrógeno en Aire" required>
-      <ion-select-option [value]=true>Si</ion-select-option>
-      <ion-select-option [value]=false>No</ion-select-option>
+    <ion-label position="stacked">{{'Control.Emisiones.SePresentaNitrogenoenAire' | translate}}:</ion-label>
+    <ion-select name="nitrogenoEnAire" [(ngModel)]="model.nitrogenoEnAire" placeholder="{{'Control.Emisiones.NitrogenoenAire' | translate}}" required>
+      <ion-select-option [value]=true>{{'General.Si' | translate }}</ion-select-option>
+      <ion-select-option [value]=false>{{'General.No' | translate }}</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked">Se Presenta Carbono en Aire:</ion-label>
-    <ion-select name="carbonoEnAire" [(ngModel)]="model.carbonoEnAire" placeholder="Carbono en Aire" required>
-      <ion-select-option [value]=true>Si</ion-select-option>
-      <ion-select-option [value]=false>No</ion-select-option>
+    <ion-label position="stacked">{{'Control.Emisiones.SePresentaCarbonoenAire' | translate}}:</ion-label>
+    <ion-select name="carbonoEnAire" [(ngModel)]="model.carbonoEnAire" placeholder="{{'Control.Emisiones.CarbonoenAire' | translate}}" required>
+      <ion-select-option [value]=true>{{'General.Si' | translate }}</ion-select-option>
+      <ion-select-option [value]=false>{{'General.No' | translate }}</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked">Se Presenta Halógenos en Aire:</ion-label>
-    <ion-select name="halogenoEnAire" [(ngModel)]="model.halogenoEnAire" placeholder="Halógenos en Aire" required>
-      <ion-select-option [value]=true>Si</ion-select-option>
-      <ion-select-option [value]=false>No</ion-select-option>
+    <ion-label position="stacked">{{'Control.Emisiones.SePresentaHalogenosenAire' | translate}}:</ion-label>
+    <ion-select name="halogenoEnAire" [(ngModel)]="model.halogenoEnAire" placeholder="{{'Control.Emisiones.HalogenosenAire' | translate}}" required>
+      <ion-select-option [value]=true>{{'General.Si' | translate }}</ion-select-option>
+      <ion-select-option [value]=false>{{'General.No' | translate }}</ion-select-option>
     </ion-select>
   </ion-item>
 
   <ion-button expand="block" type="submit" expand="block" fill="solid" shape="round" [disabled]="form.invalid">
-    Agregar Control a Visita
+    {{'Control.AgregarControlAVisita' | translate }}
   </ion-button>
 </form>
 

@@ -13,7 +13,6 @@ import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 })
 export class VisitaPendienteEmpleadoComponent implements OnInit {
   visitas: any[];
-  nombrePagina: string;
   currentUser: UserLogueado;
   
   textoBuscar: string = '';
@@ -24,8 +23,8 @@ export class VisitaPendienteEmpleadoComponent implements OnInit {
 
   ngOnInit() {
     this.visitas = this.route.snapshot.data['visitas'];
-    this.nombrePagina = 'Visitas.Pendientes.title';
-    this.appDataService.changePageName(this.nombrePagina);
+
+    this.appDataService.changePageName('Visitas.VisitasPendientes');
     this.authService.getUserSubject().subscribe(
       data => this.currentUser = data,
       error => console.log(error)
