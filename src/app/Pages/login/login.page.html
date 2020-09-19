@@ -6,32 +6,28 @@
         <ion-col size-lg="4" size-md="6" size-sm="8" size-xs="10" offset-xs="1" offset-sm="2" offset-md="3" offset-lg="4">
           <div class="login-box vertical-center">
             <ion-item>
-              <ion-label position="stacked">Correo Electronico</ion-label>
-              <ion-input name="email" type="email" placeholder="Ingresar Correo Electronico" ngModel required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}$"></ion-input>
+              <ion-label position="stacked">{{'General.CorreoElectronico'}}</ion-label>
+              <ion-input name="email" type="email" placeholder="{{'General.CorreoElectronico'}}" ngModel required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}$"></ion-input>
             </ion-item>
           
             <ion-item>
-              <ion-label position="stacked">Password</ion-label>
-              <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+              <ion-label position="stacked">{{'Login.Password' | translate}}</ion-label>
+              <ion-input name="password" type="password" placeholder="{{'Login.Password' | translate}}" ngModel required></ion-input>
             </ion-item>
           
             <ion-button class="full-login-button" expand="block" shape="round" type="submit" [disabled]="form.invalid" style="margin-top: 6vh; margin-bottom: 4vh;"margin-top>
-              Login
+              {{'Login.Login' | translate}}
             </ion-button>
-          
-            <!-- <ion-button expand="block" class="forgotPassButton" shape="round" [routerLink]="['solicitarforgotPassword']" margin-top>
-              ¿Olvido la Contraseña?
-            </ion-button> -->
 
             <div style="text-align: center; padding-bottom: 1em;">
               <a [routerLink]="['solicitarforgotPassword']">
-                ¿Olvido la Contraseña?
+                {{'Login.ForgotPassword' | translate}}
               </a>
             </div>
             
           
             <ion-button class="outline-login-button" expand="block" shape="round" fill="outline" [routerLink]="['/empresa','alta']" margin-top>
-              Registrar Empresa
+              {{'Login.RegistrarEmpresa' | translate}}
             </ion-button>
             
           </div>

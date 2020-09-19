@@ -197,6 +197,12 @@
         "PagoTotal": "Pago Total",
         "RealizarPago": "Realizar Pago",
         "Pagos": "Pagos"
+    },
+    "Login": {
+        "Password": "Contraseña",
+        "ForgotPassword": "¿Olvido la Contraseña?",
+        "RegistrarEmpresa": "Registrar Empresa",
+        "Login": "Ingresar"
     }
     
 }

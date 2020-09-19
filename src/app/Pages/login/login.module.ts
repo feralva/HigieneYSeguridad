@@ -9,13 +9,15 @@ import { LoginPageRoutingModule } from './login-routing.module';
 import { LoginPage } from './login.page';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { SolicitarForgotPasswordComponent } from './solicitar-forgot-password/solicitar-forgot-password.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LoginPageRoutingModule
+    LoginPageRoutingModule,
+    TranslateModule
   ],
   declarations: [LoginPage, ForgotPasswordComponent, SolicitarForgotPasswordComponent]
 })
