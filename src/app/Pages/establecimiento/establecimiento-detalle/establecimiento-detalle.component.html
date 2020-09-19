@@ -11,10 +11,10 @@
     </ion-refresher>
   <ion-list>
     <ion-item lines="none">
-      <ion-label>Establecimiento: {{ model.nombre}}</ion-label>
+      <ion-label>{{'Establecimiento.Establecimiento' | translate}}: {{ model.nombre}}</ion-label>
     </ion-item>
     <ion-item-divider color="primary">
-      <ion-label>Ubicaciones</ion-label>
+      <ion-label>{{'General.Ubicaciones' | translate}}</ion-label>
     </ion-item-divider>
     <ion-item-sliding
       *ngFor="let ubicacion of model.ubicaciones; let i = index">
@@ -27,14 +27,13 @@
       </ion-item>
       <ion-item-options>
         <ion-item-option color="primary" (click)="verQRUbicacion(ubicacion)">
-          <!-- <ion-icon name="qr-code-outline"></ion-icon> -->
-          Ver QR
+          {{'General.Ver_QR' | translate}}
         </ion-item-option>
         <ion-item-option
           color="danger"
           (click)="borrarUbicacion(ubicacion)"
           expandable>
-          Delete
+          {{'Accion.Borrar' | translate}}
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>

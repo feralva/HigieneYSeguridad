@@ -9,45 +9,46 @@
   <form #form="ngForm" (ngSubmit)="onSubmit(form)">
     <ion-item-divider color="secondary">
       <ion-label>
-        Establecimiento
+        {{'Establecimiento.Establecimiento' | translate}}
       </ion-label>
     </ion-item-divider>
     <ion-item>
-      <ion-label position="stacked">Nombre</ion-label>
+      <ion-label position="stacked">{{'General.Nombre' | translate}}</ion-label>
       <ion-input
-        placeholder="Nombre"
+        placeholder="{{'General.Nombre' | translate}}"
         name="Nombre"
         [(ngModel)]="model.nombre"
         required></ion-input>
     </ion-item>
     <ion-item-divider color="tertiary">
       <ion-label>
-        <b>Direccion</b>
+        <b>{{'General.Direccion' | translate}}</b>
       </ion-label>
     </ion-item-divider>
     <ion-item>
-      <ion-label position="stacked">Calle</ion-label>
+      <ion-label position="stacked">{{'General.Calle' | translate}}</ion-label>
       <ion-input
-        placeholder="Calle"
+        placeholder="{{'General.Calle' | translate}}"
         name="direccion.Calle"
         [(ngModel)]="model.direccion.calle" required></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">Altura</ion-label>
+      <ion-label position="stacked">{{'General.Altura' | translate}}</ion-label>
       <ion-input
         type="number"
-        placeholder="Altura"
+        placeholder="{{'General.Altura' | translate}}"
         name="direccion.Altura"
         [(ngModel)]="model.direccion.altura" required></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">Provincia</ion-label>
-      <ion-select style="width: max-content;" name="provinciaSeleccionada" [(ngModel)]="provinciaSeleccionada" placeholder='Provincia' 
+      <ion-label position="stacked">{{'General.Provincia' | translate}}</ion-label>
+      <ion-select style="width: max-content;" name="provinciaSeleccionada" [(ngModel)]="provinciaSeleccionada" placeholder="{{'General.Provincia' | translate}} "
         (ngModelChange)="actualizarPartidos($event)" required>
         <ion-select-option *ngFor="let provincia of provincias; let i = index" [value]="provincia" selected="i === 0">{{provincia.nombre}}</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item *ngIf="provinciaSeleccionada!= null">
+      <ion-label position="stacked">{{'General.Partido' | translate}}</ion-label>
       <ionic-selectable
         item-content
         [(ngModel)]="partidoSeleccionado"
@@ -58,12 +59,12 @@
         [isMultiple]="false"
         name="partidosSeleccionados"
         [canSearch]="true"
-        placeholder="Partido" required>
+        placeholder="{{'General.Partido' | translate}}" required>
       </ionic-selectable>
     </ion-item>
     <ion-item-divider color="secondary">
       <ion-label>
-        <b>Ubicaciones</b>
+        <b>{{'General.Ubicaciones' | translate}}</b>
       </ion-label>
     </ion-item-divider>
     <ion-row style="margin-top: 1em; margin-left: 1em;">
@@ -74,8 +75,7 @@
     <br />
     <ion-list>
       <ion-item-sliding
-        *ngFor="let ubicacion of model.ubicaciones; let i = index"
-      >
+        *ngFor="let ubicacion of model.ubicaciones; let i = index">
         <ion-item>
           <ion-label
             class="ion-text-wrap"
@@ -88,13 +88,14 @@
             color="danger"
             (click)="borrarUbicacionLista(i)"
             expandable>
-            Delete
+            {{'Accion.Borrar' | translate}}
           </ion-item-option>
         </ion-item-options>
       </ion-item-sliding>
     </ion-list>
 
-    <ion-button type="submit" shape="round" fill="outline" [disabled]="form.invalid" slot="end">Modificar</ion-button
-    >
+    <ion-button type="submit" shape="round" fill="outline" [disabled]="form.invalid" slot="end">
+      {{'Accion.Modificar' | translate}}
+      </ion-button>
   </form>
 </ion-content>

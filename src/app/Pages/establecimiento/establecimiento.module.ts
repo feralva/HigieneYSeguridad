@@ -14,6 +14,7 @@ import { UbicacionAltaComponent } from '../ubicacion/ubicacion-alta/ubicacion-al
 import { ClientePageModule } from '../cliente/cliente.module';
 import { VerQrUbicacionModalComponent } from '../ubicacion/ver-qr-ubicacion-modal/ver-qr-ubicacion-modal.component';
 import { UbicacionPageModule } from '../ubicacion/ubicacion.module';
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   entryComponents: [UbicacionAltaComponent, VerQrUbicacionModalComponent],
   imports: [
@@ -24,7 +25,8 @@ import { UbicacionPageModule } from '../ubicacion/ubicacion.module';
     IonicSelectableModule,
     ClientePageModule,
     UbicacionPageModule,
-    IonicSelectableModule
+    IonicSelectableModule,
+    TranslateModule
   ],
   exports: [],
   declarations: [EstablecimientoPage, EstablecimientoEditarComponent, 

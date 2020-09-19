@@ -10,7 +10,10 @@
             "title": "Modificar Empresa"
         },
         "Planes":"Planes de Empresa",
-        "Empresa": "Empresa"
+        "Empresa": "Empresa",
+        "Detalle": {
+            "title": "Detalle Empresa"
+        }
     },
     "Empleado": {
         "title": "Empleado",
@@ -60,11 +63,20 @@
         "Planes": "Planes de Cliente",
         "Establecimientos": "Establecimientos",
         "EstadoPlan": "Estado Plan",
-        "VisitasPendientes": "Visitas Pendientes"
+        "VisitasPendientes": "Visitas Pendientes",
+        "Detalle": {
+            "title": "Detalle Cliente"
+        }
     },
     "Establecimiento":{
         "Establecimiento": "Establecimiento",
-        "Alta": "Alta Establecimiento"
+        "Alta": "Alta Establecimiento",
+        "Detalle": {
+            "title": "Detalle Establecimiento"
+        },
+        "Editar": {
+            "title": "Editar Establecimiento"
+        }
     },
     "Plan":{
         "title": "Detalle Plan",
@@ -111,7 +123,8 @@
         "Error": {
             "Falta_Imagen": "Debe Seleccionar Imagen"
         },
-        "Tipo": "Tipo"
+        "Tipo": "Tipo",
+        "Ver_QR": "Ver QR"
     },
     "Accion":{
         "Crear": "Crear",

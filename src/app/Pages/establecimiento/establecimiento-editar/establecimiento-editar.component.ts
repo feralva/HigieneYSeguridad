@@ -34,8 +34,7 @@ export class EstablecimientoEditarComponent implements OnInit {
     public toastController: ToastController,
     private route: ActivatedRoute, private loaderService: LoaderService,
     private plt: Platform, private direccionService: DireccionService,
-    private actionSheetCtrl: ActionSheetController, private location: Location
-  ) {}
+    private actionSheetCtrl: ActionSheetController, private location: Location) {}
 
   ngOnInit() {
     this.model = this.route.snapshot.data['establecimiento'];
@@ -63,6 +62,7 @@ export class EstablecimientoEditarComponent implements OnInit {
   }
 
   ionViewWillEnter() {
+    this.appDataService.changePageName("Establecimiento.Editar.title")
 /*     this.appDataService.changePageName("Establecimiento.Alta.title");
     this.model = this.route.snapshot.data['establecimiento'];
     this.direccionService.obtenerProvincias().subscribe(
@@ -135,11 +135,12 @@ export class EstablecimientoEditarComponent implements OnInit {
   async AltaEstablecimientoConfirm() {
     const alert = await this.alertController.create({
       cssClass: "my-custom-class",
-      header: "Actualizar Establecimiento",
-      message: "¿Esta seguro que desea actualizar Establecimiento?",
+      header: this.translate.instant('Establecimiento.Editar.title'),
+      message: this.translate.instant('Mensaje.Confirmacion',{accion: this.translate.instant('Accion.Modificar'),
+                                      entidad: this.translate.instant('Establecimiento.Establecimiento')}),
       buttons: [
         {
-          text: "Cancelar",
+          text: this.translate.instant('Mensaje.Cancelar'),
           role: "cancel",
           cssClass: "secondary",
           handler: (blah) => {
@@ -151,10 +152,10 @@ export class EstablecimientoEditarComponent implements OnInit {
           handler: () => {
             this.establecimientoService.ActualizarEstablecimiento(this.model).subscribe(
               (result) => {
-                this.MostrarMensajeOperacion("Modificación Exitosa")
+                this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
                 this.location.back()
               },
-              (err: any) => this.MostrarMensajeOperacion("Falla")
+              (err: any) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
             );
           },
         },
