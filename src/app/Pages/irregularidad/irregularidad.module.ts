@@ -14,6 +14,7 @@ import { UbicacionPageModule } from '../ubicacion/ubicacion.module';
 import { EstablecimientoPageModule } from '../establecimiento/establecimiento.module';
 import { ClientePageModule } from '../cliente/cliente.module';
 import { IonicSelectableModule } from 'ionic-selectable';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { IonicSelectableModule } from 'ionic-selectable';
     IonicModule,
     IrregularidadPageRoutingModule,
     UbicacionPageModule,
-    IonicSelectableModule
+    IonicSelectableModule,
+    TranslateModule
   ],
   declarations: [IrregularidadPage, AltaIrregularidadComponent, CerrarIrregularidadComponent]
 })

@@ -21,7 +21,7 @@
       [isMultiple]="false"
       name="clienteSeleccionado"
       [canSearch]="true"
-      placeholder="Cliente"
+      placeholder="{{'Cliente.Cliente' | translate}}"
       (onChange)="onClienteSeleccionado()">
     </ionic-selectable>
   </ion-item>
@@ -37,7 +37,7 @@
       [isMultiple]="false"
       name="establecimientoSeleccionado"
       [canSearch]="true"
-      placeholder="Establecimiento"
+      placeholder="{{'Establecimiento.Establecimiento' | translate}}"
       (onChange)="onEstablecimientoSeleccionado()">
     </ionic-selectable>
   </ion-item>
@@ -52,22 +52,22 @@
           <hr>
           <ion-grid>
             <ion-row>
-              <ion-col col-12><b>Estado:</b> {{irregularidad.estado}}</ion-col>
+              <ion-col col-12><b>{{'General.Estado' | translate}}:</b> {{irregularidad.estado}}</ion-col>
             </ion-row>
             <ion-row>
-              <ion-col col-12><b>Severidad:</b> {{irregularidad.tipo}}</ion-col>
+              <ion-col col-12><b>{{'Irregularidad.Severidad' | translate}}:</b> {{irregularidad.tipo}}</ion-col>
             </ion-row>
             <ion-row>
-              <ion-col><b>Descripción:</b> {{irregularidad.descripcion}}</ion-col>
+              <ion-col><b>{{'General.Descripcion' | translate}}:</b> {{irregularidad.descripcion}}</ion-col>
             </ion-row>
             <ion-row>
-              <ion-col><b>Reportado Por: </b> {{irregularidad.empleado}}</ion-col>
+              <ion-col><b>{{'Irregularidad.Reportado_Por' | translate}}: </b> {{irregularidad.empleado}}</ion-col>
             </ion-row>
             <ion-row>
-              <ion-col><b>Fecha Detectado: </b> {{irregularidad.fechaDeteccion | date: 'short'}}</ion-col>
+              <ion-col><b>{{'Irregularidad.Fecha_Deteccion' | translate}}: </b> {{irregularidad.fechaDeteccion | date: 'short'}}</ion-col>
             </ion-row>
             <ion-row *ngIf="irregularidad.fechaFinalizado">
-              <ion-col><b>Fecha Finalizado: </b> {{irregularidad.fechaFinalizado | date: 'short'}}</ion-col>
+              <ion-col><b>{{'Fecha_Finalizado' | translate}}: </b> {{irregularidad.fechaFinalizado | date: 'short'}}</ion-col>
             </ion-row>
           </ion-grid>
         </ion-card-content>

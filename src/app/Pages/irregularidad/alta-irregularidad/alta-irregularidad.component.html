@@ -7,7 +7,7 @@
 </ion-header>
 <ion-content>
   <ion-item-divider color="primary">
-    <ion-label><b>Nueva Irregularidad</b></ion-label>
+    <ion-label><b>{{'Irregularidad.Alta.title' | translate}}</b></ion-label>
   </ion-item-divider>
   <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
     <ion-item>
@@ -21,7 +21,7 @@
         [isMultiple]="false"
         name="clienteSeleccionado"
         [canSearch]="true"
-        placeholder="Cliente"
+        placeholder="{{'Cliente.Cliente' | translate}}"
         (onChange)="onClienteSeleccionado()" required>
       </ionic-selectable>
     </ion-item>
@@ -37,7 +37,7 @@
         [isMultiple]="false"
         name="establecimientoSeleccionado"
         [canSearch]="true"
-        placeholder="Establecimiento"
+        placeholder="{{'Establecimiento.Establecimiento' | translate}}"
         (onChange)="onEstablecimientoSeleccionado()" required>
       </ionic-selectable>
     </ion-item>
@@ -45,15 +45,15 @@
     <buscar-ubicacion #buscadorUbicacionComponent [ubicaciones]="ubicaciones" [ngStyle]="{'display': establecimientoSeleccionado ? '' : 'none' }"></buscar-ubicacion>
 
     <ion-item>
-      <ion-label position="stacked">Severidad</ion-label>
-      <ion-select style="width: max-content;" name="tipoSeleccionado" [(ngModel)]="model.TipoId" placeholder='Severidad' required>
+      <ion-label position="stacked">{{'Irregularidad.Severidad' | translate}}</ion-label>
+      <ion-select style="width: max-content;" name="tipoSeleccionado" [(ngModel)]="model.TipoId" placeholder="{{'Irregularidad.Severidad' | translate}}" required>
         <ion-select-option *ngFor="let tipo of tiposIrregularidad; let i = index" [value]="tipo.id" selected="i === 0">{{tipo.descripcion}}</ion-select-option>
       </ion-select>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Descripcion</ion-label>
-      <ion-textarea name="descipcion" placeholder="Descripcion Irregularidad" [(ngModel)]="model.descripcion" required></ion-textarea>
+      <ion-label position="floating">{{'General.Descripcion' | translate}}</ion-label>
+      <ion-textarea name="descipcion" placeholder="{{'General.Descripcion' | translate}}" [(ngModel)]="model.descripcion" required></ion-textarea>
     </ion-item>
 
     <ion-item>
@@ -71,7 +71,7 @@
     </ion-grid>
 
     <ion-button type="submit" expand="block" fill="clear" [disabled]="form.invalid" shape="round">
-      Alta
+      {{'Irregularidad.Alta.title' | translate}}
     </ion-button>
 
   </form>

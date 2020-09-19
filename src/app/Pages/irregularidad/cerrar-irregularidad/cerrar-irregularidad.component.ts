@@ -48,18 +48,18 @@ export class CerrarIrregularidadComponent implements OnInit {
 
   ionViewWillEnter(){
 
-    this.appDataService.changePageName('Irregularidad.Cerrar.Title');
-
+    this.appDataService.changePageName('Irregularidad.Completar_Irregularidad');
   }
 
   async CompletarIrregularidadConfirm() {
     const alert = await this.alertController.create({
     cssClass: 'my-custom-class',
-    header: 'Completar Irregularidad',
-    message: '¿Esta seguro que desea completar Irregularidad?',
+    header: this.translate.instant('Irregularidad.Completar_Irregularidad'),
+    message: this.translate.instant('Mensaje.Confirmacion',{accion: this.translate.instant('Accion.Completar'),
+                                          entidad: this.translate.instant('Irregularidad.Title')}),
     buttons: [
       {
-        text: 'Cancelar',
+        text: this.translate.instant('Mensaje.Cancelar'),
         role: 'cancel',
         cssClass: 'secondary',
         handler: (blah) => {
@@ -95,10 +95,10 @@ export class CerrarIrregularidadComponent implements OnInit {
   private completarIrregularidad() {
     this.irregularidadService.completarIrregularidad(this.model).subscribe(
     result => {
-      this.MostrarMensajeOperacion('Modificación Exitosa')
+      this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
       this.router.navigate(['/irregularidad'])
     },
-    (err: any) => this.MostrarMensajeOperacion('Falla')
+    (err: any) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
     );
   }
 
@@ -128,20 +128,20 @@ export class CerrarIrregularidadComponent implements OnInit {
   
   private validarModelo() {
     if(!this.imageBase64)
-      throw new Error("Debe ingresar evidencia de resolución Irregularidad");
+      throw new Error('Irregularidad.Error.Falta_Evidencia_Resolucion');
   }
 
   async selectImageSource() {
   const buttons = [
   {
-    text: 'Take Photo',
+    text: this.translate.instant('SeleccionFuenteImagen.Camara'),
     icon: 'camera',
     handler: () => {
       this.addImage(CameraSource.Camera);
     }
   },
   {
-    text: 'Choose From Photos Photo',
+    text: this.translate.instant('SeleccionFuenteImagen.Galeria'),
     icon: 'image',
     handler: () => {
       this.addImage(CameraSource.Photos);
@@ -152,7 +152,7 @@ export class CerrarIrregularidadComponent implements OnInit {
   // Only allow file selection inside a browser
   if (!this.plt.is('hybrid')) {
   buttons.push({
-  text: 'Choose a File',
+  text: this.translate.instant('SeleccionFuenteImagen.SistemaArchivos'),
   icon: 'attach',
   handler: () => {
   this.fileInput.nativeElement.click();
@@ -161,7 +161,7 @@ export class CerrarIrregularidadComponent implements OnInit {
   }
 
   const actionSheet = await this.actionSheetCtrl.create({
-    header: 'Select Image Source',
+    header: this.translate.instant('SeleccionFuenteImagen.Mensaje'),
     buttons
   });
 

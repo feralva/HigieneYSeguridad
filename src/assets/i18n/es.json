@@ -89,7 +89,23 @@
 
     },
     "Irregularidad":{
-        "Title": "Irregularidad"
+        "Title": "Irregularidad",
+        "Alta": {
+            "title": "Alta Irregularidad"
+        },
+        "Severidad": "Severidad",
+        "Error": {
+            "Falta_Evidencia": "Debe ingresar evidencia Fotografica de Irregularidad",
+            "Falta_Evidencia_Resolucion": "Debe ingresar evidencia de resolución Irregularidad"
+        },
+        "Detectado_Por": "Detectado Por",
+        "Reportado_Por": "Reportado Por",
+        "Fecha_Deteccion": "Fecha Detección",
+        "Fecha_Finalizado": "Fecha Finalizado",
+        "Evidencia": "Evidencia",
+        "Evidencia_Resolucion": "Evidencia Resolución",
+        "Descripcion_Resolucion": "Descripción Resolución",
+        "Completar_Irregularidad": "Completar Irregularidad"
     },
     "Calendario": {
         "title":"Calendario",
@@ -118,18 +134,21 @@
         "CreadoPor": "Creado Por",
         "FechaCreacion": "Fecha Creación",
         "Ubicaciones": "Ubicaciones",
+        "Ubicacion": "Ubicación",
         "Password": "Contraseña",
         "Roles": "Roles",
         "Error": {
             "Falta_Imagen": "Debe Seleccionar Imagen"
         },
         "Tipo": "Tipo",
-        "Ver_QR": "Ver QR"
+        "Ver_QR": "Ver QR",
+        "Descripcion": "Descripción"
     },
     "Accion":{
         "Crear": "Crear",
         "Alta": "Alta",
         "Modificar": "Modificar",
+        "Completar": "Completar",
         "Borrar": "Borrar"
     },
     "SeleccionFuenteImagen":{
