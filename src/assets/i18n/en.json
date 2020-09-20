@@ -1,64 +1,312 @@
-{   "Home": {
+{
+  "Home": {
     "title": "Home"
+  },
+  "Empresa": {
+    "title": "Business",
+    "Alta": {
+      "title": "New Company"
     },
-    "Empresa": {
-        "title": "Empresas",
-        "Alta": {
-            "title": "Alta Empresa"
-        },
-        "Planes":"Planes de Empresa"
+    "Editar": {
+      "title": "Modify Company"
     },
-    "Empleado": {
-        "title": "Empleado",
-        "Alta": {
-            "title": "Alta Empleado"
-        }
+    "Planes": "Business plans",
+    "Empresa": "Business",
+    "Detalle": {
+      "title": "Company Detail"
     },
-    "Cliente": {
-        "title": "Cliente",
-        "Alta": {
-            "title": "Cliente Empleado"
-        },
-        "Planes": "Planes de Cliente"
+    "Nombre_Empresa": "Company name"
+  },
+  "Empleado": {
+    "title": "Employee",
+    "Empleado": "Employee",
+    "Alta": {
+      "title": "New Employee"
     },
-    "EquipoMedicion": {
-        "title": "Equipos Medicion",
-        "Alta": {
-            "title": "Alta Equipo Medicion"
-        }
+    "Error": {
+      "Falta_Roles": "You must select at least one role"
     },
-    "Mensaje": {
-        "Exito": "Operacion Exitosa",
-        "Falla": "Reintentar mas Tarde"
+    "Detalle": {
+      "title": "Employee Detail"
     },
-    "Plan":{       
-        "title": "Detalle Plan",
-        "Alta":{
-            "title":"Alta Plan"
-        }
-    },
-    "Visita":{       
-        "title": "Visitas"
-    },
-    "Irregularidad":{
-        "Title": "Irregularidad"
-    },
-    "Calendario": {
-        "Mes": "Month",
-        "Dia": "Day",
-        "Anio": "Year",
-        "Semana": "Week"
-    },
-    "General":{
-        "Nombre": "Name",
-        "Apellido": "Last Name",
-        "Telefono": "Telephone",
-        "CorreoElectronico": "e-mail",
-        "Direccion": "Address",
-        "Calle": "Street",
-        "Altura": "Number",
-        "Provincia": "Province",
-        "Partido": "Location",
-        "Responsable": "Responsable"
+    "Edicion": {
+      "title": "Modify Employee"
     }
+  },
+  "Mensaje": {
+    "Exito": "Successful operation",
+    "Falla": "Reinstate but Late",
+    "Confirmacion": "Are you sure you want {{accion}} {{entidad}}?",
+    "Cancelar": "Cancel"
+  },
+  "EquipoMedicion": {
+    "title": "Measurement Equipment",
+    "Alta": {
+      "title": "New Measurement Equipment"
+    },
+    "Cantidad": "Quantity",
+    "Tipo_Equipo_Medicion": "Measurement Equipment Type",
+    "ActualizarCantidad": {
+      "title": "Update Quantity",
+      "Modificar_Cantidad_Equipos_Medicion": "Modify Quantity of Measurement Equipment",
+      "entidad": "Quantity Measurement Equipment"
+    }
+  },
+  "Cliente": {
+    "title": "Client",
+    "Alta": {
+      "title": "New Client"
+    },
+    "EditarCliente": {
+      "title": "Edit Client",
+      "Boton": "Edit Client"
+    },
+    "Cliente": "Client",
+    "Clientes": "customers",
+    "Planes": "Customer Plans",
+    "Establecimientos": "Establishments",
+    "EstadoPlan": "Plan Status",
+    "VisitasPendientes": "Pending Visits",
+    "Detalle": {
+      "title": "Customer Detail"
+    }
+  },
+  "Establecimiento": {
+    "Establecimiento": "Establishment",
+    "Alta": "New Establishment",
+    "Detalle": {
+      "title": "Establishment Detail"
+    },
+    "Editar": {
+      "title": "Edit Establishment"
+    }
+  },
+  "Plan": {
+    "title": "Plan Detail",
+    "Alta": {
+      "title": "New Plan"
+    },
+    "Plan": "Plan",
+    "Tipos_Plan": "Plan Types",
+    "Asignado_A": "Assigned to",
+    "Fecha_Pactada": "Agreed Date",
+    "Fecha_Concreta": "Specific date",
+    "Completar_Plan": "Complete Plan",
+    "Cancelar_Plan": "Cancel Plan",
+    "Error": {
+      "Visitas_No_Cerradas": "Visits must be Closed before completing Plan '"
+    }
+  },
+  "Visita": {
+    "title": "Visits",
+    "Tipo_Visita": "Visit type",
+    "Mes_Pactado": "Agreed Month",
+    "Anio_Pactado": "Agreed Year",
+    "AgregarVisita": "Add visit",
+    "AuditorActual": "Current Auditor",
+    "AuditorNuevo": "New Auditor",
+    "Auditor": "Auditor",
+    "Alta": "New Visit",
+    "Visita": "Visit",
+    "NuevaFecha": "New date",
+    "HorarioInicio": "Start Hours",
+    "HorarioFinalizacionEstimado": "Estimated End Time",
+    "Establecer_Fecha_Visita": "Set Visit Date",
+    "Detalle": "Visit Detail",
+    "CompletarVisita": "Complete Visit",
+    "CancelarVisita": "Cancel Visit",
+    "DebecargarControlesantesdecompletarVisita": "You must upload Controls before completing Visit",
+    "VisitaCompletaError": "Cannot Cancel Entire Visit",
+    "NoHayVisitasAsignadas": "No Visits Assigned",
+    "NoHayVisitasPendientes": "No Visits To Show",
+    "VisitasPendientes": "Pending Visits"
+  },
+  "Irregularidad": {
+    "Title": "Irregularity",
+    "Alta": {
+      "title": "New Irregularity"
+    },
+    "Severidad": "Severity",
+    "Error": {
+      "Falta_Evidencia": "You must enter Photographic evidence of Irregularity",
+      "Falta_Evidencia_Resolucion": "You must enter evidence of resolution Irregularity"
+    },
+    "Detectado_Por": "Detected by",
+    "Reportado_Por": "Reported by",
+    "Fecha_Deteccion": "Detection Date",
+    "Fecha_Finalizado": "Completed Date",
+    "Evidencia": "Evidence",
+    "Evidencia_Resolucion": "Evidence Resolution",
+    "Descripcion_Resolucion": "Description Resolution",
+    "Completar_Irregularidad": "Complete Irregularity"
+  },
+  "Calendario": {
+    "title": "Calendar",
+    "Mes": "My",
+    "Dia": "Day",
+    "Anio": "Year",
+    "Semana": "Week",
+    "NohayEventos": "No Events",
+    "Desde": "Since",
+    "Hasta": "Until"
+  },
+  "General": {
+    "Nombre": "Name",
+    "Apellido": "Last name",
+    "Telefono": "Phone",
+    "CorreoElectronico": "Email",
+    "Direccion": "Address",
+    "Calle": "Street",
+    "Altura": "Height",
+    "Provincia": "province",
+    "Partido": "Match",
+    "Responsable": "Responsible",
+    "Detalles": "Details",
+    "Detalle": "Detail",
+    "Editar": "Edit",
+    "Borrar": "Delete",
+    "Todos": "Everyone",
+    "Estado": "State",
+    "CreadoPor": "Created by",
+    "FechaCreacion": "Creation date",
+    "Ubicaciones": "Locations",
+    "Ubicacion": "Location",
+    "Password": "Password",
+    "Roles": "Roles",
+    "Error": {
+      "Falta_Imagen": "Must Select Image",
+      "QR_Invalido": "Invalid QR",
+      "DatosFaltantes": "Missing data",
+      "DatosSinAsignar": "Visit cannot be completed with date or unassigned auditor"
+    },
+    "Tipo": "Type",
+    "Ver_QR": "View QR",
+    "Descripcion": "Description",
+    "Atras": "Back",
+    "Fecha": "Date",
+    "Obtener_Ubicacion_por_QR": "Get Location by QR",
+    "DejarEscanear": "Let scan",
+    "Codigo_QR_de_Ubicacion": "Location QR Code",
+    "Mediciones": "Measurements",
+    "Si": "Yes",
+    "No": "No",
+    "SeProdujounerror": "There was an error",
+    "Reintentar": "Retry"
+  },
+  "Accion": {
+    "Crear": "Create",
+    "Alta": "New",
+    "Modificar": "Modify",
+    "Completar": "To complete",
+    "Borrar": "Delete",
+    "Deshabilitar": "To disable",
+    "Cancelar": "Cancel",
+    "Asociar": "Associate"
+  },
+  "SeleccionFuenteImagen": {
+    "Mensaje": "Select Image Source",
+    "Camara": "Photographic Camara",
+    "Galeria": "Image gallery",
+    "SistemaArchivos": "File System"
+  },
+  "Boton": {
+    "Operacion": "{{accion}} {{entidad}}"
+  },
+  "DashBoard": {
+    "title": "Control Board",
+    "Estadisticas": "Statistics",
+    "Total_Visitas_Por_Estado": "Total Visits By State",
+    "Estado": {
+      "Pendiente": "Pending",
+      "Completa": "Complete",
+      "Cancelada": "Canceled"
+    }
+  },
+  "Licencia": {
+    "Tipo_Licencia": "License Type",
+    "Precio": "Price",
+    "Precio_Nuevo": "New Price",
+    "Actualizar": {
+      "title": "Update Price Type License"
+    },
+    "Licencia": "License",
+    "Adquirir": {
+      "title": "Acquire License"
+    },
+    "Modificar": {
+      "title": "Modify License"
+    },
+    "Detalle": {
+      "title": "License Detail"
+    },
+    "Alta_Tipo_Licencia": "New License Type",
+    "Cantidad_Maxima_Usuarios": "Maximum Number of Users",
+    "Fecha_Expiracion": "Expiration date",
+    "Cantidad_Meses": "Amount Months",
+    "Cantidad_Meses_Dinamico": "{{cantidad}} months",
+    "PagoTotal": "Full payment",
+    "RealizarPago": "Make payment",
+    "Pagos": "Payments",
+    "Total": "Total"
+  },
+  "Login": {
+    "Password": "Password",
+    "ForgotPassword": "Forgot Password?",
+    "RegistrarEmpresa": "Register Company",
+    "Login": "Enterokay"
+  },
+  "Control": {
+    "title": "New Control",
+    "Control": "Control",
+    "NohayControlesRealizadosAun": "No Checks Performed Yet",
+    "ControlesporUbicacion": "Controls by Location",
+    "AgregarControlAVisita": "Add Control to Visit",
+    "Error": {
+      "Falta_Ubicacion": "Please Select Location"
+    },
+    "Incendio": {
+      "title": "New Fire Control",
+      "CantidadMatafuegos": "Fire extinguisher quantity",
+      "CantidadSalidasEmergencia": "Emergency Exits Quantity",
+      "CantidadBaldesDeArena": "Sand Buckets Quantity",
+      "EspacioVentilado": "Ventilated space",
+      "MatafuegosVencidos": "Expired Fire Extinguishers",
+      "ProteccionesIgnifugas": "Fireproof Protections",
+      "DetectoresDeHumo": "Smoke detectors"
+    },
+    "Electrico": {
+      "title": "New Electrical Control",
+      "PuestaATierra": "Grounding",
+      "TablerosElectricosconTapa": "Electrical Panels with Cover",
+      "UtilizaciondeProteccionesElectricas": "Use of Electrical Protections",
+      "AislanteElectrico": "Electrical Insulator"
+    },
+    "Emisiones": {
+      "title": "New Emissions Control",
+      "SePresentaAzufreenAire": "Sulfur Presents in Air",
+      "AzufreenAire": "Sulfur in Air",
+      "SePresentaNitrogenoenAire": "Nitrogen is Presented in Air",
+      "NitrogenoenAire": "Nitrogen in Air",
+      "SePresentaCarbonoenAire": "Carbon is Introduced in Air",
+      "CarbonoenAire": "Carbon in Air",
+      "SePresentaHalogenosenAire": "Halogens in Air Introduced",
+      "HalogenosenAire": "Halogens in Air"
+    },
+    "Sonoro": {
+      "title": "New Sound Control",
+      "PresionSonora": "Sound pressure",
+      "PresionSonoraMin": "Sound Pressure Min",
+      "PresionSonoraMax": "Sound Pressure Max",
+      "ValorEndBA": "Value in dBA"
+    },
+    "Luminico": {
+      "title": "New Light Control",
+      "FlujoLuminoso": "Luminous flux",
+      "Iluminancia": "Illuminance",
+      "Intensidadluminosa": "Light intensity",
+      "Valorenlm": "Value in lm",
+      "Valorenlx": "Value in lx",
+      "Valorencd": "Value in cd"
+    }
+  }
 }

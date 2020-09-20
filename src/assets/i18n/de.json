@@ -1,47 +1,312 @@
-{   "Home": {
-    "title": "Zuhause",
-    "Empresa": {
-        "title": "Empresa",
-        "Alta": {
-            "title": "Alta Empresa"
-        },
-        "Planes":"Planes de Empresa"
+{
+  "Home": {
+    "title": "Zuhause"
+  },
+  "Empresa": {
+    "title": "Unternehmen",
+    "Alta": {
+      "title": "Hohe Gesellschaft"
     },
-    "Empleado": {
-        "title": "Empleado",
-        "Alta": {
-            "title": "Alta Empleado"
-        }
+    "Editar": {
+      "title": "Firma ändern"
     },
-    "Mensaje": {
-        "Exito": "Operacion Exitosa",
-        "Falla": "Reintentar mas Tarde"
+    "Planes": "Geschäftspläne",
+    "Empresa": "Unternehmen",
+    "Detalle": {
+      "title": "Unternehmensdetail"
     },
-    "EquipoMedicion": {
-        "title": "Equipos Medicion",
-        "Alta": {
-            "title": "Alta Equipo Medicion"
-        }
+    "Nombre_Empresa": "Name der Firma"
+  },
+  "Empleado": {
+    "title": "Mitarbeiter",
+    "Empleado": "Mitarbeiter",
+    "Alta": {
+      "title": "Hoher Mitarbeiter"
     },
-    "Cliente": {
-        "title": "Cliente",
-        "Alta": {
-            "title": "Cliente Empleado"
-        },
-        "Planes": "Planes de Cliente"
+    "Error": {
+      "Falta_Roles": "Sie müssen mindestens eine Rolle auswählen"
     },
-    "Plan":{       
-        "title": "Detalle Plan",
-        "Alta":{
-            "title":"Alta Plan"
-        }
+    "Detalle": {
+      "title": "Mitarbeiterdetail"
     },
-    "Visita":{       
-        "title": "Visitas"
-
-    },
-    "Irregularidad":{
-        "Title": "Irregularidad"
+    "Edicion": {
+      "title": "Mitarbeiter ändern"
     }
-}
+  },
+  "Mensaje": {
+    "Exito": "Erfolgreicher Betrieb",
+    "Falla": "Wiedereinsetzen, aber spät",
+    "Confirmacion": "Sind Sie sicher, dass Sie {{accion}} {{entidad}} möchten?",
+    "Cancelar": "Stornieren"
+  },
+  "EquipoMedicion": {
+    "title": "Messwerkzeug",
+    "Alta": {
+      "title": "Hochmessgeräte"
+    },
+    "Cantidad": "Menge",
+    "Tipo_Equipo_Medicion": "Messgerätetyp",
+    "ActualizarCantidad": {
+      "title": "Menge aktualisieren",
+      "Modificar_Cantidad_Equipos_Medicion": "Mengenmessgeräte ändern",
+      "entidad": "Mengenmessgeräte"
+    }
+  },
+  "Cliente": {
+    "title": "Klient",
+    "Alta": {
+      "title": "Hoher Kunde"
+    },
+    "EditarCliente": {
+      "title": "Client bearbeiten",
+      "Boton": "Client bearbeiten"
+    },
+    "Cliente": "Klient",
+    "Clientes": "Kunden",
+    "Planes": "Kundenpläne",
+    "Establecimientos": "Einrichtungen",
+    "EstadoPlan": "Planen Sie den Status",
+    "VisitasPendientes": "Ausstehende Besuche",
+    "Detalle": {
+      "title": "Kundendetail"
+    }
+  },
+  "Establecimiento": {
+    "Establecimiento": "Einrichtung",
+    "Alta": "Hohe Einrichtung",
+    "Detalle": {
+      "title": "Einrichtungsdetail"
+    },
+    "Editar": {
+      "title": "Einrichtung bearbeiten"
+    }
+  },
+  "Plan": {
+    "title": "Detail planen",
+    "Alta": {
+      "title": "Hoher Plan"
+    },
+    "Plan": "Planen",
+    "Tipos_Plan": "Planarten",
+    "Asignado_A": "Zugewiesen an",
+    "Fecha_Pactada": "Vereinbarter Termin",
+    "Fecha_Concreta": "Bestimmtes Datum",
+    "Completar_Plan": "Kompletter Plan",
+    "Cancelar_Plan": "Plan abbrechen",
+    "Error": {
+      "Visitas_No_Cerradas": "Besuche müssen vor Abschluss des Plans geschlossen werden. '"
+    }
+  },
+  "Visita": {
+    "title": "Besuche",
+    "Tipo_Visita": "Besuchstyp",
+    "Mes_Pactado": "Vereinbarter Monat",
+    "Anio_Pactado": "Vereinbartes Jahr",
+    "AgregarVisita": "Besuch hinzufügen",
+    "AuditorActual": "Aktueller Prüfer",
+    "AuditorNuevo": "Neuer Auditor",
+    "Auditor": "Wirtschaftsprüfer",
+    "Alta": "Hoher Besuch",
+    "Visita": "Besuch",
+    "NuevaFecha": "Neues Datum",
+    "HorarioInicio": "Startstunden",
+    "HorarioFinalizacionEstimado": "Geschätzte Endzeit",
+    "Establecer_Fecha_Visita": "Besuchsdatum festlegen",
+    "Detalle": "Besuchen Sie Detail",
+    "CompletarVisita": "Vollständiger Besuch",
+    "CancelarVisita": "Besuch abbrechen",
+    "DebecargarControlesantesdecompletarVisita": "Sie müssen Steuerelemente hochladen, bevor Sie den Besuch abschließen",
+    "VisitaCompletaError": "Gesamter Besuch kann nicht abgebrochen werden",
+    "NoHayVisitasAsignadas": "Keine Besuche zugewiesen",
+    "NoHayVisitasPendientes": "Keine Besuche zu zeigen",
+    "VisitasPendientes": "Ausstehende Besuche"
+  },
+  "Irregularidad": {
+    "Title": "Unregelmäßigkeit",
+    "Alta": {
+      "title": "Hohe Unregelmäßigkeit"
+    },
+    "Severidad": "Schwere",
+    "Error": {
+      "Falta_Evidencia": "Sie müssen fotografische Beweise für Unregelmäßigkeiten eingeben",
+      "Falta_Evidencia_Resolucion": "Sie müssen Nachweise für die Unregelmäßigkeit der Lösung eingeben"
+    },
+    "Detectado_Por": "Entdeckt von",
+    "Reportado_Por": "Berichtet von",
+    "Fecha_Deteccion": "Erkennungsdatum",
+    "Fecha_Finalizado": "Abschlussdatum",
+    "Evidencia": "Beweise",
+    "Evidencia_Resolucion": "Beweisauflösung",
+    "Descripcion_Resolucion": "Beschreibung Auflösung",
+    "Completar_Irregularidad": "Vollständige Unregelmäßigkeit"
+  },
+  "Calendario": {
+    "title": "Kalender",
+    "Mes": "Meine",
+    "Dia": "Tag",
+    "Anio": "Jahr",
+    "Semana": "Woche",
+    "NohayEventos": "Keine Ereignisse",
+    "Desde": "Schon seit",
+    "Hasta": "Bis um"
+  },
+  "General": {
+    "Nombre": "Name",
+    "Apellido": "Nachname",
+    "Telefono": "Telefon",
+    "CorreoElectronico": "Email",
+    "Direccion": "Adresse",
+    "Calle": "Straße",
+    "Altura": "Höhe",
+    "Provincia": "Provinz",
+    "Partido": "Spiel",
+    "Responsable": "Verantwortlich",
+    "Detalles": "Einzelheiten",
+    "Detalle": "Detail",
+    "Editar": "Bearbeiten",
+    "Borrar": "Löschen",
+    "Todos": "Jeder",
+    "Estado": "Zustand",
+    "CreadoPor": "Erstellt von",
+    "FechaCreacion": "Erstellungsdatum",
+    "Ubicaciones": "Standorte",
+    "Ubicacion": "Ort",
+    "Password": "Passwort",
+    "Roles": "Rollen",
+    "Error": {
+      "Falta_Imagen": "Bild muss ausgewählt werden",
+      "QR_Invalido": "Ungültiger QR",
+      "DatosFaltantes": "Fehlende Daten",
+      "DatosSinAsignar": "Der Besuch kann nicht mit Datum oder nicht zugewiesenem Prüfer abgeschlossen werden"
+    },
+    "Tipo": "Art",
+    "Ver_QR": "QR anzeigen",
+    "Descripcion": "Beschreibung",
+    "Atras": "angezogen",
+    "Fecha": "Datum",
+    "Obtener_Ubicacion_por_QR": "Standort durch QR ermitteln",
+    "DejarEscanear": "Scannen lassen",
+    "Codigo_QR_de_Ubicacion": "Standort QR-Code",
+    "Mediciones": "Messungen",
+    "Si": "Und",
+    "No": "Nein",
+    "SeProdujounerror": "Es gab einen Fehler",
+    "Reintentar": "Wiederholen"
+  },
+  "Accion": {
+    "Crear": "Erstellen",
+    "Alta": "Hoch",
+    "Modificar": "Ändern",
+    "Completar": "Fertigstellen",
+    "Borrar": "Löschen",
+    "Deshabilitar": "Etwas deaktivieren",
+    "Cancelar": "Stornieren",
+    "Asociar": "Assoziieren"
+  },
+  "SeleccionFuenteImagen": {
+    "Mensaje": "Wählen Sie Bildquelle",
+    "Camara": "Kamera fotografisch",
+    "Galeria": "Bildergalerie",
+    "SistemaArchivos": "Dateisystem"
+  },
+  "Boton": {
+    "Operacion": "{{accion}} {{entidad}}"
+  },
+  "DashBoard": {
+    "title": "Steuerplatine",
+    "Estadisticas": "Statistiken",
+    "Total_Visitas_Por_Estado": "Gesamtzahl der Besuche nach Bundesland",
+    "Estado": {
+      "Pendiente": "steht aus",
+      "Completa": "Komplett",
+      "Cancelada": "Abgesagt"
+    }
+  },
+  "Licencia": {
+    "Tipo_Licencia": "Lizenz-Typ",
+    "Precio": "Preis",
+    "Precio_Nuevo": "Neuer Preis",
+    "Actualizar": {
+      "title": "Aktualisieren Sie die Preisart-Lizenz"
+    },
+    "Licencia": "Lizenz",
+    "Adquirir": {
+      "title": "Lizenz erwerben"
+    },
+    "Modificar": {
+      "title": "Lizenz ändern"
+    },
+    "Detalle": {
+      "title": "Lizenzdetail"
+    },
+    "Alta_Tipo_Licencia": "Hoher Lizenztyp",
+    "Cantidad_Maxima_Usuarios": "Maximale Anzahl Benutzer",
+    "Fecha_Expiracion": "Haltbarkeitsdatum",
+    "Cantidad_Meses": "Anzahl Monate",
+    "Cantidad_Meses_Dinamico": "{{cantidad}} Monate",
+    "PagoTotal": "Vollständige Zahlung",
+    "RealizarPago": "Zahlung leisten",
+    "Pagos": "Zahlungen",
+    "Total": "Gesamt"
+  },
+  "Login": {
+    "Password": "Passwort",
+    "ForgotPassword": "Passwort vergessen?",
+    "RegistrarEmpresa": "Firma registrieren",
+    "Login": "Enterokay"
+  },
+  "Control": {
+    "title": "Hohe Kontrolle",
+    "Control": "Steuerung",
+    "NohayControlesRealizadosAun": "Es wurden noch keine Überprüfungen durchgeführt",
+    "ControlesporUbicacion": "Steuerelemente nach Standort",
+    "AgregarControlAVisita": "Fügen Sie dem Besuch die Kontrolle hinzu",
+    "Error": {
+      "Falta_Ubicacion": "Bitte wählen Sie Standort"
+    },
+    "Incendio": {
+      "title": "Hohe Feuerkontrolle",
+      "CantidadMatafuegos": "Feuerlöscher Menge",
+      "CantidadSalidasEmergencia": "Anzahl der Notausgänge",
+      "CantidadBaldesDeArena": "Sandeimer Menge",
+      "EspacioVentilado": "Belüfteter Raum",
+      "MatafuegosVencidos": "Abgelaufene Feuerlöscher",
+      "ProteccionesIgnifugas": "Feuerfester Schutz",
+      "DetectoresDeHumo": "Rauchmelder"
+    },
+    "Electrico": {
+      "title": "Hohe elektrische Kontrolle",
+      "PuestaATierra": "Erdung",
+      "TablerosElectricosconTapa": "Schalttafeln mit Abdeckung",
+      "UtilizaciondeProteccionesElectricas": "Verwendung von elektrischen Schutzvorrichtungen",
+      "AislanteElectrico": "Elektrischer Isolator"
+    },
+    "Emisiones": {
+      "title": "Kontrolle der hohen Emissionen",
+      "SePresentaAzufreenAire": "Schwefel in der Luft",
+      "AzufreenAire": "Schwefel in der Luft",
+      "SePresentaNitrogenoenAire": "Stickstoff ist in Luft vorhanden",
+      "NitrogenoenAire": "Stickstoff in der Luft",
+      "SePresentaCarbonoenAire": "Kohlenstoff wird in Luft eingeführt",
+      "CarbonoenAire": "Kohlenstoff in der Luft",
+      "SePresentaHalogenosenAire": "Halogene in der Luft eingeführt",
+      "HalogenosenAire": "Halogene in der Luft"
+    },
+    "Sonoro": {
+      "title": "Hohe Klangregelung",
+      "PresionSonora": "Schalldruck",
+      "PresionSonoraMin": "Schalldruck min",
+      "PresionSonoraMax": "Schalldruck max",
+      "ValorEndBA": "Wert in dBA"
+    },
+    "Luminico": {
+      "title": "Hohe Lichtsteuerung",
+      "FlujoLuminoso": "Lichtstrom",
+      "Iluminancia": "Beleuchtungsstärke",
+      "Intensidadluminosa": "Lichtintensität",
+      "Valorenlm": "Wert in lm",
+      "Valorenlx": "Wert in lx",
+      "Valorencd": "Wert in cd"
+    }
+  }
 }
