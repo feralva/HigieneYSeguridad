@@ -1,67 +1,67 @@
 [
     {
         "icon": "home",
-        "name": "Inicio",
+        "name": "Menu.Inicio",
         "url": "/home",
         "role": []
     },
     {
         "icon": "bar-chart",
-        "name": "Dash Board",
+        "name": "Menu.DashBoard",
         "url": "/dashboard",
         "role": ["Coordinador"]
     },
     {
         "icon": "briefcase",
-        "name": "Planes",
+        "name": "Menu.Planes",
         "url": "/plan",
         "role": ["Coordinador"]
     },
     {
         "icon": "clipboard",
-        "name": "Visitas",
+        "name": "Menu.Visitas",
         "url": "/visita",
         "role": ["Coordinador"]
     },
     {
         "icon": "clipboard",
-        "name": "Mis Visitas",
+        "name": "Menu.MisVisitas",
         "url": "/visita/Pendientes",
         "role": ["Auditor"]
     },
     {
         "icon": "calendar",
-        "name": "Mi Calendario",
+        "name": "Menu.MiCalendario",
         "url": "/calendario",
         "role": ["Auditor"]
     },
     {
         "icon": "calendar",
-        "name": "Carga Auditores",
+        "name": "Menu.CargaAuditores",
         "url": "/calendario/Empresa",
         "role": ["Coordinador","Gerente"]
     },
     {
         "icon": "people-circle",
-        "name": "Empleados",
+        "name": "Menu.Empleados",
         "url": "/empleado",
         "role": ["Coordinador"]
     },
     {
         "icon": "business",
-        "name": "Clientes",
+        "name": "Menu.Clientes",
         "url": "/cliente",
         "role": ["Auditor","Coordinador"]
     },
     {
         "icon": "wallet",
-        "name": "Licencia",
+        "name": "Menu.Licencias",
         "url": "/licencia",
         "role": ["Coordinador"]
     },
     {
         "icon": "wallet",
-        "name": "Adquirir Licencia",
+        "name": "Menu.AdquirirLicencia",
         "url": "/licencia/adquisicion",
         "role": ["Coordinador"]
     },
@@ -79,35 +79,35 @@
     },
     {
         "icon": "thermometer",
-        "name": "Equipos Medición",
+        "name": "Menu.EquiposMedicion",
         "url": "equiposMedicion",
         "role": ["Coordinador"]
     },
     {
         "icon": "thermometer",
-        "name": "Mi Licencia",
+        "name": "Menu.MiLicencia",
         "url": "/licencia/detalle",
         "role": ["Coordinador"]
     },
     {
-        "name": "Licencia",
+        "name": "Menu.Licencia",
         "icon": "thermometer",
         "children": [
             {
                 "icon": "thermometer",
-                "name": "Alta Licencia",
+                "name": "Menu.AltaLicencia",
                 "url": "/licencia/tipo/alta",
                 "role": ["Coordinador"]
             },
             {
                 "icon": "thermometer",
-                "name": "Actualizar Precio",
+                "name": "Menu.ActualizarPrecio",
                 "url": "/licencia/tipo/actualizarPrecio",
                 "role": ["Coordinador"]
             },
             {
                 "icon": "thermometer",
-                "name": "Tipos Licencia",
+                "name": "Menu.TiposLicencia",
                 "url": "/licencia/tipos",
                 "role": ["Coordinador"]
             }

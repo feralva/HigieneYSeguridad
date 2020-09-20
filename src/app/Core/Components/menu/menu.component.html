@@ -46,7 +46,7 @@
               <ion-item class="sub-item"  [routerLink]="sub.url"
                 routerDirection="root" routerLinkActive="active"  lines="none" *appHasRole="sub.role">
                 <ion-icon slot="start" [name]="sub.icon"></ion-icon>
-                <ion-label>{{sub.name}}</ion-label>
+                <ion-label>{{sub.name | translate}}</ion-label>
               </ion-item>
             </div>
             
@@ -54,11 +54,6 @@
         </ion-list>
 
       </div>
-
-<!--       <ion-item lines="none"  routerDirection="root" (click)="logOut()" button>
-        <ion-icon slot="start" ios="log-out-outline" md="log-out-sharp"></ion-icon>
-        <ion-label>{{ 'Log Out'| translate }}</ion-label>
-      </ion-item> -->
     </ion-list>
 
 

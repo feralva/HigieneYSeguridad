@@ -95,7 +95,8 @@
     "Cancelar_Plan": "Plan abbrechen",
     "Error": {
       "Visitas_No_Cerradas": "Besuche müssen vor Abschluss des Plans geschlossen werden. '"
-    }
+    },
+    "Planes": "Pläne"
   },
   "Visita": {
     "title": "Besuche",
@@ -323,5 +324,24 @@
     "UsuarioOContraseniaIncorrectaException": "Falscher Benutzer oder falsches Passwort",
     "VisitaCompletaNoPuedeCancelarseException": "Gesamter Besuch kann nicht abgebrochen werden",
     "VisitaNoValidaException": "Besuchen Sie Nicht gültig"
+  },
+  "Menu": {
+    "Inicio": "Anfang",
+    "DashBoard": "Bedienfeldsteuerung",
+    "Planes": "Pläne",
+    "Visitas": "Besuche",
+    "MisVisitas": "Meine Besuche",
+    "MiCalendario": "Ich Kalender",
+    "CargaAuditores": "Auditoren laden",
+    "Empleados": "Angestellte",
+    "Clientes": "Kunden",
+    "Licencia": "Lizenz",
+    "AdquirirLicencia": "Lizenz erwerben",
+    "EquiposMedicion": "Messwerkzeug",
+    "MiLicencia": "Meine Lizenz",
+    "Licencias": "Lizenzierung",
+    "AltaLicencia": "Hohe Lizenz",
+    "ActualizarPrecio": "Preis aktualisieren",
+    "TiposLicencia": "Lizenztypen"
   }
 }

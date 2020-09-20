@@ -7,6 +7,7 @@ import { AuthService } from '../Services/auth/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { GenericAlertMessageService } from '../Services/generic-alert-message.service';
 import { LoaderService } from '../Services/loader.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -14,7 +15,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     constructor(private toastCtrl: ToastController, private loadingCtrl: LoadingController,
         private authService: AuthService, private genericAlertMessageService: GenericAlertMessageService,
-        public loaderService: LoaderService){}
+        public loaderService: LoaderService, private translate: TranslateService){}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         
@@ -117,7 +118,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   async showRetryToast(retryCount){
       const toast = await this.toastCtrl.create({
-          message:`{{'General.Reintentar'}}: ${retryCount}/3`,
+          message: this.translate.instant('General.Reintentar') + `: ${retryCount}/3`,
           duration: 1000
       });
       toast.present();

@@ -94,7 +94,8 @@
         "Cancelar_Plan": "Cancelar Plan",
         "Error": {
             "Visitas_No_Cerradas": "Las Visitas deben estar Cerradas antes de completar Plan'"
-        }
+        },
+        "Planes": "Planes"
     },
     "Visita":{       
         "title": "Visitas",
@@ -322,6 +323,25 @@
         "UsuarioOContraseniaIncorrectaException": "Usuario O Contraseña Incorrecta",
         "VisitaCompletaNoPuedeCancelarseException": "No se puede Cancelar Visita Completa",
         "VisitaNoValidaException": "Visita No Valida"
+    },
+    "Menu": {
+        "Inicio": "Inicio",
+        "DashBoard": "Panel Control",
+        "Planes": "Planes",
+        "Visitas": "Visitas",
+        "MisVisitas": "Mis Visitas",
+        "MiCalendario": "Mi Calendario",
+        "CargaAuditores": "Carga Auditores",
+        "Empleados": "Empleados",
+        "Clientes": "Clientes",
+        "Licencia": "Licencia",
+        "AdquirirLicencia": "Adquirir Licencia",
+        "EquiposMedicion": "Equipos Medición",
+        "MiLicencia": "Mi Licencia",
+        "Licencias": "Licencias",
+        "AltaLicencia": "Alta Licencia",
+        "ActualizarPrecio": "Actualizar Precio",
+        "TiposLicencia": "Tipos Licencia"
     }
     
 }

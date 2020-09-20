@@ -71,14 +71,14 @@
     <ion-row>
       <ion-col size="12" size-lg="6">
         <ion-item button [routerLink]="['/cliente', cliente.id,'planes']" detail="true">
-          <ion-icon name="document-text"></ion-icon>
-            Planes
+          <ion-icon name="document-text"></ion-icon>           
+            {{'Plan.Planes' | translate}}
         </ion-item>
       </ion-col>
       <ion-col size="12" size-lg="6">
         <ion-item button [routerLink]="['/cliente', cliente.id,'establecimientos']" detail="true">
           <ion-icon name="home"></ion-icon>
-          {{'Cliente.Establecimientos'}}
+          {{'Cliente.Establecimientos' | translate}}
         </ion-item>
       </ion-col>
     </ion-row>

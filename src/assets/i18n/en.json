@@ -95,7 +95,8 @@
     "Cancelar_Plan": "Cancel Plan",
     "Error": {
       "Visitas_No_Cerradas": "Visits must be Closed before completing Plan '"
-    }
+    },
+    "Planes": "Plans"
   },
   "Visita": {
     "title": "Visits",
@@ -323,5 +324,24 @@
     "UsuarioOContraseniaIncorrectaException": "User or Password Incorrect",
     "VisitaCompletaNoPuedeCancelarseException": "Can not Cancel Visit Already Complete",
     "VisitaNoValidaException": "Visit Not Valid"
+  },
+  "Menu": {
+    "Inicio": "Home",
+    "DashBoard": "Panel Control",
+    "Planes": "Plans",
+    "Visitas": "Visits",
+    "MisVisitas": "My Visits",
+    "MiCalendario": "Calendar me",
+    "CargaAuditores": "Auditors load",
+    "Empleados": "Employees",
+    "Clientes": "customers",
+    "Licencia": "License",
+    "AdquirirLicencia": "Acquire License",
+    "EquiposMedicion": "Measurement Equipment",
+    "MiLicencia": "My License",
+    "Licencias": "Licensing",
+    "AltaLicencia": "High License",
+    "ActualizarPrecio": "Update Price",
+    "TiposLicencia": "License Types"
   }
 }
