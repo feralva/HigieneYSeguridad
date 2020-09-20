@@ -307,6 +307,21 @@
             "Valorenlx": "Valor en lx",
             "Valorencd": "Valor en cd"
         }
+    },
+    "API": {
+        "BaseDeDatosExcepcion": "Problema Base de Datos",
+        "EmpleadoNoDisponibleException": "Empleado No Disponible",
+        "EmpresaDeshabilitadaException": "Empresa Deshabilitada",
+        "EmpresaYaRegistradaException": "La Empresa ya se Encuentra Registrada",
+        "LicenciaVencidaException": "Licencia Vencida",
+        "NoHayInstrumentoMedicionDisponibleException": "No Hay Instrumento Medicion Disponible",
+        "NumeroMaximoUsuariosLicenciaAlcanzadosException": "Se alcanzo el Numero Maximo Usuarios en Licencia",
+        "PlanAunTieneVisitasPendientesException": "Plan Aun Tiene Visitas Pendientes",
+        "TokenPassResetExpiradoException": "Expiro Tiempo Cambio Password",
+        "UsuarioNoExisteException": "Usuario No Valido",
+        "UsuarioOContraseniaIncorrectaException": "Usuario O Contraseña Incorrecta",
+        "VisitaCompletaNoPuedeCancelarseException": "No se puede Cancelar Visita Completa",
+        "VisitaNoValidaException": "Visita No Valida"
     }
     
 }

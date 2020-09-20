@@ -308,5 +308,20 @@
       "Valorenlx": "Value in lx",
       "Valorencd": "Value in cd"
     }
+  },
+  "API": {
+    "BaseDeDatosExcepcion": "Databse Problem",
+    "EmpleadoNoDisponibleException": "Employee not Available",
+    "EmpresaDeshabilitadaException": "Company Disabled",
+    "EmpresaYaRegistradaException": "Company already Registered",
+    "LicenciaVencidaException": "Expired Licence",
+    "NoHayInstrumentoMedicionDisponibleException": "No Measurement Instrument Available",
+    "NumeroMaximoUsuariosLicenciaAlcanzadosException": "Maximun number of Employees Reached",
+    "PlanAunTieneVisitasPendientesException": "Plan still contain pending visits",
+    "TokenPassResetExpiradoException": "Change Password Time Expired",
+    "UsuarioNoExisteException": "User Not Valid",
+    "UsuarioOContraseniaIncorrectaException": "User or Password Incorrect",
+    "VisitaCompletaNoPuedeCancelarseException": "Can not Cancel Visit Already Complete",
+    "VisitaNoValidaException": "Visit Not Valid"
   }
 }

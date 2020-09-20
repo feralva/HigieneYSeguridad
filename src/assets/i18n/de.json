@@ -308,5 +308,20 @@
       "Valorenlx": "Wert in lx",
       "Valorencd": "Wert in cd"
     }
+  },
+  "API": {
+    "BaseDeDatosExcepcion": "Datenbankproblem",
+    "EmpleadoNoDisponibleException": "Mitarbeiter nicht verfügbar",
+    "EmpresaDeshabilitadaException": "Behinderte Firma",
+    "EmpresaYaRegistradaException": "Das Unternehmen ist bereits registriert",
+    "LicenciaVencidaException": "Abgelaufene Lizenz",
+    "NoHayInstrumentoMedicionDisponibleException": "Kein Messgerät verfügbar",
+    "NumeroMaximoUsuariosLicenciaAlcanzadosException": "Die maximale Anzahl lizenzierter Benutzer wurde erreicht",
+    "PlanAunTieneVisitasPendientesException": "Plan hat noch ausstehende Besuche",
+    "TokenPassResetExpiradoException": "Ablaufzeit Passwort ändern",
+    "UsuarioNoExisteException": "Ungültiger Benutzer",
+    "UsuarioOContraseniaIncorrectaException": "Falscher Benutzer oder falsches Passwort",
+    "VisitaCompletaNoPuedeCancelarseException": "Gesamter Besuch kann nicht abgebrochen werden",
+    "VisitaNoValidaException": "Besuchen Sie Nicht gültig"
   }
 }
