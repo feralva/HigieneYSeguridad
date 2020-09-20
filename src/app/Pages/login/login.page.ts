@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { LoaderService } from 'src/app/Core/Services/loader.service';
 import { skip } from 'rxjs/operators';
+import { LanguagePopupPage } from '../language-popup/language-popup.page';
+import { PopoverController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -11,9 +13,17 @@ import { skip } from 'rxjs/operators';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router, private loader: LoaderService) { }
+  constructor(private authService: AuthService, private router: Router, private popOverCtrl: PopoverController, private loader: LoaderService) { }
 
   ngOnInit() {
+  }
+
+  async openLanguagePopover(ev) {
+    const popOver = await this.popOverCtrl.create({
+      component: LanguagePopupPage,
+      event: ev
+    });
+    await popOver.present();
   }
 
   login(form){
