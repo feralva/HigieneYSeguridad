@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterContentInit } from '@angular/core';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -19,18 +19,37 @@ import { ReportingService } from 'src/app/Core/Services/reporting-service.servic
 import { EstablecimientoService } from 'src/app/Core/Services/Establecimiento/establecimiento.service';
 import { forkJoin } from 'rxjs';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import { Plugins } from '@capacitor/core';
+const { Geolocation } = Plugins;
+
+declare var google;
 
 @Component({
   selector: 'app-visita-detalle',
   templateUrl: './visita-detalle.component.html',
   styleUrls: ['./visita-detalle.component.scss'],
 })
-export class VisitaDetalleComponent implements OnInit {
+export class VisitaDetalleComponent implements OnInit, OnDestroy {
 
   controles: any[] = [];
   currentUser: UserLogueado;
   idVisita: number;
   visita: any;
+  vista: any = 'visitaDetalle';
+
+  tramos: any[] = []
+
+  //Maps
+  @ViewChild('map', {static: false}) mapElement: ElementRef;
+  map: any;
+  markers = [];
+  currentPosition: any
+
+  // Misc
+  isTracking = false;
+  watch: string;
+  user = null;
+ 
 
   constructor(private translate: TranslateService, private route: ActivatedRoute,
     private appDataService: AppDataService,private router: Router, public navCtrl: NavController,
@@ -40,6 +59,11 @@ export class VisitaDetalleComponent implements OnInit {
     public toastController: ToastController, private medicionService: MedicionService,
     private reportingService: ReportingService, private establecimientoService: EstablecimientoService) { }
   
+  
+    ngOnDestroy(): void {
+      this.stopTracking();
+    }
+
     ionViewWillEnter(){
       this.appDataService.changePageName('Visita.Detalle');
 
@@ -71,9 +95,12 @@ export class VisitaDetalleComponent implements OnInit {
       this.ubicacionService.obtenerUbicacionesEstablecimiento(this.visita.establecimientoId).subscribe(
         data => console.log(data)
       );
-  
+
+      //this.loadMap();
+      this.startTracking();
       console.log(this.controles)
       console.log(this.visita) 
+
     }
 
   ngOnInit() {
@@ -348,6 +375,155 @@ export class VisitaDetalleComponent implements OnInit {
         )
       }
     );
+  }
+
+  loadMap() {
+
+    //let latLng = new google.maps.LatLng(51.9036442, 7.6673267);
+    var latLng;
+    if(this.currentPosition.coords) {
+      latLng = new google.maps.LatLng(this.currentPosition.coords.latitude, this.currentPosition.coords.longitude);
+    }else {
+      latLng = new google.maps.LatLng(-34.54847,-58.5357467);
+    }
+   
+ 
+    let mapOptions = {
+      center: latLng,
+      zoom: 18,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      disableDefaultUI: true,
+      zoomControl:true
+    };
+
+    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+
+    this.marcarPosicionActual(latLng)
+
+    this.establecimientoService.obtenerTramosRecorrido(this.visita.establecimientoId).subscribe(
+      data =>{ 
+        this.tramos = data
+        console.log(data)
+
+        this.dibujarRecorrido()
+      }
+    )
+  }
+  dibujarRecorrido() {
+
+    var coordinates: any[] = []
+    //agrego el origen
+    coordinates.push({lat: this.tramos[0].ubicacionOrigen.latitud, lng: this.tramos[0].ubicacionOrigen.longitud})
+
+    this.tramos.forEach( 
+      tramo =>{
+
+        coordinates.push({lat: tramo.ubicacionDestino.latitud, lng: tramo.ubicacionDestino.longitud})
+        
+        
+        /*new google.maps.DirectionsService().route({
+          origin: {lat: tramo.ubicacionOrigen.latitud, lng: tramo.ubicacionOrigen.longitud},
+          destination: {lat: tramo.ubicacionDestino.latitud, lng: tramo.ubicacionDestino.longitud},
+          waypoints: [],
+          optimizeWaypoints: true,
+          travelMode: 'WALKING'
+      }, (response, status) => {
+          if (status === 'OK') {
+              var directionsDisplayInd = new google.maps.DirectionsRenderer();
+              directionsDisplayInd.setMap(this.map);
+              directionsDisplayInd.setDirections(response);
+          } else {
+              console.log('Directions request failed due to ' + status);
+          }
+          }
+      )  */
+    })
+
+    const Path = new google.maps.Polyline({
+      path: coordinates,
+      geodesic: true,
+      strokeColor: "#FF0000",
+      strokeOpacity: 1.0,
+      strokeWeight: 2,
+    });
+  
+    Path.setMap(this.map);
+  }
+
+  startTracking() {
+    this.isTracking = true;
+    this.watch = Geolocation.watchPosition({enableHighAccuracy: true}, (position, err) => {
+      if (position) {
+        this.currentPosition = position
+        if(this.map){
+          this.actualizarLocation(
+            position.coords.latitude,
+            position.coords.longitude,
+            position.timestamp
+          );
+        }
+      }
+    });
+  }
+
+  actualizarLocation(lat, lng, timestamp) {
+    let position = new google.maps.LatLng(lat, lng);
+    if(this.map){
+      this.map.setCenter(position);
+      this.map.setZoom(18);
+
+      // Remove all current marker
+      this.marcarPosicionActual(position);
+
+    }
+  }
+
+  private marcarPosicionActual(position: any) {
+    this.markers.map(marker => marker.setMap(null));
+    this.markers = [];
+
+    let marker = new google.maps.Marker({
+      map: this.map,
+      //animation: google.maps.Animation.DROP,
+      
+      //icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/map-icon-walking.png',
+      position: position
+    });
+    this.markers.push(marker);
+  }
+
+  stopTracking() {
+    Geolocation.clearWatch({ id: this.watch }).then(() => {
+      this.isTracking = false;
+    });
+  }
+
+  segmentChanged(ev: any) {
+    console.log('Segment changed', ev);
+    if(ev.detail.value == 'mapa'){
+      setTimeout(() => {
+        //this.startTracking();
+        this.loadMap()      
+        console.log(this.currentPosition)
+      }, 100);
+    } 
+  }
+
+  updateMap(locations) {
+    // Remove all current marker
+    this.markers.map(marker => marker.setMap(null));
+    this.markers = [];
+   
+    for (let loc of locations) {
+      let latLng = new google.maps.LatLng(loc.lat, loc.lng);
+   
+      let marker = new google.maps.Marker({
+        map: this.map,
+        animation: google.maps.Animation.DROP,
+        position: latLng
+      });
+      this.markers.push(marker);
+    }
   }
 
 }

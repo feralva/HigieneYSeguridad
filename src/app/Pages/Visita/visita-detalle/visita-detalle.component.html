@@ -6,9 +6,24 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
-    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-        <ion-refresher-content></ion-refresher-content>
-      </ion-refresher>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div padding>
+    <ion-segment [(ngModel)]="vista" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="visitaDetalle">
+        {{'Visita.Detalle' | translate}}
+      </ion-segment-button>
+      <ion-segment-button value="mapa">
+        {{'General.Mapa' | translate}}
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <div [ngSwitch]="vista">
+
+    <div id="detalleVisita" *ngSwitchCase="'visitaDetalle'">
       <ion-list>
         <ion-item-divider color="primary">
           <ion-label style="font-weight: bolder;">
@@ -58,9 +73,9 @@
           </ion-row>
         </ion-grid>
       </ion-list>
-
-     <div *ngIf="controles.length > 0">
-       <ion-item-divider color="primary">
+  
+      <div *ngIf="controles.length > 0">
+        <ion-item-divider color="primary">
         <ion-label style="font-weight: bolder;text-align: center;">
           {{'Control.ControlesporUbicacion' | translate}}
         </ion-label>
@@ -91,33 +106,41 @@
               </ion-row>
             </ion-grid>    
         </ion-list>
-    </div>
-    <ion-row>
-      <ion-col style="top: 5em;text-align: center;">
-        <ion-label *ngIf="controles.length == 0"><b>{{'Control.NohayControlesRealizadosAun' | translate}}</b></ion-label>
-      </ion-col>
-    </ion-row>
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed"><!-- *ngIf="visita.empleadoId != null && visita.empleadoId == currentUser.empleadoId" -->
-        <ion-fab-button  style="opacity: 0.5">
-          <ion-icon md="caret-up" ios="chevron-up-circle-outline"></ion-icon>
-        </ion-fab-button>
-        <ion-fab-list side="top">
-          <ion-fab-button color="primary" (click)="onAgregarControl()">
-            <ion-icon name="add-circle-outline"></ion-icon>
-          </ion-fab-button>
-          <ion-fab-button color="warning" *ngIf="visita" [routerLink]="['/irregularidad','establecimiento', visita?.establecimientoId ,'alta']">
-            <ion-icon name="alert-circle-outline"></ion-icon>
-          </ion-fab-button>
-          <ion-fab-button color="success" (click)="completarVisita()">
-            <ion-icon name="checkmark-circle-outline"></ion-icon>
-          </ion-fab-button>
-          <ion-fab-button color="tertiary" (click)="generarPDF()">
-            <ion-icon name="document-text-outline"></ion-icon>
-          </ion-fab-button>
-          <ion-fab-button color="danger" (click)="cancelarVisita()">
-            <ion-icon name="close-outline"></ion-icon>
-          </ion-fab-button>
-        </ion-fab-list>
-    </ion-fab>
+      </div>
+      <ion-row>
+        <ion-col style="top: 5em;text-align: center;">
+          <ion-label *ngIf="controles.length == 0"><b>{{'Control.NohayControlesRealizadosAun' | translate}}</b></ion-label>
+        </ion-col>
+      </ion-row>
 
+    </div>
+
+    <div *ngSwitchCase="'mapa'">
+      <div #map id="map" ></div>
+    </div>
+
+  </div>
+  
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed"><!-- *ngIf="visita.empleadoId != null && visita.empleadoId == currentUser.empleadoId" -->
+    <ion-fab-button  style="opacity: 0.5">
+      <ion-icon md="caret-up" ios="chevron-up-circle-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button color="primary" (click)="onAgregarControl()">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="warning" *ngIf="visita" [routerLink]="['/irregularidad','establecimiento', visita?.establecimientoId ,'alta']">
+        <ion-icon name="alert-circle-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="success" (click)="completarVisita()">
+        <ion-icon name="checkmark-circle-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="tertiary" (click)="generarPDF()">
+        <ion-icon name="document-text-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="danger" (click)="cancelarVisita()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+</ion-fab>
 </ion-content>

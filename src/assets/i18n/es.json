@@ -191,7 +191,8 @@
         "Si": "Si",
         "No": "No",
         "SeProdujounerror": "Se Produjo un error",
-        "Reintentar": "Reintento"
+        "Reintentar": "Reintento",
+        "Mapa": "Mapa"
     },
     "Accion":{
         "Crear": "Crear",

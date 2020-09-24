@@ -29,4 +29,8 @@ export class EstablecimientoService {
   obtenerClienteDeEstablecimiento(idEstablecimiento: number): Observable<any> {
     return this.http.get<any[]>(environment.UrlBaseApi + `Establecimiento/${idEstablecimiento}/Cliente`, this.httpOptions);
   }
+
+  obtenerTramosRecorrido(idEstablecimiento) : Observable<any> {
+    return this.http.get<any>(environment.UrlBaseApi + `Establecimiento/${idEstablecimiento}/CaminoOptimo`, this.httpOptions); 
+  }
 }
