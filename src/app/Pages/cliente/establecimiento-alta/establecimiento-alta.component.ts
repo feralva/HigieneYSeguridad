@@ -15,8 +15,7 @@ import { UbicacionAltaComponent } from "../../ubicacion/ubicacion-alta/ubicacion
 import { ActivatedRoute, Router } from "@angular/router";
 import { DireccionService } from 'src/app/Core/Services/Direccion/direccion.service';
 import { LoaderService } from 'src/app/Core/Services/loader.service';
-import { Ubicacion } from 'src/app/Models/Ubicacion';
-import { VerQrUbicacionModalComponent } from '../../ubicacion/ver-qr-ubicacion-modal/ver-qr-ubicacion-modal.component';
+import { Geolocation} from '@capacitor/core';
 
 @Component({
   selector: "app-establecimiento-alta",
@@ -48,6 +47,8 @@ export class EstablecimientoAltaComponent implements OnInit {
     },
     clienteId: 0,
     ubicaciones: [],
+    latitud: null,
+    longitud: null
   };
 
   constructor(
@@ -141,6 +142,7 @@ export class EstablecimientoAltaComponent implements OnInit {
         {
           text: "Ok",
           handler: () => {
+            this.getLocation()
             this.establecimientoService.alta(this.model).subscribe(
               (result) => {
                 this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
@@ -158,6 +160,14 @@ export class EstablecimientoAltaComponent implements OnInit {
 
   public borrarUbicacionLista(index: number) {
     this.model.ubicaciones.splice(index, 1);
+  }
+
+  async getLocation() {
+    
+    const position = await Geolocation.getCurrentPosition();
+    this.model.latitud = position.coords.latitude.toString();
+    this.model.longitud = position.coords.longitude.toString();
+
   }
 
   async MostrarMensajeOperacion(mensaje: string) {

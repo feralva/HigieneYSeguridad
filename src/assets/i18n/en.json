@@ -192,7 +192,8 @@
     "Si": "Yes",
     "No": "No",
     "SeProdujounerror": "There was an error",
-    "Reintentar": "Retry"
+    "Reintentar": "Retry",
+    "Mapa": "Map"
   },
   "Accion": {
     "Crear": "Create",

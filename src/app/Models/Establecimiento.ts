@@ -7,4 +7,6 @@ export interface Establecimiento {
     direccion: Direccion;
     ubicaciones: Ubicacion[];
     clienteId: number;
+    latitud: string;
+    longitud: string;
 }
