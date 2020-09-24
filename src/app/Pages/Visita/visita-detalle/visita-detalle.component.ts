@@ -415,28 +415,46 @@ export class VisitaDetalleComponent implements OnInit, OnDestroy {
     //agrego el origen
     coordinates.push({lat: this.tramos[0].ubicacionOrigen.latitud, lng: this.tramos[0].ubicacionOrigen.longitud})
 
+/*     const contentString = this.tramos[0].ubicacionOrigen.nombre;
+        const infowindow = new google.maps.InfoWindow({
+          content: contentString,
+        });
+      
+        const marker = new google.maps.Marker({
+          position: {lat: this.tramos[0].ubicacionOrigen.latitud, lng: this.tramos[0].ubicacionOrigen.longitud},
+          map: this.map,
+          title: this.tramos[0].ubicacionOrigen.nombre,
+        });
+        marker.addListener("click", () => {
+          infowindow.open(this.map, marker);
+        }); */
+
     this.tramos.forEach( 
       tramo =>{
 
         coordinates.push({lat: tramo.ubicacionDestino.latitud, lng: tramo.ubicacionDestino.longitud})
+
+        const contentString = tramo.ubicacionDestino.nombre;
+        const infowindow = new google.maps.InfoWindow({
+          content: contentString,
+        });
+      
+            var icon = {
+                        url: '../../../../assets/icons/location.png', // url
+                        scaledSize: new google.maps.Size(35, 35), // scaled size
+                        origin: new google.maps.Point(0,0), // origin
+                        anchor: new google.maps.Point(0, 0) // anchor
+                      };
+        const marker = new google.maps.Marker({
+          position: {lat: tramo.ubicacionDestino.latitud, lng: tramo.ubicacionDestino.longitud},
+          map: this.map,
+          //icon: icon,
+          title: tramo.ubicacionDestino.nombre,
+        });
+        marker.addListener("click", () => {
+          infowindow.open(this.map, marker);
+        });
         
-        
-        /*new google.maps.DirectionsService().route({
-          origin: {lat: tramo.ubicacionOrigen.latitud, lng: tramo.ubicacionOrigen.longitud},
-          destination: {lat: tramo.ubicacionDestino.latitud, lng: tramo.ubicacionDestino.longitud},
-          waypoints: [],
-          optimizeWaypoints: true,
-          travelMode: 'WALKING'
-      }, (response, status) => {
-          if (status === 'OK') {
-              var directionsDisplayInd = new google.maps.DirectionsRenderer();
-              directionsDisplayInd.setMap(this.map);
-              directionsDisplayInd.setDirections(response);
-          } else {
-              console.log('Directions request failed due to ' + status);
-          }
-          }
-      )  */
     })
 
     const Path = new google.maps.Polyline({
@@ -482,11 +500,18 @@ export class VisitaDetalleComponent implements OnInit, OnDestroy {
     this.markers.map(marker => marker.setMap(null));
     this.markers = [];
 
+    var icon = {
+      url: '../../../../assets/icons/person.png', // url
+      scaledSize: new google.maps.Size(35, 35), // scaled size
+      origin: new google.maps.Point(0,0), // origin
+      anchor: new google.maps.Point(0, 0) // anchor
+    };
+
     let marker = new google.maps.Marker({
       map: this.map,
       //animation: google.maps.Animation.DROP,
       
-      //icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/map-icon-walking.png',
+      icon: icon,
       position: position
     });
     this.markers.push(marker);
