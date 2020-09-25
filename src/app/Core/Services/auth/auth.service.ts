@@ -100,6 +100,14 @@ export class AuthService {
     return true;
   }
 
+  hasPatente(patente: string): boolean {
+    
+    if (!this._currentUser.value || !this._currentUser.value.patentes.includes(patente)) {
+      return false;
+    }
+    return true;
+  }
+
   refrescarToken(token: string, refreshToken: string): Observable<any> {
 
     const credentials = JSON.stringify({ accessToken: token, refreshToken: refreshToken });

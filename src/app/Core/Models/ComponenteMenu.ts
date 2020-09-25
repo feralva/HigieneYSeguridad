@@ -3,6 +3,7 @@ export interface ComponenteMenu {
     icon: string;
     url: string;
     role: string;
+    patente: string;
     children: any[];
     open: boolean;
 }

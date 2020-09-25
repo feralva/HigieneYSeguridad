@@ -26,25 +26,26 @@
 
         <ion-menu-toggle auto-hide="false" *ngIf="p.url">
           <ion-item routerLinkActive="active" routerDirection="root" [routerLink]="p.url" lines="none" [routerLinkActiveOptions]="{exact: true}"
-          detail="false" *appHasRole="p.role">
+          detail="false" *appHasPatente="p.patente">
             <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
             <ion-label>{{ p.name | translate }}</ion-label>
           </ion-item>
         </ion-menu-toggle>
-        <ion-item button *ngIf="p.children?.length > 0" (click)="p.open = !p.open"
-          [class.active-parent]="p.open" detail="false" lines="none" >
-          
-          <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-          <ion-icon slot="end" name="chevron-forward" *ngIf="!p.open"></ion-icon>
-          <ion-icon slot="end" name="chevron-down" *ngIf="p.open"></ion-icon>
-          <ion-label>{{p.name | translate }}</ion-label>
-        </ion-item>
-
+        <div *appHasPatente="p.patente">
+          <ion-item button *ngIf="p.children?.length > 0" (click)="p.open = !p.open"
+            [class.active-parent]="p.open" detail="false" lines="none">
+            
+            <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+            <ion-icon slot="end" name="chevron-forward" *ngIf="!p.open"></ion-icon>
+            <ion-icon slot="end" name="chevron-down" *ngIf="p.open"></ion-icon>
+            <ion-label>{{p.name | translate }}</ion-label>
+          </ion-item>
+        </div>
         <ion-list *ngIf="p.open">
           <ion-menu-toggle>
             <div *ngFor="let sub of p.children">
               <ion-item class="sub-item"  [routerLink]="sub.url"
-                routerDirection="root" routerLinkActive="active"  lines="none" *appHasRole="sub.role">
+                routerDirection="root" routerLinkActive="active"  lines="none" *appHasPatente="sub.patente">
                 <ion-icon slot="start" [name]="sub.icon"></ion-icon>
                 <ion-label>{{sub.name | translate}}</ion-label>
               </ion-item>

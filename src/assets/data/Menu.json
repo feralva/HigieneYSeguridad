@@ -3,59 +3,69 @@
         "icon": "home",
         "name": "Menu.Inicio",
         "url": "/home",
+        "patente": "Inicio",
         "role": []
     },
     {
         "icon": "bar-chart",
         "name": "Menu.DashBoard",
         "url": "/dashboard",
+        "patente": "dashboard",
         "role": ["Coordinador"]
     },
     {
         "icon": "briefcase",
         "name": "Menu.Planes",
         "url": "/plan",
+        "patente": "Planes",
         "role": ["Coordinador"]
     },
     {
         "icon": "clipboard",
         "name": "Menu.Visitas",
         "url": "/visita",
+        "patente": "Visitas",
         "role": ["Coordinador"]
     },
     {
         "icon": "clipboard",
         "name": "Menu.MisVisitas",
         "url": "/visita/Pendientes",
+        "patente": "MisVisitas",
         "role": ["Auditor"]
     },
     {
         "icon": "calendar",
         "name": "Menu.MiCalendario",
         "url": "/calendario",
+        "patente": "MiCalendario",
         "role": ["Auditor"]
     },
     {
         "icon": "calendar",
         "name": "Menu.CargaAuditores",
         "url": "/calendario/Empresa",
+        "patente": "CargaAuditores",
         "role": ["Coordinador","Gerente"]
     },
     {
         "icon": "people-circle",
         "name": "Menu.Empleados",
         "url": "/empleado",
-        "role": ["Coordinador"]
+        "role": ["Coordinador"],
+        "patente": "Empleados"
     },
     {
         "icon": "business",
         "name": "Menu.Clientes",
         "url": "/cliente",
+        "patente": "Clientes",
         "role": ["Auditor","Coordinador"]
     },
     {
         "icon": "wallet",
         "name": "Menu.Licencias",
+        "patente": "Licencias",
         "url": "/licencia",
         "role": ["Coordinador"]
     },
@@ -63,52 +73,61 @@
         "icon": "wallet",
         "name": "Menu.AdquirirLicencia",
         "url": "/licencia/adquisicion",
+        "patente": "AdquirirLicencia",
         "role": ["Coordinador"]
     },
     {
         "icon": "card",
         "name": "Empresa.title",
         "url": "/empresa",
+        "patente": "Empresa",
         "role": ["Coordinador"]
     },
     {
         "icon": "card",
-        "name": "Irregularidad.title",
+        "name": "Irregularidad.Title",
         "url": "/irregularidad",
+        "patente": "Irregularidad",
         "role": ["Coordinador"]
     },
     {
         "icon": "thermometer",
         "name": "Menu.EquiposMedicion",
         "url": "equiposMedicion",
+        "patente": "EquiposMedicion",
         "role": ["Coordinador"]
     },
     {
         "icon": "thermometer",
         "name": "Menu.MiLicencia",
         "url": "/licencia/detalle",
+        "patente": "MiLicencia",
         "role": ["Coordinador"]
     },
     {
         "name": "Menu.Licencia",
         "icon": "thermometer",
+        "patente": "LicenciaMenu",
         "children": [
             {
                 "icon": "thermometer",
                 "name": "Menu.AltaLicencia",
                 "url": "/licencia/tipo/alta",
+                "patente": "AltaLicencia",
                 "role": ["Coordinador"]
             },
             {
                 "icon": "thermometer",
                 "name": "Menu.ActualizarPrecio",
                 "url": "/licencia/tipo/actualizarPrecio",
+                "patente": "actualizarPrecio",
                 "role": ["Coordinador"]
             },
             {
                 "icon": "thermometer",
                 "name": "Menu.TiposLicencia",
                 "url": "/licencia/tipos",
+                "patente": "TiposLicencia",
                 "role": ["Coordinador"]
             }
         ]
