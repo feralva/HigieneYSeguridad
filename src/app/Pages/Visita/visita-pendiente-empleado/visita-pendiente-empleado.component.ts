@@ -24,7 +24,7 @@ export class VisitaPendienteEmpleadoComponent implements OnInit {
   ngOnInit() {
     this.visitas = this.route.snapshot.data['visitas'];
 
-    this.appDataService.changePageName('Visitas.VisitasPendientes');
+    this.appDataService.changePageName('Visita.VisitasPendientes');
     this.authService.getUserSubject().subscribe(
       data => this.currentUser = data,
       error => console.log(error)

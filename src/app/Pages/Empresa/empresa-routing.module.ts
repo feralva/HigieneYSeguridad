@@ -23,7 +23,7 @@ const routes: Routes = [
   {
     path: ':id/editar',
     component: EditarEmpresaComponent,
-    canActivate: [UserAuthenticatedGuard, MiembroEmpresaGuard],  
+    canActivate: [UserAuthenticatedGuard/* , MiembroEmpresaGuard */],  
     resolve: 
     {
       empresa: EmpresaDetalleResolverService
