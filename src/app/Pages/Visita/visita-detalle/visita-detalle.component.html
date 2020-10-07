@@ -64,7 +64,7 @@
               </ion-item>
             </ion-col>
             <ion-col size="12" size-lg="6">
-              <ion-item *appHasRole="['Coordinador']" button detail (click)="onEditarAuditorClick()">
+              <ion-item *appHasPatente="'CambiarAuditorVisita'" button detail (click)="onEditarAuditorClick()">
                 <ion-label>{{'Plan.Asignado_A' | translate}}: </ion-label>
                 <ion-label *ngIf="visita?.empleado != null">{{visita?.empleado.apellido + ', ' + visita?.empleado.nombre}}</ion-label>
                 <ion-label *ngIf="visita?.empleado == null"> NA </ion-label>
@@ -108,7 +108,7 @@
         </ion-list>
       </div>
       <ion-row>
-        <ion-col style="top: 5em;text-align: center;">
+        <ion-col style="text-align: center;">
           <ion-label *ngIf="controles.length == 0"><b>{{'Control.NohayControlesRealizadosAun' | translate}}</b></ion-label>
         </ion-col>
       </ion-row>
@@ -121,7 +121,7 @@
 
   </div>
   
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed"><!-- *ngIf="visita.empleadoId != null && visita.empleadoId == currentUser.empleadoId" -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed"> <!-- *ngIf="visita.empleadoId != null && visita.empleadoId == currentUser.empleadoId"> -->
     <ion-fab-button  style="opacity: 0.5">
       <ion-icon md="caret-up" ios="chevron-up-circle-outline"></ion-icon>
     </ion-fab-button>
