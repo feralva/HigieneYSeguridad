@@ -118,7 +118,7 @@ export class EditarEmpresaComponent implements OnInit {
         {
           text: 'Ok',
           handler: () => {
-            this.loaderService.present()
+           
             if(this.imageBase64 != null){
 
               this.guardarImagenEmpresa(this.imageBase64,
@@ -134,7 +134,6 @@ export class EditarEmpresaComponent implements OnInit {
             }else{
               this.ActualizarEmpresa()
             }
-            this.loaderService.dismiss();
           }      
     }]});
 

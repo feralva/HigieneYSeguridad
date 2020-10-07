@@ -166,16 +166,9 @@ export class AltaEmpleadoComponent implements OnInit {
         handler: () => {
           this.addImage(CameraSource.Camera);
         }
-      },
-      {
-        text: this.translate.instant('SeleccionFuenteImagen.Galeria'),
-        icon: 'image',
-        handler: () => {
-          this.addImage(CameraSource.Photos);
-        }
       }
     ];
- 
+ //
     // Only allow file selection inside a browser
     if (!this.plt.is('hybrid')) {
       buttons.push({
@@ -183,6 +176,16 @@ export class AltaEmpleadoComponent implements OnInit {
         icon: 'attach',
         handler: () => {
           this.fileInput.nativeElement.click();
+        }
+      });
+    }
+    // Mostrar solo en dispositivo
+    if (this.plt.is('hybrid')) {
+      buttons.push({
+        text: this.translate.instant('SeleccionFuenteImagen.Galeria'),
+        icon: 'image',
+        handler: () => {
+          this.addImage(CameraSource.Photos);
         }
       });
     }

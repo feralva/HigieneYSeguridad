@@ -17,8 +17,8 @@
       <ion-col size-xs="10" offset-xs="1" size-sm="8" offset-sm="2">
         <ion-card *ngFor="let cliente of clientes | filtro: textoBuscar: 'nombre'" [routerLink]="[cliente.id, 'detalle']" >
           <img [src]="cliente.urlFoto"/>
-          <div class="card-title"><b>{{cliente.nombre}}</b></div>
-          <div class="card-subtitle"><b>Cantidad Establecimientos: </b>{{cliente.cantidadEstablecimientos}}</div>
+         <!--  <div class="card-title"><b>{{cliente.nombre}}</b></div>
+          <div class="card-subtitle"><b>Cantidad Establecimientos: </b>{{cliente.cantidadEstablecimientos}}</div> -->
           <!-- <div class="card-">Cantidad Planes: {{cliente.CantidadPlanes}}</div> -->
         </ion-card>
       </ion-col>
