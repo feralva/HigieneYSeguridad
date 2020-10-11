@@ -56,4 +56,8 @@ export class EmpresaService {
     return this.http.get<any[]>(environment.UrlBaseApi + `Empresa/${idEmpresa}/VisitasPorEstado`, this.httpOptions);
   }
 
+  obtenerInformacionVisitasPorEstadoCliente(idCliente: number): Observable<any> {
+    return this.http.get<any[]>(environment.UrlBaseApi + `Cliente/${idCliente}/VisitasPorEstado`, this.httpOptions);
+  }
+
 }

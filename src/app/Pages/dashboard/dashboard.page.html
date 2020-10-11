@@ -41,6 +41,21 @@
         </div>
       </ion-col> -->
     </ion-row>
+    <ion-row *ngIf="datosGraficosClientes.length == datosClientesEmpresa.length">
+      <ion-col size="12" size-lg="6" *ngFor="let datosCliente of datosGraficosClientes">
+        <ion-title>{{datosCliente.nombre}}</ion-title>
+        <div style="display: block;">
+          <canvas baseChart 
+            [data]="datosCliente.datos" 
+            [labels]="pieChartLabels" 
+            [chartType]="pieChartType"
+            [options]="pieChartOptions"
+            [plugins]="pieChartPlugins"
+            [legend]="pieChartLegend">
+          </canvas>
+        </div>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 
 </ion-content>

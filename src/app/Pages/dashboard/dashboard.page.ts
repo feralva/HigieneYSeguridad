@@ -17,12 +17,16 @@ export class DashboardPage implements OnInit {
 
   idEmpresa: number;
   datosEstadoVisitaEmpresa: any;
+  datosClientesEmpresa: any[] = [];
+  datosGraficosClientes: any[] = [];
+
   public pieChartOptions: ChartOptions = {
     responsive: true,
     legend: {
       position: 'left',
     }
   };
+
   public pieChartLabels: Label[] = [this.translate.instant('DashBoard.Estado.Pendiente'), 
                                     this.translate.instant('DashBoard.Estado.Completa'),
                                     this.translate.instant('DashBoard.Estado.Cancelada')];
@@ -51,14 +55,36 @@ export class DashboardPage implements OnInit {
     );
 
     this.datosEstadoVisitaEmpresa = this.route.snapshot.data['totalizados'];
-    this.pieChartData =[ this.datosEstadoVisitaEmpresa.Pendiente, 
+    this.datosClientesEmpresa = this.route.snapshot.data['clientes'];
+    this.pieChartData = [ this.datosEstadoVisitaEmpresa.Pendiente, 
       this.datosEstadoVisitaEmpresa.Completa, 
       this.datosEstadoVisitaEmpresa.Cancelada? this.datosEstadoVisitaEmpresa.Cancelada : 0]
     
+    this.obtenerInformacionClientesParaGraficos();
+  }
+
+  obtenerInformacionClientesParaGraficos(){
+
+    this.datosClientesEmpresa.forEach(
+      async cli => {
+
+        await this.empresaService.obtenerInformacionVisitasPorEstadoCliente(cli.id).toPromise().then(
+          tot => {
+            let arr = [];  
+            Object.keys(tot).map(function(key){  
+                arr.push(tot[key])  
+                return arr;  
+            }); 
+            this.datosGraficosClientes.push({nombre: cli.nombre, datos: arr})
+          }
+        )
+
+        console.log(this.datosGraficosClientes)
+      }
+    )
   }
 
   doRefresh(event) {
-
 
     this.empresaService.obtenerInformacionVisitasPorEstado(this.idEmpresa).subscribe(
       data => {
