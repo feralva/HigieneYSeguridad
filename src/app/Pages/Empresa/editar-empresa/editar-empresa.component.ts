@@ -11,6 +11,8 @@ import { LoaderService } from 'src/app/Core/Services/loader.service';
 import { DireccionService } from 'src/app/Core/Services/Direccion/direccion.service';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/Core/Services/auth/auth.service';
+import { UserLogueado } from 'src/app/Models/UserLogueado';
 
 @Component({
   selector: 'app-editar-empresa',
@@ -21,6 +23,8 @@ export class EditarEmpresaComponent implements OnInit {
   @ViewChild('fileInput', { static: false }) fileInput: ElementRef;
   imagenEmpleado: CameraPhoto = null;
   imageBase64: string;
+
+  currentUser: UserLogueado = null;
 
   empresaModel: Empresa = {
     id: 0,
@@ -53,7 +57,8 @@ export class EditarEmpresaComponent implements OnInit {
     public alertController: AlertController, private loaderService: LoaderService,
     public toastController: ToastController, private direccionService: DireccionService,
     private plt: Platform, private actionSheetCtrl: ActionSheetController,
-    private route: ActivatedRoute, private router:Router) { }
+    private route: ActivatedRoute, private router:Router,
+    private authService: AuthService) { }
 
   set altura(altura:string){
     this.empresaModel.direccion.altura = +altura;
@@ -65,36 +70,35 @@ export class EditarEmpresaComponent implements OnInit {
 
   ngOnInit() {
 
-    this.empresaModel =  this.route.snapshot.data['empresa'];
-    //this.provinciaSeleccionada = this.empresaModel.direccion.
-/*     this.direccionService.obtenerProvincias().subscribe(
-      data => this.provincias = data,
-      (error) => console.log(error)
-    ) */
+    this.obtenerInformacionEmpresa();
+  }
+
+  private obtenerInformacionEmpresa(){
+    if(this.route.snapshot.data['empresa']){
+      this.empresaModel =  this.route.snapshot.data['empresa'];
+    }else{
+      this.authService.getUserSubject().subscribe(
+        data => {
+          console.log(data)
+          this.currentUser = data
+          this.empresaService.obtenerEmpresa(data.empresaId).subscribe(
+            data => this.empresaModel = data,
+            (error) => console.log(error)
+          )
+        },
+        error => console.log(error)
+      );
+    }
   }
 
   ionViewWillEnter(){
 
     this.appDataService.changePageName('Empresa.title');
 
-    this.empresaModel =  this.route.snapshot.data['empresa'];
+    this.obtenerInformacionEmpresa();
     console.log(this.empresaModel)
   }
 
-  /* actualizarPartidos(event){
-    console.log('Actualizo Partidos')
-    this.partidos = [];
-    this.partidoSeleccionado = null;
-    this.loaderService.present(); 
-    console.log(event)
-    this.direccionService.obtenerPartidosProvincia(event.id).subscribe(
-      data => {
-        this.partidos = data;
-        this.loaderService.dismiss();
-      },
-      (error) => console.log(error)
-    )
-  } */
   onSubmit(form: NgForm) {
     console.log(this.empresaModel)
     this.ModificarEmpresaConfirm()

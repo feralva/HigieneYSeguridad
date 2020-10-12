@@ -28,6 +28,11 @@ const routes: Routes = [
     {
       empresa: EmpresaDetalleResolverService
     }   
+  },
+  {
+    path: 'editar',
+    component: EditarEmpresaComponent,
+    canActivate: [UserAuthenticatedGuard],    
   }
 ];
 

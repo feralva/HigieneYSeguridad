@@ -3,106 +3,97 @@
         "icon": "home",
         "name": "Menu.Inicio",
         "url": "/home",
-        "patente": "Inicio",
-        "role": []
+        "patente": "Inicio"
     },
     {
         "icon": "bar-chart",
         "name": "Menu.DashBoard",
         "url": "/dashboard",
-        "patente": "dashboard",
-        "role": ["Coordinador"]
+        "patente": "dashboard"
     },
     {
         "icon": "briefcase",
         "name": "Menu.Planes",
         "url": "/plan",
-        "patente": "Planes",
-        "role": ["Coordinador"]
+        "patente": "Planes"
     },
     {
         "icon": "clipboard",
         "name": "Menu.Visitas",
         "url": "/visita",
-        "patente": "Visitas",
-        "role": ["Coordinador"]
+        "patente": "Visitas"
     },
     {
         "icon": "clipboard",
         "name": "Menu.MisVisitas",
         "url": "/visita/Pendientes",
-        "patente": "MisVisitas",
-        "role": ["Auditor"]
+        "patente": "MisVisitas"
     },
     {
         "icon": "calendar",
         "name": "Menu.MiCalendario",
         "url": "/calendario",
-        "patente": "MiCalendario",
-        "role": ["Auditor"]
+        "patente": "MiCalendario"
     },
     {
         "icon": "calendar",
         "name": "Menu.CargaAuditores",
         "url": "/calendario/Empresa",
-        "patente": "CargaAuditores",
-        "role": ["Coordinador","Gerente"]
+        "patente": "CargaAuditores"
     },
     {
         "icon": "people-circle",
         "name": "Menu.Empleados",
         "url": "/empleado",
-        "role": ["Coordinador"],
-        "patente": "Empleados"
+        "role": ["Coordinador"]
     },
     {
         "icon": "business",
         "name": "Menu.Clientes",
         "url": "/cliente",
-        "patente": "Clientes",
-        "role": ["Auditor","Coordinador"]
+        "patente": "Clientes"
     },
     {
         "icon": "wallet",
         "name": "Menu.Licencias",
         "patente": "Licencias",
-        "url": "/licencia",
-        "role": ["Coordinador"]
+        "url": "/licencia"
     },
     {
         "icon": "wallet",
         "name": "Menu.AdquirirLicencia",
         "url": "/licencia/adquisicion",
-        "patente": "AdquirirLicencia",
-        "role": ["Coordinador"]
+        "patente": "AdquirirLicencia"
     },
     {
         "icon": "card",
         "name": "Empresa.title",
         "url": "/empresa",
-        "patente": "Empresa",
-        "role": ["Coordinador"]
+        "patente": "Empresa"
+    },
+    {
+        "icon": "card",
+        "name": "Empresa.title",
+        "url": "/empresa/editar",
+        "patente": "EmpresaEditar"
     },
     {
         "icon": "card",
         "name": "Irregularidad.Title",
         "url": "/irregularidad",
-        "patente": "Irregularidad",
-        "role": ["Coordinador"]
+        "patente": "Irregularidad"
     },
     {
         "icon": "thermometer",
         "name": "Menu.EquiposMedicion",
         "url": "equiposMedicion",
-        "patente": "EquiposMedicion",
-        "role": ["Coordinador"]
+        "patente": "EquiposMedicion"
     },
     {
         "icon": "thermometer",
         "name": "Menu.MiLicencia",
         "url": "/licencia/detalle",
-        "patente": "MiLicencia",
-        "role": ["Coordinador"]
+        "patente": "MiLicencia"
     },
     {
         "name": "Menu.Licencia",
@@ -113,22 +104,19 @@
                 "icon": "thermometer",
                 "name": "Menu.AltaLicencia",
                 "url": "/licencia/tipo/alta",
-                "patente": "AltaLicencia",
-                "role": ["Coordinador"]
+                "patente": "AltaLicencia"
             },
             {
                 "icon": "thermometer",
                 "name": "Menu.ActualizarPrecio",
                 "url": "/licencia/tipo/actualizarPrecio",
-                "patente": "actualizarPrecio",
-                "role": ["Coordinador"]
+                "patente": "actualizarPrecio"
             },
             {
                 "icon": "thermometer",
                 "name": "Menu.TiposLicencia",
                 "url": "/licencia/tipos",
-                "patente": "TiposLicencia",
-                "role": ["Coordinador"]
+                "patente": "TiposLicencia"
             }
         ]
     }
