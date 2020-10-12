@@ -12,7 +12,7 @@
   <br>
 
   <h3 style="text-align: center;">{{ viewTitle | titlecase }}</h3>
-  <ion-segment [(ngModel)]="calendar.mode">
+  <!-- <ion-segment [(ngModel)]="calendar.mode">
     <ion-segment-button value="month">
       <ion-label>{{ 'Calendario.Mes' | translate }}</ion-label>
     </ion-segment-button>
@@ -22,7 +22,7 @@
     <ion-segment-button value="day">
       <ion-label>{{ 'Calendario.Dia' | translate }}</ion-label>
     </ion-segment-button>
-  </ion-segment>
+  </ion-segment> -->
 
   <ng-template #template let-showEventDetail="showEventDetail" let-selectedDate="selectedDate" let-noEventsLabel="noEventsLabel">
     <ion-list >
