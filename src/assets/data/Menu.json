@@ -30,6 +30,12 @@
         "patente": "MisVisitas"
     },
     {
+        "icon": "business",
+        "name": "Menu.Clientes",
+        "url": "/cliente",
+        "patente": "Clientes"
+    },
+    {
         "icon": "calendar",
         "name": "Menu.MiCalendario",
         "url": "/calendario",
@@ -48,12 +54,6 @@
         "role": ["Coordinador"]
     },
     {
-        "icon": "business",
-        "name": "Menu.Clientes",
-        "url": "/cliente",
-        "patente": "Clientes"
-    },
-    {
         "icon": "wallet",
         "name": "Menu.Licencias",
         "patente": "Licencias",
@@ -66,19 +66,19 @@
         "patente": "AdquirirLicencia"
     },
     {
-        "icon": "card",
+        "icon": "business",
         "name": "Empresa.title",
         "url": "/empresa",
         "patente": "Empresa"
     },
     {
-        "icon": "card",
+        "icon": "business",
         "name": "Empresa.title",
         "url": "/empresa/editar",
         "patente": "EmpresaEditar"
     },
     {
-        "icon": "card",
+        "icon": "warning",
         "name": "Irregularidad.Title",
         "url": "/irregularidad",
         "patente": "Irregularidad"
