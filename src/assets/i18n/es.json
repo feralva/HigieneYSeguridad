@@ -194,6 +194,9 @@
         "Reintentar": "Reintento",
         "Mapa": "Mapa"
     },
+    "Ubicacion":{
+        "Agregar": "Agregar Ubicación"
+    },
     "Accion":{
         "Crear": "Crear",
         "Alta": "Alta",

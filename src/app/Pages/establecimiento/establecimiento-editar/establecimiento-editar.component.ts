@@ -10,6 +10,7 @@ import { LoaderService } from 'src/app/Core/Services/loader.service';
 import { DireccionService } from 'src/app/Core/Services/Direccion/direccion.service';
 import { NgForm } from '@angular/forms';
 import { Location } from '@angular/common';
+import { UbicacionService } from 'src/app/Core/Services/Ubicacion/ubicacion.service';
 
 @Component({
   selector: 'app-establecimiento-editar',
@@ -34,7 +35,8 @@ export class EstablecimientoEditarComponent implements OnInit {
     public toastController: ToastController,
     private route: ActivatedRoute, private loaderService: LoaderService,
     private plt: Platform, private direccionService: DireccionService,
-    private actionSheetCtrl: ActionSheetController, private location: Location) {}
+    private actionSheetCtrl: ActionSheetController, private location: Location,
+    private ubicacionservice: UbicacionService) {}
 
   ngOnInit() {
     this.model = this.route.snapshot.data['establecimiento'];
@@ -166,7 +168,10 @@ export class EstablecimientoEditarComponent implements OnInit {
   }
 
   public borrarUbicacionLista(index: number) {
-    this.model.ubicaciones.splice(index, 1);
+    this.ubicacionservice.BorrarUbicacion(this.model.ubicaciones[index].id).subscribe(
+      res => this.model.ubicaciones.splice(index, 1),
+      (error) => console.log(error)
+    )   
   }
 
   async MostrarMensajeOperacion(mensaje: string) {

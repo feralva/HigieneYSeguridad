@@ -195,6 +195,9 @@
     "Reintentar": "Wiederholen",
     "Mapa": "Karte"
   },
+  "Ubicacion": {
+    "Agregar": "Ort hinzufügen"
+  },
   "Accion": {
     "Crear": "Erstellen",
     "Alta": "Hoch",

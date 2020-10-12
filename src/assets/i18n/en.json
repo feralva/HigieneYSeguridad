@@ -195,6 +195,9 @@
     "Reintentar": "Retry",
     "Mapa": "Map"
   },
+  "Ubicacion": {
+    "Agregar": "Add Location"
+  },
   "Accion": {
     "Crear": "Create",
     "Alta": "New",

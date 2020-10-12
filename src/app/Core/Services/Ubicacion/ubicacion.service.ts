@@ -51,5 +51,10 @@ export class UbicacionService {
         })
       )
     }
-  } 
+  }
+  
+  BorrarUbicacion(idUbicacion: number): Observable<any> {
+    
+    return this.http.delete<any[]>(environment.UrlBaseApi + `Ubicacion/${idUbicacion}`, this.httpOptions)
+  }
 }
