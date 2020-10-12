@@ -196,7 +196,8 @@
     "Mapa": "Map"
   },
   "Ubicacion": {
-    "Agregar": "Add Location"
+    "Agregar": "Add Location",
+    "Encontrada": "Location Found"
   },
   "Accion": {
     "Crear": "Create",

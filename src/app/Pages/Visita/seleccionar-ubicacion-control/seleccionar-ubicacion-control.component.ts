@@ -68,6 +68,14 @@ export class SeleccionarUbicacionControlComponent implements OnInit {
     });
     toast.present();
   }
+
+  private async ubicacionEncontradaToast(mensaje) {
+    const toast = await this.toastCtrl.create({
+      message: this.translate.instant(mensaje),
+      duration: 2000
+    });
+    toast.present();
+  }
  
   reset() {
     this.scanResult = null;
@@ -83,8 +91,13 @@ export class SeleccionarUbicacionControlComponent implements OnInit {
 
     var ubicacion = JSON.parse(dataDeQR)
 
-    if(!ubicacion.id) throw new Error('General.Error.QR_Invalido')
-    else return ubicacion
+    if(ubicacion.id && (this.ubicaciones.some(u => u.id === ubicacion.id))){
+    
+      this.ubicacionEncontradaToast('Ubicacion.Encontrada');
+      return ubicacion;     
+    } else {
+      this.ubicacionEncontradaToast('General.Error.QR_Invalido');
+    }
   }
 
   async startScan() {

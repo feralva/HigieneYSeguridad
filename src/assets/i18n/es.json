@@ -195,7 +195,8 @@
         "Mapa": "Mapa"
     },
     "Ubicacion":{
-        "Agregar": "Agregar Ubicación"
+        "Agregar": "Agregar Ubicación",
+        "Encontrada": "Ubicación Encontrada"
     },
     "Accion":{
         "Crear": "Crear",

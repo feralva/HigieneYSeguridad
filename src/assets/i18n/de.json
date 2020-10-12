@@ -196,7 +196,8 @@
     "Mapa": "Karte"
   },
   "Ubicacion": {
-    "Agregar": "Ort hinzufügen"
+    "Agregar": "Ort hinzufügen",
+    "Encontrada": "Ort gefunden"
   },
   "Accion": {
     "Crear": "Erstellen",
