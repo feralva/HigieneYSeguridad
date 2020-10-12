@@ -11,9 +11,7 @@
   </ion-refresher>
   <br>
 
-  <ion-segment>
-    <ion-title>{{ viewTitle }}</ion-title>
-  </ion-segment>
+  <h3 style="text-align: center;">{{ viewTitle | titlecase }}</h3>
   <ion-segment [(ngModel)]="calendar.mode">
     <ion-segment-button value="month">
       <ion-label>{{ 'Calendario.Mes' | translate }}</ion-label>
