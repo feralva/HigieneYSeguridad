@@ -107,7 +107,7 @@ export class EditarEmpresaComponent implements OnInit {
   async ModificarEmpresaConfirm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: this.translate.instant('Empresa.Alta.title'),
+      header: this.translate.instant('Empresa.Editar.title'),
       message: this.translate.instant('Mensaje.Confirmacion',{accion: this.translate.instant('Accion.Modificar'),
                                       entidad: this.translate.instant('Empresa.Empresa')}),
       buttons: [
@@ -156,7 +156,7 @@ export class EditarEmpresaComponent implements OnInit {
     this.empresaService.ActualizarEmpresa(this.empresaModel).subscribe(
       result => {
         this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
-        this.router.navigate(['/empresa'])
+        this.router.navigate(['/home'])
       },
       (err: any) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
     );

@@ -103,7 +103,7 @@ export class StripeComponent implements OnInit {
     const pago: Pago = {
       empresaId: this.currentUser.empresaId,
       tokenPago: result.source.id,
-      id: null,
+      id: 0,
       medioPagoId: 1,
       monto: this.cantidadMeses * this.tipoLicencia.precioActual,
       cantidadMeses: this.cantidadMeses,

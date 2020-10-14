@@ -82,7 +82,7 @@ export class EstablecimientoAltaComponent implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.appDataService.changePageName("Establecimiento.Alta.title");
+    this.appDataService.changePageName("Establecimiento.Alta");
   }
 
   actualizarPartidos(event){
@@ -146,7 +146,7 @@ export class EstablecimientoAltaComponent implements OnInit {
             this.establecimientoService.alta(this.model).subscribe(
               (result) => {
                 this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
-                this.router.navigate(['/cliente', this.model.clienteId ,'editar'])
+                this.router.navigate(['/cliente', this.model.clienteId ,'establecimientos'])
               },
               (err: any) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
             );

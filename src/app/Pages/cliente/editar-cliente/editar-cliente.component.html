@@ -97,16 +97,12 @@
         [(ngModel)]="model.responsable.telefono" required OnlyNumberInputDirective></ion-input>
     </ion-item>
     <ion-grid>
-      <ion-row>
-        <ion-avatar
-          class="item-avatar center"
-          style="border: black; border-style: solid;"
-          (click)="selectImageSource()">
-
+      <div style="text-align:center; padding-top: 2em;">
+        <ion-avatar class="item-avatar" style="border: black;border-style: solid;margin:auto" (click)="selectImageSource()">
           <ion-img [src]="imageBase64" *ngIf="imageBase64 != null"></ion-img>
           <ion-img [src]="model.urlFoto" *ngIf="imageBase64 == null"></ion-img>
-        </ion-avatar>
-      </ion-row>
+        </ion-avatar>            
+      </div>
     </ion-grid>
 
     <ion-button type="submit" shape="round" fill="outline" slot="end" [disabled]="form.invalid">{{'Cliente.EditarCliente.Boton' | translate}}</ion-button>

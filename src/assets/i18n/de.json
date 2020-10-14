@@ -253,7 +253,8 @@
     "PagoTotal": "Vollständige Zahlung",
     "RealizarPago": "Zahlung leisten",
     "Pagos": "Zahlungen",
-    "Total": "Gesamt"
+    "Total": "Gesamt",
+    "Extender": "Lizenz verlängern"
   },
   "Login": {
     "Password": "Passwort",

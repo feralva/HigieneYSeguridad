@@ -51,7 +51,7 @@
         "icon": "people-circle",
         "name": "Menu.Empleados",
         "url": "/empleado",
-        "role": ["Coordinador"]
+        "patente": "Empleados"
     },
     {
         "icon": "wallet",

@@ -30,7 +30,7 @@ export class ModificarCantidadEquiposMedicionComponent implements OnInit {
 
   ionViewWillEnter(){
 
-    this.appDataService.changePageName('EquipoMedicion.Editar.title');
+    this.appDataService.changePageName('EquipoMedicion.ActualizarCantidad.title');
     this.tipoEquipo = this.route.snapshot.data['tipoEquipoMedicion'];
     //this.cantidadActual = this.tipoEquipo.cantidad;
 

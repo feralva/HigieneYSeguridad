@@ -58,7 +58,7 @@ export class AltaIrregularidadComponent implements OnInit {
     this.clientes = this.route.snapshot.data['clientes'];
     this.tiposIrregularidad = this.route.snapshot.data['tiposIrregularidades'];
     
-    this.appDataService.changePageName('Irregularidad.Alta.Title');
+    this.appDataService.changePageName('Irregularidad.Alta.title');
     
     if(+this.route.snapshot.paramMap.get("idEstablecimiento")){
 
@@ -177,25 +177,28 @@ export class AltaIrregularidadComponent implements OnInit {
   }
 
   async selectImageSource() {
-    const buttons = [
-      {
+    const buttons = [];
+    if (!this.plt.is('hybrid')) {
+      buttons.push({
         text: this.translate.instant('SeleccionFuenteImagen.Camara'),
         icon: 'camera',
         handler: () => {
           this.addImage(CameraSource.Camera);
         }
-      },
-      {
+      })
+    }
+
+    if (!this.plt.is('hybrid')) {
+      buttons.push({
         text: this.translate.instant('SeleccionFuenteImagen.Galeria'),
         icon: 'image',
         handler: () => {
           this.addImage(CameraSource.Photos);
         }
-      }
-    ];
- 
-    // Only allow file selection inside a browser
-    if (!this.plt.is('hybrid')) {
+      });
+    }
+
+    if (this.plt.is('hybrid')) {
       buttons.push({
         text: this.translate.instant('SeleccionFuenteImagen.SistemaArchivos'),
         icon: 'attach',

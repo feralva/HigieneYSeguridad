@@ -100,7 +100,7 @@ export class EditarClienteComponent implements OnInit {
   }
 
   ionViewWillEnter(){
-    this.appDataService.changePageName('Cliente.Editar.title');
+    this.appDataService.changePageName('Cliente.EditarCliente.title');
   }
 
   actualizarPartidos(event){
@@ -197,7 +197,7 @@ export class EditarClienteComponent implements OnInit {
     const buttons = [];
 
     // Only allow file selection inside a browser
-    if (!this.plt.is('hybrid')) {
+    if (this.plt.is('hybrid')) {
       buttons.push({
         text: this.translate.instant('SeleccionFuenteImagen.SistemaArchivos'),
         icon: 'attach',
@@ -206,7 +206,7 @@ export class EditarClienteComponent implements OnInit {
         }
       });
     }
-    if (this.plt.is('hybrid')) {
+    if (!this.plt.is('hybrid')) {
       buttons.push({
         text: this.translate.instant('SeleccionFuenteImagen.Galeria'),
         icon: 'image',

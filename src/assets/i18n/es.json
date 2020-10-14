@@ -252,7 +252,8 @@
         "PagoTotal": "Pago Total",
         "RealizarPago": "Realizar Pago",
         "Pagos": "Pagos",
-        "Total": "Total"
+        "Total": "Total",
+        "Extender": "Extender Licencia"
     },
     "Login": {
         "Password": "Contraseña",

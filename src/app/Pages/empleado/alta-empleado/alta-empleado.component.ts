@@ -159,18 +159,20 @@ export class AltaEmpleadoComponent implements OnInit {
   }
 
   async selectImageSource() {
-    const buttons = [
-      {
+    const buttons = [];
+
+    if (this.plt.is('hybrid')) {
+      buttons.push({
         text: this.translate.instant('SeleccionFuenteImagen.Camara'),
         icon: 'camera',
         handler: () => {
           this.addImage(CameraSource.Camera);
         }
-      }
-    ];
- //
+      });
+    }
+    
     // Only allow file selection inside a browser
-    if (!this.plt.is('hybrid')) {
+    if (this.plt.is('hybrid')) {
       buttons.push({
         text: this.translate.instant('SeleccionFuenteImagen.SistemaArchivos'),
         icon: 'attach',
@@ -180,7 +182,7 @@ export class AltaEmpleadoComponent implements OnInit {
       });
     }
     // Mostrar solo en dispositivo
-    if (this.plt.is('hybrid')) {
+    if (!this.plt.is('hybrid')) {
       buttons.push({
         text: this.translate.instant('SeleccionFuenteImagen.Galeria'),
         icon: 'image',

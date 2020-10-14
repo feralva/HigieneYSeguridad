@@ -16,9 +16,9 @@
       <ion-col>
         <ion-label>{{'Licencia.Cantidad_Meses' | translate}}</ion-label>
         <ion-select [(ngModel)]="cantidadMeses" multiple="false" placeholder="{{'Licencia.Cantidad_Meses' | translate}}">
-          <ion-select-option [value]=1>{{'Licencia.Cantidad_Meses_Dinamico' | translate:'1'}}</ion-select-option>
-          <ion-select-option [value]=3>{{'Licencia.Cantidad_Meses_Dinamico' | translate:'2'}}</ion-select-option>
-          <ion-select-option [value]=6>{{'Licencia.Cantidad_Meses_Dinamico' | translate:'3'}}</ion-select-option>
+          <ion-select-option [value]=1>{{'Licencia.Cantidad_Meses_Dinamico' | translate:'{cantidad: 1}'}}</ion-select-option>
+          <ion-select-option [value]=3>{{'Licencia.Cantidad_Meses_Dinamico' | translate:'{cantidad: 3}'}}</ion-select-option>
+          <ion-select-option [value]=6>{{'Licencia.Cantidad_Meses_Dinamico' | translate:'{cantidad: 6}'}}</ion-select-option>
         </ion-select>
       </ion-col>
     </ion-row>
