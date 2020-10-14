@@ -12,26 +12,42 @@
       {{'Visita.title' | translate}}
       </ion-label>
     </ion-item-divider>
-    <ion-item>
-      <ion-label position="stacked">{{'Cliente.Establecimientos' | translate}}</ion-label>
-      <ion-select style="width: max-content;" name="establecimientoSeleccionado" [(ngModel)]="establecimientoSeleccionado" placeholder="{{'Cliente.Establecimientos' | translate}}" required>
-        <ion-select-option *ngFor="let establecimiento of establecimientos" [value]="establecimiento.id">{{establecimiento.nombre}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">{{'Visita.Tipo_Visita' | translate}}</ion-label>
-      <ion-select style="width: max-content;" name="tipoVisitaSeleccionada" [(ngModel)]="tipoVisitaSeleccionada" placeholder="{{'Visita.Tipo_Visita' | translate}}" required>
-        <ion-select-option *ngFor="let tipoVisita of tiposVisitas" [value]="tipoVisita.id">{{tipoVisita.descripcion}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>{{'Visita.Mes_Pactado' | translate}}</ion-label>
-      <ion-datetime [(ngModel)]="mesPactado" displayFormat="MM" required></ion-datetime>
-    </ion-item>
-    <ion-item>
-      <ion-label>{{'Visita.Anio_Pactado' | translate}}</ion-label>
-      <ion-datetime [(ngModel)]="anioPactado" displayFormat="YYYY" [min]="anioInicial" [max]="anioInicial + 1" required></ion-datetime>
-    </ion-item>
-    <ion-button shape="round" fill="outline" [disabled]="form.invalid">{{'Visita.AgregarVisita' | translate}}</ion-button>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="12" size-lg="6">
+          <ion-item>
+            <ion-label position="stacked">{{'Cliente.Establecimientos' | translate}}</ion-label>
+            <ion-select style="width: max-content;" name="establecimientoSeleccionado" [(ngModel)]="establecimientoSeleccionado" placeholder="{{'Cliente.Establecimientos' | translate}}" required>
+              <ion-select-option *ngFor="let establecimiento of establecimientos" [value]="establecimiento.id">{{establecimiento.nombre}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" size-lg="6">
+          <ion-item>
+            <ion-label position="stacked">{{'Visita.Tipo_Visita' | translate}}</ion-label>
+            <ion-select style="width: max-content;" name="tipoVisitaSeleccionada" [(ngModel)]="tipoVisitaSeleccionada" placeholder="{{'Visita.Tipo_Visita' | translate}}" required>
+              <ion-select-option *ngFor="let tipoVisita of tiposVisitas" [value]="tipoVisita.id">{{tipoVisita.descripcion}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" size-lg="6">
+          <ion-item>
+            <ion-label>{{'Visita.Mes_Pactado' | translate}}</ion-label>
+            <ion-datetime name="mesPactado" [(ngModel)]="mesPactado" displayFormat="MM" required></ion-datetime>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" size-lg="6">
+          <ion-item>
+            <ion-label>{{'Visita.Anio_Pactado' | translate}}</ion-label>
+            <ion-datetime name="anioPactado"  [(ngModel)]="anioPactado" displayFormat="YYYY" [min]="anioInicial" [max]="anioInicial + 1" required></ion-datetime>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-row>
+      <ion-col size="12" size-lg="8" offset-lg="2" class="ion-text-center" style="margin-top: 3em;">
+        <ion-button type="submit" shape="round" expand="block" fill="solid" [disabled]="form.invalid">{{'Visita.AgregarVisita' | translate}}</ion-button>
+      </ion-col>
+    </ion-row>
   </form>
 </ion-content>

@@ -14,16 +14,16 @@
     <ion-label>{{'General.Mediciones' | translate }}</ion-label>
   </ion-item-divider>
   <ion-item>
-    <ion-label position="floating">{{'Control.Luminico.FlujoLuminoso'}}:</ion-label>
-    <ion-input type="number" placeholder="{{'Control.Luminico.Valorenlm'}}" name="flujoLuminoso" [(ngModel)]="model.flujoLuminoso" required></ion-input>
+    <ion-label position="floating">{{'Control.Luminico.FlujoLuminoso'  | translate}}:</ion-label>
+    <ion-input type="number" placeholder="{{'Control.Luminico.Valorenlm' | translate}}" name="flujoLuminoso" [(ngModel)]="model.flujoLuminoso" required></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">{{'Control.Luminico.Iluminancia'}}:</ion-label>
-    <ion-input type="number" placeholder="{{'Control.Luminico.Valorenlx'}}" name="iluminancia" [(ngModel)]="model.iluminancia" required></ion-input>
+    <ion-label position="floating">{{'Control.Luminico.Iluminancia'  | translate}}:</ion-label>
+    <ion-input type="number" placeholder="{{'Control.Luminico.Valorenlx' | translate}}" name="iluminancia" [(ngModel)]="model.iluminancia" required></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">{{'Control.Luminico.Intensidadluminosa'}}:</ion-label>
-    <ion-input type="number" placeholder="{{'Control.Luminico.Valorencd'}}Valor en cd" name="intensidadLuminosa" [(ngModel)]="model.intensidadLuminosa" required></ion-input>
+    <ion-label position="floating">{{'Control.Luminico.Intensidadluminosa' | translate}}:</ion-label>
+    <ion-input type="number" placeholder="{{'Control.Luminico.Valorencd' | translate}}Valor en cd" name="intensidadLuminosa" [(ngModel)]="model.intensidadLuminosa" required></ion-input>
   </ion-item>
 
   <ion-button expand="block" type="submit" expand="block" fill="solid" shape="round" [disabled]="form.invalid">
