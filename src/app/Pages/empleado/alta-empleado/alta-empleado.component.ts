@@ -172,7 +172,7 @@ export class AltaEmpleadoComponent implements OnInit {
     }
     
     // Only allow file selection inside a browser
-    if (this.plt.is('hybrid')) {
+    if (!this.plt.is('hybrid')) {
       buttons.push({
         text: this.translate.instant('SeleccionFuenteImagen.SistemaArchivos'),
         icon: 'attach',
@@ -182,7 +182,7 @@ export class AltaEmpleadoComponent implements OnInit {
       });
     }
     // Mostrar solo en dispositivo
-    if (!this.plt.is('hybrid')) {
+    if (this.plt.is('hybrid')) {
       buttons.push({
         text: this.translate.instant('SeleccionFuenteImagen.Galeria'),
         icon: 'image',
