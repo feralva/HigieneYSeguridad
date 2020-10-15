@@ -161,7 +161,7 @@ export class AltaEmpleadoComponent implements OnInit {
   async selectImageSource() {
     const buttons = [];
 
-    if (this.plt.is('hybrid')) {
+    if (!this.plt.is('hybrid')) {
       buttons.push({
         text: this.translate.instant('SeleccionFuenteImagen.Camara'),
         icon: 'camera',
