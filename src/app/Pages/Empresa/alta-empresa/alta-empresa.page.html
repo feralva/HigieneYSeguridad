@@ -48,7 +48,7 @@
             <ion-input
               placeholder="{{ 'General.Altura' | translate }}"
               name="direccion.Altura"
-              [(ngModel)]="altura" required OnlyNumberInputDirective></ion-input>
+              [(ngModel)]="altura" required OnlyNumber></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="12" size-lg="6">
@@ -99,7 +99,7 @@
           <ion-item>
             <ion-label position="stacked">{{ 'General.Apellido' | translate }}</ion-label>
             <ion-input
-              placeholder="{{ 'General.Apellido' | translate }}Apellido"
+              placeholder="{{ 'General.Apellido' | translate }}"
               name="responsable.Apellido"
               [(ngModel)]="empresaModel.responsable.apellido" required></ion-input>
           </ion-item>
@@ -119,7 +119,7 @@
             <ion-input
               placeholder="{{ 'General.Telefono' | translate }}"
               name="responsable.Telefono"
-              [(ngModel)]="empresaModel.responsable.telefono" required></ion-input>
+              [(ngModel)]="empresaModel.responsable.telefono" required OnlyNumber></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
