@@ -117,7 +117,7 @@ export class AltaClienteComponent implements OnInit {
   private validarModelo() {
     
     if(!this.imageBase64){
-      throw new Error('Debe Cargar Imagen Cliente')
+      throw new Error(this.translate.instant('General.Error.Falta_Imagen'))
     }
   }
 
@@ -200,7 +200,7 @@ export class AltaClienteComponent implements OnInit {
     const buttons = [];
 
     // Only allow file selection inside a browser
-    if (!this.plt.is('hybrid')) {
+    if (this.plt.is('hybrid')) {
       buttons.push({
         text: this.translate.instant('SeleccionFuenteImagen.SistemaArchivos'),
         icon: 'attach',
@@ -209,7 +209,7 @@ export class AltaClienteComponent implements OnInit {
         }
       });
     }
-    if (this.plt.is('hybrid')) {
+    if (!this.plt.is('hybrid')) {
       buttons.push({
         text: this.translate.instant('SeleccionFuenteImagen.Galeria'),
         icon: 'image',

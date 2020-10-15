@@ -20,7 +20,9 @@ export class PlanAltaClienteResolverService implements Resolve<any[]>{
         error => console.log(error)
       );
 
-      return this.clienteService.obtenerClientesEmpresa(+route.paramMap.get('id'));
+      if(+route.paramMap.get('id') != 0) this.idEmpresa = +route.paramMap.get('id')
+
+      return this.clienteService.obtenerClientesEmpresa(this.idEmpresa);
   }
 
 

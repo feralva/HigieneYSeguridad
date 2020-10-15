@@ -80,12 +80,12 @@ export class EmpleadoEdicionComponent implements OnInit {
 
   ionViewWillEnter(){
     
-    this.appDataService.changePageName('Empleado.Editar.title');
+    this.appDataService.changePageName('Empleado.Edicion.title');
   }
   async ModificarEmpleadoConfirm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: this.translate.instant('Empleado.Editar.title'),
+      header: this.translate.instant('Empleado.Edicion.title'),
       message: this.translate.instant('Mensaje.Confirmacion',{accion: this.translate.instant('Accion.Modificar'),
       entidad: this.translate.instant('Empleado.Empleado')}),
       buttons: [
