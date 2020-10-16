@@ -38,10 +38,10 @@
               <ion-col *ngIf="!visita.empleadoAsignado"><b>{{'Plan.Asignado_A' | translate}}:</b> NA</ion-col>
             </ion-row>
             <ion-row>
-              <ion-col><b>{{'Plan.Fecha_Pactada' | translate}}: </b> {{visita.fechaPactada | date: 'shortDate'}}</ion-col>
+              <ion-col><b>{{'Plan.Fecha_Pactada' | translate}}: </b> {{visita.fechaPactada | date:  'MM/yy'}}</ion-col>
             </ion-row>
             <ion-row>
-              <ion-col *ngIf="visita.fecha"><b>{{'Plan.Fecha_Concreta' | translate}}: </b> {{visita.fecha | date: 'shortDate'}}</ion-col>
+              <ion-col *ngIf="visita.fecha"><b>{{'Plan.Fecha_Concreta' | translate}}: </b> {{visita.fecha | date: 'dd/MM/yy'}}</ion-col>
               <ion-col *ngIf="!visita.fecha"><b>{{'Plan.Fecha_Concreta' | translate}}: </b> NA</ion-col>
             </ion-row>
           </ion-grid>

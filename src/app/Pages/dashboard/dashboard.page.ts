@@ -57,7 +57,7 @@ export class DashboardPage implements OnInit {
     this.datosEstadoVisitaEmpresa = this.route.snapshot.data['totalizados'];
     this.datosClientesEmpresa = this.route.snapshot.data['clientes'];
     this.pieChartData = [ this.datosEstadoVisitaEmpresa.Pendiente, 
-      this.datosEstadoVisitaEmpresa.Completa, 
+                          this.datosEstadoVisitaEmpresa.Completa, 
       this.datosEstadoVisitaEmpresa.Cancelada? this.datosEstadoVisitaEmpresa.Cancelada : 0]
     
     this.obtenerInformacionClientesParaGraficos();

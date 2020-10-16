@@ -120,7 +120,8 @@
     "VisitaCompletaError": "Gesamter Besuch kann nicht abgebrochen werden",
     "NoHayVisitasAsignadas": "Keine Besuche zugewiesen",
     "NoHayVisitasPendientes": "Keine Besuche zu zeigen",
-    "VisitasPendientes": "Ausstehende Besuche"
+    "VisitasPendientes": "Ausstehende Besuche",
+    "Estado": "Besuchsstatus"
   },
   "Irregularidad": {
     "Title": "Unregelmäßigkeit",

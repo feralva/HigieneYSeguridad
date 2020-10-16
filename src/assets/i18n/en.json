@@ -120,7 +120,8 @@
     "VisitaCompletaError": "Cannot Cancel Entire Visit",
     "NoHayVisitasAsignadas": "No Visits Assigned",
     "NoHayVisitasPendientes": "No Visits To Show",
-    "VisitasPendientes": "Pending Visits"
+    "VisitasPendientes": "Pending Visits",
+    "Estado": "Visit Status"
   },
   "Irregularidad": {
     "Title": "Irregularity",
