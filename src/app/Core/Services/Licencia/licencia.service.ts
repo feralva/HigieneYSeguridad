@@ -35,9 +35,9 @@ export class LicenciaService {
   obtenerLicenciaEmpresa(idEmpresa: number): Observable<any> {
 
     return this.http.get<any>(environment.UrlBaseApi + `Licencia?idEmpresa=${idEmpresa}`, this.httpOptions)
-/*     .pipe(
+     .pipe(
       map(licencias => licencias[0])
-    ) */
+    ) 
   }
 
   actualizarPrecioLicencia(licencia: any): Observable<any> {
