@@ -74,6 +74,7 @@ export class EstablecimientoAltaComponent implements OnInit {
   ngOnInit() {
     this.model.clienteId = +this.route.snapshot.paramMap.get("id");
 
+    this.getLocation()
     this.direccionService.obtenerProvincias().subscribe(
       data => this.provincias = data,
       (error) => console.log(error)
@@ -142,7 +143,7 @@ export class EstablecimientoAltaComponent implements OnInit {
         {
           text: "Ok",
           handler: () => {
-            this.getLocation()
+            
             this.establecimientoService.alta(this.model).subscribe(
               (result) => {
                 this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
