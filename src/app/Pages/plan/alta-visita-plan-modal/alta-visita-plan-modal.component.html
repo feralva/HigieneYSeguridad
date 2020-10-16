@@ -23,7 +23,7 @@
     </ion-item>
     <ion-item>
       <ion-label position="stacked">{{'Visita.Tipo_Visita' | translate}}</ion-label>
-      <ion-select style="width: max-content;" name="tipoVisitaSeleccionada" [(ngModel)]="tipoVisitaSeleccionada" placeholder="{{'Visita.Tipo_Visita' | translate}}Tipo Visita" required>
+      <ion-select style="width: max-content;" name="tipoVisitaSeleccionada" [(ngModel)]="tipoVisitaSeleccionada" placeholder="{{'Visita.Tipo_Visita' | translate}}" required>
         <ion-select-option *ngFor="let tipoVisita of tiposVisitas" [value]="tipoVisita">{{tipoVisita.descripcion}}</ion-select-option>
       </ion-select>
     </ion-item>

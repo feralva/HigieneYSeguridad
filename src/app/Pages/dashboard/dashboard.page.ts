@@ -71,10 +71,21 @@ export class DashboardPage implements OnInit {
         await this.empresaService.obtenerInformacionVisitasPorEstadoCliente(cli.id).toPromise().then(
           tot => {
             let arr = [];  
-            Object.keys(tot).map(function(key){  
+            /* Object.keys(tot).map(function(key){  
                 arr.push(tot[key])  
                 return arr;  
-            }); 
+            });  */
+
+            if(tot['Pendiente']){
+              arr.push(tot['Pendiente'])
+            }else arr.push(0)
+            if(tot['Completa']){
+              arr.push(tot['Completa'])
+            } else arr.push(0)
+            if(tot['Cancelada']){
+              arr.push(tot['Cancelada'])
+            } else arr.push(0)
+            
             this.datosGraficosClientes.push({nombre: cli.nombre, datos: arr})
           }
         )

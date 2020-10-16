@@ -20,7 +20,7 @@
       </ion-item>
       <ion-item>
         <ion-label position="stacked">{{'Plan.Tipos_Plan' | translate}}</ion-label>
-        <ion-select style="width: max-content;" name="rolesSeleccionados" [(ngModel)]="tipoPlanSeleccionado" placeholder="{{'Plan.Tipos_Plan' | translate}}Tipo Plan" required>
+        <ion-select style="width: max-content;" name="rolesSeleccionados" [(ngModel)]="tipoPlanSeleccionado" placeholder="{{'Plan.Tipos_Plan' | translate}}" required>
           <ion-select-option *ngFor="let tipoPlan of tiposPlan" [value]="tipoPlan.id">{{tipoPlan.nombre}}</ion-select-option>
         </ion-select>
       </ion-item>

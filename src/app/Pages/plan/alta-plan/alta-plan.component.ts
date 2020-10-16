@@ -42,6 +42,7 @@ export class AltaPlanComponent implements OnInit {
 
     //Cuando se accede alta plan desde cliente
     this.cliente = this.route.snapshot.data['cliente'];
+    this.clienteSeleccionado = this.route.snapshot.data['cliente'];
 
     this.appDataService.changePageName('Plan.Alta.title')
 
