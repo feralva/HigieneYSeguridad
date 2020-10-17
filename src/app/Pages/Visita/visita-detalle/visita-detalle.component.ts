@@ -36,6 +36,7 @@ export class VisitaDetalleComponent implements OnInit, OnDestroy {
   idVisita: number;
   visita: any;
   vista: any = 'visitaDetalle';
+  userYEmpleadoAsignadoSonIguales: boolean = false;
 
   tramos: any[] = []
 
@@ -73,7 +74,10 @@ export class VisitaDetalleComponent implements OnInit, OnDestroy {
       this.idVisita = +this.route.snapshot.paramMap.get('id');
   
       this.authService.getUserSubject().subscribe(
-        data => this.currentUser = data,
+        data => {
+          this.currentUser = data
+          this.userYEmpleadoAsignadoSonIguales = data.id == this.visita.empleado.usuarioId
+        },
         error => console.log(error)
       );
    
@@ -263,7 +267,10 @@ export class VisitaDetalleComponent implements OnInit, OnDestroy {
           text: 'Ok',
           handler: () => {
             this.visitaService.completarVisita(this.idVisita).subscribe(
-                result => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito')),
+                result => {
+                  this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
+                  this.router.navigate(['/visita'])
+                },
                 (err: any) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
             );
           }     

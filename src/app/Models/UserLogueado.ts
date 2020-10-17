@@ -1,4 +1,5 @@
 export interface UserLogueado{
+    id: string;
     idUsuario: string;
     name: string;
     roles: string[];
