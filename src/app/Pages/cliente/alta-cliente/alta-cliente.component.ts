@@ -61,7 +61,7 @@ export class AltaClienteComponent implements OnInit {
     private clienteService: ClienteService, private photoService: PhotoService,
     public alertController: AlertController, private loaderService: LoaderService,
     public toastController: ToastController, private direccionService: DireccionService,
-    private plt: Platform, private actionSheetCtrl: ActionSheetController,
+    public plt: Platform, private actionSheetCtrl: ActionSheetController,
     private authService: AuthService, private msgService: GenericAlertMessageService,
     private router: Router) { }
 
@@ -199,8 +199,7 @@ export class AltaClienteComponent implements OnInit {
   async selectImageSource() {
     const buttons = [];
 
-    // Only allow file selection inside a browser
-    if (this.plt.is('hybrid')) {
+    if (!this.plt.is('android') && !this.plt.is('iphone')) {
       buttons.push({
         text: this.translate.instant('SeleccionFuenteImagen.SistemaArchivos'),
         icon: 'attach',
@@ -209,7 +208,7 @@ export class AltaClienteComponent implements OnInit {
         }
       });
     }
-    if (!this.plt.is('hybrid')) {
+    if (this.plt.is('android') || this.plt.is('iphone')) {
       buttons.push({
         text: this.translate.instant('SeleccionFuenteImagen.Galeria'),
         icon: 'image',

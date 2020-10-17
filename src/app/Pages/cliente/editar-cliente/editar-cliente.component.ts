@@ -196,8 +196,7 @@ export class EditarClienteComponent implements OnInit {
   async selectImageSource() {
     const buttons = [];
 
-    // Only allow file selection inside a browser
-    if (this.plt.is('hybrid')) {
+    if (!this.plt.is('android') && !this.plt.is('iphone')) {
       buttons.push({
         text: this.translate.instant('SeleccionFuenteImagen.SistemaArchivos'),
         icon: 'attach',
@@ -206,7 +205,7 @@ export class EditarClienteComponent implements OnInit {
         }
       });
     }
-    if (!this.plt.is('hybrid')) {
+    if (this.plt.is('android') || this.plt.is('iphone')) {
       buttons.push({
         text: this.translate.instant('SeleccionFuenteImagen.Galeria'),
         icon: 'image',

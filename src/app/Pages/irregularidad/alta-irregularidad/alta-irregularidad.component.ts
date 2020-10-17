@@ -178,7 +178,8 @@ export class AltaIrregularidadComponent implements OnInit {
 
   async selectImageSource() {
     const buttons = [];
-    if (!this.plt.is('hybrid')) {
+
+    if (this.plt.is('android') || this.plt.is('iphone')) {
       buttons.push({
         text: this.translate.instant('SeleccionFuenteImagen.Camara'),
         icon: 'camera',
@@ -188,7 +189,7 @@ export class AltaIrregularidadComponent implements OnInit {
       })
     }
 
-    if (!this.plt.is('hybrid')) {
+    if (this.plt.is('android') || this.plt.is('iphone')) {
       buttons.push({
         text: this.translate.instant('SeleccionFuenteImagen.Galeria'),
         icon: 'image',
@@ -198,7 +199,7 @@ export class AltaIrregularidadComponent implements OnInit {
       });
     }
 
-    if (this.plt.is('hybrid')) {
+    if (!this.plt.is('android') && !this.plt.is('iphone')) {
       buttons.push({
         text: this.translate.instant('SeleccionFuenteImagen.SistemaArchivos'),
         icon: 'attach',

@@ -132,32 +132,38 @@ export class CerrarIrregularidadComponent implements OnInit {
   }
 
   async selectImageSource() {
-  const buttons = [
-  {
-    text: this.translate.instant('SeleccionFuenteImagen.Camara'),
-    icon: 'camera',
-    handler: () => {
-      this.addImage(CameraSource.Camera);
-    }
-  },
-  {
-    text: this.translate.instant('SeleccionFuenteImagen.Galeria'),
-    icon: 'image',
-    handler: () => {
-      this.addImage(CameraSource.Photos);
-    }
-  }
-  ];
+  const buttons = [];
 
-  // Only allow file selection inside a browser
-  if (!this.plt.is('hybrid')) {
-  buttons.push({
-  text: this.translate.instant('SeleccionFuenteImagen.SistemaArchivos'),
-  icon: 'attach',
-  handler: () => {
-  this.fileInput.nativeElement.click();
+  if (this.plt.is('android') || this.plt.is('iphone')) {
+    buttons.push(
+                  {
+                    text: this.translate.instant('SeleccionFuenteImagen.Camara'),
+                    icon: 'camera',
+                    handler: () => {
+                      this.addImage(CameraSource.Camera);
+                    }
+                  });
   }
-  });
+                
+  if (this.plt.is('android') || this.plt.is('iphone')) {
+    buttons.push(
+                {
+                  text: this.translate.instant('SeleccionFuenteImagen.Galeria'),
+                  icon: 'image',
+                  handler: () => {
+                    this.addImage(CameraSource.Photos);
+                  }
+                });
+  }
+
+  if (!this.plt.is('android') && !this.plt.is('iphone')) {
+    buttons.push({
+      text: this.translate.instant('SeleccionFuenteImagen.SistemaArchivos'),
+      icon: 'attach',
+      handler: () => {
+        this.fileInput.nativeElement.click();
+      }
+    });
   }
 
   const actionSheet = await this.actionSheetCtrl.create({

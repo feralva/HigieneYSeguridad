@@ -40,10 +40,6 @@ export class SeleccionarUbicacionControlComponent implements OnInit {
   ) {
     const isInStandaloneMode = () =>
       'standalone' in window.navigator && window.navigator['standalone'];
-    if (this.plt.is('ios') && isInStandaloneMode()) {
-      console.log('I am a an iOS PWA!');
-      // E.g. hide the scan functionality!
-    }
   }
  
   ngAfterViewInit() {

@@ -161,25 +161,29 @@ export class EmpleadoEdicionComponent implements OnInit {
   }
 
   async selectImageSource() {
-    const buttons = [
-      {
+    const buttons = [];
+
+    if (this.plt.is('android') || this.plt.is('iphone')) {
+      buttons.push({
         text: this.translate.instant('SeleccionFuenteImagen.Camara'),
         icon: 'camera',
         handler: () => {
           this.addImage(CameraSource.Camera);
         }
-      },
-      {
-        text: this.translate.instant('SeleccionFuenteImagen.Galeria'),
-        icon: 'image',
-        handler: () => {
-          this.addImage(CameraSource.Photos);
-        }
-      }
-    ];
- 
-    // Only allow file selection inside a browser
-    if (!this.plt.is('hybrid')) {
+      });
+    }
+    if (this.plt.is('android') || this.plt.is('iphone')) {
+      buttons.push(
+        {
+          text: this.translate.instant('SeleccionFuenteImagen.Galeria'),
+          icon: 'image',
+          handler: () => {
+            this.addImage(CameraSource.Photos);
+          }
+        });
+    }
+
+    if (!this.plt.is('android') && !this.plt.is('iphone')) {
       buttons.push({
         text: this.translate.instant('SeleccionFuenteImagen.SistemaArchivos'),
         icon: 'attach',
