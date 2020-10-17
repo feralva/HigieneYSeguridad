@@ -161,15 +161,13 @@ export class AltaEmpleadoComponent implements OnInit {
   async selectImageSource() {
     const buttons = [];
 
-    if (this.plt.is('android') || this.plt.is('iphone')) {
-      buttons.push({
-        text: this.translate.instant('SeleccionFuenteImagen.Camara'),
-        icon: 'camera',
-        handler: () => {
-          this.addImage(CameraSource.Camera);
-        }
-      });
-    }
+    buttons.push({
+      text: this.translate.instant('SeleccionFuenteImagen.Camara'),
+      icon: 'camera',
+      handler: () => {
+        this.addImage(CameraSource.Camera);
+      }
+    });
     
     // Only allow file selection inside a browser
     if (!this.plt.is('android') && !this.plt.is('iphone')) {

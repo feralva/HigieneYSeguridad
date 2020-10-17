@@ -134,16 +134,15 @@ export class CerrarIrregularidadComponent implements OnInit {
   async selectImageSource() {
   const buttons = [];
 
-  if (this.plt.is('android') || this.plt.is('iphone')) {
-    buttons.push(
-                  {
-                    text: this.translate.instant('SeleccionFuenteImagen.Camara'),
-                    icon: 'camera',
-                    handler: () => {
-                      this.addImage(CameraSource.Camera);
-                    }
-                  });
-  }
+  buttons.push(
+                {
+                  text: this.translate.instant('SeleccionFuenteImagen.Camara'),
+                  icon: 'camera',
+                  handler: () => {
+                    this.addImage(CameraSource.Camera);
+                  }
+                }
+              );
                 
   if (this.plt.is('android') || this.plt.is('iphone')) {
     buttons.push(
