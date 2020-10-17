@@ -12,17 +12,6 @@
   <ion-segment>
     <ion-title>{{ viewTitle }}</ion-title>
   </ion-segment>
-<!--   <ion-segment [(ngModel)]="calendar.mode">
-    <ion-segment-button value="month">
-      <ion-label>{{'Calendario.Mes' | translate }}</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="week">
-      <ion-label>{{'Calendario.Semana' | translate }}</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="day">
-      <ion-label>{{'Calendario.Dia' | translate }}</ion-label>
-    </ion-segment-button>
-  </ion-segment> -->
 
     <ng-template #template let-showEventDetail="showEventDetail" let-selectedDate="selectedDate" let-noEventsLabel="noEventsLabel">
       <ion-list >
