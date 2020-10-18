@@ -60,12 +60,6 @@
         "url": "/licencia"
     },
     {
-        "icon": "wallet",
-        "name": "Menu.AdquirirLicencia",
-        "url": "/licencia/adquisicion",
-        "patente": "AdquirirLicencia"
-    },
-    {
         "icon": "business",
         "name": "Empresa.title",
         "url": "/empresa",

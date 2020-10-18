@@ -4,7 +4,7 @@ import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { LoaderService } from 'src/app/Core/Services/loader.service';
 import { skip } from 'rxjs/operators';
 import { LanguagePopupPage } from '../language-popup/language-popup.page';
-import { PopoverController } from '@ionic/angular';
+import { LoadingController, PopoverController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,8 @@ import { PopoverController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router, private popOverCtrl: PopoverController, private loader: LoaderService) { }
+  constructor(private authService: AuthService, private router: Router, private popOverCtrl: PopoverController, 
+    private loader: LoaderService, private loadingController: LoadingController) { }
 
   ngOnInit() {
   }
@@ -26,7 +27,14 @@ export class LoginPage implements OnInit {
     await popOver.present();
   }
 
-  login(form){
+  async login(form){
+
+    const loading = await this.loadingController.create({
+      spinner: 'circular',
+      translucent: true,
+      
+    });
+    await loading.present();
 
     this.authService.login(form.value);
     
@@ -35,11 +43,14 @@ export class LoginPage implements OnInit {
         console.log(data);
         if(data) {this.router.navigateByUrl('home')}
           else {
-            
+            loading.dismiss();
             this.router.navigateByUrl('/login')
           }
       },
-      (error) => {throw Error(error)}
+      (error) => {
+        loading.dismiss();
+        throw Error(error)
+      }
     );
   }
 }
