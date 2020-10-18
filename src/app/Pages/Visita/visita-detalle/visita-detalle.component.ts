@@ -20,6 +20,7 @@ import { EstablecimientoService } from 'src/app/Core/Services/Establecimiento/es
 import { forkJoin } from 'rxjs';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { Plugins } from '@capacitor/core';
+import { first } from 'rxjs/operators';
 const { Geolocation } = Plugins;
 
 declare var google;
@@ -73,7 +74,7 @@ export class VisitaDetalleComponent implements OnInit, OnDestroy {
   
       this.idVisita = +this.route.snapshot.paramMap.get('id');
   
-      this.authService.getUserSubject().subscribe(
+      this.authService.getUserSubject().pipe(first()).subscribe(
         data => {
           this.currentUser = data
           this.userYEmpleadoAsignadoSonIguales = data.id == this.visita.empleado.usuarioId
