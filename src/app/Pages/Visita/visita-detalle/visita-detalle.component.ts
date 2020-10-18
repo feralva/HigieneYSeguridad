@@ -270,7 +270,7 @@ export class VisitaDetalleComponent implements OnInit, OnDestroy {
             this.visitaService.completarVisita(this.idVisita).subscribe(
                 result => {
                   this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
-                  this.router.navigate(['/visita'])
+                  this.router.navigate(['/visita','Pendientes'])
                 },
                 (err: any) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
             );
