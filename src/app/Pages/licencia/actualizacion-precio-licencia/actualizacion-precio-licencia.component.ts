@@ -80,7 +80,7 @@ export class ActualizacionPrecioLicenciaComponent implements OnInit {
               .subscribe(
                 result => {
                   this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Exito'))
-                  this.router.navigate(['/licencia', 'tipos'])
+                  this.router.navigate(['/home'])
                 },
                 (err: any) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
               );

@@ -16,7 +16,7 @@ export class PagoPage implements OnInit {
     private translate: TranslateService, private router: Router) { }
 
   ionViewWillEnter() {
-    this.appDataService.changePageName('General.Pagos');
+    this.appDataService.changePageName('Licencia.Pagos');
 
     this.pagosEmpresas = this.route.snapshot.data['pagos'];
   }
