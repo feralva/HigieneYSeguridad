@@ -67,9 +67,9 @@
       <b>{{'General.Detalles' | translate}}</b>
     </ion-label>
   </ion-item-divider>
-  <ion-grid fixed>
+  <ion-grid  fixed>
     <ion-row>
-      <ion-col size="12" size-lg="6">
+      <ion-col size="12" size-lg="6" *appHasPatente="'clienteDetallePlan'">
         <ion-item button [routerLink]="['/cliente', cliente.id,'planes']" detail="true">
           <ion-icon name="document-text"></ion-icon>           
             {{'Plan.Planes' | translate}}
