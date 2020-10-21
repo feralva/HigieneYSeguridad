@@ -53,14 +53,14 @@
             <ion-col size="12" size-lg="6" *ngIf="userYEmpleadoAsignadoSonIguales">
               <ion-item button detail (click)="onEditarFechaClick()">
                 <ion-label>{{'Plan.Fecha_Concreta' | translate}}: </ion-label>
-                <ion-label *ngIf="visita?.fecha != null">{{visita?.fecha | date: 'd/MM/yy, H:mm'}}</ion-label>
+                <ion-label *ngIf="visita?.fecha != null">{{visita?.fecha | date: 'd/MM/yy, H:mm a'}}</ion-label>
                 <ion-label *ngIf="visita?.fecha == null"> NA </ion-label>
               </ion-item>
             </ion-col>
             <ion-col size="12" size-lg="6" *ngIf="!userYEmpleadoAsignadoSonIguales">
               <ion-item>
                 <ion-label>{{'Plan.Fecha_Concreta' | translate}}: </ion-label>
-                <ion-label *ngIf="visita?.fecha != null">{{visita?.fecha | date: 'd/MM/yy, H:mm'}}</ion-label>
+                <ion-label *ngIf="visita?.fecha != null">{{visita?.fecha | date: 'd/MM/yy, H:mm a'}}</ion-label>
                 <ion-label *ngIf="visita?.fecha == null"> NA </ion-label>
               </ion-item>
             </ion-col>
@@ -101,7 +101,7 @@
                 <ion-col size="12" size-lg="6">
                   <ion-item>
                       <ion-label>{{'General.Fecha' | translate}}</ion-label>
-                      <ion-label>{{control.fecha | date: 'd/MM/yy, H:mm'}}</ion-label>
+                      <ion-label>{{control.fecha | date: 'd/MM/yy, H:mm a'}}</ion-label>
                   </ion-item>
                 </ion-col>
                 <ion-col size="12" size-lg="6">

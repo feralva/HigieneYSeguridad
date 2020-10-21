@@ -77,7 +77,7 @@ export class VisitaDetalleComponent implements OnInit, OnDestroy {
       this.authService.getUserSubject().pipe(first()).subscribe(
         data => {
           this.currentUser = data
-          this.userYEmpleadoAsignadoSonIguales = data.id == this.visita.empleado.usuarioId
+          this.userYEmpleadoAsignadoSonIguales = (this.visita.empleado != null && data.id == this.visita.empleado.usuarioId)
         },
         error => console.log(error)
       );

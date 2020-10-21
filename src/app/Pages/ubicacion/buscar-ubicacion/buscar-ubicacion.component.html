@@ -12,7 +12,7 @@
     placeholder="{{'General.Ubicacion' | translate}}">
   </ionic-selectable>
 </ion-item>
-<ion-item>
+<ion-item *ngIf="!ubicacionSeleccionada">
   <ion-label>{{'General.Obtener_Ubicacion_por_QR' | translate}}</ion-label>
   <ion-button (click)="startScan()" slot="end">
     <ion-icon name="qr-code-outline"></ion-icon>
