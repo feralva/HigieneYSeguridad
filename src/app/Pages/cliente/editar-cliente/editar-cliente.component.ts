@@ -13,6 +13,7 @@ import { GenericAlertMessageService } from 'src/app/Core/Services/generic-alert-
 import { NgForm } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-editar-cliente',
@@ -90,7 +91,7 @@ export class EditarClienteComponent implements OnInit {
       },
       (error) => console.log(error)
     )
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => {
         this.currentUser = data
         this.model.empresaId = data.empresaId

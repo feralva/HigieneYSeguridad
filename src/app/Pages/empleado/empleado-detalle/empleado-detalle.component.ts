@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { AlertController, ToastController, Platform, ActionSheetController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Empleado } from 'src/app/Models/Empleado';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-empleado-detalle',
@@ -54,7 +55,7 @@ export class EmpleadoDetalleComponent implements OnInit {
     }
     this.empleadoModel.usuario.IdUsuario = this.empleadoModel.correoElectronico;
 
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
         data => this.currentUser = data,
         error => console.log(error)
     );

@@ -8,7 +8,7 @@ import { NavController, ModalController, AlertController } from '@ionic/angular'
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { LoaderService } from 'src/app/Core/Services/loader.service';
 import { LanguageService } from 'src/app/Core/Services/language-service.service';
-import { map, tap } from 'rxjs/operators';
+import { first, map, tap } from 'rxjs/operators';
 import { EventoCalendario } from 'src/app/Models/EventoCalendario';
 import { Visita } from 'src/app/Models/Visita';
 import { formatDate, registerLocaleData } from '@angular/common';
@@ -83,7 +83,7 @@ export class CambiarFechaModalComponent implements OnInit {
     console.log(this.idEmpleado)
     console.log(this.fechaNuevaSeleccionada)
 
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => {
         this.currentUser = data
         this.obtenerVisitasEmpleado()
@@ -105,7 +105,7 @@ export class CambiarFechaModalComponent implements OnInit {
     });
 
     modal.onWillDismiss().then(dataReturned => {
-      this.authService.getUserSubject().subscribe(
+      this.authService.getUserSubject().pipe(first()).subscribe(
         data => {
           this.currentUser = data
           this.obtenerVisitasEmpleado()

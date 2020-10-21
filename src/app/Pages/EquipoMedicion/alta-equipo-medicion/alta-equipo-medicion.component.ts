@@ -9,6 +9,7 @@ import { NgForm } from '@angular/forms';
 import { AlertController, ToastController } from '@ionic/angular';
 import { TipoEquipoMedicion } from 'src/app/Models/TipoEquipoMedicion';
 import { Router } from '@angular/router';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-alta-equipo-medicion',
@@ -45,7 +46,7 @@ export class AltaEquipoMedicionComponent implements OnInit {
 
     this.appDataService.changePageName('EquipoMedicion.Alta.title');
 
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => this.currentUser = data,
       error => console.log(error)
     );

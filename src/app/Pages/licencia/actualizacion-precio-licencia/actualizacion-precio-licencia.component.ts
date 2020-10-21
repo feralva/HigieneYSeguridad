@@ -7,6 +7,7 @@ import { AlertController, ToastController, Platform, ActionSheetController } fro
 import { LicenciaService } from 'src/app/Core/Services/Licencia/licencia.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-actualizacion-precio-licencia',
@@ -48,7 +49,7 @@ export class ActualizacionPrecioLicenciaComponent implements OnInit {
     }
 
     console.log(this.tiposLicencias)
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => {
         console.log(data)
         this.currentUser = data

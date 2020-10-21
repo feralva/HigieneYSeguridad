@@ -4,6 +4,7 @@ import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-equipos-medicion',
@@ -24,7 +25,7 @@ export class EquiposMedicionPage implements OnInit {
 
     this.appDataService.changePageName('EquipoMedicion.title');
 
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => this.currentUser = data,
       error => console.log(error)
     );

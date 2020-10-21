@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { EmpresaService } from 'src/app/Core/Services/Empresa/empresa.service';
 import { RolService } from 'src/app/Core/Services/Rol/rol.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-empleado',
@@ -64,7 +65,7 @@ export class EmpleadoPage implements OnInit {
     this.nombrePagina = 'Empleado.title';
     this.appDataService.changePageName(this.nombrePagina);
 
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => this.currentUser = data,
       error => console.log(error)
     );

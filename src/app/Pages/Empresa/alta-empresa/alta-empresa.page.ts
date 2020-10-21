@@ -18,6 +18,7 @@ import {Location} from '@angular/common';
 import { Router } from '@angular/router';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
+import { first } from 'rxjs/operators';
 @Component({
   selector: 'app-alta-empresa',
   templateUrl: './alta-empresa.page.html',
@@ -83,7 +84,7 @@ export class AltaEmpresaPage implements OnInit {
       (error) => console.log(error)
     )
 
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => {
         console.log(data)
         this.currentUser = data

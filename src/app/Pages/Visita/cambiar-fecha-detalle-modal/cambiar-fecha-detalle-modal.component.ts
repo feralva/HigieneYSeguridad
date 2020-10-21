@@ -9,6 +9,7 @@ import { LoaderService } from 'src/app/Core/Services/loader.service';
 import { DateService } from 'src/app/Core/Services/Utils/date.service';
 import { NgForm } from '@angular/forms';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cambiar-fecha-detalle-modal',
@@ -30,7 +31,7 @@ export class CambiarFechaDetalleModalComponent implements OnInit {
 
   ngOnInit() {
 
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => this.currentUser = data,
       error => console.log(error)
     );

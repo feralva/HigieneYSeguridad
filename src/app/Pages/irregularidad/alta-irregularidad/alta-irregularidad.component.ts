@@ -15,6 +15,7 @@ import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { CameraPhoto, CameraSource } from '@capacitor/core';
 import { PhotoService } from 'src/app/Core/Services/photo/photo.service';
 import { environment } from 'src/environments/environment';
+import { first } from 'rxjs/operators';
 @Component({
   selector: 'app-alta-irregularidad',
   templateUrl: './alta-irregularidad.component.html',
@@ -48,7 +49,7 @@ export class AltaIrregularidadComponent implements OnInit {
 
   ionViewWillEnter() {
 
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       (res)=>{
       this.currentUser = res;
       },

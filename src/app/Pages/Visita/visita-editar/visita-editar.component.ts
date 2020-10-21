@@ -6,6 +6,7 @@ import { NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { VisitaService } from 'src/app/Core/Services/Visita/visita.service';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-visita-editar',
@@ -30,7 +31,7 @@ export class VisitaEditarComponent implements OnInit {
 
     this.idVisita = +this.route.snapshot.paramMap.get('id');
 
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => this.currentUser = data,
       error => console.log(error)
     );

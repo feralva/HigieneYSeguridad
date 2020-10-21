@@ -8,6 +8,7 @@ import { LoaderService } from 'src/app/Core/Services/loader.service';
 import { ClienteService } from 'src/app/Core/Services/Cliente/cliente.service';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { ToastController } from '@ionic/angular';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tipos-licencia',
@@ -33,7 +34,7 @@ export class TiposLicenciaComponent implements OnInit {
     this.tiposLicencias = this.route.snapshot.data['tiposLicencias'];
 
     console.log(this.tiposLicencias)
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       (res)=>{
         this.currentUser = res;
       },

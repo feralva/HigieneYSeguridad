@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-editar-empresa',
@@ -77,7 +78,7 @@ export class EditarEmpresaComponent implements OnInit {
     if(this.route.snapshot.data['empresa']){
       this.empresaModel =  this.route.snapshot.data['empresa'];
     }else{
-      this.authService.getUserSubject().subscribe(
+      this.authService.getUserSubject().pipe(first()).subscribe(
         data => {
           console.log(data)
           this.currentUser = data

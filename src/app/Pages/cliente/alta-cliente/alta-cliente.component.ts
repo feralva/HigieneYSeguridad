@@ -14,6 +14,7 @@ import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { NgForm } from '@angular/forms';
 import { GenericAlertMessageService } from 'src/app/Core/Services/generic-alert-message.service';
 import { Router } from '@angular/router';
+import { first } from 'rxjs/operators';
 const { Camera } = Plugins;
 @Component({
   selector: 'app-alta-cliente',
@@ -83,7 +84,7 @@ export class AltaClienteComponent implements OnInit {
       data => this.provincias = data,
       (error) => console.log(error)
     )
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => {
         this.currentUser = data
         this.model.empresaId = data.empresaId

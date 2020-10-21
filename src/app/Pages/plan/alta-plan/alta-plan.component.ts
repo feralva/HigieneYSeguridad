@@ -9,6 +9,7 @@ import { ClienteService } from 'src/app/Core/Services/Cliente/cliente.service';
 import { NgForm } from '@angular/forms';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { AltaVisitaPlanModalComponent } from '../alta-visita-plan-modal/alta-visita-plan-modal.component';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-alta-plan',
@@ -47,7 +48,7 @@ export class AltaPlanComponent implements OnInit {
     this.appDataService.changePageName('Plan.Alta.title')
 
     console.log(this.cliente)
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => this.currentUser = data,
       error => console.log(error)
     );

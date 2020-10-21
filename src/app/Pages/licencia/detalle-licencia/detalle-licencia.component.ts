@@ -62,7 +62,7 @@ export class DetalleLicenciaComponent implements OnInit {
     this.appDataService.changePageName("Licencia.Detalle.title");
     this.licencia = this.route.snapshot.data['licencia'];
     
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => {
         this.currentUser = data
       },

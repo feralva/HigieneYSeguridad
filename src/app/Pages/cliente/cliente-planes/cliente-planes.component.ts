@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { LoaderService } from 'src/app/Core/Services/loader.service';
 import { PlanService } from 'src/app/Core/Services/Plan/plan.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cliente-planes',
@@ -33,7 +34,7 @@ export class ClientePlanesComponent implements OnInit {
     this.appDataService.changePageName('Cliente.Planes');
     this.idCliente = +this.route.snapshot.paramMap.get('id')
   
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => {
         this.currentUser = data
       },

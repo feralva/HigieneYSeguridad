@@ -11,6 +11,7 @@ import { AlertController, ToastController, Platform, ActionSheetController } fro
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { NgForm } from '@angular/forms';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cerrar-irregularidad',
@@ -40,7 +41,7 @@ export class CerrarIrregularidadComponent implements OnInit {
 
     this.model = this.route.snapshot.data['irregularidad'][0];
     console.log(this.model)
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => this.currentUser = data,
       error => console.log(error)
     );

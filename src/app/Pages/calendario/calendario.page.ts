@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { LoaderService } from 'src/app/Core/Services/loader.service';
 import { map } from 'rxjs/internal/operators/map';
 import { filter } from 'rxjs/internal/operators/filter';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-calendario',
@@ -84,7 +85,7 @@ export class CalendarioPage implements OnInit {
     console.log(this.eventosEmpleado)
     console.log(this.eventosEmpresa)
     
-     this.authService.getUserSubject().subscribe(
+     this.authService.getUserSubject().pipe(first()).subscribe(
       data => {
         this.currentUser = data
       },

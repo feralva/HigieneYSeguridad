@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 import { VisitaService } from 'src/app/Core/Services/Visita/visita.service';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-visita-pendiente-empleado',
@@ -25,7 +26,7 @@ export class VisitaPendienteEmpleadoComponent implements OnInit {
     this.visitas = this.route.snapshot.data['visitas'];
 
     this.appDataService.changePageName('Visita.VisitasPendientes');
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => this.currentUser = data,
       error => console.log(error)
     );

@@ -13,6 +13,7 @@ import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { Familia } from 'src/app/Models/Familia';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
+import { first } from 'rxjs/operators';
 @Component({
   selector: 'app-empleado-edicion',
   templateUrl: './empleado-edicion.component.html',
@@ -72,7 +73,7 @@ export class EmpleadoEdicionComponent implements OnInit {
       );
     });
 
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
         data => this.currentUser = data,
         error => console.log(error)
     );

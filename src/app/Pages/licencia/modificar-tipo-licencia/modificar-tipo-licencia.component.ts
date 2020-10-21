@@ -8,6 +8,7 @@ import { AlertController, ToastController, Platform, ActionSheetController } fro
 import { LicenciaService } from 'src/app/Core/Services/Licencia/licencia.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-modificar-tipo-licencia',
@@ -42,7 +43,7 @@ export class ModificarTipoLicenciaComponent implements OnInit {
 
     this.tipoLicencia = this.route.snapshot.data['tipoLicencia'];
 
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => {
         console.log(data)
         this.currentUser = data

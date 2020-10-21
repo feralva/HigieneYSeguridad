@@ -15,6 +15,7 @@ import { environment } from 'src/environments/environment';
 import { Plugins, CameraSource } from '@capacitor/core';
 import { Platform, ActionSheetController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { first } from 'rxjs/operators';
 const { Camera } = Plugins;
 @Component({
   selector: 'app-alta-empleado',
@@ -64,7 +65,7 @@ export class AltaEmpleadoComponent implements OnInit {
       (err: any) => console.log(err)
     );
 
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
         data => {
           console.log(data)
           this.currentUser = data

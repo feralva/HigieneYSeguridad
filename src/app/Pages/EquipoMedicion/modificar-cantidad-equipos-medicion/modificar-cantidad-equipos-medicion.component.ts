@@ -7,6 +7,7 @@ import { AlertController, ToastController, Platform, ActionSheetController } fro
 import { ActivatedRoute, Router } from '@angular/router';
 import { EquipoMedicionService } from 'src/app/Core/Services/EquipoMedicion/equipo-medicion.service';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-modificar-cantidad-equipos-medicion',
@@ -35,7 +36,7 @@ export class ModificarCantidadEquiposMedicionComponent implements OnInit {
     //this.cantidadActual = this.tipoEquipo.cantidad;
 
     console.log(this.tipoEquipo)
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => {
         console.log(data)
         this.currentUser = data

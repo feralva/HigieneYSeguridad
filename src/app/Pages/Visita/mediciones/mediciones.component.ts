@@ -10,6 +10,7 @@ import { UbicacionService } from 'src/app/Core/Services/Ubicacion/ubicacion.serv
 import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { Medicion } from 'src/app/Models/Medicion';
 import { MedicionService } from 'src/app/Core/Services/Mediciones/medicion.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-mediciones',
@@ -37,7 +38,7 @@ export class MedicionesComponent implements OnInit {
     this.idVisita = +this.route.snapshot.paramMap.get('id');
     this.idControl = this.route.snapshot.paramMap.get('idControl');
 
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => this.currentUser = data,
       error => console.log(error)
     );

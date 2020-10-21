@@ -9,6 +9,7 @@ import { LicenciaService } from 'src/app/Core/Services/Licencia/licencia.service
 import { NgForm } from '@angular/forms';
 import { TipoLicencia } from 'src/app/Models/TipoLicencia';
 import { Router } from '@angular/router';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-alta-tipo-licencia',
@@ -39,7 +40,7 @@ export class AltaTipoLicenciaComponent implements OnInit {
 
     this.appDataService.changePageName('Licencia.Alta_Tipo_Licencia');
 
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => {
         console.log(data)
         this.currentUser = data

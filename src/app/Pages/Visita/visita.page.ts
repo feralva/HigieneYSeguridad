@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { LoaderService } from 'src/app/Core/Services/loader.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-visita',
@@ -51,7 +52,7 @@ export class VisitaPage implements OnInit {
     this.clientes = this.route.snapshot.data['clientes'];
     this.estadosVisitasPosibles = this.route.snapshot.data['estados'];
 
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => this.currentUser = data,
       error => console.log(error)
     );

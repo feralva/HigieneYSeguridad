@@ -7,6 +7,7 @@ import { LoaderService } from 'src/app/Core/Services/loader.service';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { IrregularidadService } from 'src/app/Core/Services/Irregularidad/irregularidad.service';
 import { ClienteService } from 'src/app/Core/Services/Cliente/cliente.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-irregularidad',
@@ -39,7 +40,7 @@ export class IrregularidadPage implements OnInit {
 
     this.filteredIrregularidades = [...this.irregularidades];
 
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       (res)=>{
       this.currentUser = res;
       },

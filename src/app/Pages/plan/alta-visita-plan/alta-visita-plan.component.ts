@@ -8,6 +8,7 @@ import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-alta-visita-plan',
@@ -58,7 +59,7 @@ export class AltaVisitaPlanComponent implements OnInit {
 
     this.appDataService.changePageName('Visita.Alta')
 
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => this.currentUser = data,
       error => console.log(error)
     );

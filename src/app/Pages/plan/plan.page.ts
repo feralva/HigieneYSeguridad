@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { PlanService } from 'src/app/Core/Services/Plan/plan.service';
 import { LoaderService } from 'src/app/Core/Services/loader.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-plan',
@@ -31,7 +32,7 @@ export class PlanPage implements OnInit {
     this.planes = this.route.snapshot.data['planes'];
     this.estadosPlanesPosibles = this.route.snapshot.data['estadosPlanesPosibles'];
 
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => {
         this.currentUser = data
       },

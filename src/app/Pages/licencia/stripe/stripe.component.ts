@@ -10,6 +10,7 @@ import { Pago } from 'src/app/Models/Pago';
 import { ToastController } from '@ionic/angular';
 import { LicenciaService } from 'src/app/Core/Services/Licencia/licencia.service';
 import { Router } from '@angular/router';
+import { first } from 'rxjs/operators';
 
 declare var Stripe;
 
@@ -36,7 +37,7 @@ export class StripeComponent implements OnInit {
   ngOnInit() {
 
     this.setupStripe();
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => {
         console.log(data)
         this.currentUser = data

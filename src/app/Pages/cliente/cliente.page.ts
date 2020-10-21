@@ -6,6 +6,7 @@ import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ClienteService } from 'src/app/Core/Services/Cliente/cliente.service';
 import { ActivatedRoute } from '@angular/router';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cliente',
@@ -30,7 +31,7 @@ export class ClientePage implements OnInit {
 
     this.clientes = this.route.snapshot.data['clientes'];
 
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => this.currentUser = data,
       error => console.log(error)
     );

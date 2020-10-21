@@ -10,6 +10,7 @@ import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { LoaderService } from 'src/app/Core/Services/loader.service';
 import { VisitaService } from 'src/app/Core/Services/Visita/visita.service';
 import { NgForm } from '@angular/forms';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cambiar-auditor-modal',
@@ -35,7 +36,7 @@ export class CambiarAuditorModalComponent implements OnInit {
     console.log('llega')
     console.log(this.auditorActual)
     //this.loader.present()
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => {
         this.currentUser = data
         this.empresaService.ObtenerEmpleadosEmpresa(data.empresaId).subscribe(

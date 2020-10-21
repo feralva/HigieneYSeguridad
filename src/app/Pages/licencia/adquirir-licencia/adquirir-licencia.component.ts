@@ -9,6 +9,7 @@ import { Pago } from 'src/app/Models/Pago';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { PagoService } from 'src/app/Core/Services/Pago/pago.service';
 import { UserLogueado } from 'src/app/Models/UserLogueado';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-adquirir-licencia',
@@ -37,7 +38,7 @@ export class AdquirirLicenciaComponent implements OnInit {
     this.appDataService.changePageName("Licencia.Adquirir.title");
     this.tiposLicencias = this.route.snapshot.data['tiposLicencia'];
     
-    this.authService.getUserSubject().subscribe(
+    this.authService.getUserSubject().pipe(first()).subscribe(
       data => {
         console.log(data)
         this.currentUser = data
