@@ -46,13 +46,14 @@
           <div class="timeline__date">
             <span class="timeline__day" *ngIf="visita.fecha">{{visita.fecha | date:'dd'}}</span>
             <span class="timeline__day" *ngIf="!visita.fecha">{{visita.fechaPactada | date:'dd'}}</span>
-            <span class="timeline__month">{{visita.fechaPactada | date:'MMMM'}}</span>
+            <span class="timeline__month">{{visita.fechaPactada | date:'MMMM' : 'es-ES'}}</span>
           </div>
           <div class="timeline__post" >
             <div class="timeline__content" >
               <p><b>{{visita.nombreCliente + ' - ' + visita.nombreEstablecimiento}}</b></p>
               <p><b>{{'Visita.Tipo_Visita' | translate}}: </b>{{visita.tipoVisita}}</p>
               <p><b>{{'Plan.Asignado_A' | translate }}: </b>{{visita.empleadoAsignado}}</p>
+              <p><b>{{'Visita.Estado' | translate }}: </b>{{visita.estado}}</p>
               <ion-button color="medium" [routerLink]="['/visita',visita.id, 'detalle']" size="small">{{'General.Detalle' | translate}}</ion-button>
             </div>
           </div>

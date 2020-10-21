@@ -50,7 +50,7 @@ export class VisitaPage implements OnInit {
     this.visitas = this.route.snapshot.data['visitas'];
     this.clientes = this.route.snapshot.data['clientes'];
     this.estadosVisitasPosibles = this.route.snapshot.data['estados'];
- 
+
     this.authService.getUserSubject().subscribe(
       data => this.currentUser = data,
       error => console.log(error)
