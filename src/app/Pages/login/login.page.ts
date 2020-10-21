@@ -43,7 +43,7 @@ export class LoginPage implements OnInit {
         console.log(data);
         if(data) {this.router.navigateByUrl('home')}
           else {
-            loading.dismiss();
+            if (data) loading.dismiss();
             this.router.navigateByUrl('/login')
           }
       },
