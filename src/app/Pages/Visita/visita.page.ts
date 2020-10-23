@@ -52,6 +52,7 @@ export class VisitaPage implements OnInit {
     this.clientes = this.route.snapshot.data['clientes'];
     this.estadosVisitasPosibles = this.route.snapshot.data['estados'];
 
+    this.estadoVisitaAFiltrarId = 0
     this.authService.getUserSubject().pipe(first()).subscribe(
       data => this.currentUser = data,
       error => console.log(error)
