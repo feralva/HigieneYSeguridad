@@ -242,7 +242,7 @@ export class VisitaDetalleComponent implements OnInit, OnDestroy {
       modal.onWillDismiss().then(dataReturned => {
         // trigger when about to close the modal
         //ver el param que paso
-        this.userYEmpleadoAsignadoSonIguales = this.currentUser.id == dataReturned['data'].usuarioId
+        if (dataReturned['data']) this.userYEmpleadoAsignadoSonIguales = this.currentUser.id == dataReturned['data'].usuarioId
         console.log(dataReturned)
         this.doRefresh(null);
       });  
