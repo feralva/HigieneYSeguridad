@@ -63,7 +63,7 @@ export class CambiarAuditorModalComponent implements OnInit {
   }
 
   async closeModal() {
-    await this.modalController.dismiss();
+    await this.modalController.dismiss(this.auditorSeleccionado);
   }
 
 }

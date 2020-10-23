@@ -3,7 +3,7 @@ import { UserLogueado } from 'src/app/Models/UserLogueado';
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppDataService } from 'src/app/Core/Services/Data/app-data.service';
-import { NavController, ModalController, AlertController, ToastController } from '@ionic/angular';
+import { NavController, ModalController, AlertController, ToastController, LoadingController } from '@ionic/angular';
 import { ControlService } from 'src/app/Core/Services/Control/control.service';
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { VisitaService } from 'src/app/Core/Services/Visita/visita.service';
@@ -59,7 +59,8 @@ export class VisitaDetalleComponent implements OnInit, OnDestroy {
     private visitaService: VisitaService, private ubicacionService: UbicacionService,
     private modalController: ModalController, public alertController: AlertController,
     public toastController: ToastController, private medicionService: MedicionService,
-    private reportingService: ReportingService, private establecimientoService: EstablecimientoService) { }
+    private reportingService: ReportingService, private establecimientoService: EstablecimientoService,
+    private loadingController: LoadingController) { }
   
   
     ngOnDestroy(): void {
@@ -110,6 +111,7 @@ export class VisitaDetalleComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
+    this.getCurrentPosition();
     /* this.appDataService.changePageName('Visita.Detalle.title');
 
       this.controles = this.route.snapshot.data['controles'];
@@ -240,12 +242,15 @@ export class VisitaDetalleComponent implements OnInit, OnDestroy {
       modal.onWillDismiss().then(dataReturned => {
         // trigger when about to close the modal
         //ver el param que paso
+        this.userYEmpleadoAsignadoSonIguales = this.currentUser.id == dataReturned['data'].usuarioId
+        console.log(dataReturned)
         this.doRefresh(null);
       });  
       
       return await modal.present().then(_ => {
         // triggered when opening the modal
         console.log(this.visita)
+
         console.log('Sending: ',  this.visita.empleado);
       });
   }
@@ -385,11 +390,18 @@ export class VisitaDetalleComponent implements OnInit, OnDestroy {
     );
   }
 
-  loadMap() {
+  async loadMap() {
+
+    const loading = await this.loadingController.create({
+      spinner: 'circular',
+      translucent: true,
+      
+    });
+    await loading.present();
 
     //let latLng = new google.maps.LatLng(51.9036442, 7.6673267);
     var latLng;
-    if(this.currentPosition.coords) {
+    if(this.currentPosition && this.currentPosition.coords) {
       latLng = new google.maps.LatLng(this.currentPosition.coords.latitude, this.currentPosition.coords.longitude);
     }else {
       latLng = new google.maps.LatLng(-34.54847,-58.5357467);
@@ -414,6 +426,10 @@ export class VisitaDetalleComponent implements OnInit, OnDestroy {
         console.log(data)
 
         this.dibujarRecorrido()
+        loading.dismiss();
+      },
+      (error) => {
+        loading.dismiss();
       }
     )
   }
@@ -476,6 +492,10 @@ export class VisitaDetalleComponent implements OnInit, OnDestroy {
     Path.setMap(this.map);
   }
 
+  async getCurrentPosition() {
+    return await Geolocation.getCurrentPosition();
+  }
+
   startTracking() {
     this.isTracking = true;
     this.watch = Geolocation.watchPosition({enableHighAccuracy: true}, (position, err) => {
@@ -488,6 +508,8 @@ export class VisitaDetalleComponent implements OnInit, OnDestroy {
             position.timestamp
           );
         }
+      }else{
+        this.currentPosition = this.getCurrentPosition();
       }
     });
   }
