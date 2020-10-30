@@ -42,7 +42,7 @@
       </ion-item>
       <ion-item>
         <ion-label> {{'Irregularidad.Fecha_Deteccion' | translate}}</ion-label>
-        <ion-label><b>{{model.fechaDeteccion}}</b></ion-label>
+        <ion-label><b>{{model.fechaDeteccion | date: 'd/MM/yy, H:mm a'}}</b></ion-label>
       </ion-item>
 
       <ion-item-divider style="text-align: center;" color="secondary">

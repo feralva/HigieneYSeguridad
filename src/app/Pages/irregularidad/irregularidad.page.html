@@ -64,10 +64,10 @@
               <ion-col><b>{{'Irregularidad.Reportado_Por' | translate}}: </b> {{irregularidad.empleado}}</ion-col>
             </ion-row>
             <ion-row>
-              <ion-col><b>{{'Irregularidad.Fecha_Deteccion' | translate}}: </b> {{irregularidad.fechaDeteccion | date: 'short'}}</ion-col>
+              <ion-col><b>{{'Irregularidad.Fecha_Deteccion' | translate}}: </b> {{irregularidad.fechaDeteccion | date: 'd/MM/yy, H:mm a'}}</ion-col>
             </ion-row>
             <ion-row *ngIf="irregularidad.fechaFinalizado">
-              <ion-col><b>{{'Fecha_Finalizado' | translate}}: </b> {{irregularidad.fechaFinalizado | date: 'short'}}</ion-col>
+              <ion-col><b>{{'Fecha_Finalizado' | translate}}: </b> {{irregularidad.fechaFinalizado | date: 'd/MM/yy, H:mm a'}}</ion-col>
             </ion-row>
           </ion-grid>
         </ion-card-content>
