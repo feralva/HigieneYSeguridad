@@ -401,12 +401,15 @@ export class VisitaDetalleComponent implements OnInit, OnDestroy {
 
     //let latLng = new google.maps.LatLng(51.9036442, 7.6673267);
     var latLng;
-    if(this.currentPosition && this.currentPosition.coords) {
-      latLng = new google.maps.LatLng(this.currentPosition.coords.latitude, this.currentPosition.coords.longitude);
-    }else {
-      latLng = new google.maps.LatLng(-34.54847,-58.5357467);
+    try{
+      if(this.currentPosition && this.currentPosition.coords) {
+        latLng = new google.maps.LatLng(this.currentPosition.coords.latitude, this.currentPosition.coords.longitude);
+      }else {
+        latLng = new google.maps.LatLng(-34.54847,-58.5357467);
+      }
+    }catch(error){
+      console.log(error)
     }
-   
  
     let mapOptions = {
       center: latLng,
@@ -497,21 +500,26 @@ export class VisitaDetalleComponent implements OnInit, OnDestroy {
   }
 
   startTracking() {
-    this.isTracking = true;
-    this.watch = Geolocation.watchPosition({enableHighAccuracy: true}, (position, err) => {
-      if (position) {
-        this.currentPosition = position
-        if(this.map){
-          this.actualizarLocation(
-            position.coords.latitude,
-            position.coords.longitude,
-            position.timestamp
-          );
+    try{
+
+      this.isTracking = true;
+      this.watch = Geolocation.watchPosition({enableHighAccuracy: true}, (position, err) => {
+        if (position) {
+          this.currentPosition = position
+          if(this.map){
+            this.actualizarLocation(
+              position.coords.latitude,
+              position.coords.longitude,
+              position.timestamp
+            );
+          }
+        }else{
+          this.currentPosition = this.getCurrentPosition();
         }
-      }else{
-        this.currentPosition = this.getCurrentPosition();
-      }
-    });
+      });
+    }catch(error){
+      console.log(error)
+    }
   }
 
   actualizarLocation(lat, lng, timestamp) {

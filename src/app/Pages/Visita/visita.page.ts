@@ -73,7 +73,7 @@ export class VisitaPage implements OnInit {
     console.log('Actualizo visitas')
     this.visitas = [];
 
-    this.loaderService.present(); 
+    //this.loaderService.present(); 
 
     var idCliente = (this.clienteAFiltrar != null)?this.clienteAFiltrar.id: 0;
     
@@ -81,7 +81,7 @@ export class VisitaPage implements OnInit {
       data => {
         console.log(data)
         this.visitas = data;
-        this.loaderService.dismiss();
+        //this.loaderService.dismiss();
       },
       (error) => console.log(error)
     )
