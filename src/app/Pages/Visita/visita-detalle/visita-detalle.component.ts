@@ -21,6 +21,7 @@ import { forkJoin } from 'rxjs';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { Plugins } from '@capacitor/core';
 import { first } from 'rxjs/operators';
+import { ConnectionStatus, NetworkService } from 'src/app/Core/Services/network-service.service';
 const { Geolocation } = Plugins;
 
 declare var google;
@@ -60,7 +61,7 @@ export class VisitaDetalleComponent implements OnInit, OnDestroy {
     private modalController: ModalController, public alertController: AlertController,
     public toastController: ToastController, private medicionService: MedicionService,
     private reportingService: ReportingService, private establecimientoService: EstablecimientoService,
-    private loadingController: LoadingController) { }
+    private loadingController: LoadingController, private networkService: NetworkService) { }
   
   
     ngOnDestroy(): void {
@@ -112,6 +113,14 @@ export class VisitaDetalleComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     this.getCurrentPosition();
+
+      this.networkService.onNetworkChange().subscribe(
+        data => {
+          if(data == ConnectionStatus.Online) this.startTracking()
+          if(data == ConnectionStatus.Offline) this.stopTracking()
+        } 
+      )
+
     /* this.appDataService.changePageName('Visita.Detalle.title');
 
       this.controles = this.route.snapshot.data['controles'];
@@ -496,7 +505,14 @@ export class VisitaDetalleComponent implements OnInit, OnDestroy {
   }
 
   async getCurrentPosition() {
-    return await Geolocation.getCurrentPosition();
+    try {
+      if(this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Online)
+                    return await Geolocation.getCurrentPosition();
+    } catch (error) {
+      console.log(error)
+      //throw Error('General.Error.GPS_ERROR')
+    }
+    
   }
 
   startTracking() {
@@ -519,6 +535,8 @@ export class VisitaDetalleComponent implements OnInit, OnDestroy {
       });
     }catch(error){
       console.log(error)
+      this.stopTracking()
+      //throw Error('General.Error.GPS_ERROR')
     }
   }
 
@@ -556,9 +574,14 @@ export class VisitaDetalleComponent implements OnInit, OnDestroy {
   }
 
   stopTracking() {
-    Geolocation.clearWatch({ id: this.watch }).then(() => {
-      this.isTracking = false;
-    });
+    try {
+      Geolocation.clearWatch({ id: this.watch }).then(() => {
+        this.isTracking = false;
+      });
+    } catch (error) {
+      console.log(error)
+    }
+
   }
 
   segmentChanged(ev: any) {

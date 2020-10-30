@@ -178,7 +178,8 @@
             "Falta_Imagen": "Debe Seleccionar Imagen",
             "QR_Invalido": "QR Invalido",
             "DatosFaltantes": "Datos Faltantes",
-            "DatosSinAsignar": "La visita no se puede completar con la fecha o auditor sin Asignar"
+            "DatosSinAsignar": "La visita no se puede completar con la fecha o auditor sin Asignar",
+            "GPS_ERROR": "No Se Puede Encontrar Ubicación Actual"
         },
         "Tipo": "Tipo",
         "Ver_QR": "Ver QR",

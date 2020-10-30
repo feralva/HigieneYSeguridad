@@ -179,7 +179,8 @@
       "Falta_Imagen": "Must Select Image",
       "QR_Invalido": "Invalid QR",
       "DatosFaltantes": "Missing data",
-      "DatosSinAsignar": "Visit cannot be completed with date or unassigned auditor"
+      "DatosSinAsignar": "Visit cannot be completed with date or unassigned auditor",
+      "GPS_ERROR": "Can't Find Current Location"
     },
     "Tipo": "Type",
     "Ver_QR": "View QR",

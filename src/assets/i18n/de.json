@@ -179,7 +179,8 @@
       "Falta_Imagen": "Bild muss ausgewählt werden",
       "QR_Invalido": "Ungültiger QR",
       "DatosFaltantes": "Fehlende Daten",
-      "DatosSinAsignar": "Der Besuch kann nicht mit Datum oder nicht zugewiesenem Prüfer abgeschlossen werden"
+      "DatosSinAsignar": "Der Besuch kann nicht mit Datum oder nicht zugewiesenem Prüfer abgeschlossen werden",
+      "GPS_ERROR": "Aktueller Standort kann nicht gefunden werden"
     },
     "Tipo": "Art",
     "Ver_QR": "QR anzeigen",
