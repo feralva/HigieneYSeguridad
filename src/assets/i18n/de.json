@@ -195,7 +195,11 @@
     "No": "Nein",
     "SeProdujounerror": "Es gab einen Fehler",
     "Reintentar": "Wiederholen",
-    "Mapa": "Karte"
+    "Mapa": "Karte",
+    "Pendiente": "steht aus",
+    "Estado_Red": "Du bist jetzt {estado}",
+    "Estado_Online": "In Verbindung gebracht",
+    "Estado_Offline": "Getrennt"
   },
   "Ubicacion": {
     "Agregar": "Ort hinzufügen",

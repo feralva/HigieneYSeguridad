@@ -50,8 +50,10 @@ export class VisitaService {
   obtenerVisitasPendientesEmpresa(idEmpresa: number): Observable<any> {
 
     if (this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline) {
+      
       return from(this.getLocalData(`Empresa/${idEmpresa}/Visitas`));
     } else {
+
       return this.http.get(environment.UrlBaseApi + `Empresa/${idEmpresa}/Visitas?activo=true&estadoVisitaId=1`, this.httpOptions).pipe(
         tap(res => {
           this.setLocalData(`Empresa/${idEmpresa}/Visitas`, res);

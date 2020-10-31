@@ -92,7 +92,7 @@ export class VisitaDetalleComponent implements OnInit, OnDestroy {
   
         this.ubicacionService.obtenerUbicacion(control.ubicacionId).subscribe(
           data => {
-            control.ubicacion = data.nombre
+            control.ubicacion = data? data.nombre : this.translate.instant('General.Pendiente')
             console.log(control)
           },
           (error) => console.log(error)

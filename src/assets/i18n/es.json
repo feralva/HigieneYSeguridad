@@ -194,7 +194,11 @@
         "No": "No",
         "SeProdujounerror": "Se Produjo un error",
         "Reintentar": "Reintento",
-        "Mapa": "Mapa"
+        "Mapa": "Mapa",
+        "Pendiente": "Pendiente",
+        "Estado_Red": "Usted esta {estado} ahora",
+        "Estado_Online": "Conectado",
+        "Estado_Offline": "Desconectado"
     },
     "Ubicacion":{
         "Agregar": "Agregar Ubicación",

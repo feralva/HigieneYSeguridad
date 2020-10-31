@@ -195,7 +195,11 @@
     "No": "No",
     "SeProdujounerror": "There was an error",
     "Reintentar": "Retry",
-    "Mapa": "Map"
+    "Mapa": "Map",
+    "Pendiente": "Pending",
+    "Estado_Red": "You are {estado} now",
+    "Estado_Online": "Connected",
+    "Estado_Offline": "Disconnected"
   },
   "Ubicacion": {
     "Agregar": "Add Location",

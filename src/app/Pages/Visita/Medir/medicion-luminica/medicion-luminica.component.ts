@@ -39,7 +39,7 @@ export class MedicionLuminicaComponent implements OnInit {
     this.ubicaciones = this.route.snapshot.data['ubicaciones'];
     
     console.log(this.ubicaciones)
-    this.appDataService.changePageName('Medicion.Luminico.title');
+    this.appDataService.changePageName('Control.Luminico.title');
   }
 
   async AltaControlMedicionesConfirm() {

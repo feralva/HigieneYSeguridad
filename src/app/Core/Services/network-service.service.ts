@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ToastController, Platform } from '@ionic/angular';
 import { Plugins } from '@capacitor/core';
+import { TranslateService } from '@ngx-translate/core';
 
 const { Network } = Plugins;
 
@@ -16,7 +17,7 @@ export class NetworkService {
 
   private status: BehaviorSubject<ConnectionStatus> = new BehaviorSubject(ConnectionStatus.Offline);
   
-  constructor(private toastController: ToastController, private plt: Platform) {
+  constructor(private toastController: ToastController, private plt: Platform, private translate: TranslateService) {
     this.plt.ready().then(() => {
       this.initializeNetworkEvents();
     });
@@ -43,9 +44,9 @@ export class NetworkService {
   private async updateNetworkStatus(status: ConnectionStatus) {
     this.status.next(status);
  
-    let connection = status == ConnectionStatus.Offline ? 'Offline' : 'Online';
+    let connection = status == ConnectionStatus.Offline ? 'General.Estado_Offline' : 'General.Estado_Online';
     let toast = this.toastController.create({
-      message: `You are now ${connection}`,
+      message: this.translate.instant('General.Reintentar',{estado: this.translate.instant(connection)}),
       duration: 3000,
       position: 'bottom'
     });

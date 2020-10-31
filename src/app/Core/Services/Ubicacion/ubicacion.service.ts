@@ -43,8 +43,10 @@ export class UbicacionService {
   
   obtenerUbicacionesEstablecimiento(idEstablecimiento: number): Observable<any> {
     if (this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline) {
+      console.log('Obtengo Ubicaciones desde local')
       return from(this.getLocalData(`Establecimiento/${idEstablecimiento}/Ubicaciones`));
     } else {
+      console.log('Obtengo Ubicaciones desde red')
       return this.http.get<any[]>(environment.UrlBaseApi + `Establecimiento/${idEstablecimiento}/Ubicaciones`, this.httpOptions).pipe(
         tap(res => {
           this.setLocalData(`Establecimiento/${idEstablecimiento}/Ubicaciones`, res);

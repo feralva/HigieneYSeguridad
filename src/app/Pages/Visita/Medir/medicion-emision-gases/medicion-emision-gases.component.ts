@@ -9,6 +9,7 @@ import { UbicacionService } from 'src/app/Core/Services/Ubicacion/ubicacion.serv
 import { AuthService } from 'src/app/Core/Services/auth/auth.service';
 import { Control } from 'src/app/Models/Control';
 import { NgForm } from '@angular/forms';
+import { ConnectionStatus, NetworkService } from 'src/app/Core/Services/network-service.service';
 
 @Component({
   selector: 'app-medicion-emision-gases',
@@ -29,7 +30,7 @@ export class MedicionEmisionGasesComponent implements OnInit {
     private plt: Platform, private translate: TranslateService, private route: ActivatedRoute,
     private appDataService: AppDataService, private ubicacionService: UbicacionService, 
     private authService: AuthService, public alertController: AlertController,
-    private router: Router) { }
+    private router: Router, private networkService: NetworkService) { }
 
   ngOnInit() {
     console.log(+this.route.snapshot.paramMap.get('id'))
@@ -66,6 +67,11 @@ export class MedicionEmisionGasesComponent implements OnInit {
               },
               (err: any) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
             );
+
+            if(this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline){
+              
+              this.router.navigate(['/visita', this.idVisita, 'detalle'])
+            }
           }
         }
       ]

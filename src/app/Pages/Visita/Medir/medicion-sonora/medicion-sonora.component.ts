@@ -10,6 +10,7 @@ import { NgForm } from '@angular/forms';
 import { ControlService } from 'src/app/Core/Services/Control/control.service';
 import { Control } from 'src/app/Models/Control';
 import { Medicion } from 'src/app/Models/Medicion';
+import { ConnectionStatus, NetworkService } from 'src/app/Core/Services/network-service.service';
 
 @Component({
   selector: 'app-medicion-sonora',
@@ -30,7 +31,7 @@ export class MedicionSonoraComponent implements OnInit {
     private plt: Platform, private translate: TranslateService, private route: ActivatedRoute,
     private appDataService: AppDataService, private ubicacionService: UbicacionService, 
     private authService: AuthService, public alertController: AlertController,
-    private router: Router) { }
+    private router: Router, private networkService: NetworkService) { }
 
   ngOnInit() {
     console.log(+this.route.snapshot.paramMap.get('id'))
@@ -67,6 +68,11 @@ export class MedicionSonoraComponent implements OnInit {
               },
               (err: any) => this.MostrarMensajeOperacion(this.translate.instant('Mensaje.Falla'))
             );
+
+            if(this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline){
+              
+              this.router.navigate(['/visita', this.idVisita, 'detalle'])
+            }
           }
         }
       ]
