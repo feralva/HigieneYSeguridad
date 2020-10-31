@@ -46,7 +46,7 @@ export class NetworkService {
  
     let connection = status == ConnectionStatus.Offline ? 'General.Estado_Offline' : 'General.Estado_Online';
     let toast = this.toastController.create({
-      message: this.translate.instant('General.Reintentar',{estado: this.translate.instant(connection)}),
+      message: this.translate.instant('General.Estado_Red',{estado: this.translate.instant(connection)}),
       duration: 3000,
       position: 'bottom'
     });

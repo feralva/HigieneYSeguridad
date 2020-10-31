@@ -196,7 +196,7 @@
         "Reintentar": "Reintento",
         "Mapa": "Mapa",
         "Pendiente": "Pendiente",
-        "Estado_Red": "Usted esta {estado} ahora",
+        "Estado_Red": "Usted esta {{estado}} ahora",
         "Estado_Online": "Conectado",
         "Estado_Offline": "Desconectado"
     },

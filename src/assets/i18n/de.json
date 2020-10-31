@@ -197,7 +197,7 @@
     "Reintentar": "Wiederholen",
     "Mapa": "Karte",
     "Pendiente": "steht aus",
-    "Estado_Red": "Du bist jetzt {estado}",
+    "Estado_Red": "Du bist jetzt {{estado}}",
     "Estado_Online": "In Verbindung gebracht",
     "Estado_Offline": "Getrennt"
   },

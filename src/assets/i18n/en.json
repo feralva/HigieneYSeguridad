@@ -197,7 +197,7 @@
     "Reintentar": "Retry",
     "Mapa": "Map",
     "Pendiente": "Pending",
-    "Estado_Red": "You are {estado} now",
+    "Estado_Red": "You are {{estado}} now",
     "Estado_Online": "Connected",
     "Estado_Offline": "Disconnected"
   },
