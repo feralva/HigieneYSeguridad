@@ -1,17 +1,9 @@
 # HigieneYSeguridad
 
-## Aclaraciones Proyecto
-
-El presente es un proyecto realizado para la asignatura Trabajo Final de Ingenieria en la **UAI**.
-A cargo del Profesor **Gaston Weingand**.
-
-Alumno: **Alvarez Fernando**
-
 ## Tecnologías Involucradas
 
 * **Angular 9**
 * **Ionic 5**
-* **Node js 12**
 
 ## Instalación
 
